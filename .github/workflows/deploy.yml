@@ -2,7 +2,7 @@ name: Deploy Astro Blog to GitHub Pages
 
 on:
   push:
-    branches: [main]  # adjust if you're using 'master' instead
+    branches: [main]  # Adjust if you're using another branch
   workflow_dispatch:
 
 jobs:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -25,7 +25,8 @@ jobs:
             ~/.cache/yarn
             node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: ${{ runner.os }}-yarn-
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -36,10 +37,16 @@ jobs:
       - name: Add .nojekyll file
         run: echo > dist/.nojekyll
 
+      - name: Set Git Identity
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: Deploy to GitHub Pages 🚀
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          publish_branch: gh-pages
+          publish_branch: main
+          external_repository: dhanushka2001/dhanushka2001.github.io
 
