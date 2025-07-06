@@ -45,7 +45,7 @@ jobs:
       - name: Deploy to GitHub Pages 🚀
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.BLOG_TOKEN }}
           publish_dir: ./dist
           publish_branch: main
           external_repository: dhanushka2001/dhanushka2001.github.io
