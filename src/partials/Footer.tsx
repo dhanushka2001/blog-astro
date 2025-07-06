@@ -11,11 +11,11 @@ const Footer = () => (
         with ♥ by{' '}
         <a
           className="text-cyan-400 hover:underline"
-          href="https://github.com/FriendlyUser"
+          href="https://github.com/dhanushka2001"
           target="_blank"
           rel="noopener noreferrer"
         >
-          FriendlyUser
+          Dhanushka
         </a>
         . Last updated on {date}.
       </div>

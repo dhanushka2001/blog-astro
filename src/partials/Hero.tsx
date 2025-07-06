@@ -10,11 +10,12 @@ const Hero = () => (
     <HeroAvatar
       title={
         <>
-          Hi there, I'm <GradientText>David</GradientText> 👋
+          Hi there, I'm <GradientText>Dhanushka</GradientText> 👋
         </>
       }
       description={
         <>
+          {/*
           I am a software developer who blogs and deploys tools for investing.
           You can find some of my free tools at{' '}
           <a
@@ -24,12 +25,14 @@ const Hero = () => (
             dli-invest
           </a>{' '}
           .
+	  */}
+          Bio in progress...
         </>
       }
       avatar={
         <img
-          className="h-80 w-80"
-          src="https://www.gravatar.com/avatar/d5a6e001f027e8cf3dbf048a926baa77?s=200"
+          className="h-80 w-80 rounded-full"
+          src="/assets/images/avatar.png"
           alt="Avatar image"
           loading="lazy"
         />
@@ -42,17 +45,8 @@ const Hero = () => (
               alt="Linkedin icon"
             />
           </a>
-          <a href="https://www.youtube.com/channel/UCgh3EboIsJMS-b8dZsTjPkg">
-            <HeroSocial
-              src="/assets/images/youtube-icon.png"
-              alt="Youtube icon"
-            />
-          </a>
           <a href="https://github.com/FriendlyUser">
             <HeroSocial src="/assets/images/github.png" alt="Github icon" />
-          </a>
-          <a href="https://TeeMugs3.redbubble.com">
-            <HeroSocial src="/imgs/2024/redbubble.svg" alt="Redbubble icon" />
           </a>
         </>
       }

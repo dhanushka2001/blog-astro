@@ -6,6 +6,8 @@ import {
   Section,
 } from 'astro-boilerplate-components';
 
+import { AppConfig } from '@/utils/AppConfig';
+
 const Navbar = () => (
   <Section>
     <NavbarTwoColumns>
@@ -28,13 +30,15 @@ const Navbar = () => (
               <path d="M4 20h14"></path>
             </svg>
           }
-          name="David's Blog"
+          name={AppConfig.site_name}
         />
       </a>
 
       <NavMenu>
         <NavMenuItem href="/posts">Blogs</NavMenuItem>
-        <NavMenuItem href="https://github.com/FriendlyUser/astro-tech-blog">GitHub</NavMenuItem>
+        <NavMenuItem href="https://github.com/dhanushka2001/blog-astro">
+          GitHub
+        </NavMenuItem>
         <NavMenuItem href="/photos">Photos</NavMenuItem>
       </NavMenu>
     </NavbarTwoColumns>
