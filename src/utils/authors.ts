@@ -2,7 +2,7 @@ export const authors = {
   'David Li': {
     name: 'David Li',
     avatar: '/assets/images/avatars/david.png',
-    url: 'https://davidli.com', // optional
+    url: 'https://github.com/FriendlyUser', // optional
   },
   'Dhanushka Jayagoda': {
     name: 'Dhanushka Jayagoda',
