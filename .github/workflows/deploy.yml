@@ -3,6 +3,8 @@ name: Deploy Astro Blog to GitHub Pages
 on:
   push:
     branches: [main]  # Adjust if you're using another branch
+    paths-ignore:
+      - '**.md'       # Ignore README.md changes
   workflow_dispatch:
 
 jobs:
