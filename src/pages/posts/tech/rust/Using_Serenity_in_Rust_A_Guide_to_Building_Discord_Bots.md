@@ -5,6 +5,7 @@ description: "In this article, we will explore how to build a simple Discord bot
 tags: ["rust"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/733581468.png
+authors: [David Li]
 ---
 # Using Serenity in Rust: A Guide to Building Discord Bots
 

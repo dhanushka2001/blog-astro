@@ -5,6 +5,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-03-05T01:45:04.000Z'
 tags: []
 title: Transcode video file with ffmpeg.
+authors: [David Li]
 ---
 
 

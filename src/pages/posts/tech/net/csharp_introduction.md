@@ -5,6 +5,7 @@ description: Explaining the history of csharp and how it is used
 pubDate: Fri, 24 January 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/118660664.png"
+authors: [David Li]
 ---
 C# (pronounced "C-sharp") is a modern, object-oriented programming language that was developed by Microsoft as part of its .NET initiative. The development of C# began in 1999, led by Anders Hejlsberg, and the first version of the language was released in 2000 as part of Visual Studio .NET.
 

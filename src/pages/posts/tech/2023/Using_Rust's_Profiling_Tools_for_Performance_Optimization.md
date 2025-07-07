@@ -5,6 +5,7 @@ description: "This article will provide an overview of Rust's profiling tools, a
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/270485010_forest.png
+authors: [David Li]
 ---
 # Using Rust's Profiling Tools for Performance Optimization
 

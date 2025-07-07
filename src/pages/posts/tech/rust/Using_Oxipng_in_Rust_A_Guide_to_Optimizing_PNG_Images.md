@@ -5,6 +5,7 @@ description: "In this article, we will explore how to use Oxipng, a Rust-based P
 tags: ["rust"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/549017699.png
+authors: [David Li]
 ---
 # Using Oxipng in Rust: A Guide to Optimizing PNG Images
 

@@ -5,6 +5,7 @@ description: In this post I will show you how to create a simple networked game 
 pubDate: Fri, 14 May 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2776175216.png
+authors: [David Li]
 ---
 A networked game is a type of video game that allows multiple players to interact and play the game together over a network, such as the internet or a local area network (LAN). Networked games can be played by players who are physically located in different places, and they often involve real-time gameplay where players can communicate and collaborate with each other in order to achieve game objectives. Networked games can take many forms, including multiplayer online games, co-operative games, and competitive games. Some popular examples of networked games include massively multiplayer online role-playing games (MMORPGs), first-person shooters, and real-time strategy games.
 

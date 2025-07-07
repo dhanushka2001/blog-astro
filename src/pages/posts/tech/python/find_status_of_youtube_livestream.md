@@ -5,6 +5,7 @@ description: By leveraging a web browser we can extract the livestream status fr
 pubDate: Fri, 10 Feb 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/3750534419.png"
+authors: [David Li]
 ---
 YouTube is a video-sharing website where users can upload, share, and view videos. It was founded in February 2005 and later acquired by Google in November 2006. It has since become one of the largest and most popular websites on the internet, offering a wide variety of content, including music videos, educational videos, movie trailers, and more. Users can also interact with each other by commenting on videos, giving "thumbs up" or "thumbs down" ratings, and subscribing to other users' channels. YouTube is available on various devices, including computers, smartphones, and smart TVs.
 

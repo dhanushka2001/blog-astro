@@ -7,6 +7,7 @@ pubDate: Wed, 15 Dec 2021 13:00:00 GMT
 tags: ["dev ops", "bintray"]
 imgSrc: '/assets/images/image-post.jpeg'
 imgAlt: 'Image post 6'
+authors: [David Li]
 ---
 
 ## Summary

@@ -5,6 +5,7 @@ description: "In this article, we will explore some of the key components of the
 tags: ["cpp"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2575289368.png
+authors: [David Li]
 ---
 # Utilizing the C++ Standard Library for Efficient and Robust Code
 

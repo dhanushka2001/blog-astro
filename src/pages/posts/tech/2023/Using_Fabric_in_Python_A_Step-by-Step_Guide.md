@@ -5,6 +5,7 @@ description: "This article will guide you through the process of installing and 
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3541980154.png
+authors: [David Li]
 ---
 # Using Fabric in Python: A Step-by-Step Guide
 

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-10-18T14:25:14.000Z'
 tags: []
 title: Demystifying the Deno Standard Library
+authors: [David Li]
 ---
 
 # Demystifying the Deno Standard Library

@@ -5,6 +5,7 @@ pubDate: Saturday, 24 November 2023 13:00:00 GMT
 tags: ["rust", "javascript"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-10-01 22.10.49 - transcribing audio to text.png'
+authors: [David Li]
 ---
 
 Rust is a systems programming language that is known for its performance, safety, and concurrency. It's a great choice for building an API server, as it can handle a large number of requests efficiently and securely.

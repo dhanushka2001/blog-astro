@@ -5,6 +5,7 @@ description: "In this article , we will explore some of the essential string man
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1693067648.png
+authors: [David Li]
 ---
 # A Dive into Rust's String Manipulation Libraries for Text Processing
 

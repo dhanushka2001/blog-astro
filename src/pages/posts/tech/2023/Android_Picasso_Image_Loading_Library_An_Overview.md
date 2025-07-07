@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-10-14T01:18:17.000Z'
 tags: []
 title: Android Picasso Image Loading Library An Overview
+authors: [David Li]
 ---
 
 # Android Picasso Image Loading Library: An Overview

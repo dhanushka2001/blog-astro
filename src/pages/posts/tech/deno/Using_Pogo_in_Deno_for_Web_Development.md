@@ -5,6 +5,7 @@ description: "In this article, we will explore the core features of Pogo and dem
 tags: ["pogo"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/30672838870.png
+authors: [David Li]
 ---
 # Using Pogo in Deno for Web Development
 

@@ -5,6 +5,7 @@ description: "In this article, we will explore how to use subcommands in Golang 
 tags: ["go"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/186810635.png
+authors: [David Li]
 ---
 # Using Subcmd in Golang: Enhancing CLI Applications with Subcommands
 

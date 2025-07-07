@@ -5,6 +5,7 @@ description: "In this article, we will explore some of the most popular and effe
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/14447351.png
+authors: [David Li]
 ---
 # A Comprehensive Guide to C++ Debugging and Profiling Tools
 

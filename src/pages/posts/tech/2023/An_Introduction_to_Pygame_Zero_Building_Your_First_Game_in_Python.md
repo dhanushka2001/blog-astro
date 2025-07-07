@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-06-16T23:52:29.000Z'
 tags: []
 title: An Introduction to Pygame Zero Building Your First Game in Python
+authors: [David Li]
 ---
 
 # An Introduction to Pygame Zero: Building Your First Game in Python

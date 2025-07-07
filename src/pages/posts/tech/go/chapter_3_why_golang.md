@@ -5,6 +5,7 @@ description: Covering reasons to use golang and why it's a good choice for your 
 pubDate: Fri, 21 October 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3867963691.png
+authors: [David Li]
 ---
 Sure, I can explain pointers in Go!
 

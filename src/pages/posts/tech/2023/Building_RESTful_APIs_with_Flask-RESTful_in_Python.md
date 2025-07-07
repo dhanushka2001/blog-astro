@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-07-01T14:01:55.000Z'
 tags: []
 title: Building RESTful APIs with Flask-RESTful in Python
+authors: [David Li]
 ---
 
 # Building RESTful APIs with Flask-RESTful in Python

@@ -5,6 +5,7 @@ description: "This is where Lipgloss, a Golang library created by Charm, comes i
 tags: ["go"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/186810635.png
+authors: [David Li]
 ---
 # Lipgloss in Golang
 

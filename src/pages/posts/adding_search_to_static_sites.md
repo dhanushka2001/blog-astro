@@ -6,6 +6,7 @@ tags: ["pagefind","astro"]
 layout: '@/templates/BasePost.astro'
 pubDate: Sunday, 13 August 2022 13:00:00 GMT
 imgSrc: '/imgs/2022/dall-e/pagefindCorgi.png'
+authors: [David Li]
 ---
 
 In this article I will cover how add pagefind to an astro site. This code is accessible in this github repo for those interested.

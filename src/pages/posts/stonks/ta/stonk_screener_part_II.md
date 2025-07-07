@@ -5,6 +5,7 @@ description: A stock screener is a tool that helps you find stocks that meet you
 pubDate: Fri, 18 April 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2994756722.png
+authors: [David Li]
 ---
 The previous post focused on how to extract ticker symbols using Python, with a code example provided to illustrate the process. The code example demonstrated how to use the Pandas library to read data from a CSV file and apply filters to the data to extract relevant ticker symbols.
 This post covers the logic used in my screeners. The logic is written in Python and is used to filter out stocks that do not meet the criteria of the screener. The logic is stored in a JSON file and is used by the Python code to filter out stocks that do not meet the criteria of the screener.

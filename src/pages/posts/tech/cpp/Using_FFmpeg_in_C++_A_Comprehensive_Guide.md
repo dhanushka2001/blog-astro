@@ -5,6 +5,7 @@ description: "In this article, we will explore how to harness the power of FFmpe
 tags: ["ffmpeg", "cpp"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2112480316.png
+authors: [David Li]
 ---
 # Using FFmpeg in C++: A Comprehensive Guide
 

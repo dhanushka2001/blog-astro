@@ -5,6 +5,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-05-12T13:35:03.000Z'
 tags: []
 title: Understanding the .NET Standard Library
+authors: [David Li]
 ---
 
 # Understanding the .NET Standard Library

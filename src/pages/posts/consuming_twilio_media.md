@@ -7,6 +7,7 @@ pubDate: Monday, 15 July 2022 13:00:00 GMT
 tags: ["twilio", "typescript"]
 imgSrc: '/assets/images/image-post4.jpeg'
 imgAlt: 'Image post 4'
+authors: [David Li]
 ---
 
 ## Summary

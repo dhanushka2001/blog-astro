@@ -7,6 +7,7 @@ pubDate: Wed, 30 Nov 2022 13:00:00 GMT
 tags: ["react", "javascript"]
 imgSrc: '/imgs/2022/dall-e/corp_landing.png'
 imgAlt: 'Image post 6'
+authors: [David Li]
 ---
 
 

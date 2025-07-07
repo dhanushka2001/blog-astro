@@ -5,6 +5,7 @@ description: To build a Python script that detects objects from an input image a
 pubDate: Fri, 14 June 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/other/output_1.png
+authors: [David Li]
 ---
 
 

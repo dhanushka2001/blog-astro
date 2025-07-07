@@ -5,6 +5,7 @@ pubDate: Saturday, 20 June 2023 13:00:00 GMT
 tags: ["solidity", "dapp"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/3267094508_short_ruler_in_the_grass.png'
+authors: [David Li]
 ---
 
 This is a Solidity contract that defines a simple contract for creating and retrieving a "link" (a URL). The contract has three events: Log, LinkAdded, and LinkExists. The Log event is not used in the contract, so it will never be emitted. The LinkAdded event is emitted when a new link is created, and it includes the ID of the link and the URL. The LinkExists event is not a real event, but rather a modifier that is used to ensure that a link with the given ID exists before allowing certain functions to be called.

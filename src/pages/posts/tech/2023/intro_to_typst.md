@@ -5,6 +5,7 @@ description: Typst is a new markup-based typesetting system for the sciences tha
 pubDate: Fri, 14 June 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1900267581.png
+authors: [David Li]
 ---
 
 Typst is a new markup-based typesetting system for the sciences that is designed to be an alternative both to advanced tools like LaTeX and simpler tools like Word and Google Docs. Its focus lies on the intersection of simplicity and power². It is written in Rust and compiles to pdf. It is designed to be used in the browser, but can also be used as a command-line tool.

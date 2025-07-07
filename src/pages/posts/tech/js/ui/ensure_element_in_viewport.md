@@ -6,6 +6,7 @@ tags: ["js"]
 layout: '@/templates/BasePost.astro'
 pubDate: Friday, 7 December 2024
 imgSrc: '/imgs/2023/148139817.png'
+authors: [David Li]
 ---
 
 To ensure that an HTML element is in the fold, you can follow these steps:

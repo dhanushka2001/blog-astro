@@ -5,6 +5,7 @@ description: Describing how to build a weather app in Python
 pubDate: Mon, 20 September 2023
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/3842597075.png'
+authors: [David Li]
 ---
 
 APIs (Application Programming Interfaces) are a great way to retrieve data from external sources, such as weather data from weather APIs. Here's an example of how to retrieve weather data using the OpenWeatherMap API with Python:

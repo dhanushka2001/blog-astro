@@ -5,6 +5,7 @@ description: "In this article , we will discuss Rust's error handling mechanisms
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1678591372_a_blade_in_the_desert_under_the_sun.png
+authors: [David Li]
 ---
 # Using Rust's Error Handling Mechanisms Effectively
 

@@ -5,6 +5,7 @@ description: "In this article , we'll dive into the OkHttp library, exploring it
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1492118595.png
+authors: [David Li]
 ---
 # Android OkHttp Networking Library: An In-Depth Guide
 

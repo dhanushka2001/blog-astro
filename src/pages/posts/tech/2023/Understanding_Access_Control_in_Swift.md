@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-03-28T21:42:20.000Z'
 tags: []
 title: Understanding Access Control in Swift
+authors: [David Li]
 ---
 
 # Understanding Access Control in Swift

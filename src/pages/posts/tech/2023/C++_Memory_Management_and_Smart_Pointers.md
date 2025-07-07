@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-06-10T21:02:58.000Z'
 tags: []
 title: C++ Memory Management and Smart Pointers
+authors: [David Li]
 ---
 
 # C++ Memory Management and Smart Pointers

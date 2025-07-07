@@ -5,6 +5,7 @@ description: "In this article, we will explore how to create coreutils in Rust, 
 tags: ["rust"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/326029388.png
+authors: [David Li]
 ---
 # Using Coreutils in Rust
 

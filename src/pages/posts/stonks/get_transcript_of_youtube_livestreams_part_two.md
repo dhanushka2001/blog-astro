@@ -7,6 +7,7 @@ tags: ["youtube", "whispers", "python"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-12-15 20.40.00 - blank transcript.png'
 imgAlt: 'rbc stock analyzer'
+authors: [David Li]
 ---
 
 In the original post we covered how to iterate across files and pull data from youtube.

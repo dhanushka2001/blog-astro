@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-01-30T11:49:17.000Z'
 tags: []
 title: C++ Operator Overloading Enhancing the Power of User-Defined Types
+authors: [David Li]
 ---
 
 # C++ Operator Overloading: Enhancing the Power of User-Defined Types

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-03-30T01:44:02.000Z'
 tags: []
 title: Hangfire Background Processing A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Hangfire Background Processing: A Comprehensive Guide

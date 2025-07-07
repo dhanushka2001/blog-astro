@@ -5,6 +5,7 @@ description: "In this article , we'll explore the basics of using Cargo to manag
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2861854918.png
+authors: [David Li]
 ---
 # Managing Rust Projects and Dependencies with Cargo
 

@@ -5,6 +5,7 @@ description: "A technical article about Rust"
 tags: ["go", "chalk"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1144941208.png
+authors: [David Li]
 ---
 # Using Chalk for Colorful Terminal Output in Go (Golang)
 

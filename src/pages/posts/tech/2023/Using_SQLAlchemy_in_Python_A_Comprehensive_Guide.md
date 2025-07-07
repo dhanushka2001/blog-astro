@@ -8,6 +8,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-10-24T03:02:10.000Z'
 tags: []
 title: Using SQLAlchemy in Python A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Using SQLAlchemy in Python: A Comprehensive Guide

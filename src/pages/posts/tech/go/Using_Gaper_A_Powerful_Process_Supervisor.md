@@ -5,6 +5,7 @@ description: "We'll explore Gapers features and demonstrate how to use it effect
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1230376530.png
+authors: [David Li]
 ---
 
 ## What is Gaper

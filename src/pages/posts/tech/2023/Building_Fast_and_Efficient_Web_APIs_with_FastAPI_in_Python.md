@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-03-05T02:02:13.000Z'
 tags: []
 title: Building Fast and Efficient Web APIs with FastAPI in Python
+authors: [David Li]
 ---
 
 # Building Fast and Efficient Web APIs with FastAPI in Python

@@ -5,6 +5,7 @@ description: Creation of diagrams with LaTeX, including basic diagrams with TikZ
 pubDate: Fri, 14 December 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/403791778.png
+authors: [David Li]
 ---
 # Creating Diagrams with LaTeX 
  

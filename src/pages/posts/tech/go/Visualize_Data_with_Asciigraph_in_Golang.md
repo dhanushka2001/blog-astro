@@ -5,6 +5,7 @@ description: " In this article, we will explore how to create and customize line
 tags: ["go"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1519800630.png
+authors: [David Li]
 ---
 # Visualize Data with Asciigraph in Golang
 

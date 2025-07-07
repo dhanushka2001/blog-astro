@@ -5,6 +5,7 @@ description: A stock screener is a tool that helps you find stocks that meet you
 pubDate: Fri, 11 April 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1231025858.png
+authors: [David Li]
 ---
 A stock screener is an important tool for investors and traders because it allows them to quickly filter through thousands of stocks in the market based on specific criteria, such as financial ratios, industry sector, market capitalization, and more. Here are a few reasons why a stock screener is important:
 

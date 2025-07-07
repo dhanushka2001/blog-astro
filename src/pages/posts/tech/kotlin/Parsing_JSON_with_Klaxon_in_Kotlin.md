@@ -5,6 +5,7 @@ description: "In this article, we will explore how to use Klaxon in a Kotlin pro
 tags: ["kotlin", "klaxon"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3185275103.png
+authors: [David Li]
 ---
 # Parsing JSON with Klaxon in Kotlin
 

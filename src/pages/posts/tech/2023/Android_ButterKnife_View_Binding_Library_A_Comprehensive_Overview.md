@@ -5,6 +5,7 @@ description: "This article provides an in-depth overview of the ButterKnife View
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2617761522.png
+authors: [David Li]
 ---
 # Android ButterKnife View Binding Library: A Comprehensive Overview
 

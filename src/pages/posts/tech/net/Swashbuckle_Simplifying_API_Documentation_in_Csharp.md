@@ -5,6 +5,7 @@ description: "In this article, we will explore the features and capabilities of 
 tags: ["csharp"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/831070838.png
+authors: [David Li]
 ---
 # Swashbuckle: Simplifying API Documentation in C#
 

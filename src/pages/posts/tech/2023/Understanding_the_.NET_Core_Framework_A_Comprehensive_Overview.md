@@ -5,6 +5,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-02-20T11:47:23.000Z'
 tags: []
 title: Understanding the .NET Core Framework A Comprehensive Overview
+authors: [David Li]
 ---
 
 # Understanding the .NET Core Framework: A Comprehensive Overview

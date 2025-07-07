@@ -5,6 +5,7 @@ description: File Handling and Error Handling in Go.
 pubDate: Fri, 21 October 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1648720574.png
+authors: [David Li]
 ---
 Web development is an essential skill for any modern-day programmer, and Go provides a robust framework for creating web applications. In this chapter, we'll cover the basics of web development in Go, including how to build a simple web server, handle HTTP requests, and create dynamic web pages using templates.
 

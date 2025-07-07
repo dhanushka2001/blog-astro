@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-11-05T03:10:42.000Z'
 tags: []
 title: Swift's Concurrency Features A Deep Dive
+authors: [David Li]
 ---
 
 # Swift's Concurrency Features: A Deep Dive

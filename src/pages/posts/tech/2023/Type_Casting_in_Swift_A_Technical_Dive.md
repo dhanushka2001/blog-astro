@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-02-06T15:34:03.000Z'
 tags: []
 title: Type Casting in Swift A Technical Dive
+authors: [David Li]
 ---
 
 # Type Casting in Swift: A Technical Dive

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-07-06T05:08:26.000Z'
 tags: []
 title: Understanding Hibernate ORM A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Understanding Hibernate ORM: A Comprehensive Guide

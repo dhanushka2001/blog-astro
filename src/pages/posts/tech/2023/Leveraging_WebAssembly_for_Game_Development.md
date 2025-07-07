@@ -5,6 +5,7 @@ description: "In this article , we will explore the benefits of using WebAssembl
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3431403716.png
+authors: [David Li]
 ---
 # Leveraging WebAssembly for Game Development
 

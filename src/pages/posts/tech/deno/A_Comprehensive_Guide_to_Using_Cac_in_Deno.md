@@ -5,6 +5,7 @@ description: "In this article, we'll discuss how to use Cac in Deno to build a s
 tags: ["deno"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2679960937.png
+authors: [David Li]
 ---
 # A Comprehensive Guide to Using Cac in Deno
 

@@ -5,6 +5,7 @@ description: In this article, we will explore GoAudio, a powerful and versatile 
 pubDate: Fri, 21 October 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/323056288.png
+authors: [David Li]
 ---
 
 # GoAudio: A Powerful Audio Processing Library for Golang

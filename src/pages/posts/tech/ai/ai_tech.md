@@ -5,6 +5,7 @@ pubDate: Saturday, 21 May 2023 13:00:00 GMT
 tags: ["rust"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/2886495853.png'
+authors: [David Li]
 ---
 
 The process of software development is on the cusp of major changes driven by advances in artificial intelligence and automation. Many of the tasks traditionally performed by human software engineers and programmers are poised to be taken over by AI systems and bots. This could significantly accelerate the pace of software development and enable higher quality code with fewer bugs.

@@ -5,6 +5,7 @@ description: "In this article, we will explore how to use OpenSSL in C++ to perf
 tags: ["cpp"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2378078723.png
+authors: [David Li]
 ---
 # Using OpenSSL in C++: A Comprehensive Guide
 

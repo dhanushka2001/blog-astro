@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-08-16T15:57:18.000Z'
 tags: []
 title: Best Practices for Writing Swift Packages
+authors: [David Li]
 ---
 
 # Best Practices for Writing Swift Packages

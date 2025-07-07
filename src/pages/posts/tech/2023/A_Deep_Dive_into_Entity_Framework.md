@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-01-08T08:09:42.000Z'
 tags: []
 title: A Deep Dive into Entity Framework
+authors: [David Li]
 ---
 
 # A Deep Dive into Entity Framework

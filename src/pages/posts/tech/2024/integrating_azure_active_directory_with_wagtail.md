@@ -5,6 +5,7 @@ description: "In this article, we will explore how to integrate microsoft entra 
 tags: ["Wagtail", "Microsoft Entra", "Azure Active Directory", "OAuth2", "Django", "Authentication", "Security", "Web Development", "Python", "Social Auth"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2024/authentication_birds.webp
+authors: [David Li]
 ---
 
 # Integrating microsoft entra with wagtail

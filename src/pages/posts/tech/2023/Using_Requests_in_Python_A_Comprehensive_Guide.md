@@ -5,6 +5,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-01-15T01:07:52.000Z'
 tags: []
 title: Using Requests in Python A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Using Requests in Python: A Comprehensive Guide

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-02-17T16:45:07.000Z'
 tags: []
 title: C++ Object-Oriented Design Patterns A Practical Guide
+authors: [David Li]
 ---
 
 # C++ Object-Oriented Design Patterns: A Practical Guide

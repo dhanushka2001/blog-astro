@@ -5,6 +5,7 @@ description: MudBlazor is a Blazor component library based on Material Design pr
 pubDate: Tues, 21 November 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: '/imgs/2023/4067359065.png'
+authors: [David Li]
 ---
 
 

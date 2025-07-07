@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-02-03T22:08:52.000Z'
 tags: []
 title: An In-Depth Look at the Android Standard Library
+authors: [David Li]
 ---
 
 # An In-Depth Look at the Android Standard Library

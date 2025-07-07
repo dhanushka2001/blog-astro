@@ -5,6 +5,7 @@ description: In this post I will show you how to use chatgpt to describe code an
 pubDate: Fri, 7 June 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1220160824_A_dream_of_a_distant_galaxy__concept_art__matte_painting__HQ__4k.png
+authors: [David Li]
 ---
 Describing code and getting keywords is important for a number of reasons:
 

@@ -5,6 +5,7 @@ description: "In this article , we will discuss the fundamentals of the Mockito 
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3185275103.png
+authors: [David Li]
 ---
 # Android Mockito Mocking Framework: A Comprehensive Overview
 

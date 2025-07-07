@@ -7,6 +7,7 @@ tags: ["openbb", "streamlit", "python", "pandas"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/sample.png'
 imgAlt: 'rbc stock analyzer'
+authors: [David Li]
 ---
 
 This project is a Streamlit app that uses openbb-sdk to display technical analysis graphs for a given stock. The app allows the user to input a ticker symbol, start date, and end date in the sidebar, and then displays a line chart of the stock's adjusted close price, as well as a Bollinger Bands graph using the openbb-sdk. The Bollinger Bands graph is saved to an image file and then displayed in the app.

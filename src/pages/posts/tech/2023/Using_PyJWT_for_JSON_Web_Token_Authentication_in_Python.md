@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-07-07T00:01:07.000Z'
 tags: []
 title: Using PyJWT for JSON Web Token Authentication in Python
+authors: [David Li]
 ---
 
 # Using PyJWT for JSON Web Token Authentication in Python

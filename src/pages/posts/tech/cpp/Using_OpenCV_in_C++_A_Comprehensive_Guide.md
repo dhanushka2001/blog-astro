@@ -5,6 +5,7 @@ description: "In this article, we will discuss how to use OpenCV in C++ to perfo
 tags: ["opencv"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2125743054.png
+authors: [David Li]
 ---
 # Using OpenCV in C++: A Comprehensive Guide
 

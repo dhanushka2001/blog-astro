@@ -5,6 +5,7 @@ description: "In this article, we will dive into the world of Deno web developme
 tags: ["deno"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3053072516.png
+authors: [David Li]
 ---
 # Using Fresh in Deno for Web Development
 

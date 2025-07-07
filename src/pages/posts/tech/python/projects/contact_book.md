@@ -5,6 +5,7 @@ description: A contact book is a simple but useful tool that allows users to sto
 pubDate: Fri, 14 September 2025
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2851628136.png
+authors: [David Li]
 ---
 
 Introduction

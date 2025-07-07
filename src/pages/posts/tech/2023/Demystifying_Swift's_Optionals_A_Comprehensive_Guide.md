@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-05-21T21:04:55.000Z'
 tags: []
 title: Demystifying Swift's Optionals A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Demystifying Swift's Optionals: A Comprehensive Guide

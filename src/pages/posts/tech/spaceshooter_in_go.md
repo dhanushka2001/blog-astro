@@ -7,6 +7,7 @@ pubDate: Wed, 13 March 2023 13:00:00 GMT
 tags: ["ebiten", "golang"]
 imgSrc: '/imgs/2022/android_emulator_pixel_3.png'
 imgAlt: 'Image post 6'
+authors: [David Li]
 ---
 
 This code initializes the audio context and players for the game. The audio context is created with a sample rate of 22050 Hz, which is a common sample rate used in audio production. The audio context is then used to create players for the laser and music sounds.

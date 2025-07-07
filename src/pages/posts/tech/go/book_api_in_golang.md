@@ -5,6 +5,7 @@ description: Implementing a book api in golang using the google books api
 pubDate: Fri, 10 January 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/1246994641.png"
+authors: [David Li]
 ---
 The Google Books API is a web-based API that allows developers to access information about books and perform operations on books such as searching, retrieving, and updating book details. With the Google Books API, developers can build applications that allow users to search the Google Books catalog and retrieve information about books, including author, title, publication date, description, and cover art. They can also use the API to access reviews, ratings, and other metadata about books. The API supports various formats, including plain text, HTML, and PDF, and returns results in both JSON and XML formats.
 

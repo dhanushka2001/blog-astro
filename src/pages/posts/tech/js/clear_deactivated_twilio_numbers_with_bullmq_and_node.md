@@ -5,6 +5,7 @@ layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3054188082.png
 tags: ["Node", "BullMQ", "Twilio"]
 description: "Learn how to implement a job that clears out deactivated phone numbers from Twilio using Node.js and BullMQ."
+authors: [David Li]
 ---
 
 In this tutorial, you'll learn how to implement a job that clears out deactivated phone numbers from Twilio using Node.js and BullMQ. You'll be using the Twilio API to fetch the list of deactivated phone numbers and the BullMQ library to process the list asynchronously. Follow the steps below to get started.

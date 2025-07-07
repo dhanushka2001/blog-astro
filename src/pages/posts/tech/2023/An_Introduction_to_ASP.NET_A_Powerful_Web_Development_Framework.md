@@ -5,6 +5,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-04-04T12:12:58.000Z'
 tags: []
 title: An Introduction to ASP.NET A Powerful Web Development Framework
+authors: [David Li]
 ---
 
 # An Introduction to ASP.NET: A Powerful Web Development Framework

@@ -5,6 +5,7 @@ description: "In this article , we will explore the benefits of using WebAssembl
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/DALL?E 2023-01-07 13.46.29 - banana spaceship.png
+authors: [David Li]
 ---
 # Using WebAssembly for Blockchain Development
 

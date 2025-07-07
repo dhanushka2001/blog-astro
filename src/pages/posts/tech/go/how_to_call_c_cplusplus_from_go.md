@@ -5,6 +5,7 @@ description: Go, also known as Golang, is a powerful and efficient programming l
 pubDate: Fri, 17 January 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/1797349317.png"
+authors: [David Li]
 ---
 
 # How to Call C and C++ Code from Go (Golang)

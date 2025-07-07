@@ -5,6 +5,7 @@ description: "In this article, we will explore `uitable`, a powerful Go package 
 tags: ["go"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/186810635.png
+authors: [David Li]
 ---
 # Using `uitable` in Go for Flexible and Beautiful Console Output
 

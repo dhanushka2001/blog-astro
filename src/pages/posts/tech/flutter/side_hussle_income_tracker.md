@@ -5,6 +5,7 @@ pubDate: Saturday, 23 March 2023 13:00:00 GMT
 tags: ["flutter"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/DALL·E 2022-12-25 21.48.03 - teddy bear on coach looking out the window at a tree.png'
+authors: [David Li]
 ---
 
 Side hustles have become increasingly popular over the past few years as people look for ways to supplement their income or pursue their passions. However, keeping track of all the different sources of income and expenses can be a challenge. That's where an income tracker app can come in handy. And what better way to build such an app than using Flutter?

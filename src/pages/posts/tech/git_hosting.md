@@ -5,6 +5,7 @@ description: Looking at pros and cons of the main code hosting choices.
 pubDate: Fri, 22 May 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2677360986.png
+authors: [David Li]
 ---
 
 If you're a software developer, you know the importance of version control systems (VCS) like Git for managing your source code. But with so many VCS providers available, how do you choose the right one for your project? In this post, we'll compare three popular Git-based VCS providers - GitHub, GitLab, and Bitbucket - and help you make an informed decision.

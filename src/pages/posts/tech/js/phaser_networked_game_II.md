@@ -5,6 +5,7 @@ description: In this post I will show you how to create a simple networked game 
 pubDate: Fri, 15 May 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2515566937.png
+authors: [David Li]
 ---
 In a multiplayer game, client-side code is responsible for managing various tasks that are essential to the game's functioning. These tasks can be broadly categorized into three types:
 

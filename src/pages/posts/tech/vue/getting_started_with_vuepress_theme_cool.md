@@ -6,6 +6,7 @@ tags: ["vue", "vuepress"]
 projects: ["vuepress-theme-cool"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/3531615326.png'
+authors: [David Li]
 ---
 
 ## Getting Started with Vuepress Theme Cool and Vuepress

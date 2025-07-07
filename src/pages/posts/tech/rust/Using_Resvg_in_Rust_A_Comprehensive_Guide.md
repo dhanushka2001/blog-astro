@@ -5,6 +5,7 @@ description: In this article, we will explore Resvg, a pure Rust SVG rendering l
 pubDate: Fri, 21 March 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/1340975325.png"
+authors: [David Li]
 ---
 # Using Resvg in Rust: A Comprehensive Guide
 

@@ -5,6 +5,7 @@ description: This blog post covers how to use github actions to automate tasks.
 pubDate: Mon, 13 November 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/2543580613.png"
+authors: [David Li]
 ---
 YAML (short for "YAML Ain't Markup Language") is a human-readable data serialization format. It is commonly used for configuration files, data exchange between systems, and in many other applications.
 

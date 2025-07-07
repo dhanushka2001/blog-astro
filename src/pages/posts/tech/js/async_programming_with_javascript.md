@@ -6,6 +6,7 @@ tags: ["js","introToJs","express"]
 layout: '@/templates/BasePost.astro'
 pubDate: Friday, 17 Feb 2023 13:00:00 GMT
 imgSrc: '/imgs/2023/2126341537_forest.png'
+authors: [David Li]
 ---
 
 # Asynchronous Programming

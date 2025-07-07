@@ -5,6 +5,7 @@ description: "By the end of this tutorial, you will understand the basics of usi
 tags: ["rust", "winapi"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1086816529.png
+authors: [David Li]
 ---
 # Using WinAPI in Rust to Interact with the Windows Process System
 

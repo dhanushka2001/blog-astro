@@ -5,6 +5,7 @@ pubDate: Saturday, 3 December 2022 13:00:00 GMT
 tags: ["strapi", "javascript", golang]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/cms_icon.png'
+authors: [David Li]
 ---
 
 

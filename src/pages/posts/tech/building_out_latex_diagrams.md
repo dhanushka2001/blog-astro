@@ -5,6 +5,7 @@ tags: ["latex", "bash"]
 pubDate: Saturday, 29 October 2022 13:00:00 GMT
 layout: '@/templates/BasePost.astro'
 imgSrc: '/assets/images/image-post7.jpeg'
+authors: [David Li]
 ---
 
 The latex diagrams are composed of two projects, one that holds all the tex code and a workflow to build them all and another static site generation for client-side facing (and ad revenue generation). The following circleCi yaml file is used to build the diagrams and push them to the static site generation project.

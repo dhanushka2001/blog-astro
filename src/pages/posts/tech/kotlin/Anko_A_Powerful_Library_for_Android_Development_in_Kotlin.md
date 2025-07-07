@@ -5,6 +5,7 @@ description: " In this article, we'll explore the various features of Anko and s
 tags: ["kotlin"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/318527103.png
+authors: [David Li]
 ---
 # Anko: A Powerful Library for Android Development in Kotlin
 

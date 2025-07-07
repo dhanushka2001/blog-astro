@@ -5,6 +5,7 @@ description: "In this article, we will explore how to use the Windows API (WinAP
 tags: ["rust", "winapi"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1089827583.png
+authors: [David Li]
 ---
 # Using WinAPI in Rust to Manage Windows Services
 

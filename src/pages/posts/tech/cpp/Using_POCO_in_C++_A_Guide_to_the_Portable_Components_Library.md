@@ -5,6 +5,7 @@ description: "In this article, we will discuss the benefits of using POCO and pr
 tags: ["cpp"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2465919888.png
+authors: [David Li]
 ---
 # Using POCO in C++: A Guide to the Portable Components Library
 

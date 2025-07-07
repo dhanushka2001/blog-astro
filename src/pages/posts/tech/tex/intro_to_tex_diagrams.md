@@ -5,6 +5,7 @@ pubDate: Saturday, 16 March 2023 13:00:00 GMT
 tags: ["latex"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-10-01 22.10.49 - transcribing audio to text.png'
+authors: [David Li]
 ---
 
 # How to Create Beautiful LaTeX Diagrams for Your Projects

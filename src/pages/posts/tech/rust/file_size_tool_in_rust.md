@@ -5,6 +5,7 @@ description: In this tutorial, we will build a system tool in Rust that determin
 pubDate: Fri, 14 June 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/4039349639.png
+authors: [David Li]
 ---
 
 Building a File Size Tool in Rust

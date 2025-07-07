@@ -5,6 +5,7 @@ description: Covering reasons to use golang and why it's a good choice for your 
 pubDate: Fri, 21 October 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1031426508.png
+authors: [David Li]
 ---
 In Go, arrays, slices, and maps are powerful data structures that are widely used in building applications. In this post, we will discuss these data structures in detail, including their differences and how to use them effectively.
 

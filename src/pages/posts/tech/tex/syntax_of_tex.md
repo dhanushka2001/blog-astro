@@ -5,6 +5,7 @@ description: Introduction to latex syntax and how to use it
 pubDate: Fri, 14 December 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1836890630.png
+authors: [David Li]
 ---
 # LaTeX Syntax 
  

@@ -5,6 +5,7 @@ description: "This article will provide a comprehensive guide on how to use Open
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3437532028.png
+authors: [David Li]
 ---
 # Using OpenCV in Python: A Comprehensive Guide
 

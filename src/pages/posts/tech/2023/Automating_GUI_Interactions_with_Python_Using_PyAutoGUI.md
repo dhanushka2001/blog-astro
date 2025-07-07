@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-09-17T00:24:45.000Z'
 tags: []
 title: Automating GUI Interactions with Python Using PyAutoGUI
+authors: [David Li]
 ---
 
 # Automating GUI Interactions with Python Using PyAutoGUI

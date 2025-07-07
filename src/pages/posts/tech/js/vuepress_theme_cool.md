@@ -5,6 +5,7 @@ description: Vuepress Theme Cool is a Vuepress theme for Blogs and documentation
 pubDate: Fri, 2 March 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/3997466131.png"
+authors: [David Li]
 ---
 VuePress is a static site generator based on Vue.js that allows you to easily create documentation websites or any other kind of website that requires structured content. It features a built-in Markdown editor, support for custom themes, and plugins that extend its functionality.
 

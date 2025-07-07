@@ -5,6 +5,7 @@ description: Vue is a popular JavaScript framework that allows developers to cre
 pubDate: Fri, 21 March 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1492118595.png
+authors: [David Li]
 ---
 
 Vue is a popular JavaScript framework that allows developers to create dynamic, reactive user interfaces. One of the ways Vue makes this possible is by allowing developers to easily integrate CSS animations into their Vue components. In this article, we will explore how to use CSS animations in Vue.

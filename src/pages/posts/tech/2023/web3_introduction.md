@@ -5,6 +5,7 @@ description: Explaining what web3 is.
 pubDate: Fri, 7 August 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3658824416.png
+authors: [David Li]
 ---
 
 Web3, also known as "Web 3.0" or the "Decentralized Web", is the next generation of the internet that seeks to revolutionize the way we interact with digital services and data. It is a set of new technologies, protocols, and standards that aim to create a decentralized internet that is more secure, transparent, and open.

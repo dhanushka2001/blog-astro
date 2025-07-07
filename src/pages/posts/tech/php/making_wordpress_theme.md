@@ -5,6 +5,7 @@ description: After thoughts of building a lousy wordpress theme.
 pubDate: Fri, 7 October 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1444932837.png
+authors: [David Li]
 ---
 WordPress is a popular open-source content management system (CMS) that allows users to create and manage websites and blogs. It is written in PHP and uses a MySQL database to store and organize website content. With WordPress, users can easily create and customize website designs, add functionality through plugins, and publish content such as blog posts, pages, and media.
 

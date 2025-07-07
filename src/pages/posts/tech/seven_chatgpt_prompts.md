@@ -5,6 +5,7 @@ description: As a software developer using chatgpt can save you lots of time..
 pubDate: Fri, 7 October 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2692497695.png
+authors: [David Li]
 ---
 Prompt engineering is the process of designing and refining prompts to improve the performance of language models like ChatGPT. It involves carefully crafting text prompts to elicit the desired response from the model.
 

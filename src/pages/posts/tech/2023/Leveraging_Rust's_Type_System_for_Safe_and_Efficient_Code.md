@@ -5,6 +5,7 @@ description: "In this article , we will discuss how Rust's type system can be us
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2851628136.png
+authors: [David Li]
 ---
 # Leveraging Rust's Type System for Safe and Efficient Code
 

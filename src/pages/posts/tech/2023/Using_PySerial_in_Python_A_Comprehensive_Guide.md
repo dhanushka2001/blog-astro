@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-10-24T22:56:56.000Z'
 tags: []
 title: Using PySerial in Python A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Using PySerial in Python: A Comprehensive Guide

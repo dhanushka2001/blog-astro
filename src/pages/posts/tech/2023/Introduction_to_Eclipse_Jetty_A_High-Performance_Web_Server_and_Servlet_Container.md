@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-12-27T08:18:10.000Z'
 tags: []
 title: Introduction to Eclipse Jetty A High-Performance Web Server and Servlet Container
+authors: [David Li]
 ---
 
 # Introduction to Eclipse Jetty: A High-Performance Web Server and Servlet Container

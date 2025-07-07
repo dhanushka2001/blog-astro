@@ -5,6 +5,7 @@ tags: ["Mermaid", "Diagrams", "Flowcharts", "Gantt Charts", "Documentation", "Vi
 pubDate: "2024-08-29T19:17:25.000Z"
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/3267094508_short_ruler_in_the_grass.png"
+authors: [David Li]
 ---
 
 ## A Comprehensive Guide to Using Mermaid for Diagramming

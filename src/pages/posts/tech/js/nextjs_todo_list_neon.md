@@ -6,6 +6,7 @@ tags: ["react","js"]
 layout: '@/templates/BasePost.astro'
 pubDate: Friday, 16 March 2023 13:00:00 GMT
 imgSrc: '/imgs/2023/neon_article.jpeg'
+authors: [David Li]
 ---
 
 # Overview

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-07-24T12:49:13.000Z'
 tags: []
 title: Google Guava A Comprehensive Guide for Java Developers
+authors: [David Li]
 ---
 
 # Google Guava: A Comprehensive Guide for Java Developers

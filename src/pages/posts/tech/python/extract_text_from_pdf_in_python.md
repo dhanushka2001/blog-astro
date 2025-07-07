@@ -5,6 +5,7 @@ description: To extract text from a PDF file, you can use the `PyPDF2` library.
 pubDate: Fri, 3 January 2025
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/3702590653.png"
+authors: [David Li]
 ---
 
 To extract text from a PDF file, you can use the `PyPDF2` library. If you don't have it installed, you can install it using `pip`:

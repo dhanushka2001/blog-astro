@@ -5,6 +5,7 @@ description: "In this article , we will explore Rust's build tools, specifically
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2773787557.png
+authors: [David Li]
 ---
 # Building and Packaging Rust Applications with Rust's Build Tools
 

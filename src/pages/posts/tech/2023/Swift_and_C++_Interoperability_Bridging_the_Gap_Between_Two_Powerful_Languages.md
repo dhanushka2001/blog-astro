@@ -5,6 +5,7 @@ description: "This article will discuss the interoperability between Swift and C
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3972119242.png
+authors: [David Li]
 ---
 # Swift and C++ Interoperability: Bridging the Gap Between Two Powerful Languages
 

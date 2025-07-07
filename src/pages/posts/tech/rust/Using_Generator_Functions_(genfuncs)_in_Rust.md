@@ -5,6 +5,7 @@ description: "In this article, we will explore the use of generator functions, a
 tags: ["rust"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/387158145.png
+authors: [David Li]
 ---
 # Using Generator Functions (genfuncs) in Rust
 

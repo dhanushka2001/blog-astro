@@ -5,6 +5,7 @@ description: Web scrapping of the espn page for super bowl winners
 pubDate: Fri, 21 March 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/1340975325.png"
+authors: [David Li]
 ---
 The Super Bowl is the championship game of the National Football League (NFL), which is played annually to determine the winner of the NFL season. The game is played on the first Sunday in February and is considered the biggest sporting event in the United States, attracting millions of viewers each year. The Super Bowl is also one of the largest events in the world of advertising, with many of the most expensive and highly-anticipated commercials airing during the broadcast. In addition to the game itself, the Super Bowl weekend has become a major cultural event, with parties, concerts, and other festivities taking place in the host city leading up to the game.
 

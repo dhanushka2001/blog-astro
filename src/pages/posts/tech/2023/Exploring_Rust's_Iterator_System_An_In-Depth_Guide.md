@@ -5,6 +5,7 @@ description: "In this article , we'll take a deep dive into the various aspects 
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1452718796.png
+authors: [David Li]
 ---
 # Exploring Rust's Iterator System: An In-Depth Guide
 

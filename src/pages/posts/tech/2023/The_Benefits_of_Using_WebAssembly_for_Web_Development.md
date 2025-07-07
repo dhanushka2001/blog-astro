@@ -5,6 +5,7 @@ description: "In this article , we will explore the benefits of using WebAssembl
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1662522246.png
+authors: [David Li]
 ---
 # The Benefits of Using WebAssembly for Web Development
 

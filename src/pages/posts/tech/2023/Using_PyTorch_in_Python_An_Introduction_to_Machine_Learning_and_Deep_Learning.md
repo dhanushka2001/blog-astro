@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-01-22T20:35:26.000Z'
 tags: []
 title: Using PyTorch in Python An Introduction to Machine Learning and Deep Learning
+authors: [David Li]
 ---
 
 # Using PyTorch in Python: An Introduction to Machine Learning and Deep Learning

@@ -5,6 +5,7 @@ description: "This article will guide you through the process of using Redis in 
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3382720876.png
+authors: [David Li]
 ---
 # Using Redis in Python: A Comprehensive Guide
 

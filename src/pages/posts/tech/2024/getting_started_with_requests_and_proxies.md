@@ -5,6 +5,7 @@ description: "Explore how proxies can transform your web scraping projects by pr
 tags: ["Web Scraping", "Proxies", "Python", "Data Collection", "Backend Development", "Programming", "Software Development", "BeautifulSoup", "Requests"]
 layout: "@/templates/BasePost.astro"
 imgSrc: "https://images.unsplash.com/photos/a-large-statue-of-a-person-in-a-dark-room-Lhzabp9UrSU"
+authors: [David Li]
 ---
 
 ## Leveraging Proxies for Enhanced Web Scraping

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-02-20T21:42:07.000Z'
 tags: []
 title: How to Use Popular Swift Packages Alamofire, RxSwift, and SwiftyJSON
+authors: [David Li]
 ---
 
 # How to Use Popular Swift Packages: Alamofire, RxSwift, and SwiftyJSON

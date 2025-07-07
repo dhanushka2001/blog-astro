@@ -5,6 +5,7 @@ description: This blog post covers how to deploy a dart space to hugging space u
 pubDate: Mon, 13 November 2023
 imgSrc: '/imgs/2023/656417929.png'
 layout: '@/templates/BasePost.astro'
+authors: [David Li]
 ---
 Docker is useful for deployments because it provides a consistent and reproducible environment for applications to run in, regardless of the host operating system. This makes it easier to deploy, test, and run applications in a variety of environments, from local development machines to production servers. Docker containers encapsulate an application and its dependencies, allowing for easy and reliable deployment, as well as efficient resource utilization. Additionally, Docker images can be stored in a central repository, making it easier to share and distribute applications.
 

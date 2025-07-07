@@ -5,6 +5,7 @@ description: "In this article, we will explore how to work with hexadecimal valu
 tags: ["rust"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/186810635.png
+authors: [David Li]
 ---
 # Using Hexadecimal in Rust: A Comprehensive Guide
 

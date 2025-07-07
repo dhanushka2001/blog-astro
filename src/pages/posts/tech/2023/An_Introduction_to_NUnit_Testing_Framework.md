@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-01-23T22:59:48.000Z'
 tags: []
 title: An Introduction to NUnit Testing Framework
+authors: [David Li]
 ---
 
 # An Introduction to NUnit Testing Framework

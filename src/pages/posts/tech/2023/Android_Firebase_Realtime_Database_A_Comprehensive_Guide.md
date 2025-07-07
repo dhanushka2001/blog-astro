@@ -5,6 +5,7 @@ description: "In this article , we will delve into the Firebase Realtime Databas
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1086816529.png
+authors: [David Li]
 ---
 # Android Firebase Realtime Database: A Comprehensive Guide
 

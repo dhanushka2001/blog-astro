@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-12-26T06:45:23.000Z'
 tags: []
 title: Top C++ Libraries for Game Development
+authors: [David Li]
 ---
 
 # Top C++ Libraries for Game Development

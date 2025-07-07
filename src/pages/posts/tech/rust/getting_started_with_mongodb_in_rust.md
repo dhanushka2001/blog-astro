@@ -5,6 +5,7 @@ description: In this article, we will explore how to use MongoDB, a popular NoSQ
 pubDate: Fri, 24 January 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/118660664.png"
+authors: [David Li]
 ---
 
 # Using MongoDB in Rust

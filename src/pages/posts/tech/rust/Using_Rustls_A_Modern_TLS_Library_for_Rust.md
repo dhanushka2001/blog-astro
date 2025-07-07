@@ -5,6 +5,7 @@ description: "In this article, we will discuss how to use Rustls in Rust project
 tags: ["tags"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/729981546.png
+authors: [David Li]
 ---
 # Using Rustls: A Modern TLS Library for Rust
 

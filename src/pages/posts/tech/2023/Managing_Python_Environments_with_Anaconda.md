@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-06-23T15:04:55.000Z'
 tags: []
 title: Managing Python Environments with Anaconda
+authors: [David Li]
 ---
 
 # Managing Python Environments with Anaconda

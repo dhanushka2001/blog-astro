@@ -5,6 +5,7 @@ description: Describing how to build a basic URL shortener in Python
 pubDate: Fri, 14 September 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2851628136.png
+authors: [David Li]
 ---
 
 URL shorteners are online tools that allow you to shorten long, complex URLs into shorter, more manageable ones. These shorter URLs can be easier to share and remember, and they can also be useful for tracking clicks and traffic to a particular URL.

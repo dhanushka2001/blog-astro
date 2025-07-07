@@ -5,6 +5,7 @@ pubDate: Saturday, 26 December 2024 13:00:00 GMT
 tags: ["rust"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/2886495853.png'
+authors: [David Li]
 ---
 
 

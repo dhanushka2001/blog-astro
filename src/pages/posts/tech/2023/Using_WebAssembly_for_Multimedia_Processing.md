@@ -5,6 +5,7 @@ description: "In this article , we will explore how WebAssembly can be used for 
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2465919888.png
+authors: [David Li]
 ---
 # Using WebAssembly for Multimedia Processing
 

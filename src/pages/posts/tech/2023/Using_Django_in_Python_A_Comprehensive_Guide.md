@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-10-31T19:03:01.000Z'
 tags: []
 title: Using Django in Python A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Using Django in Python: A Comprehensive Guide

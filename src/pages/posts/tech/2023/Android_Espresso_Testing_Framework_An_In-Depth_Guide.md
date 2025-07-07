@@ -5,6 +5,7 @@ description: "In this article , we will explore the Espresso testing framework i
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3558128873.png
+authors: [David Li]
 ---
 # Android Espresso Testing Framework: An In-Depth Guide
 

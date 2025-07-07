@@ -5,6 +5,7 @@ description: "In this article , we will explore the features and capabilities of
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/118660664.png
+authors: [David Li]
 ---
 # An In-depth Look at the Android Google Analytics SDK
 

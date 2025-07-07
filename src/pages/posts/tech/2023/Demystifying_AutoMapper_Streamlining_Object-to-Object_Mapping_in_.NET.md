@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-06-15T23:06:49.000Z'
 tags: []
 title: Demystifying AutoMapper Streamlining Object-to-Object Mapping in .NET
+authors: [David Li]
 ---
 
 # Demystifying AutoMapper: Streamlining Object-to-Object Mapping in .NET

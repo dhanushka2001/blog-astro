@@ -5,6 +5,7 @@ description: Environment variables are dynamic values that can be accessed by pr
 pubDate: Fri, 30 May 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1373682361.png
+authors: [David Li]
 ---
 Environment variables are dynamic values that can be accessed by processes running on an operating system, including programs, scripts, and command-line interfaces. These variables contain information about the operating system environment and can be used to pass data to programs, control the behavior of the system, and provide configuration settings.
 

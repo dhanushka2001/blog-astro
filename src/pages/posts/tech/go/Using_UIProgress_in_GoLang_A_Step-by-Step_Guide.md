@@ -5,6 +5,7 @@ description: " In this article, we will walk you through the process of using UI
 tags: ["go"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1411559119.png
+authors: [David Li]
 ---
 # Using UIProgress in GoLang: A Step-by-Step Guide
 

@@ -9,6 +9,7 @@ imgSrc: '/imgs/2022/dall-e/corgiNextToThePyramids.jpeg'
 imgAlt: 'Image post 3'
 
 pubDate: Mon, 11 Nov 2020 13:00:00 GMT
+authors: [David Li]
 ---
 
 ## Summary

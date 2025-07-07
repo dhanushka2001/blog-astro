@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-07-18T05:09:30.000Z'
 tags: []
 title: C++ Modern Features From C++11 to C++20
+authors: [David Li]
 ---
 
 # C++ Modern Features: From C++11 to C++20

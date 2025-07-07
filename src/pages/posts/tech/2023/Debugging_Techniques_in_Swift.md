@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-07-23T01:41:19.000Z'
 tags: []
 title: Debugging Techniques in Swift
+authors: [David Li]
 ---
 
 # Debugging Techniques in Swift

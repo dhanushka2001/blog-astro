@@ -5,6 +5,7 @@ description: "In this article , we'll explore the key features of the Android Go
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/other
+authors: [David Li]
 ---
 # Integrating Google Maps API in Android Applications
 

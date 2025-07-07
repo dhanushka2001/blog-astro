@@ -5,6 +5,7 @@ description: "In this article, we will discuss the architecture, components, and
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/4181036141.png
+authors: [David Li]
 ---
 # Microsoft.AspNetCore.Authentication: A Deep Dive into Authentication Middleware
 

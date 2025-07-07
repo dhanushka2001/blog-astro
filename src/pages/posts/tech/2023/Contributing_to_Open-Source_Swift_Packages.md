@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-04-23T23:13:25.000Z'
 tags: []
 title: Contributing to Open-Source Swift Packages
+authors: [David Li]
 ---
 
 # Contributing to Open-Source Swift Packages

@@ -5,6 +5,7 @@ description: "In this article , we will explore how WebAssembly can be used for 
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1834084038_A_dream_of_a_distant_galaxy__concept_art__matte_painting__HQ__4k.png
+authors: [David Li]
 ---
 # Using WebAssembly for Machine Learning: A Comprehensive Guide
 

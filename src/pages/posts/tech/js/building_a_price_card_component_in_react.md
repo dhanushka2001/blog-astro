@@ -5,6 +5,7 @@ description: Building a price card component in react is a great way to learn ho
 pubDate: Fri, 4 April 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/358691897_blank_card_on_brown_table.png
+authors: [David Li]
 ---
 Building price card components is important because they allow businesses to present pricing information to their customers in a clear and organized manner, which can improve the customer experience and ultimately lead to increased sales. Price cards can also help businesses to highlight the features and benefits of their products or services, differentiate themselves from competitors, and create a sense of transparency and trust with customers. Additionally, price card components can be used to test and optimize pricing strategies, allowing businesses to find the sweet spot between profitability and customer demand.
 

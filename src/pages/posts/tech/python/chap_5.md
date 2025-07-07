@@ -5,6 +5,7 @@ description: Describing how to use python for object-oriented programming.
 pubDate: Fri, 14 September 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3563897667.png
+authors: [David Li]
 ---
 Object-oriented programming (OOP) is a programming paradigm that is based on the concept of "objects", which can contain data (referred to as "attributes" or "properties") and methods (referred to as "behaviors" or "functions") that operate on that data.
 

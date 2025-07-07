@@ -5,6 +5,7 @@ description: In this article, we will explore how to interact with the PokeAPI R
 pubDate: Fri, 25 April 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/262205434.png
+authors: [David Li]
 ---
 
 # Using the PokeAPI REST API in Rust

@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-01-18T07:09:48.000Z'
 tags: []
 title: Using Pygame in Python A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Using Pygame in Python: A Comprehensive Guide

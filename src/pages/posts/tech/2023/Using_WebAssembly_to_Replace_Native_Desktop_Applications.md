@@ -5,6 +5,7 @@ description: "This article explores the potential of WebAssembly to replace nati
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/other
+authors: [David Li]
 ---
 # Using WebAssembly to Replace Native Desktop Applications
 

@@ -5,6 +5,7 @@ description: File Handling and Error Handling in Go.
 pubDate: Fri, 21 October 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3469553751.png
+authors: [David Li]
 ---
 In this tutorial, we have covered the basics of programming in Go, including data types, variables, control structures, functions, and packages. By now, you should have a good understanding of the syntax and features of Go, and should be able to write simple programs to solve problems.
 

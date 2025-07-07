@@ -5,6 +5,7 @@ imgSrc: /imgs/2023/2269624161_forest.png
 layout: '@/templates/BasePost.astro'
 pubDate: '2024-03-16T04:50:20.000Z'
 tags: []
+authors: [David Li]
 ---
 
 # Building Microservices with Go-Kit in Golang

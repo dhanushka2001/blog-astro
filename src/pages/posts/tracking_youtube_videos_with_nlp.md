@@ -7,6 +7,7 @@ tags: ["youtube", "nlp", "python", "astro"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/white_fur_monster_reading_book.png'
 imgAlt: 'white fur monster'
+authors: [David Li]
 ---
 
 

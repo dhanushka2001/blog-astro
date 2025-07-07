@@ -5,6 +5,7 @@ description: "We'll explore how to use the bitset package."
 tags: ["go"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/186810635.png
+authors: [David Li]
 ---
 
 

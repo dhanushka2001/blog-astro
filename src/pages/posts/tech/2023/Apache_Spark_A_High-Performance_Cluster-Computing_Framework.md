@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-01-15T05:31:42.000Z'
 tags: []
 title: Apache Spark A High-Performance Cluster-Computing Framework
+authors: [David Li]
 ---
 
 # Apache Spark: A High-Performance Cluster-Computing Framework

@@ -5,6 +5,7 @@ description: "In this article , we'll explore how to use Rust's benchmarking fra
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/nature_0.jpeg
+authors: [David Li]
 ---
 # Using Rust's Benchmarking Framework for Performance Testing
 

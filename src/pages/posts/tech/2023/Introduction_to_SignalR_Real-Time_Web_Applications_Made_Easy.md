@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-01-04T05:19:15.000Z'
 tags: []
 title: Introduction to SignalR Real-Time Web Applications Made Easy
+authors: [David Li]
 ---
 
 # Introduction to SignalR: Real-Time Web Applications Made Easy

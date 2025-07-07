@@ -5,6 +5,7 @@ pubDate: Monday, 7 July 2023 13:00:00 GMT
 tags: ["flutter", "pokeapi"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/music_album.jpg'
+authors: [David Li]
 ---
 
 

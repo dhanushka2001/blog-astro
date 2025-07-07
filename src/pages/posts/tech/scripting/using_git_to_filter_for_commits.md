@@ -7,6 +7,7 @@ tags: ["git", "bash"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-12-17 09.01.21 - two tags and lines between them.png'
 imgAlt: 'two tags and lines'
+authors: [David Li]
 ---
 
 To print the commits between two tags using a Bash script, you can use the git log command with the --oneline and --decorate options, followed by the range of tags that you want to include. For example:

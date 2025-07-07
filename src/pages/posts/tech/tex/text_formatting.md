@@ -5,6 +5,7 @@ description: Text formatting is a crucial aspect of any document preparation sys
 pubDate: Fri, 14 December 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/303236472.png
+authors: [David Li]
 ---
 # Text Formatting with LaTeX 
  

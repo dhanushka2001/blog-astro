@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-10-03T21:43:43.000Z'
 tags: []
 title: C++ Function Objects and Functors A Comprehensive Guide
+authors: [David Li]
 ---
 
 # C++ Function Objects and Functors: A Comprehensive Guide

@@ -5,6 +5,7 @@ description: Explaining what changed in pycaret 3.0.0.
 pubDate: Fri, 14 June 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1900267581.png
+authors: [David Li]
 ---
 
 PyCaret 3.0.0 is a major update of the open-source, low-code machine learning library in Python that automates machine learning workflows. It introduces multiple new features and bug fixes as well as breaking API changes². Here is a technical analysis of some of the main changes:

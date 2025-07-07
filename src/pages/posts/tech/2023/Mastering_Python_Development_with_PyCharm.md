@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-01-11T09:44:06.000Z'
 tags: []
 title: Mastering Python Development with PyCharm
+authors: [David Li]
 ---
 
 # Mastering Python Development with PyCharm

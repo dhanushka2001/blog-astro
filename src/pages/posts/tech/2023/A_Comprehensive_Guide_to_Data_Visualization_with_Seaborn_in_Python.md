@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-12-16T08:27:25.000Z'
 tags: []
 title: A Comprehensive Guide to Data Visualization with Seaborn in Python
+authors: [David Li]
 ---
 
 # A Comprehensive Guide to Data Visualization with Seaborn in Python

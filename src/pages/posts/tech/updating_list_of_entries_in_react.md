@@ -5,6 +5,7 @@ pubDate: Saturday, 18 November 2022 13:00:00 GMT
 tags: ["whispers", "openai", "python"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-11-11 09.47.17 - updating a list of papers.png'
+authors: [David Li]
 ---
 
 ## Description

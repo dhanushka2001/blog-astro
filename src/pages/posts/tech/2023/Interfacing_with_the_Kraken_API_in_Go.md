@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-10-11T12:10:48.000Z'
 tags: []
 title: Interfacing with the Kraken API in Go
+authors: [David Li]
 ---
 
 # Interfacing with the Kraken API in Go

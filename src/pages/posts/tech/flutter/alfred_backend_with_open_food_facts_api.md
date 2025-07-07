@@ -5,6 +5,7 @@ description: Using alfred backend as a wrapper around the openfoodfacts api.
 pubDate: Mon, 30 November 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: '/imgs/2023/2421950579.png'
+authors: [David Li]
 ---
 This post is related to my last post at https://friendlyuser.github.io/posts/tech/flutter/how_to_deploy_dart_to_hs.html. I will be using the same backend to create a wrapper around the openfoodfacts api. The openfoodfacts api is a free and open source api that provides information about food products. The api is available at https://world.openfoodfacts.org/data. The api is available in different languages and I will be using dart.
 Food facts are important for a variety of reasons. First and foremost, they help us understand what we are eating and what nutrients our body is receiving. This information can be used to make informed decisions about our diets, which can impact our health and well-being.

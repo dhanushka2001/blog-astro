@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-11-09T05:19:51.000Z'
 tags: []
 title: Apache Thrift A Comprehensive Introduction to Cross-Language Service Development
+authors: [David Li]
 ---
 
 # Apache Thrift: A Comprehensive Introduction to Cross-Language Service Development

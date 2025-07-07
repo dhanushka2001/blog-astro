@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-09-21T06:51:47.000Z'
 tags: []
 title: Demystifying Microsoft.AspNetCore.Authorization
+authors: [David Li]
 ---
 
 # Demystifying Microsoft.AspNetCore.Authorization

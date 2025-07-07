@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-12-03T08:17:39.000Z'
 tags: []
 title: Leveraging Pandas in Python for Data Manipulation
+authors: [David Li]
 ---
 
 # Leveraging Pandas in Python for Data Manipulation

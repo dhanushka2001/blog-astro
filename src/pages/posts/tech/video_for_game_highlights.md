@@ -5,6 +5,7 @@ pubDate: Tuesday, 22 November 2022 13:00:00 GMT
 tags: ["remotion", "javascript"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-11-19 19.36.15 - game highlights.png'
+authors: [David Li]
 ---
 
 In order to generate a video in erbs with decent animations I used a few things.

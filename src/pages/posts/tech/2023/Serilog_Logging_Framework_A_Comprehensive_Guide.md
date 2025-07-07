@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-06-24T00:59:46.000Z'
 tags: []
 title: Serilog Logging Framework A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Serilog Logging Framework: A Comprehensive Guide

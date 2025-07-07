@@ -5,6 +5,7 @@ description: "In this article, we will explore the `Task` construct in Go, which
 tags: ["go"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1400635341.png
+authors: [David Li]
 ---
 # Using Task in GoLang: A Comprehensive Guide
 

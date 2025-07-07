@@ -6,6 +6,7 @@ pubDate: Fri, 30 September 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1096284488.png
 
+authors: [David Li]
 ---
 
 Here is an overview of how to work with files in Python using `open()`, `close()`, `read()`, `write()` and other methods:

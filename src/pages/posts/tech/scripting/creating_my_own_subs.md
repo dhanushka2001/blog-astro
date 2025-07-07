@@ -6,6 +6,7 @@ tags: ["python", "ffmpeg"]
 layout: '@/templates/BasePost.astro'
 pubDate: Wednesday, 14 July 2023 13:00:00 GMT
 imgSrc: '/imgs/2023/dictionary.png'
+authors: [David Li]
 ---
 
 Finding Cantonese dub videos and replacing the subtitles with English subtitles:

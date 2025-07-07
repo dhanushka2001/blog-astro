@@ -7,6 +7,7 @@ tags: ["investing"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/sample.png'
 imgAlt: 'rbc stock analyzer'
+authors: [David Li]
 ---
 
 In today’s uncertain economic climate, many investors are looking for ways to protect their portfolios from market downturns. One strategy that I have decided to employ is buying the ProShares UltraPro Short QQQ (SQQQ) ETF.

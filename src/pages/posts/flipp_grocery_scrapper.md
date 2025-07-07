@@ -7,6 +7,7 @@ pubDate: Thursday, 15 Feburary 2023 13:00:00 GMT
 tags: ["python", "web scraping", "selenium", "data extraction", "retail", "automation"]
 imgAlt: 'Python Web Scraping Visualization'
 imgSrc: "/imgs/2023/117117315.png"
+authors: [David Li]
 ---
 
 # Web Scraping Retail Flipp Flyers

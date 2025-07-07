@@ -5,6 +5,7 @@ description: In this post I will show how to integrate google maps into a web pa
 pubDate: Fri, 15 May 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/654074938.png
+authors: [David Li]
 ---
 
 

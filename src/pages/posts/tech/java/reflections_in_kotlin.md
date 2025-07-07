@@ -5,6 +5,7 @@ description: Introduction reflection and annotations in Kotlin
 pubDate: Fri, 14 December 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2766162233.png
+authors: [David Li]
 ---
 
 ## Reflection and annotations in Kotlin

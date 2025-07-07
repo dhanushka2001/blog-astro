@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-06-10T04:44:13.000Z'
 tags: []
 title: Microsoft Identity A Comprehensive Guide to Secure Authentication and Authorization
+authors: [David Li]
 ---
 
 # Microsoft Identity: A Comprehensive Guide to Secure Authentication and Authorization

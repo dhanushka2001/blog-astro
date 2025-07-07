@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-08-17T13:13:00.000Z'
 tags: []
 title: A Guide to Using Python-telegram-bot in Python
+authors: [David Li]
 ---
 
 # A Guide to Using Python-telegram-bot in Python

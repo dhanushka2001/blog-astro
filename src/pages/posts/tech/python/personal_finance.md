@@ -5,6 +5,7 @@ description: A Practical Guide to Building Wealth and Financial Freedom
 pubDate: Fri, 14 December 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/226878303.png
+authors: [David Li]
 ---
 # Chapter 6: Retirement Planning
 Retirement healthcare costs and long-term care needs are important considerations for anyone looking to build wealth and achieve financial freedom. Here are some practical tips to help you plan for these expenses:

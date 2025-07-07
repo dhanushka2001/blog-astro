@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-08-22T02:43:46.000Z'
 tags: []
 title: C++ Templates and Generic Programming A Deep Dive
+authors: [David Li]
 ---
 
 # C++ Templates and Generic Programming: A Deep Dive

@@ -7,6 +7,7 @@ pubDate: Wed, 14 May 2022 13:00:00 GMT
 tags: ["openapi"]
 imgSrc: '/imgs/2022/dall-e/corgiNextToThePyramids.jpeg'
 imgAlt: 'Corgi Tree'
+authors: [David Li]
 ---
 
 ## Summary

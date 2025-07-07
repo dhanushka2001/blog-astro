@@ -5,6 +5,7 @@ description: This article will introduce Hyper, explore its core features, and d
 pubDate: Fri, 29 November 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2459005241.png
+authors: [David Li]
 ---
 
 

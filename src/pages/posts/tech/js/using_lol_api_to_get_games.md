@@ -5,6 +5,7 @@ description: In this post I will show you how to use the league of legends api t
 pubDate: Fri, 25 April 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/262205434.png
+authors: [David Li]
 ---
 
 The League of Legends API (Application Programming Interface) is a set of web-based protocols and tools provided by Riot Games, the developer of League of Legends, that allow third-party developers to access data and functionality related to the game.

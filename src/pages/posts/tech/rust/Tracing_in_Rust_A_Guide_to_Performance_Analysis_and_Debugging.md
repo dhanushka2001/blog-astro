@@ -5,6 +5,7 @@ description: "In this article, we will explore tracing in Rust, discussing its b
 tags: ["rust"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/186810635.png
+authors: [David Li]
 ---
 # Tracing in Rust: A Guide to Performance Analysis and Debugging
 

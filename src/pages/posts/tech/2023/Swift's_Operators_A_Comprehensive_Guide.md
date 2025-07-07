@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-06-21T05:13:03.000Z'
 tags: []
 title: Swift's Operators A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Swift's Operators: A Comprehensive Guide

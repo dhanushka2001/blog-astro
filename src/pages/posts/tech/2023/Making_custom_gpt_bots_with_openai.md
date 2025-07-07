@@ -5,6 +5,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-11-09T15:20:34.000Z'
 tags: ['ChatGPT', 'AI Chatbots', 'Programming', 'Automation', 'Mermaid Diagrams']
 title: "Custom ChatGPT Bots: Revolutionizing Coding Tasks"
+authors: [David Li]
 ---
 
 

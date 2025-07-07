@@ -5,6 +5,7 @@ description: LINQ is a powerful tool for querying data. In this post, we'll look
 layout: '@/templates/BasePost.astro'
 pubDate: Mon, 13 September 2023
 imgSrc: '/imgs/2023/359551664.png'
+authors: [David Li]
 ---
 LINQ (Language Integrated Query) is a set of language extensions for the Microsoft .NET Framework that allows developers to perform queries on data sources using a syntax similar to SQL. It supports querying data in a variety of formats, including arrays, lists, databases, and XML documents. LINQ was introduced in the .NET Framework version 3.5 and is available in C# and Visual Basic. LINQ makes it easier to write data access code and provides a consistent way to query and manipulate data, regardless of its source.
 

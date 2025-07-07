@@ -6,6 +6,7 @@ tags: ["dotnet","git"]
 layout: '@/templates/BasePost.astro'
 pubDate: Saturday, 17 September 2022 13:00:00 GMT
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-09-05 15.52.26 - corgi on a field staring up into a building falling from the sky, high quality photo.png'
+authors: [David Li]
 ---
 
 # Parsing git commits with dotnet

@@ -7,6 +7,7 @@ pubDate: Wed, 21 May 2023
 tags: ["bit", "javascript"]
 imgSrc: '/imgs/2023/man_on_horse.png'
 imgAlt: 'Image post 6'
+authors: [David Li]
 ---
 
 In this example, the Collapsible component is a class-based component that uses the React.Component base class. It maintains a state variable called collapsed that determines whether the collapsible content is currently visible or hidden. The component also has a toggleCollapsed method that updates the collapsed state variable when the header is clicked.

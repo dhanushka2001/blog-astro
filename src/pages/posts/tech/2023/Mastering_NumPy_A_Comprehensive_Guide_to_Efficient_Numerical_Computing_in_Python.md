@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-05-28T20:33:27.000Z'
 tags: []
 title: Mastering NumPy A Comprehensive Guide to Efficient Numerical Computing in Python
+authors: [David Li]
 ---
 
 # Mastering NumPy: A Comprehensive Guide to Efficient Numerical Computing in Python

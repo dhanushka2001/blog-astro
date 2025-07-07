@@ -5,6 +5,7 @@ description: Using simple bash scripts to rank engineers
 pubDate: Fri, 7 November 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2627778103.png
+authors: [David Li]
 ---
 To rank software engineers, companies use a variety of metrics to assess their performance, including code quality, productivity, and collaboration with team members. In this blog post, we will explore how companies can use scripts to automate the ranking process and save time and effort.
 

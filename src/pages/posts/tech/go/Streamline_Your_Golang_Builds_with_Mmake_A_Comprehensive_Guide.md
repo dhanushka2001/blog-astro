@@ -5,6 +5,7 @@ description: "In this article, we'll explore how to use `mmake` in Golang projec
 tags: ["go", "mmake"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1115596181.png
+authors: [David Li]
 ---
 # Streamline Your Golang Builds with Mmake: A Comprehensive Guide
 

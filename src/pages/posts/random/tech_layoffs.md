@@ -5,6 +5,7 @@ description: AI generated post about tech layoffs.
 pubDate: Mon, 14 March 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: '/imgs/2023/2421950579.png'
+authors: [David Li]
 ---
 
 The tech industry has been hit hard by layoffs recently, leaving many workers uncertain of their future. While this is unfortunate news for those affected, it's important to remember that the rest of the economy remains strong and resilient.

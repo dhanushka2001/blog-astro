@@ -5,6 +5,7 @@ description: "This technical article explores how to use pytest fixtures and mar
 tags: ["Pytest", "Python", "Software Testing", "Live Server Testing", "Test Automation", "Fixtures", "Markers", "Test Exclusion"]
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/1992331816.png"
+authors: [David Li]
 ---
 
 ### Leveraging Pytest Fixtures and Markers to Exclude Specific Test Cases

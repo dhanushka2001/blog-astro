@@ -5,6 +5,7 @@ description:  In this article, we will explore how to use OpenGMK in Rust with t
 pubDate: Fri, 21 March 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/1340975325.png"
+authors: [David Li]
 ---
 # Using OpenGMK in Rust: A Comprehensive Guide
 

@@ -5,6 +5,7 @@ description: Working with dates in JavaScript can be frustratingly difficult. Th
 pubDate: Fri, 4 April 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/358691897_blank_card_on_brown_table.png
+authors: [David Li]
 ---
 
 Working with dates in JavaScript can be frustratingly difficult. The Date object seems simple enough at first glance, but it has some major shortcomings, especially when it comes to handling timezones. 

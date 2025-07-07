@@ -6,6 +6,7 @@ tags: ["dotnet","git", "openapi"]
 layout: '@/templates/BasePost.astro'
 pubDate: Friday, 21 October 2022 13:00:00 GMT
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-10-21 18.23.59 - list of paper.png'
+authors: [David Li]
 ---
 
 # Grabbing list openapi spec from redoc

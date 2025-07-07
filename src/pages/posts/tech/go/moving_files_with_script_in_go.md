@@ -5,6 +5,7 @@ description: Using script in go to move files to deploy to github pages
 pubDate: Fri, 7 March 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/3194903180.png"
+authors: [David Li]
 ---
 
 In bash, you can move files using the `mv` command. Here's an example of how you could use `mv` in a script:

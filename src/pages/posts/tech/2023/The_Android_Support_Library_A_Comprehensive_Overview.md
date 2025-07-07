@@ -5,6 +5,7 @@ description: "This article delves into the origins, benefits, and core elements 
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3793215953.png
+authors: [David Li]
 ---
 # The Android Support Library: A Comprehensive Overview
 

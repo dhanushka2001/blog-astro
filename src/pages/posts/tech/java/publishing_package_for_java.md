@@ -5,6 +5,7 @@ pubDate: Saturday, 9 June 2023 13:00:00 GMT
 tags: ["solidity", "dapp"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/powell_ANGRY.png'
+authors: [David Li]
 ---
 
 Despite using java throughout my academic career, I had completely forgotten how to deploy java packages.

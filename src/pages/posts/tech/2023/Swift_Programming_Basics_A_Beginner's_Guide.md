@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-07-07T16:27:41.000Z'
 tags: []
 title: Swift Programming Basics A Beginner's Guide
+authors: [David Li]
 ---
 
 # Swift Programming Basics: A Beginner's Guide

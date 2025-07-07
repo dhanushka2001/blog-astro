@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-05-27T17:08:22.000Z'
 tags: []
 title: Swift Enums A Powerful and Versatile Tool for Developers
+authors: [David Li]
 ---
 
 # Swift Enums: A Powerful and Versatile Tool for Developers

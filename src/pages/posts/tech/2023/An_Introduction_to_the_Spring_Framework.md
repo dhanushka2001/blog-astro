@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-01-05T04:26:36.000Z'
 tags: []
 title: An Introduction to the Spring Framework
+authors: [David Li]
 ---
 
 # An Introduction to the Spring Framework

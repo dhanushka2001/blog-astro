@@ -5,6 +5,7 @@ description: "A beginner's guide to embedding OpenAI's GPT in Excel plugins, enh
 tags: ["GPT", "Excel", "AI Integration", "Software Development", "JavaScript", "TypeScript", "Excel Add-in", "OpenAI", "Automation", "Productivity"]
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/3292707171.png"
+authors: [David Li]
 ---
 
 # Embedding GPT in Excel Applications: A Guide for Beginners

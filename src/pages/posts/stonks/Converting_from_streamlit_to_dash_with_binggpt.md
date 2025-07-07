@@ -7,6 +7,7 @@ tags: ["openbb", "streamlit", "python", "pandas"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/241285989.png'
 imgAlt: 'rbc stock analyzer'
+authors: [David Li]
 ---
 
 Disclaimer: This article was generated with bing and binggpt, was curious how far bing gpt was willing to go with conversion from dash to streamlit. I'm not sure if this is a good idea, but I'm going to try it out.

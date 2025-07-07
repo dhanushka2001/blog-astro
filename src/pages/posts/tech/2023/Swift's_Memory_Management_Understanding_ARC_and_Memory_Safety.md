@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-03-24T02:51:50.000Z'
 tags: []
 title: Swift's Memory Management Understanding ARC and Memory Safety
+authors: [David Li]
 ---
 
 # Swift's Memory Management: Understanding ARC and Memory Safety

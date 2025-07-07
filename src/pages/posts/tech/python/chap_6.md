@@ -6,6 +6,7 @@ pubDate: Fri, 14 September 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2921207460.png
 
+authors: [David Li]
 ---
 In Python, exceptions and errors are used to indicate that something unexpected or abnormal has happened during the execution of a program. Exceptions and errors can be caused by a variety of factors, such as incorrect input data, insufficient memory, or invalid syntax.
 

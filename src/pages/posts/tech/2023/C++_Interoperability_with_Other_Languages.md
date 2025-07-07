@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-08-14T04:21:24.000Z'
 tags: []
 title: C++ Interoperability with Other Languages
+authors: [David Li]
 ---
 
 # C++ Interoperability with Other Languages

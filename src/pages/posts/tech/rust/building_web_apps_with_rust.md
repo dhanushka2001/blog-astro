@@ -5,6 +5,7 @@ tags: ["rust", "bash"]
 pubDate: Saturday, 29 April 2024 13:00:00 GMT
 layout: '@/templates/BasePost.astro'
 imgSrc: "/imgs/2023/nature_0.jpeg"
+authors: [David Li]
 ---
 
 # Building Web Applications with Rust using Actix Web

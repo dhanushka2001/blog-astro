@@ -5,6 +5,7 @@ description: "This article will provide a comprehensive guide on this key compon
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/DALL?E 2023-01-07 13.46.29 - banana spaceship.png
+authors: [David Li]
 ---
 # Android Jetpack Navigation Component: A Comprehensive Guide
 

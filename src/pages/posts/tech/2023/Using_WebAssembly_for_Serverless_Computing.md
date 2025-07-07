@@ -5,6 +5,7 @@ description: "In this article , we'll explore the benefits of using WebAssembly 
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2515566937.png
+authors: [David Li]
 ---
 # Using WebAssembly for Serverless Computing
 

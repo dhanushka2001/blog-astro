@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-05-16T06:54:24.000Z'
 tags: []
 title: An Introduction to the Deno Crypto Module
+authors: [David Li]
 ---
 
 # An Introduction to the Deno Crypto Module

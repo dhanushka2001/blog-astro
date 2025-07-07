@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-10-10T12:54:08.000Z'
 tags: []
 title: JUnit Testing Framework An Introduction
+authors: [David Li]
 ---
 
 # JUnit Testing Framework: An Introduction

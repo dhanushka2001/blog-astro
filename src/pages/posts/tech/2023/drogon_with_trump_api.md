@@ -5,6 +5,7 @@ description: Simple application with drogon that talks to the Donald Trump API.
 pubDate: Fri, 14 June 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1900267581.png
+authors: [David Li]
 ---
 
 Drogon is a C++14/17-based HTTP application framework. It can be used to build various types of web applications such as APIs and backend services. One interesting use case for Drogon is to build an application that interacts with the Donald Trump API available at https://www.tronalddump.io/.

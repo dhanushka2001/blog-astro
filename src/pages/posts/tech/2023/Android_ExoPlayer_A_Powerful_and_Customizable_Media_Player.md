@@ -5,6 +5,7 @@ description: "In this article , we will dive into the features, architecture, an
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3619698287.png
+authors: [David Li]
 ---
 # Android ExoPlayer: A Powerful and Customizable Media Player
 

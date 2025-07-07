@@ -5,6 +5,7 @@ description: "In today's digital age, programming has become crucial for individ
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/4042044064.png
+authors: [David Li]
 ---
 # Overview of Programming and Its Importance
 

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-06-27T06:04:59.000Z'
 tags: []
 title: Using `echo` in Golang for Efficient Web Development
+authors: [David Li]
 ---
 
 # Using `echo` in Golang for Efficient Web Development

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-08-08T15:20:34.000Z'
 tags: []
 title: Java Standard Library An Overview
+authors: [David Li]
 ---
 
 # Java Standard Library: An Overview

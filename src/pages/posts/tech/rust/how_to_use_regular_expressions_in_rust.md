@@ -5,6 +5,7 @@ description: In this article, we will explore the basics of using regular expres
 pubDate: Fri, 3 January 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/3702590653.png"
+authors: [David Li]
 ---
 
 Regular expressions are a powerful tool in text processing, and Rust provides a robust library for working with them. In this article, we will explore the basics of using regular expressions in Rust, including syntax, matching, and capturing.

@@ -5,6 +5,7 @@ description: "A technical article about Golang"
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/803232156.png
+authors: [David Li]
 ---
 # Android Glide Image Loading Library: A Comprehensive Guide
 

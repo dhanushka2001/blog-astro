@@ -7,6 +7,7 @@ pubDate: Wed, 06 January 2022 13:00:00 GMT
 tags: ["react", "javascript"]
 imgSrc: '/imgs/2022/android_emulator_pixel_3.png'
 imgAlt: 'Image post 6'
+authors: [David Li]
 ---
 
 

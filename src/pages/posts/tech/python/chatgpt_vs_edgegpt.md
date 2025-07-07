@@ -5,6 +5,7 @@ description: Comparing differences between chatgpt and edge gpt.
 pubDate: Fri, 14 June 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/other/output_1.png
+authors: [David Li]
 ---
 
 As a technical writer, you may have heard of GPT models before. GPT models, short for Generative Pre-trained Transformer models, have been in the spotlight for the past few years due to their impressive natural language processing capabilities. In this post, we'll dive into the advantages of using a GPT model to write your blog, and how it can help you create high-quality content that resonates with your audience.

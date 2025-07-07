@@ -5,6 +5,7 @@ description: Describing how to use python to program.
 pubDate: Fri, 14 October 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/492664568.png
+authors: [David Li]
 ---
 Transcribing videos is important for several reasons. Firstly, it makes the content of the video more accessible to people who are deaf or hard of hearing. Secondly, it can improve search engine optimization (SEO) as the text in the transcription can be indexed by search engines. Thirdly, it can make it easier to create captions or subtitles for the video, which can again make it more accessible to a wider audience. Finally, transcribing videos can be useful for researchers or content creators who want to analyze the content of the video or repurpose it in other ways.
 

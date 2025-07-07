@@ -6,6 +6,7 @@ pubDate: Fri, 30 September 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1938616315.png
 
+authors: [David Li]
 ---
 Introduction to Web Development with Python
 

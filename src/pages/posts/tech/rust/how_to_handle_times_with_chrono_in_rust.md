@@ -6,6 +6,7 @@ tags: ["rust"]
 layout: '@/templates/BasePost.astro'
 pubDate: Friday, 17 Feb 2023 13:00:00 GMT
 imgSrc: '/imgs/2023/335264211.png'
+authors: [David Li]
 ---
 
 # Using the Chrono Crate in Rust for Time and Date Handling

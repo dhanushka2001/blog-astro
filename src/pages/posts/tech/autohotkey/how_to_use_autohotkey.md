@@ -5,6 +5,7 @@ description: AutoHotkey is a free, open-source scripting language for Windows th
 pubDate: Fri, 14 September 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1492118595.png
+authors: [David Li]
 ---
 
 

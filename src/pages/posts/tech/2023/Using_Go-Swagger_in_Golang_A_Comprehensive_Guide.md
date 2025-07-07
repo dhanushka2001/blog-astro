@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-11-01T19:53:10.000Z'
 tags: []
 title: Using Go-Swagger in Golang A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Using Go-Swagger in Golang: A Comprehensive Guide

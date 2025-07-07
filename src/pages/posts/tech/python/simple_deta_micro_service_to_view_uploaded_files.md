@@ -6,6 +6,7 @@ tags: ["python","svelte"]
 layout: '@/templates/BasePost.astro'
 pubDate: Saturday, 10 August 2022 13:00:00 GMT
 imgSrc: '/imgs/2023/DALL·E 2023-01-08 20.37.11 - icon of a sword and shield.png'
+authors: [David Li]
 ---
 
 

@@ -5,6 +5,7 @@ description: Generating premarket and postmarket reports with python and latex
 pubDate: Mon, 20 March 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/1678591372_a_blade_in_the_desert_under_the_sun.png"
+authors: [David Li]
 ---
 
 Premarket refers to the trading activity that occurs before the regular market hours. In the United States, the regular market hours are 9:30 AM to 4:00 PM Eastern Time. The premarket session usually starts at 4:00 AM Eastern Time and ends at 9:30 AM Eastern Time. During the premarket session, investors can trade stocks through electronic communication networks (ECNs) that are open for trading.

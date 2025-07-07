@@ -5,6 +5,7 @@ description: Here we'll look at how to use google news rss feeds to create custo
 pubDate: Tues, 7 December 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: '/imgs/2023/4067359065.png'
+authors: [David Li]
 ---
 Google News is a news aggregator and personalized news service developed by Google. It was launched in 2002 and has since become one of the largest news aggregators on the web. The service collects news articles from thousands of sources, including national and international news organizations, as well as local and regional publishers, and presents them in a format that makes it easy to quickly find and read the news that interests you. Google News uses algorithms to analyze and rank news articles, ensuring that the most relevant and up-to-date articles are displayed first. The service is free and can be accessed through a web browser or mobile app.
 

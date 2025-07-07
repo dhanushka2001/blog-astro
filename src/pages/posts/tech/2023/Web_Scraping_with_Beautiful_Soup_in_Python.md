@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-02-10T08:30:57.000Z'
 tags: []
 title: Web Scraping with Beautiful Soup in Python
+authors: [David Li]
 ---
 
 # Web Scraping with Beautiful Soup in Python

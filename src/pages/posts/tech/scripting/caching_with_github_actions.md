@@ -6,6 +6,7 @@ tags: ["typescript", "github actions", "astro"]
 layout: '@/templates/BasePost.astro'
 pubDate: Wednesday, 28 July 2023 13:00:00 GMT
 imgSrc: '/imgs/2023/DALL·E 2023-01-07 13.47.20 - spaceship paper.png'
+authors: [David Li]
 ---
 
 To use caching in a GitHub Actions workflow, you can use the cache action. Here is an example of a workflow that caches the node_modules directory between builds:

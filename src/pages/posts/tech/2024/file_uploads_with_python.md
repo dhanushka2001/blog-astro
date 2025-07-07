@@ -5,6 +5,7 @@ description: "A comprehensive guide for junior developers on implementing file u
 tags: ["FastAPI", "Django", "Flask", "Python", "Web Development", "File Uploads", "Backend Development", "Programming", "Software Development"]
 layout: "@/templates/BasePost.astro"
 imgSrc: "https://unsplash.com/photos/a-room-with-purple-walls-and-a-green-couch-7bVA09G6Whs"
+authors: [David Li]
 ---
 
 ### Handling File Uploads with FastAPI, Django, and Flask: A Beginner's Guide

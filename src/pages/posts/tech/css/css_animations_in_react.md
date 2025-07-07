@@ -5,6 +5,7 @@ description: Using the react-intersection-observer library to implement animatio
 pubDate: Fri, 21 March 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1492118595.png
+authors: [David Li]
 ---
 CSS animations are used to add dynamic and visually appealing effects to web pages without the need for additional scripting or third-party libraries. They can be used to draw attention to specific elements, create transitions between states, and provide an enhanced user experience. CSS animations are also generally lightweight and have good performance, making them a great option for improving the look and feel of web pages.
 

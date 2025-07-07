@@ -7,6 +7,7 @@ pubDate: '2024-01-01T14:36:17.000Z'
 tags: []
 title: Apache POI A Comprehensive Guide to Interacting with Microsoft Office Files
   in Java
+authors: [David Li]
 ---
 
 # Apache POI: A Comprehensive Guide to Interacting with Microsoft Office Files in Java

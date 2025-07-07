@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-03-02T08:14:57.000Z'
 tags: []
 title: Using TensorFlow in Python A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Using TensorFlow in Python: A Comprehensive Guide

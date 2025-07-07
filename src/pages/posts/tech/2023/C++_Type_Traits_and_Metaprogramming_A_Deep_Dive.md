@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-04-17T21:19:07.000Z'
 tags: ["C++"]
 title: C++ Type Traits and Metaprogramming A Deep Dive
+authors: [David Li]
 ---
 
 # C++ Type Traits and Metaprogramming: A Deep Dive

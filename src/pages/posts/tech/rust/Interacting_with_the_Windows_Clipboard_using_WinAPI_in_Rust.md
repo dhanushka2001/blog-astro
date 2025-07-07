@@ -5,6 +5,7 @@ description: "In this article, we will learn how to interact with the Windows cl
 tags: ["rust", "winapi"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/872471039.png
+authors: [David Li]
 ---
 # Interacting with the Windows Clipboard using WinAPI in Rust
 

@@ -5,6 +5,7 @@ pubDate: Saturday, 18 August 2023 13:00:00 GMT
 tags: ["js", "chatbot"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/3793215953.png'
+authors: [David Li]
 ---
 
 This code is a React component that creates a simple chatbot using the "react-simple-chatbot" library. The chatbot has several steps, each with a message and options for the user to choose from. The options determine which step to trigger next. The final step ends the chatbot session with a message "Awesome! You finished my summary." The `<ChatBot />` component takes in the steps prop, which is an array of objects, each representing a step in the chatbot conversation. The component is exported and rendered in the returned JSX of the App function, it will show a simple chatbot with a few steps.

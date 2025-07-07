@@ -8,6 +8,7 @@ projects: ["conscrap"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-10-25 08.48.53 - man slicing through a bench with a katana.png'
 imgAlt: 'Conscrap'
+authors: [David Li]
 ---
 
 ## Summary

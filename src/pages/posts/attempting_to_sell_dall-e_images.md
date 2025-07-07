@@ -7,6 +7,7 @@ tags: ["astro", "dall-e", "python"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/sellDalleImage.png'
 imgAlt: 'Dalle Image for selling images'
+authors: [David Li]
 ---
 
 Long story short, my attempts to make side income through dall-e have failed.

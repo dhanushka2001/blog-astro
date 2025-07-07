@@ -5,6 +5,7 @@ description: In this post I will show you how I ported saber site to nextra.
 pubDate: Fri, 30 May 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1538101898.png
+authors: [David Li]
 ---
 Next.js is a popular open-source framework for building modern web applications with React. It is a production-ready solution for building server-side rendered React applications that can be deployed to a wide variety of environments including the web, mobile devices, and even static hosting.
 

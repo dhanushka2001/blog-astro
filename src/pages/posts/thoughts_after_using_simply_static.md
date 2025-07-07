@@ -6,6 +6,7 @@ tags: ["wordpress", "simply static"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-07-16 19.02.16 - corgi riding a skateboard through the rain, digital art.png'
 pubDate: Mon, 11 Dec 2020 13:00:00 GMT
+authors: [David Li]
 ---
 
 ## Summary

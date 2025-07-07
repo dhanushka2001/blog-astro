@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-04-05T00:16:03.000Z'
 tags: []
 title: A Practical Guide to Unit Testing in Swift
+authors: [David Li]
 ---
 
 # A Practical Guide to Unit Testing in Swift

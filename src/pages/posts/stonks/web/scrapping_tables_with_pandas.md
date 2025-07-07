@@ -5,6 +5,7 @@ description: Here's an example of a blog post explaining how to scrape HTML tabl
 pubDate: Mon, 20 November 2023
 imgSrc: /imgs/2023/4046799380_Scrapping_oil_off_a_painting.png
 layout: '@/templates/BasePost.astro'
+authors: [David Li]
 ---
 
 Here's an example of a blog post explaining how to scrape HTML tables using Pandas and read_html() method, along with a section on accessing class attributes in HTML elements:

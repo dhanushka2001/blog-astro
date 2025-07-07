@@ -5,6 +5,7 @@ description: "In this article , we'll explore the key features of the Android Go
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3582974242.png
+authors: [David Li]
 ---
 # Exploring the Android Google Places API
 

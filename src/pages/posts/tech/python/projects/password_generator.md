@@ -5,6 +5,7 @@ description: Creating a password generator is a useful programming exercise that
 pubDate: Fri, 15 April 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/3750534419.png"
+authors: [David Li]
 ---
 
 

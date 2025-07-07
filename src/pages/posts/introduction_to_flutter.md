@@ -7,6 +7,7 @@ pubDate: Wed, 23 March 2023 13:00:00 GMT
 tags: ["flutter", "dart"]
 imgSrc: '/assets/images/image-post.jpeg'
 imgAlt: 'Image post 6'
+authors: [David Li]
 ---
 
 Flutter is a popular, open-source mobile application development framework created by Google. It allows developers to build cross-platform mobile applications for Android and iOS using a single codebase. This means that developers can write an app once and deploy it to both platforms, saving time and resources.

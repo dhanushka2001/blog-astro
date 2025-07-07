@@ -5,6 +5,7 @@ description: "In this article, we will explore the core concepts of the Netty fr
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3598219737.png
+authors: [David Li]
 ---
 # Understanding the Netty Network Framework
 

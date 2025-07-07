@@ -5,6 +5,7 @@ description: Covers advanced LaTeX topics including generating resumes, invoices
 pubDate: Fri, 14 December 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2338311710.png
+authors: [David Li]
 ---
 #  Advanced Topics in LaTeX 
  

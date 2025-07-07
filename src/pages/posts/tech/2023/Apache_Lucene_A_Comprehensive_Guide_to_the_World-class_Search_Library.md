@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-01-23T14:36:34.000Z'
 tags: []
 title: Apache Lucene A Comprehensive Guide to the World-class Search Library
+authors: [David Li]
 ---
 
 # Apache Lucene: A Comprehensive Guide to the World-class Search Library

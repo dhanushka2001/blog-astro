@@ -5,6 +5,7 @@ description: "In this article , we will explore the benefits of using WebAssembl
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/424066448.png
+authors: [David Li]
 ---
 # Using WebAssembly for Scientific Computing
 

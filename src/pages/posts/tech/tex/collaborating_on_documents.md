@@ -5,6 +5,7 @@ description: Provides an overview of different collaboration workflows and tools
 pubDate: Fri, 14 December 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2469646353.png
+authors: [David Li]
 ---
 # Text Formatting with LaTeX 
  

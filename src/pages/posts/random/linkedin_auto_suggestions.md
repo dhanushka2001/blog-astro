@@ -6,6 +6,7 @@ tags: ["linkedin"]
 layout: '@/templates/BasePost.astro'
 pubDate: Sunday, 13 Feburary 2023 13:00:00 GMT
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-12-12 19.18.38 - funny story.png'
+authors: [David Li]
 ---
 
 LinkedIn is a social media platform designed for professional networking. It is a way for individuals to connect with other professionals in their industry, as well as companies and job opportunities. LinkedIn allows users to create profiles that highlight their professional experiences and skills, and to connect with others in their professional network. The platform also offers tools for job seekers, such as the ability to search for job listings and apply for jobs online.

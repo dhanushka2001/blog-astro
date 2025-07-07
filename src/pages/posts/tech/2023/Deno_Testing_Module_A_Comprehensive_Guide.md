@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-04-04T20:56:50.000Z'
 tags: []
 title: Deno Testing Module A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Deno Testing Module: A Comprehensive Guide

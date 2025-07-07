@@ -5,6 +5,7 @@ description: "In this article , we will explore Rust's memory management feature
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3893879687.png
+authors: [David Li]
 ---
 # Efficient Memory Management with Rust
 

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-11-15T23:38:52.000Z'
 tags: []
 title: Swift's Extensions Enhancing the Functionality of Existing Types
+authors: [David Li]
 ---
 
 # Swift's Extensions: Enhancing the Functionality of Existing Types

@@ -4,6 +4,7 @@ title: Investing homepage with waves animation
 description: Using JS and vuesax to show waves.
 pubDate: Mon, 5 October 2023
 imgSrc: /imgs/2023/2094095868.png
+authors: [David Li]
 ---
 An investing homepage can provide a central location for an individual or organization to access financial market information, research, and tools to make informed investment decisions. It can also serve as a hub for managing a portfolio, tracking investments, and monitoring performance. Additionally, a homepage can provide resources such as educational materials, news updates, and access to financial advisors or other professionals for guidance. Overall, an investing homepage can be a useful tool for individuals and organizations to stay informed and make strategic decisions about their investments.
 

@@ -5,6 +5,7 @@ pubDate: Saturday, 15 October 2022 13:00:00 GMT
 tags: ["whispers", "openai", "python", "youtube"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-10-15 11.08.57 - video.png'
+authors: [David Li]
 ---
 
 ## Summary

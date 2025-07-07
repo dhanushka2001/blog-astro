@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-11-24T14:08:45.000Z'
 tags: []
 title: Deno Fetch Module A Deep Dive into HTTP Request Handling
+authors: [David Li]
 ---
 
 # Deno Fetch Module: A Deep Dive into HTTP Request Handling

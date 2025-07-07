@@ -5,6 +5,7 @@ description: " In this article, we will explore how to use the `uilive` package 
 tags: ["uilive", "go"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/186810635.png
+authors: [David Li]
 ---
 # Utilizing `uilive` for Real-Time Terminal Updates in Golang
 

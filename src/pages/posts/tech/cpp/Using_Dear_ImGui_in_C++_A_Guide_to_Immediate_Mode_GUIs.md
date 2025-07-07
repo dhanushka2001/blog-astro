@@ -5,6 +5,7 @@ description: "By the end of this article, you will have a clear understanding of
 tags: ["cpp"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1992331816.png
+authors: [David Li]
 ---
 # Using Dear ImGui in C++: A Guide to Immediate Mode GUIs
 

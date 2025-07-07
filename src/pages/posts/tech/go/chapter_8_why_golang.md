@@ -5,6 +5,7 @@ description: File Handling and Error Handling in Go.
 pubDate: Fri, 21 October 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2898315273.png
+authors: [David Li]
 ---
 Sure, let's talk about file handling and error handling in Go.
 

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: Mon, 11 Dec 2021 13:00:00 GMT
 tags: ["dotnet"]
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-07-16 19.02.16 - corgi riding a skateboard through the rain, digital art.png'
+authors: [David Li]
 ---
 
 ## Summary

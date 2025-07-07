@@ -5,6 +5,7 @@ description: "In this article, we will explore the use of Viper, a powerful libr
 tags: ["viper", "golang"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3111278398.png
+authors: [David Li]
 ---
 # Using Viper in Golang for Configuration Management
 

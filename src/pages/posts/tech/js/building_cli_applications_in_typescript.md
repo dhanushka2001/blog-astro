@@ -5,6 +5,7 @@ description: Building command-line interface (CLI) applications is an essential 
 pubDate: Fri, 4 April 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/358691897_blank_card_on_brown_table.png
+authors: [David Li]
 ---
 
 

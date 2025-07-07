@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-04-13T05:37:32.000Z'
 tags: []
 title: How to Publish a Package in Swift
+authors: [David Li]
 ---
 
 # How to Publish a Package in Swift

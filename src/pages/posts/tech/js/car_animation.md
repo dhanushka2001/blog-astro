@@ -5,6 +5,7 @@ description: Using basic css and html to animate a car in react.
 pubDate: Fri, 30 September 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3054188082.png
+authors: [David Li]
 ---
 Animations are important in web development for several reasons:
 

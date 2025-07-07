@@ -5,6 +5,7 @@ description: "In this article, we'll delve into how to interact with the Windows
 tags: ["rust"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/186810635.png
+authors: [David Li]
 ---
 # Interacting with the Windows Registry using WinAPI in Rust
 

@@ -5,6 +5,7 @@ description: In this post what options are available for free education for lear
 pubDate: Fri, 22 May 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2463860355.png
+authors: [David Li]
 ---
 
 Free education is an essential tool for empowering individuals to reach their full potential, regardless of their socioeconomic background. In the realm of software development, free education can serve as a means of democratizing access to tech skills, which are increasingly essential for participation in the modern workforce. By providing free education resources online, people who may not have had the means to attend formal university programs can now learn software development and gain the skills needed to build successful careers in tech.

@@ -5,6 +5,7 @@ description: "In this article, we discuss ways to fix bugs, that should not work
 tags: ["bugfixes"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/14447351.png
+authors: [David Li]
 ---
 
 ## Dumb ways to fix Bugs

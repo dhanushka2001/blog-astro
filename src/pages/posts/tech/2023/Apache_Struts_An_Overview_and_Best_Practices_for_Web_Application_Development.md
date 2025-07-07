@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-12-29T07:25:32.000Z'
 tags: []
 title: Apache Struts An Overview and Best Practices for Web Application Development
+authors: [David Li]
 ---
 
 # Apache Struts: An Overview and Best Practices for Web Application Development

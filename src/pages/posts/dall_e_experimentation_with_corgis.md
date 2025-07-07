@@ -7,6 +7,7 @@ pubDate: Thursday, 21 July 2022 13:00:00 GMT
 tags: ["dall-e", "typescript"]
 imgSrc: '/imgs/2022/dall-e/corgiNextToThePyramids.jpeg'
 imgAlt: 'Image post 3'
+authors: [David Li]
 ---
 
 ## Summary

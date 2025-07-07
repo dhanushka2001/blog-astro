@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-11-26T17:49:54.000Z'
 tags: []
 title: Understanding Microsoft.Extensions.DependencyInjection A Deep Dive
+authors: [David Li]
 ---
 
 # Understanding Microsoft.Extensions.DependencyInjection: A Deep Dive

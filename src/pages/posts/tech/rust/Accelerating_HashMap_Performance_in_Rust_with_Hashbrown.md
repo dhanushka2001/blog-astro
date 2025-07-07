@@ -5,6 +5,7 @@ description: "A technical article about Rust"
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/186810635.png
+authors: [David Li]
 ---
 # Accelerating HashMap Performance in Rust with Hashbrown
 

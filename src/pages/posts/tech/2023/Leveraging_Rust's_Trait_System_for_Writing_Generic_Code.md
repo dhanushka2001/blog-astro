@@ -5,6 +5,7 @@ description: "In this article , we'll explore how to use Rust's trait system to 
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1736328419.png
+authors: [David Li]
 ---
 # Leveraging Rust's Trait System for Writing Generic Code
 

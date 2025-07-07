@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-02-24T08:06:49.000Z'
 tags: []
 title: Deno Buffer Module A Deep Dive into Efficient Data Management
+authors: [David Li]
 ---
 
 # Deno Buffer Module: A Deep Dive into Efficient Data Management

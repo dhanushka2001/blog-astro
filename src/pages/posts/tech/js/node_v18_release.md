@@ -6,6 +6,7 @@ tags: ["react","js"]
 layout: '@/templates/BasePost.astro'
 pubDate: Friday, 17 April 2024 13:00:00 GMT
 imgSrc: '/imgs/2023/342028959_blank_card_on_brown_table.png'
+authors: [David Li]
 ---
 
 Node.js 18 introduced some new cool features and one of the most useful ones is the built-in Fetch API. This means that we no longer need to use 3rd party npm packages like node-fetch because the functionality is now native and baked into Noded. Here's an example of how you can use it:

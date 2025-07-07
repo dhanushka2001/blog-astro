@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-01-08T09:48:30.000Z'
 tags: []
 title: Deno WebSocket Module A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Deno WebSocket Module: A Comprehensive Guide

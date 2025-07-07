@@ -6,6 +6,7 @@ tags: ["go","git"]
 layout: '@/templates/BasePost.astro'
 pubDate: Wednesday, 7 April 2023 13:00:00 GMT
 imgSrc: '/imgs/2023/dall-e/upload_icon_cloud.png'
+authors: [David Li]
 ---
 
 Bitrise is a continuous integration and delivery platform that allows you to automate your build, test, and deployment processes. You can define these processes using a combination of pre-built steps and custom scripts written in Bash or Go.

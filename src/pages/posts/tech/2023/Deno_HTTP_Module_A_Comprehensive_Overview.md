@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-09-08T03:12:13.000Z'
 tags: []
 title: Deno HTTP Module A Comprehensive Overview
+authors: [David Li]
 ---
 
 # Deno HTTP Module: A Comprehensive Overview

@@ -5,6 +5,7 @@ description: "In this article, we will explore the core concepts of Microsoft.Ex
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3619698287.png
+authors: [David Li]
 ---
 # Understanding Microsoft.Extensions.Configuration: A Comprehensive Guide
 

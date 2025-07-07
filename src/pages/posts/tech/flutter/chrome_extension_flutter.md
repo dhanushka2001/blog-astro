@@ -5,6 +5,7 @@ description: For chatgpt usage, it is easier to view the prompts in a markdown v
 pubDate: Fri, 7 July 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1028024527.png
+authors: [David Li]
 ---
 A Chrome extension is a small software program that adds new features to the Google Chrome web browser. Chrome extensions can modify and enhance the functionality of Chrome by adding or removing certain features, or by integrating with other web services or applications. Chrome extensions can be installed from the Chrome Web Store and can be managed and configured through the browser's settings menu.
 

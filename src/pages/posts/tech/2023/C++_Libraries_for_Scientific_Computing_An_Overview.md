@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-10-08T15:59:26.000Z'
 tags: []
 title: C++ Libraries for Scientific Computing An Overview
+authors: [David Li]
 ---
 
 # C++ Libraries for Scientific Computing: An Overview

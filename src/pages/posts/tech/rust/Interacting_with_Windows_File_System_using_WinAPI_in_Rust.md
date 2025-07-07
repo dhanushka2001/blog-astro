@@ -5,6 +5,7 @@ description: "In this article, we'll explore how to use WinAPI in Rust to intera
 tags: ["rust", "winapi"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1020242283.png
+authors: [David Li]
 ---
 # Interacting with Windows File System using WinAPI in Rust
 

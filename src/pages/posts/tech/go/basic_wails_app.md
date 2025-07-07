@@ -5,6 +5,7 @@ description: Barebones wails app to call the donald trump api
 pubDate: Fri, 10 January 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/1246994641.png"
+authors: [David Li]
 ---
 
 

@@ -5,6 +5,7 @@ pubDate: Saturday, 24 December 2024 13:00:00 GMT
 tags: ["rust"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-10-01 22.10.49 - transcribing audio to text.png'
+authors: [David Li]
 ---
 
 Rust is a modern programming language that was designed with safety, concurrency, and performance in mind. One of the features that sets Rust apart from other programming languages is its borrowing rules, which ensure that programs are memory-safe and free from data races. In this article, we will explore Rust's borrowing rules by building a program that uses a borrowed reference to a vector of integers to determine the average value of the integers.

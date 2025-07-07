@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-03-03T01:10:23.000Z'
 tags: []
 title: Swift Performance Optimization Techniques
+authors: [David Li]
 ---
 
 # Swift Performance Optimization Techniques

@@ -6,6 +6,7 @@ pubDate: Sun, 19 Feb 2023
 layout: "@/templates/BasePost.astro"
 projects: ['LatexDiagrams']
 imgSrc: "/imgs/2023/1924742632.png"
+authors: [David Li]
 ---
 Continuous Integration (CI) is a software development practice that involves continuously integrating code changes into a single codebase repository, typically multiple times a day. The main goal of Continuous Integration is to catch and fix integration problems as early as possible in the development process, which helps to ensure that the code remains stable and that the software is always in a releasable state.
 

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-02-08T00:40:27.000Z'
 tags: []
 title: Apache Maven Unleashing the Power of Build Automation
+authors: [David Li]
 ---
 
 # Apache Maven: Unleashing the Power of Build Automation

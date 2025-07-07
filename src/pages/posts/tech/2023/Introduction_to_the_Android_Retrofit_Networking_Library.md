@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-07-19T00:14:29.000Z'
 tags: []
 title: Introduction to the Android Retrofit Networking Library
+authors: [David Li]
 ---
 
 # Introduction to the Android Retrofit Networking Library

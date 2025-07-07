@@ -5,6 +5,7 @@ description: By leveraging bing image creator and gpt-4 (poe), I can generate hi
 pubDate: Fri, 21 March 2025
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1492118595.png
+authors: [David Li]
 ---
 
 

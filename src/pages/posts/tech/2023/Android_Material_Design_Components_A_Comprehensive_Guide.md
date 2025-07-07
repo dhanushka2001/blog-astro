@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-07-29T08:24:55.000Z'
 tags: []
 title: Android Material Design Components A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Android Material Design Components: A Comprehensive Guide

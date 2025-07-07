@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-04-04T18:30:25.000Z'
 tags: []
 title: C++ Move Semantics and Rvalue References A Deep Dive
+authors: [David Li]
 ---
 
 # C++ Move Semantics and Rvalue References: A Deep Dive

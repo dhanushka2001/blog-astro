@@ -5,6 +5,7 @@ description: Explaining how to use GUI programming in Java
 pubDate: Fri, 14 December 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2785394646.png
+authors: [David Li]
 ---
 
 

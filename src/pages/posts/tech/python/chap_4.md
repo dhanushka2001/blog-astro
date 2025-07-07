@@ -5,6 +5,7 @@ description: Describing how to use python to program.
 pubDate: Fri, 14 September 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2851628136.png
+authors: [David Li]
 ---
 In Python, modules and packages are used to organize code into reusable units. A module is simply a file containing Python definitions and statements, while a package is a collection of modules placed in a directory hierarchy.
 

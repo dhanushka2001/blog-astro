@@ -5,6 +5,7 @@ description: Covering reasons to use golang and why it's a good choice for your 
 pubDate: Fri, 21 October 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/454515535.png
+authors: [David Li]
 ---
 
 Go's design is influenced by C and its syntax is similar to C, making it easy for C programmers to learn Go. However, Go includes modern language features, such as garbage collection, concurrent programming, and memory safety. These features make Go a popular choice for building high-performance, scalable, and distributed systems.

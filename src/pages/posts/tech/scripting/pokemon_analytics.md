@@ -5,6 +5,7 @@ pubDate: Saturday, 14 May 2023 13:00:00 GMT
 tags: ["graphql", ".net", "polygot"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/DALL·E 2022-12-25 21.48.12 - teddy bear on coach looking out the window at a tree.png'
+authors: [David Li]
 ---
 
 

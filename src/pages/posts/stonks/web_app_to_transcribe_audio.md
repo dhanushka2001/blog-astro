@@ -7,6 +7,7 @@ tags: ["whisper", "gradio", "python"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-12-14 22.06.43 - blank book open on the coffee table.png'
 imgAlt: 'rbc stock analyzer'
+authors: [David Li]
 ---
 
 ## Summary

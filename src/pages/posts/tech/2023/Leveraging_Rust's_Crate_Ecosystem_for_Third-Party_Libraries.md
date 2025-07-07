@@ -5,6 +5,7 @@ description: "In this article , we will explore how to find and use third-party 
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/DALL?E 2022-12-29 11.41.51 - stars falling on the moon.png
+authors: [David Li]
 ---
 # Leveraging Rust's Crate Ecosystem for Third-Party Libraries
 

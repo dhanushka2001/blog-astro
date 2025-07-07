@@ -5,6 +5,7 @@ description: " In this article, we will explore the basics of RxKotlin, the adva
 tags: ["kotlin"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3200675184.png
+authors: [David Li]
 ---
 # Using RxKotlin in Kotlin: A Comprehensive Guide
 

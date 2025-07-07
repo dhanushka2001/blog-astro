@@ -7,6 +7,7 @@ tags: ["streamlit", "python", "pandas"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-12-10 21.55.07 - magnifying glass on stonks.png'
 imgAlt: 'rbc stock analyzer'
+authors: [David Li]
 ---
 
 

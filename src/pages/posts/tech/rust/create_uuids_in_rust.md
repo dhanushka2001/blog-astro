@@ -5,6 +5,7 @@ description:  In this article, we will explore how to generate UUIDs using the `
 pubDate: Mon, 30 November 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: '/imgs/2023/2421950579.png'
+authors: [David Li]
 ---
 
 # Generating UUIDs with the `uuid` Crate in Rust

@@ -5,6 +5,7 @@ description: "In this article, we will explore the process of using yaydl as a l
 tags: ["rust"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/336369522.png
+authors: [David Li]
 ---
 # Using Yaydl in Rust: A Guide to Video Downloading
 

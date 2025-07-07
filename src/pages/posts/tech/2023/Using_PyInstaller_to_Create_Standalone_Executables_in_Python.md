@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-11-03T18:16:10.000Z'
 tags: []
 title: Using PyInstaller to Create Standalone Executables in Python
+authors: [David Li]
 ---
 
 # Using PyInstaller to Create Standalone Executables in Python

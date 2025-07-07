@@ -7,6 +7,7 @@ pubDate: Mon, 11 Dec 2020 13:00:00 GMT
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/CorgiUpInATree.jpeg'
 imgAlt: 'Corgi Tree'
+authors: [David Li]
 ---
 
 

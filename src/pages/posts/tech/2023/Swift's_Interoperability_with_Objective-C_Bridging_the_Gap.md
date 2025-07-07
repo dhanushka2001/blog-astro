@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-01-18T16:56:39.000Z'
 tags: []
 title: Swift's Interoperability with Objective-C Bridging the Gap
+authors: [David Li]
 ---
 
 # Swift's Interoperability with Objective-C: Bridging the Gap

@@ -5,6 +5,7 @@ description: "Microsoft.AspNetCore.Cors is a middleware component provided by th
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3752564139.png
+authors: [David Li]
 ---
 # Understanding and Implementing Microsoft.AspNetCore.Cors
 

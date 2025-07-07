@@ -5,6 +5,7 @@ description: "In this article, we'll cover how to use the `cc` crate to compile 
 tags: ["rust"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/186810635.png
+authors: [David Li]
 ---
 # Using the `cc` Crate in Rust for C Interoperability
 

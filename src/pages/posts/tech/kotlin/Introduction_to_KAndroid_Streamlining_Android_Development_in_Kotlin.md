@@ -5,6 +5,7 @@ description: "In this article, we'll explore the features of KAndroid, how to se
 tags: ["kotlin"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3131299487.png
+authors: [David Li]
 ---
 # Introduction to KAndroid: Streamlining Android Development in Kotlin
 

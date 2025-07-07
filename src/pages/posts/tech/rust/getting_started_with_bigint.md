@@ -5,6 +5,7 @@ description:  In this article, we'll explore how to use num-bigint to perform va
 pubDate: Fri, 14 September 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3563897667.png
+authors: [David Li]
 ---
 
 # Working with Large Integers in Rust using the `num-bigint` Library

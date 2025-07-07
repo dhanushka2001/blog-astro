@@ -5,6 +5,7 @@ description: Explaining the history of csharp and how it is used
 pubDate: Fri, 25 July 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/760955596.png"
+authors: [David Li]
 ---
 The World Wide Web (WWW or Web) is a system of interlinked hypertext documents that are accessed through the Internet. It was created by British computer scientist Sir Tim Berners-Lee in 1989 while he was working at CERN, the European Organization for Nuclear Research, in Switzerland.
 

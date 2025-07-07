@@ -5,6 +5,7 @@ description: "This article will provide a comprehensive guide to Swift's error h
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3847215807.png
+authors: [David Li]
 ---
 # Swift Error Handling: A Comprehensive Guide
 

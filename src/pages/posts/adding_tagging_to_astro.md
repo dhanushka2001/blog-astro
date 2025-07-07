@@ -7,6 +7,7 @@ tags: ["astro"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-09-05 15.51.58 - corgi drinking bubble tea.png'
 imgAlt: 'Image post 6'
+authors: [David Li]
 ---
 
 ## Summary

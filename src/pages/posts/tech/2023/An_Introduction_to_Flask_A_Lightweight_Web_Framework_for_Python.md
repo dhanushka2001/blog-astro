@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-01-31T19:30:20.000Z'
 tags: []
 title: An Introduction to Flask A Lightweight Web Framework for Python
+authors: [David Li]
 ---
 
 # An Introduction to Flask: A Lightweight Web Framework for Python

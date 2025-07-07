@@ -5,6 +5,7 @@ description: "In GoLang, dictionaries are implemented using the built-in data st
 tags: ["go"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/186810635.png
+authors: [David Li]
 ---
 # Using Dictionary in GoLang with Maps
 

@@ -6,6 +6,7 @@ tags: ["javascript","introtojs"]
 layout: '@/templates/BasePost.astro'
 pubDate: Monday, 6 August 2023 13:00:00 GMT
 imgSrc: '/imgs/2023/DALL·E 2023-01-07 17.07.12 - introductory book.png'
+authors: [David Li]
 ---
 
 

@@ -5,6 +5,7 @@ description: "In this article , we will explore Rust's regular expression librar
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1096284488.png
+authors: [David Li]
 ---
 # Pattern Matching with Rust's Regular Expression Libraries
 

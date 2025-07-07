@@ -5,6 +5,7 @@ description: Building a caesar cipher component in vue
 pubDate: Fri, 4 April 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/358691897_blank_card_on_brown_table.png
+authors: [David Li]
 ---
 
 ## Caesar Cipher in Vue.js

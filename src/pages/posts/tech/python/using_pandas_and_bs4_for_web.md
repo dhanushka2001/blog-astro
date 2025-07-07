@@ -5,6 +5,7 @@ description: Explaining how to use pandas and bs4 for web scrapping.
 pubDate: Fri, 14 August 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3325476992.png
+authors: [David Li]
 ---
 
 Pandas is an open-source Python library used for data manipulation and analysis. It is a powerful tool for handling structured data, such as spreadsheets and SQL tables. One of the most useful features of pandas is its ability to read and write data from various file formats, including CSV, Excel, and SQL databases.

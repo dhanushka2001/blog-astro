@@ -6,6 +6,7 @@ tags: ["polygot", "csharp"]
 layout: '@/templates/BasePost.astro'
 pubDate: Friday, 21 December 2024
 imgSrc: '/imgs/2023/590655340.png'
+authors: [David Li]
 ---
 
 Polygot notebooks are a fanastic way to do data science. They allow you to use multiple languages in a single notebook. My personal preference is the vs code extension formerly .net interactive offered as a vs code extension.

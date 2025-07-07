@@ -7,6 +7,7 @@ tags: ["spacy", "gradio", "python"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-12-12 20.50.12 - big topology graph with shapes with paper straws.png'
 imgAlt: 'rbc stock analyzer'
+authors: [David Li]
 ---
 
 

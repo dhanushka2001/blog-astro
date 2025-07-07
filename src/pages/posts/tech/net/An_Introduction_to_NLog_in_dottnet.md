@@ -5,6 +5,7 @@ description: "In this article, we will explore the basics of NLog, how to set it
 tags: ["dotnet"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3292707171.png
+authors: [David Li]
 ---
 # An Introduction to NLog in dottnet
 

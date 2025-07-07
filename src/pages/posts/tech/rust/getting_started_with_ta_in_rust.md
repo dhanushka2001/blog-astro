@@ -5,6 +5,7 @@ description: In this article, we will explore how to perform technical analysis 
 pubDate: Mon, 20 September 2023
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/3842597075.png'
+authors: [David Li]
 ---
 
 # Performing Technical Analysis in Rust

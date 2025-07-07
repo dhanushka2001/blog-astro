@@ -5,6 +5,7 @@ description: Introduction to next.js
 pubDate: Fri, 29 November 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2432208319.png
+authors: [David Li]
 ---
 Next.js is a React-based framework that provides server-side rendering (SSR) and other powerful features to build web applications. It aims to make building React applications more productive by providing a batteries-included approach to web development.
 

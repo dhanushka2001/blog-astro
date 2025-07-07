@@ -5,6 +5,7 @@ description: Adding an endpoint on a dart backend to get the top sellers from st
 pubDate: Fri, 28 Feburary 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/986397498.png"
+authors: [David Li]
 ---
 
 Web scraping is a technique used to extract data from websites, with the help of a software program. This process involves sending HTTP requests to the URL of a website and then parsing the HTML response to extract data from it. The data that can be scraped from websites includes text, images, videos, and links to other pages. The extracted data can be saved to a local file or a database, or it can be used to perform further analysis and processing.

@@ -5,6 +5,7 @@ description: "In this article, we'll explore how to instrument a Golang applicat
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/4264430676.png
+authors: [David Li]
 ---
 # Monitoring Golang Applications with Prometheus
 

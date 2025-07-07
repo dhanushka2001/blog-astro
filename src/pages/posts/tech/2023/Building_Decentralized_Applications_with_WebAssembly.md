@@ -5,6 +5,7 @@ description: "In this article , we will explore how WebAssembly can be used to b
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2785952400.png
+authors: [David Li]
 ---
 # Building Decentralized Applications with WebAssembly
 

@@ -5,6 +5,7 @@ description: "Learn how to deploy a serverless OCR solution on Azure using a cus
 tags: ["Azure", "Docker", "OCR", "Python", "Serverless", "Azure Functions", "Cloud Computing", "Web Development", "Containerization", "OCRmypdf"]
 layout: "@/templates/BasePost.astro"
 imgSrc: "https://unsplash.com/photos/a-person-on-a-snowboard-in-front-of-a-colorful-wall-d391zwqXkRI"
+authors: [David Li]
 ---
 
 ## Technical Article: Deploying an ocrmypdf on Azure

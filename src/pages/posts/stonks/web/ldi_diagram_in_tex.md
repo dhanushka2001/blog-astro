@@ -5,6 +5,7 @@ description: Although I correctly predicted the collapse of ldi, I did not profi
 pubDate: Mon, 13 October 2023
 imgSrc: /imgs/2023/investing.png
 layout: '@/templates/BasePost.astro'
+authors: [David Li]
 ---
 Liability Driven Investing (LDI) is a portfolio management strategy where the investment decisions are driven by the specific needs of the investor's liabilities (e.g. pension obligations). The goal is to match the duration, currency, and risk profile of the assets with the liabilities, to minimize the risk of not being able to meet future obligations.
 

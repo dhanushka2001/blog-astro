@@ -5,6 +5,7 @@ pubDate: Saturday, 27 June 2023 13:00:00 GMT
 tags: ["flutter", "resume"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/DALL·E 2022-12-29 11.41.51 - stars falling on the moon.png'
+authors: [David Li]
 ---
 
 To create a resume in PDF format using Flutter, you can use a library like pdf.dart or pdf_flutter. Both of these libraries allow you to generate PDF documents from within a Flutter app by rendering Flutter widgets and layouts to PDF pages.

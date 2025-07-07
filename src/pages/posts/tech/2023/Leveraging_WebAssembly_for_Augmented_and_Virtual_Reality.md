@@ -5,6 +5,7 @@ description: "In this article , we will delve into WebAssembly's potential for A
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/downsize_images.py
+authors: [David Li]
 ---
 # Leveraging WebAssembly for Augmented and Virtual Reality
 

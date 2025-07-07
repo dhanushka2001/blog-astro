@@ -5,6 +5,7 @@ description: "In this article, we will explore the basics of pointers and refere
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/4279596222.png
+authors: [David Li]
 ---
 # Pointers and References in C++: A Comprehensive Guide
 

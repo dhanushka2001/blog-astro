@@ -6,6 +6,7 @@ pubDate: Fri, 30 September 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3280960381.png
 
+authors: [David Li]
 ---
 Functional programming is a programming paradigm that focuses on creating software applications by composing pure functions that avoid changing state and mutating data. In functional programming, functions are treated as first-class citizens and can be passed around like any other value, including being returned from other functions.
 

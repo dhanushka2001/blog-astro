@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-03-31T16:56:30.000Z'
 tags: []
 title: How to Use Swift with Xcode A Comprehensive Guide
+authors: [David Li]
 ---
 
 # How to Use Swift with Xcode: A Comprehensive Guide

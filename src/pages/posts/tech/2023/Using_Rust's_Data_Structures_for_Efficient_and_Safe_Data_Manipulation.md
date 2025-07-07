@@ -5,6 +5,7 @@ description: "In this article , we will explore Rust's data structures and how t
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/492664568.png
+authors: [David Li]
 ---
 # Using Rust's Data Structures for Efficient and Safe Data Manipulation
 

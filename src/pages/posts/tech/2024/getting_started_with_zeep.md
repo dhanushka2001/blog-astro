@@ -5,6 +5,7 @@ description: "An introductory guide to interacting with SOAP APIs using Zeep, a 
 tags: ["Zeep", "SOAP APIs", "Python", "Web Services", "XML", "Web Development", "Backend Development", "Programming", "Software Development"]
 layout: "@/templates/BasePost.astro"
 imgSrc: "https://unsplash.com/photos/a-piece-of-soap-sitting-on-top-of-a-black-plate-nEyRQYS2Jp8"
+authors: [David Li]
 ---
 
 # Getting Started with SOAP APIs Using Zeep in Python

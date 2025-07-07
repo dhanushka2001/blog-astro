@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-05-15T13:51:04.000Z'
 tags: []
 title: A Deep Dive into Dapper ORM A High-Performance Micro-ORM for .NET
+authors: [David Li]
 ---
 
 # A Deep Dive into Dapper ORM: A High-Performance Micro-ORM for .NET

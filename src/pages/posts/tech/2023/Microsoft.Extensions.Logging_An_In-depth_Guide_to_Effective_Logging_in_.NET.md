@@ -5,6 +5,7 @@ description: "Logging is a powerful, flexible, and extendable logging framework 
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/4161054296.png
+authors: [David Li]
 ---
 # Microsoft.Extensions.Logging: An In-depth Guide to Effective Logging in .NET
 

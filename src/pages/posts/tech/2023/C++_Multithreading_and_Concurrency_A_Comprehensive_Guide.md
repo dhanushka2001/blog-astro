@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-09-17T19:14:17.000Z'
 tags: []
 title: C++ Multithreading and Concurrency A Comprehensive Guide
+authors: [David Li]
 ---
 
 # C++ Multithreading and Concurrency: A Comprehensive Guide

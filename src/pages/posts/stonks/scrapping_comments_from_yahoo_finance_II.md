@@ -8,6 +8,7 @@ projects: ["conscrap"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-11-11 09.22.04 - spiderweb.png'
 imgAlt: 'Conscrap'
+authors: [David Li]
 ---
 
 ## Summary

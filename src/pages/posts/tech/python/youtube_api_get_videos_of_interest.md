@@ -5,6 +5,7 @@ description: In this post I will show you how to use the youtube api to get vide
 pubDate: Fri, 2 May 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1113292628.png
+authors: [David Li]
 ---
 
 The YouTube API (Application Programming Interface) is a set of tools and services provided by Google that allows developers to interact with YouTube videos, channels, playlists, and other related features programmatically. The API provides a way for developers to create applications that can access and manipulate YouTube content.

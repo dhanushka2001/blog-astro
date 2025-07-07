@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-11-24T12:44:35.000Z'
 tags: []
 title: Using PyPDF2 in Python A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Using PyPDF2 in Python: A Comprehensive Guide

@@ -5,6 +5,7 @@ description: "A comprehensive guide on how to point a subdomain to a Google Comp
 tags: ["Google Compute Engine", "FastAPI", "Apache", "DNS Configuration", "SSL Certificates", "Web Development", "Proxy Configuration"]
 layout: "@/templates/BasePost.astro"
 imgSrc: "https://images.unsplash.com/photos/a-large-statue-of-a-person-in-a-dark-room-Lhzabp9UrSU"
+authors: [David Li]
 ---
 
 ## Introduction to Google Cloud

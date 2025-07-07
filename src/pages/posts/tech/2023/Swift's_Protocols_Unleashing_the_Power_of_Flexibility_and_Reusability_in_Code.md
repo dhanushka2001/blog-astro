@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-05-14T00:11:20.000Z'
 tags: []
 title: Swift's Protocols Unleashing the Power of Flexibility and Reusability in Code
+authors: [David Li]
 ---
 
 # Swift's Protocols: Unleashing the Power of Flexibility and Reusability in Code

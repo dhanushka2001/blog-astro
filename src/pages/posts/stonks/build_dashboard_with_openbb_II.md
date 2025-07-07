@@ -7,6 +7,7 @@ tags: ["openbb", "streamlit", "python", "pandas"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/sample.png'
 imgAlt: 'rbc stock analyzer'
+authors: [David Li]
 ---
 
 In this article, we will be exploring the changes made to the stocks ta app using the git diff provided. The stocks ta app is a web application used for technical analysis of stocks. View the first article at [Streamlining Technical Analysis with OpenBB and Streamlit](./build_dashboard_with_openbb).

@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-10-30T23:17:25.000Z'
 tags: []
 title: Apache Tomcat A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Apache Tomcat: A Comprehensive Guide

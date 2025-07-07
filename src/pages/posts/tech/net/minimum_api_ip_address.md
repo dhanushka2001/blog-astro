@@ -5,6 +5,7 @@ pubDate: Saturday, 5 August 2023 13:00:00 GMT
 tags: ["minimum-api", ".net"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/DALL·E 2023-01-08 14.26.14 - mailbox.png'
+authors: [David Li]
 ---
 
 

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-06-22T06:25:07.000Z'
 tags: []
 title: Using Jupyter Notebook in Python An Interactive Computing Environment
+authors: [David Li]
 ---
 
 # Using Jupyter Notebook in Python: An Interactive Computing Environment

@@ -5,6 +5,7 @@ description: "In this article , we'll explore the potential of WebAssembly for b
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3708253319.png
+authors: [David Li]
 ---
 # Building Cross-Platform Desktop Applications with WebAssembly
 

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-01-17T14:56:26.000Z'
 tags: []
 title: C++ Standard Library Algorithms and Containers
+authors: [David Li]
 ---
 
 # C++ Standard Library: Algorithms and Containers

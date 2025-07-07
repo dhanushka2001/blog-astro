@@ -7,6 +7,7 @@ tags: ["youtube", "nlp", "python", "astro"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-09-05 15.52.34 - Kazusa playing the piano at sunset, digital art.png'
 imgAlt: 'rbc stock analyzer'
+authors: [David Li]
 ---
 
 ## Summary

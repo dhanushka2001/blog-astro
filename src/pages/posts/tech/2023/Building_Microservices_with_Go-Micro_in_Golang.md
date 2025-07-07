@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-06-25T08:00:17.000Z'
 tags: []
 title: Building Microservices with Go-Micro in Golang
+authors: [David Li]
 ---
 
 # Building Microservices with Go-Micro in Golang

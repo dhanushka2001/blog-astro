@@ -5,6 +5,7 @@ description: Implementation of a linear congruential generator in Dart.
 pubDate: Fri, 21 March 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2617761522.png
+authors: [David Li]
 ---
 
 A linear congruential generator (LCG) is a type of pseudorandom number generator that generates a sequence of numbers based on a linear combination of its previous value, a constant multiplier, and a constant increment. The sequence produced by an LCG appears random, but is deterministic and periodic, with a period of at most the modulus value. LCGs are widely used in computer simulations, gaming, cryptography, and other applications that require random numbers.

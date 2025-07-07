@@ -5,6 +5,7 @@ description: In this article, we will explore how to use TerminusDB in Rust, and
 pubDate: Fri, 24 January 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/118660664.png"
+authors: [David Li]
 ---
 
 TerminusDB is a graph database that provides a modern, powerful, and easy-to-use platform for building and deploying applications that require fast and efficient access to large amounts of data. Rust, on the other hand, is a system programming language that provides low-level control over system resources and guarantees memory safety, making it ideal for building high-performance applications that require robustness and stability.

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-06-01T18:40:54.000Z'
 tags: []
 title: Using gRPC in Go A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Using gRPC in Go: A Comprehensive Guide

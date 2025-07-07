@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-10-06T06:00:24.000Z'
 tags: []
 title: Jackson JSON Library An Overview and Usage Guide
+authors: [David Li]
 ---
 
 # Jackson JSON Library: An Overview and Usage Guide

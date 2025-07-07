@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-02-08T13:34:49.000Z'
 tags: []
 title: Getting Started with Python-Levenshtein A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Getting Started with Python-Levenshtein: A Comprehensive Guide

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-05-21T10:03:09.000Z'
 tags: []
 title: The Future of Swift and Its Potential Impact on the Programming World
+authors: [David Li]
 ---
 
 # The Future of Swift and Its Potential Impact on the Programming World

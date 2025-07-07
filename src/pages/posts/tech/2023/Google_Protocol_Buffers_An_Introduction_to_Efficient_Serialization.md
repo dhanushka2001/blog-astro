@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-01-02T13:08:12.000Z'
 tags: []
 title: Google Protocol Buffers An Introduction to Efficient Serialization
+authors: [David Li]
 ---
 
 # Google Protocol Buffers: An Introduction to Efficient Serialization

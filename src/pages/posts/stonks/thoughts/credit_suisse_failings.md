@@ -7,6 +7,7 @@ tags: ["investing"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/sample.png'
 imgAlt: 'rbc stock analyzer'
+authors: [David Li]
 ---
 
 # Credit Suisse Crisis: How a European Bank's Troubles Threaten Global Markets

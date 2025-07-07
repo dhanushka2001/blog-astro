@@ -5,6 +5,7 @@ description: Text-to-speech (TTS) is a technology that converts text into natura
 pubDate: Fri, 15 April 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/3750534419.png"
+authors: [David Li]
 ---
 
 # Tortoise TTS: A Multi-Voice Text-to-Speech System

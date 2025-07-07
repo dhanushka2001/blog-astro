@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-05-24T17:15:41.000Z'
 tags: []
 title: Using Pillow in Python A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Using Pillow in Python: A Comprehensive Guide

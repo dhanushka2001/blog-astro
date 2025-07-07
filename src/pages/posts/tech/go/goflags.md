@@ -5,6 +5,7 @@ description: "This versatile and powerful package is designed to parse command-l
 tags: ["go"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/186810635.png
+authors: [David Li]
 ---
 
 # Using GoFlags in Golang

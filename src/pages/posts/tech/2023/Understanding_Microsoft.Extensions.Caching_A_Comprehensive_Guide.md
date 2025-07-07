@@ -5,6 +5,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-08-16T12:11:06.000Z'
 tags: []
 title: Understanding Microsoft.Extensions.Caching A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Understanding Microsoft.Extensions.Caching: A Comprehensive Guide

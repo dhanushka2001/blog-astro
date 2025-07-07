@@ -5,6 +5,7 @@ description: Explaining the history of csharp and how it is used
 pubDate: Fri, 30 January 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/1666734888.png"
+authors: [David Li]
 ---
 Python is a high-level, interpreted programming language that was first released in 1991 by Guido van Rossum. It was named after the Monty Python comedy group, and its design philosophy emphasizes code readability and ease of use.
 

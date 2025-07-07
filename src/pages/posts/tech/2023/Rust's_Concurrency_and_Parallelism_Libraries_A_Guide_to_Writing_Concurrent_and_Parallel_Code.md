@@ -5,6 +5,7 @@ description: "In this article , we will explore Rust's concurrency and paralleli
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1373682361.png
+authors: [David Li]
 ---
 # Rust's Concurrency and Parallelism Libraries: A Guide to Writing Concurrent and Parallel Code
 

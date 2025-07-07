@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-04-21T20:28:26.000Z'
 tags: []
 title: Apache Commons A Deep Dive into the Essential Java Libraries
+authors: [David Li]
 ---
 
 # Apache Commons: A Deep Dive into the Essential Java Libraries

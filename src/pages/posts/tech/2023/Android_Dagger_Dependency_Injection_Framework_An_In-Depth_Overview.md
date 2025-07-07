@@ -5,6 +5,7 @@ description: "In this article , we will delve into the Dagger framework, coverin
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/4067359065.png
+authors: [David Li]
 ---
 # Android Dagger Dependency Injection Framework: An In-Depth Overview
 

@@ -5,6 +5,7 @@ description: "This article will guide you through the process of installing Rust
 tags: ["rust"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/633020239.png
+authors: [David Li]
 ---
 # Using Rustfmt to Format Rust Code
 

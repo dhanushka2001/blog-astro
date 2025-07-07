@@ -6,6 +6,7 @@ tags: ["next","svg"]
 layout: '@/templates/BasePost.astro'
 pubDate: Saturday, 2 September 2023 13:00:00 GMT
 imgSrc: '/imgs/2023/DALL·E 2023-01-23 21.47.24 - abstract images.png'
+authors: [David Li]
 ---
 
 

@@ -5,6 +5,7 @@ description: "This article will explore the benefits of using `zap` in your Go p
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3582974242.png
+authors: [David Li]
 ---
 # Using `zap` for Efficient Logging in Go
 

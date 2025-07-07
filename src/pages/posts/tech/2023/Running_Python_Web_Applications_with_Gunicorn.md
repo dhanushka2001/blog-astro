@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-08-25T10:07:00.000Z'
 tags: []
 title: Running Python Web Applications with Gunicorn
+authors: [David Li]
 ---
 
 # Running Python Web Applications with Gunicorn

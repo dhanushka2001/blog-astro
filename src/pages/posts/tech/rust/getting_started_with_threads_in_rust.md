@@ -5,6 +5,7 @@ pubDate: Saturday, 26 December 2024 13:00:00 GMT
 tags: ["rust"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/3611036737.png'
+authors: [David Li]
 ---
 
 # Rust's Threads: Building a Program to Calculate Pi Using Multithreading

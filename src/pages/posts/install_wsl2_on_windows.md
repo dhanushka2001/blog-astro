@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: Mon, 11 Jan 2021 13:00:00 GMT
 imgSrc: '/imgs/2022/dall-e/corgiNextToThePyramids.jpeg'
 imgAlt: 'Image post 3'
+authors: [David Li]
 ---
 
 ## Summary

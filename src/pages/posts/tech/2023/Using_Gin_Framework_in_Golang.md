@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-04-12T02:45:18.000Z'
 tags: []
 title: Using Gin Framework in Golang
+authors: [David Li]
 ---
 
 # Using Gin Framework in Golang

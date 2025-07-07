@@ -5,6 +5,7 @@ description: In this post I will show you how to clusters on a map in react nati
 pubDate: Monday, 22 May 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3793215953.png
+authors: [David Li]
 ---
 
 # What supercluster and how does it work? 

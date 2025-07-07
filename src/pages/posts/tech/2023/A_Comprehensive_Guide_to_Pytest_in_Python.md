@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-06-07T12:11:18.000Z'
 tags: []
 title: A Comprehensive Guide to Pytest in Python
+authors: [David Li]
 ---
 
 # A Comprehensive Guide to Pytest in Python

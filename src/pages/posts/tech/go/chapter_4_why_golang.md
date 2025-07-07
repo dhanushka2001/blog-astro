@@ -5,6 +5,7 @@ description: Covering reasons to use golang and why it's a good choice for your 
 pubDate: Fri, 21 October 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3893879687.png
+authors: [David Li]
 ---
 Go is a modern programming language that has a simple syntax, fast compilation, and excellent support for concurrency. In this article, we will discuss functions and packages in Go, two key features of the language that help developers write modular and maintainable code.
 

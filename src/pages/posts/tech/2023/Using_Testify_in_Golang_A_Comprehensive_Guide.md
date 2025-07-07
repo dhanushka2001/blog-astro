@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-04-29T08:21:13.000Z'
 tags: []
 title: Using Testify in Golang A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Using Testify in Golang: A Comprehensive Guide

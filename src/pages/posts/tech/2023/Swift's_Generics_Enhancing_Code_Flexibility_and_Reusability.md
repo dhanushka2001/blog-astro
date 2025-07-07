@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-11-16T13:30:07.000Z'
 tags: []
 title: Swift's Generics Enhancing Code Flexibility and Reusability
+authors: [David Li]
 ---
 
 # Swift's Generics: Enhancing Code Flexibility and Reusability

@@ -5,6 +5,7 @@ pubDate: Saturday, 16 June 2023 13:00:00 GMT
 tags: ["flutter", "pokeapi"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/DALL·E 2022-12-29 12.27.48 - ball cartoon on grass red white like pokeball.png'
+authors: [David Li]
 ---
 
 In order to create a pokedex app, the first thing I did is use figma to get a good design and dhiwise to create boilerplate code.

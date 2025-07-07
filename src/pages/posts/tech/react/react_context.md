@@ -5,6 +5,7 @@ description: Explaining the use of react context to manage state
 pubDate: Fri, 29 November 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1212575964.png
+authors: [David Li]
 ---
 React context is a feature in React that allows for global state management within an application. It enables data to be passed down through the component tree without having to pass props manually at every level. With context, any component in the tree can access and update the state, making it a powerful tool for managing state in large applications.
 

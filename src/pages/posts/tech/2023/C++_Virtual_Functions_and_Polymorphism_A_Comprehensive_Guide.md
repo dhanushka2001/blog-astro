@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-08-04T17:45:10.000Z'
 tags: []
 title: C++ Virtual Functions and Polymorphism A Comprehensive Guide
+authors: [David Li]
 ---
 
 # C++ Virtual Functions and Polymorphism: A Comprehensive Guide

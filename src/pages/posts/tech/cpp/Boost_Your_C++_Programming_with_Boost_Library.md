@@ -5,6 +5,7 @@ description: "In this article, we will introduce you to the Boost library and ex
 tags: ["cpp", "boost"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1931041591.png
+authors: [David Li]
 ---
 # Boost Your C++ Programming with Boost Library
 

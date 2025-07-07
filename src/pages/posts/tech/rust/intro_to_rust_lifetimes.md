@@ -5,6 +5,7 @@ pubDate: Saturday, 24 December 2024 13:00:00 GMT
 tags: ["rust"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-10-01 22.10.49 - transcribing audio to text.png'
+authors: [David Li]
 ---
 
 

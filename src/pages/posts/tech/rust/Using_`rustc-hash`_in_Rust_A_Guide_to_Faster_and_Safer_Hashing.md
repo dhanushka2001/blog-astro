@@ -5,6 +5,7 @@ description: "This article will discuss the benefits of using `rustc-hash` and p
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/186810635.png
+authors: [David Li]
 ---
 # Using `rustc-hash` in Rust: A Guide to Faster and Safer Hashing
 

@@ -5,6 +5,7 @@ description:  Object-Oriented Programming in Go.
 pubDate: Fri, 21 October 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1452718796.png
+authors: [David Li]
 ---
 Object-oriented programming (OOP) is a popular programming paradigm that emphasizes the use of objects, which are instances of classes, to model real-world entities. OOP is widely used in software development because it offers several benefits, such as encapsulation, inheritance, and polymorphism. In this blog post, we'll explore how to implement OOP concepts in Go.
 

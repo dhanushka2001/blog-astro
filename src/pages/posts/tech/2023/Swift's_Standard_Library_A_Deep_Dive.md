@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-07-12T16:20:28.000Z'
 tags: []
 title: Swift's Standard Library A Deep Dive
+authors: [David Li]
 ---
 
 # Swift's Standard Library: A Deep Dive

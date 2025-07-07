@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-03-05T01:45:04.000Z'
 tags: []
 title: Exploring the Deno Permissions Module A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Exploring the Deno Permissions Module: A Comprehensive Guide

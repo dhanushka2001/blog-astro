@@ -5,6 +5,7 @@ pubDate: Saturday, 20 October 2023 13:00:00 GMT
 tags: ["css", "chatgpt"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/DALL·E 2022-12-26 21.10.41 - decentralized network diagram simple bobble heads.png'
+authors: [David Li]
 ---
 
 

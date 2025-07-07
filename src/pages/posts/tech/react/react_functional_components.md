@@ -5,6 +5,7 @@ description: How to make react class components
 pubDate: Fri, 29 November 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3281011769.png
+authors: [David Li]
 ---
 Functional programming is a programming paradigm that treats computation as the evaluation of mathematical functions and avoids changing state and mutable data. In functional programming, functions are first-class citizens and can be assigned to variables, passed as arguments to other functions, and returned as values from functions. The goal of functional programming is to write code that is concise, maintainable, and easy to reason about.
 

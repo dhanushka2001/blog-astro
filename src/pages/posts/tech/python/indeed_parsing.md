@@ -4,6 +4,7 @@ title: Reading indeed posts to scrap job listings (does not work anymore)
 description: Scrapping indeed (2021) to get job listings.
 pubDate: Mon, 25 October 2023
 imgSrc: "/imgs/2023/2378351187.png"
+authors: [David Li]
 ---
 It is important to verify that humans are visiting a website because:
 

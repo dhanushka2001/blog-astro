@@ -7,6 +7,7 @@ tags: ["sec", "python", "secedgar"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-12-10 21.55.07 - magnifying glass on stonks.png'
 imgAlt: 'rbc stock analyzer'
+authors: [David Li]
 ---
 
 View the previous post at https://friendlyuser.github.io/posts/stonks/scrap_from_sec_with_python

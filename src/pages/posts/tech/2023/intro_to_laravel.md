@@ -5,6 +5,7 @@ description: Explaining what laravel is.
 pubDate: Fri, 14 June 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1900267581.png
+authors: [David Li]
 ---
 PHP (Hypertext Preprocessor) is a server-side programming language used for developing dynamic web applications. PHP code is embedded within HTML, allowing developers to create web pages that can interact with databases, handle forms, and perform other dynamic tasks. PHP is open-source and has a large and active community, which has resulted in a wide range of libraries, frameworks, and tools that can be used to streamline web development.
 

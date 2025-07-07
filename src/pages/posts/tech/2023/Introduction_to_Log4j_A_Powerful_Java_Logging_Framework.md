@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-10-17T08:06:29.000Z'
 tags: []
 title: Introduction to Log4j A Powerful Java Logging Framework
+authors: [David Li]
 ---
 
 # Introduction to Log4j: A Powerful Java Logging Framework

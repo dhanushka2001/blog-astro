@@ -5,6 +5,7 @@ description: Comparing differences between chatgpt and edge gpt.
 pubDate: Fri, 14 June 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/other/output_1.png
+authors: [David Li]
 ---
 
 Tracking commodities is important for investing because commodities are essential raw materials used in the production of goods and services, and their prices can have a significant impact on the economy and financial markets. Investors can use commodity price movements to make investment decisions, hedge against inflation, and diversify their portfolios.

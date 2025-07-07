@@ -5,6 +5,7 @@ pubDate: Saturday, 5 October 2022 13:00:00 GMT
 tags: ["whispers", "typescript", "remotion"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-10-09 18.23.20 - microphone.png'
+authors: [David Li]
 ---
 
 

@@ -5,6 +5,7 @@ description: "Explore how to effectively integrate and use Boost in your C++20 p
 tags: ["C++", "Boost", "C++20", "Programming", "Software Development"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2024/leveraging-boost-cpp20.png
+authors: [David Li]
 ---
 
 # Leveraging Boost in C++20 Projects: A Comprehensive Guide for Developers

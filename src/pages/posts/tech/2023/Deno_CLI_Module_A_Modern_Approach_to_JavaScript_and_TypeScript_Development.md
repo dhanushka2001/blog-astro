@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-02-08T15:32:23.000Z'
 tags: []
 title: Deno CLI Module A Modern Approach to JavaScript and TypeScript Development
+authors: [David Li]
 ---
 
 # Deno CLI Module: A Modern Approach to JavaScript and TypeScript Development

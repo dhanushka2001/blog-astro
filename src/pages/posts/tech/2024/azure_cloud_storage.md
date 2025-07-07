@@ -5,6 +5,7 @@ tags: ["tempfile", "File Storage", "Read-Only Environment", "Azure Function Apps
 pubDate: "2024-03-23T19:17:25.000Z"
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/3267094508_short_ruler_in_the_grass.png"
+authors: [David Li]
 ---
 
 # Utilizing `tempfile` for File Storage in Read-Only Environments: A Case Study with Azure Function Apps

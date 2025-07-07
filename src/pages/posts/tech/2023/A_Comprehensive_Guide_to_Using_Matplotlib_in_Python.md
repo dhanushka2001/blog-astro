@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-04-03T11:06:50.000Z'
 tags: []
 title: A Comprehensive Guide to Using Matplotlib in Python
+authors: [David Li]
 ---
 
 # A Comprehensive Guide to Using Matplotlib in Python

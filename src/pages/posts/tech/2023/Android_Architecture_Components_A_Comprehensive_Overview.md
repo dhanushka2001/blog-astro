@@ -5,6 +5,7 @@ description: "In this article , we will delve into the various components of AAC
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2223533571.png
+authors: [David Li]
 ---
 # Android Architecture Components: A Comprehensive Overview
 

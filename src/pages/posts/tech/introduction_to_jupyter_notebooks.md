@@ -5,6 +5,7 @@ description: Explaining jupyter notebooks and how to use them
 pubDate: Fri, 7 Feburary 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/45c8f451-5ee8-4f76-8769-691be0cfc6c2.png"
+authors: [David Li]
 ---
 
 

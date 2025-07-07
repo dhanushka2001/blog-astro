@@ -5,6 +5,7 @@ description: In this post I will show you how to use jql to find jira issues.
 pubDate: Fri, 14 July 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2466346852.png
+authors: [David Li]
 ---
 JIRA is a project management tool that helps software development teams plan, track, and release software. It is developed by Atlassian and is widely used by software development teams to manage tasks, bugs, and other issues related to software development. JIRA offers a wide range of features and integrations, making it a versatile tool for software project management.
 

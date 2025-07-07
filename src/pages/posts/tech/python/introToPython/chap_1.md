@@ -5,6 +5,7 @@ description: How to calculate your income tax using IPytohn
 pubDate: Fri, 14 June 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/4039349639.png
+authors: [David Li]
 ---
 Introduction to Python: Installing Python and Setting up the Development Environment
 

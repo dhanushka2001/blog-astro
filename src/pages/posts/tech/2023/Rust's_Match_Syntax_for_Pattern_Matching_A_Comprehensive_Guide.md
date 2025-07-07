@@ -5,6 +5,7 @@ description: "In this article , we'll dive deep into Rust's `match` syntax and e
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3170249337.png
+authors: [David Li]
 ---
 # Rust's Match Syntax for Pattern Matching: A Comprehensive Guide
 

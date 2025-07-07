@@ -5,6 +5,7 @@ description: " In this article, we will explore the various features of SQLx and
 tags: ["go"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3072838870.png
+authors: [David Li]
 ---
 # Using SQLx in Golang: A Comprehensive Guide
 

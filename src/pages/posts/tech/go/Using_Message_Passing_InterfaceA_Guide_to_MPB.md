@@ -5,6 +5,7 @@ description: "We will introduce MPB a library that enables the use of the Messag
 tags: ["go"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/186810635.png
+authors: [David Li]
 ---
 
 

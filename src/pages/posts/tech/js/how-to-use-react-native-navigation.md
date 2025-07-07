@@ -6,6 +6,7 @@ tags: ["dotnet","git"]
 layout: '@/templates/BasePost.astro'
 pubDate: Saturday, 14 June 2023 13:00:00 GMT
 imgSrc: '/imgs/2023/bear_book_2.png'
+authors: [David Li]
 ---
 
 # Understanding the Navigation API

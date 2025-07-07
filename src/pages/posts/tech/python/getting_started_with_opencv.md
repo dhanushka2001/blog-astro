@@ -5,6 +5,7 @@ description: Computer vision is the field of artificial intelligence that focuse
 pubDate: Fri, 10 Feb 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/3750534419.png"
+authors: [David Li]
 ---
 
 Getting Started with Computer Vision

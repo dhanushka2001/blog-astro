@@ -5,6 +5,7 @@ description: By using the cad tickers library we can easily get links to docs fr
 pubDate: Fri, 3 January 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/3702590653.png"
+authors: [David Li]
 ---
 CSE exchange refers to the Canadian Securities Exchange, which is a stock exchange located in Canada. The CSE is a fully electronic exchange that provides a marketplace for the trading of securities listed on its platform. It offers a range of listing options, including equity, debt, and structured products, and operates with a focus on serving emerging and growth companies. The exchange aims to provide an efficient, transparent, and accessible marketplace for issuers and investors, and is regulated by the Ontario Securities Commission.
 

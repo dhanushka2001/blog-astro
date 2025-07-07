@@ -5,6 +5,7 @@ description: "A technical article about Rust"
 tags: ["go"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1091373203.png
+authors: [David Li]
 ---
 # Simplify Your Golang Build Process with 1build
 

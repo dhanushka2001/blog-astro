@@ -7,6 +7,7 @@ pubDate: Wed, 15 Nov 2022 13:00:00 GMT
 tags: ["dev ops", "react-native", "bintray"]
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-11-25 19.14.06 - A plush toy pikachu sitting next to a wall.png'
 imgAlt: 'Image post 6'
+authors: [David Li]
 ---
 
 The first article at [bintray removed](https://friendlyuser.github.io/posts/bintray_removed_approaches/) is a good starting point for migrating from jcenter to mavenCentral.

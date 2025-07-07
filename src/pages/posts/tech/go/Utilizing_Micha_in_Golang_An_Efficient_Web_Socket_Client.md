@@ -5,6 +5,7 @@ description: "In this article, we will explore the steps to implement Micha in G
 tags: ["go"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/818001379.png
+authors: [David Li]
 ---
 # Utilizing Micha in Golang: An Efficient Web Socket Client
 

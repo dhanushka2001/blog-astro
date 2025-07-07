@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-06-02T15:09:55.000Z'
 tags: []
 title: Introduction to Scikit-learn A Powerful Python Library for Machine Learning
+authors: [David Li]
 ---
 
 # Introduction to Scikit-learn: A Powerful Python Library for Machine Learning

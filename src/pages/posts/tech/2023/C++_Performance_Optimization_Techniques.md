@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-12-19T10:46:03.000Z'
 tags: []
 title: C++ Performance Optimization Techniques
+authors: [David Li]
 ---
 
 # C++ Performance Optimization Techniques

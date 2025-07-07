@@ -5,6 +5,7 @@ description: "In this article , we will discuss how to use these types to write 
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3431403716.png
+authors: [David Li]
 ---
 # Using Rust's Option and Result Types for Safer and More Expressive Code
 

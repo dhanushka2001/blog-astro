@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-08-29T23:14:52.000Z'
 tags: []
 title: Demystifying C++ Lambda Expressions
+authors: [David Li]
 ---
 
 # Demystifying C++ Lambda Expressions

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-12-22T09:17:57.000Z'
 tags: []
 title: Functional Programming in Swift
+authors: [David Li]
 ---
 
 # Functional Programming in Swift

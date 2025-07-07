@@ -5,6 +5,7 @@ description: "In this article , we will explore Rust's `unsafe` features and how
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2223533571.png
+authors: [David Li]
 ---
 # Embracing Unsafe Features in Rust for Low-Level Code
 

@@ -5,6 +5,7 @@ description: How to use UI frameworks with react
 pubDate: Fri, 29 November 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2955132952.png
+authors: [David Li]
 ---
 When building complex applications with React, one of the most common tasks you'll encounter is working with forms. In React, form inputs are usually implemented as controlled components, which means that their value is controlled by React, rather than the DOM. This approach allows for a more declarative programming style and enables better control over the behavior of form elements.
 

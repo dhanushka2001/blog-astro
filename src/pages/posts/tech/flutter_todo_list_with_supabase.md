@@ -6,6 +6,7 @@ tags: ["flutter", "supabase"]
 layout: '@/templates/BasePost.astro'
 pubDate: Sun, 7 Feburary 2023
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-12-12 19.51.13 - fridge with blank paper on it.png'
+authors: [David Li]
 ---
 
 

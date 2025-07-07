@@ -5,6 +5,7 @@ description: "In this article, we'll discuss the pros and cons of using Swift fo
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/244959930.png
+authors: [David Li]
 ---
 # Pros and Cons of Using Swift for Mobile App Development
 

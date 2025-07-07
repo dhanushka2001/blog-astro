@@ -5,6 +5,7 @@ description: For chatgpt usage, it is easier to view the prompts in a markdown v
 pubDate: Fri, 7 July 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/186810635.png
+authors: [David Li]
 ---
 
 Web scraping is the process of extracting data from websites. It is a powerful tool for data scientists and analysts who need to collect data from various sources. In this article, we will walk through the process of building a web scraper in Rust using popular libraries like `reqwest`, `select`, and `scraper`.

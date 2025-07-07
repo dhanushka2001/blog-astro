@@ -6,6 +6,7 @@ tags: ["linkedin"]
 layout: '@/templates/BasePost.astro'
 pubDate: Sunday, 13 Feburary 2023 13:00:00 GMT
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-12-12 19.18.38 - funny story.png'
+authors: [David Li]
 ---
 
 How to Prepare for Technical Interviews 

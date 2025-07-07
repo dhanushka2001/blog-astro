@@ -5,6 +5,7 @@ description: Explaining how to use yield functions in python.
 pubDate: Fri, 21 September 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1895495590.png
+authors: [David Li]
 ---
 
 In Python, you can use the yield function to create generators.

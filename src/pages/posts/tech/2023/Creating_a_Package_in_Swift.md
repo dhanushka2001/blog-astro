@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-01-15T13:22:30.000Z'
 tags: []
 title: Creating a Package in Swift
+authors: [David Li]
 ---
 
 # Creating a Package in Swift

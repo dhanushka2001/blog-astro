@@ -5,6 +5,7 @@ description: "In this article , we will explore how WebAssembly can be used to s
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2734189697_A_dream_of_a_distant_galaxy__concept_art__matte_painting__HQ__4k.png
+authors: [David Li]
 ---
 # Speeding Up JavaScript Applications with WebAssembly
 

@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-08-26T13:34:45.000Z'
 tags: []
 title: How to Use the Swift Package Manager
+authors: [David Li]
 ---
 
 # How to Use the Swift Package Manager

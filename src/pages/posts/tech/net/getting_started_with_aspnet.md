@@ -6,6 +6,7 @@ tags: ["aspnet", "csharp"]
 layout: '@/templates/BasePost.astro'
 pubDate: Friday, 14 December 2024
 imgSrc: '/imgs/2023/590655340.png'
+authors: [David Li]
 ---
 
 

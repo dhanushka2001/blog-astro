@@ -5,6 +5,7 @@ description: For my introductory book on python, data science.
 pubDate: Fri, 30 September 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1651429035.png
+authors: [David Li]
 ---
 Introduction to Data Science
 

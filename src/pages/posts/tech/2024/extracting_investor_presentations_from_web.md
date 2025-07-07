@@ -5,6 +5,7 @@ tags: ["Investor Presentation", "Audio Download", "Conference Hosting Software",
 pubDate: "2024-03-19T19:17:25.000Z"
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/14447351.png"
+authors: [David Li]
 ---
 
 # How to Download Investor Presentation Audio Files

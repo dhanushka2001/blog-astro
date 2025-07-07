@@ -5,6 +5,7 @@ description: "In this article, we will explore how to use autopilot in Deno, foc
 tags: ["deno"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2896017845.png
+authors: [David Li]
 ---
 # Leveraging Autopilot in Deno: A Step-by-Step Guide
 

@@ -5,6 +5,7 @@ description: Getting started with latex
 pubDate: Fri, 14 December 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2291827528.png
+authors: [David Li]
 ---
 # Introduction to LaTeX 
  

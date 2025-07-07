@@ -5,6 +5,7 @@ description: "This article will explore the different aspects of closures in Swi
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3613662819.png
+authors: [David Li]
 ---
 # Understanding Swift's Closures: A Comprehensive Guide
 

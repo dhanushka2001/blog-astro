@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-05-28T04:50:15.000Z'
 tags: []
 title: Using graphql-go in Golang A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Using graphql-go in Golang: A Comprehensive Guide

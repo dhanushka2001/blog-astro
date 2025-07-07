@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-11-04T21:22:19.000Z'
 tags: []
 title: Apache Kafka An Introduction to Distributed Streaming
+authors: [David Li]
 ---
 
 # Apache Kafka: An Introduction to Distributed Streaming

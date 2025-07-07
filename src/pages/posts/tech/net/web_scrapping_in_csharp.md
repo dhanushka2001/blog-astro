@@ -5,6 +5,7 @@ description: Introduction to scrapping with dotnet.
 pubDate: Tues, 21 November 2023
 layout: "@/templates/BasePost.astro"
 imgSrc: '/imgs/2023/4067359065.png'
+authors: [David Li]
 ---
 
 Web scraping is a technique used to extract data from websites. It can be done manually by a user or automatically by a program. In this post, we'll explore how to perform web scraping using C#.

@@ -5,6 +5,7 @@ description: Options to implement search on your website
 pubDate: Fri, 15 December 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/481242631.png
+authors: [David Li]
 ---
 
 # Algolia Search

@@ -5,6 +5,7 @@ description: "In this article, we'll explore how you can use Astrodon to simplif
 tags: ["deno"]
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2892583015.png
+authors: [David Li]
 ---
 # Using Astrodon in Deno: A Comprehensive Guide
 

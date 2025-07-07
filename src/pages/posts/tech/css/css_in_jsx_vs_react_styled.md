@@ -5,6 +5,7 @@ description: Comparing css in js to plain css and styled components
 pubDate: Fri, 28 March 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1098832555.png
+authors: [David Li]
 ---
 JSX (JavaScript XML) is an extension to JavaScript syntax that allows developers to write HTML-like code in JavaScript. It is commonly used in React to define the structure and layout of user interfaces. When JSX is compiled, it is transformed into regular JavaScript function calls that create React elements.
 

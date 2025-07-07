@@ -5,6 +5,7 @@ description:  Rust is a systems programming language that is designed for speed,
 pubDate: Fri, 21 March 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/267929881.png"
+authors: [David Li]
 ---
 
 

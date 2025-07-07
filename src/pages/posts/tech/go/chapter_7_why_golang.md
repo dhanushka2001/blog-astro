@@ -5,6 +5,7 @@ description: Concurrency in Go.
 pubDate: Fri, 21 October 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/241285989.png
+authors: [David Li]
 ---
 Concurrency is a powerful feature of Go programming language. With its simple syntax and efficient design, Go provides an easy-to-use and high-performance environment for building concurrent programs. In this post, we'll explore the basics of concurrency in Go and learn how to write concurrent programs using goroutines and channels.
 

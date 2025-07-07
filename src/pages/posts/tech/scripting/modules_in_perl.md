@@ -6,6 +6,7 @@ tags: ["perl","git"]
 layout: '@/templates/BasePost.astro'
 pubDate: Wednesday, 23 March 2022 13:00:00 GMT
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-12-17 09.09.41 - rainy day with puddle containing a open book in the middle facing the sky.png'
+authors: [David Li]
 ---
 
 

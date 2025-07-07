@@ -5,6 +5,7 @@ pubDate: Saturday, 26 December 2024 13:00:00 GMT
 tags: ["rust"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/117117315.png'
+authors: [David Li]
 ---
 
 Rust's collections provide a powerful set of data structures for working with complex data in Rust. In this article, we will build a program that uses Rust's collections, specifically HashMap and HashSet, to perform operations such as counting the frequency of words in a text file.

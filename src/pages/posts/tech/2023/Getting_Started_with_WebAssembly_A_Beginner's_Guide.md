@@ -5,6 +5,7 @@ description: "In this article , we'll cover the basics of WebAssembly and walk y
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/945555918.png
+authors: [David Li]
 ---
 # Getting Started with WebAssembly: A Beginner's Guide
 

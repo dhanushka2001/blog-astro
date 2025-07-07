@@ -5,6 +5,7 @@ description: "In this article , we will discuss the core concepts of RxJava, its
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1836890630.png
+authors: [David Li]
 ---
 # An Introduction to the Android RxJava Reactive Extensions Library
 

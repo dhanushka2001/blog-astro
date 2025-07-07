@@ -5,6 +5,7 @@ description: Using qt in python, we can create a qt app to modify/save yaml file
 pubDate: Fri, 21 July 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/2890612218.png
+authors: [David Li]
 ---
 
 Qt is a cross-platform application development framework that is widely used for developing desktop, mobile, and embedded applications. It provides a comprehensive set of libraries and tools for building graphical user interfaces (GUIs), network and database connectivity, and other essential functionalities for application development. Qt is written in C++, but it also has bindings for other programming languages, such as Python and Java. It is developed by The Qt Company and was first released in 1995.

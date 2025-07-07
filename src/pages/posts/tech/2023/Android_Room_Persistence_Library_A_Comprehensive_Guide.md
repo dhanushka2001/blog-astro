@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-04-23T06:31:46.000Z'
 tags: []
 title: Android Room Persistence Library A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Android Room Persistence Library: A Comprehensive Guide

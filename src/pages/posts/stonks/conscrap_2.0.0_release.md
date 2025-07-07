@@ -8,6 +8,7 @@ projects: ["conscrap"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/conscrap200.png'
 imgAlt: 'Conscrap'
+authors: [David Li]
 ---
 
 ## Shadow Root

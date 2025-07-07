@@ -7,6 +7,7 @@ projects: ["cad_tickers"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/260870876.png'
 imgAlt: 'Conscrap'
+authors: [David Li]
 ---
 
 # Getting Started with Cad Tickers and Python

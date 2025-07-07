@@ -7,6 +7,7 @@ tags: ["sec", "python", "secedgar"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2022/dall-e/DALL·E 2022-12-10 21.55.07 - magnifying glass on stonks.png'
 imgAlt: 'rbc stock analyzer'
+authors: [David Li]
 ---
 
 The Securities and Exchange Commission (SEC) is a U.S. government agency that is responsible for regulating the securities industry, including the stock and bond markets. It was created in 1934 in response to the stock market crash of 1929 and the subsequent Great Depression. The SEC's main functions are to protect investors, maintain fair and orderly functioning of the markets, and facilitate capital formation. It does this by enforcing federal securities laws, regulating the securities industry, and providing transparency and disclosure to the markets. The SEC also oversees the registration and reporting of public companies, mutual funds, and other investment products, and it reviews and approves new financial products and trading strategies.

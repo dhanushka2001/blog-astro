@@ -5,6 +5,7 @@ description: "This article will provide an overview of the MVC framework, discus
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/4161054396.png
+authors: [David Li]
 ---
 # Microsoft.AspNetCore.Mvc: An Overview
 

@@ -5,6 +5,7 @@ description: Covers the basics of typesetting mathematical equations in LaTeX, i
 pubDate: Fri, 14 December 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1710982917.png
+authors: [David Li]
 ---
 # Typesetting Mathematical Equations with LaTeX 
  

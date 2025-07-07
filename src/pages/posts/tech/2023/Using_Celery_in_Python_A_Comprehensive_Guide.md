@@ -7,6 +7,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-10-24T00:20:26.000Z'
 tags: []
 title: Using Celery in Python A Comprehensive Guide
+authors: [David Li]
 ---
 
 # Using Celery in Python: A Comprehensive Guide

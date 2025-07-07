@@ -5,6 +5,7 @@ description: "This article will guide you through the process of creating a CLI 
 tags: []
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/3558128873.png
+authors: [David Li]
 ---
 # Using Cobra in Golang: A Comprehensive Guide
 

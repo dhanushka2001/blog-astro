@@ -5,6 +5,7 @@ description: High-quality images make a site visually appealing, but they can al
 pubDate: Fri, 14 June 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/4252050732.png
+authors: [David Li]
 ---
 
 # How to Optimize Image Loading for a Website

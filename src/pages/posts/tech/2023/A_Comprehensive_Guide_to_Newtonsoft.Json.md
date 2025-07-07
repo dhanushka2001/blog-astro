@@ -8,6 +8,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2025-01-26T23:24:40.000Z'
 tags: []
 title: A Comprehensive Guide to Newtonsoft.Json
+authors: [David Li]
 ---
 
 # A Comprehensive Guide to Newtonsoft.Json

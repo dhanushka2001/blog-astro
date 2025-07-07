@@ -5,6 +5,7 @@ description: "Explore the benefits of on-device AI for privacy-first application
 tags: ["AI", "On-Device AI", "Large Language Models", "Privacy", "nlux", "Google Gemini Nano", "Web Development", "Machine Learning", "Data Security", "Local AI"]
 layout: "@/templates/BasePost.astro"
 imgSrc: "https://images.unsplash.com/photo-1525338078858-d762b5e32f2c"
+authors: [David Li]
 ---
 
 ## The Importance of Large Language Models and Privacy with Local AI (On-Device)

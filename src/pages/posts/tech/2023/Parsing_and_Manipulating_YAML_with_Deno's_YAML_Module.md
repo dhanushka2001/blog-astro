@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2023-07-24T22:28:00.000Z'
 tags: []
 title: Parsing and Manipulating YAML with Deno's YAML Module
+authors: [David Li]
 ---
 
 # Parsing and Manipulating YAML with Deno's YAML Module

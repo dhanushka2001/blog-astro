@@ -5,6 +5,7 @@ description: A simple demonstrating how to use ffmpeg and ytp-dl to generate aud
 pubDate: Fri, 29 November 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/1693067648.png
+authors: [David Li]
 ---
 Training data is crucial in machine learning as it is used to train models to make accurate predictions on new, unseen data. The quality and quantity of the training data directly affect the performance of the machine learning model.
 

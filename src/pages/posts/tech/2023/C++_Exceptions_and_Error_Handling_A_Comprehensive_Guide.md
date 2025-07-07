@@ -8,6 +8,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-01-13T03:27:04.000Z'
 tags: []
 title: C++ Exceptions and Error Handling A Comprehensive Guide
+authors: [David Li]
 ---
 
 # C++ Exceptions and Error Handling: A Comprehensive Guide

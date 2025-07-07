@@ -5,6 +5,7 @@ description: Covering reasons to use golang and why it's a good choice for your 
 pubDate: Fri, 14 October 2024
 layout: "@/templates/BasePost.astro"
 imgSrc: /imgs/2023/4225416985.png
+authors: [David Li]
 ---
 Go, also known as Golang, is an open-source programming language developed by Google in 2007. It is a statically typed language with syntax similar to C and C++ but with added features and improvements.
 

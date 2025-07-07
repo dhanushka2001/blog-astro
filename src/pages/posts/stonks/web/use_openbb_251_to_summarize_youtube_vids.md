@@ -5,6 +5,7 @@ description: YouTube is home to millions of videos covering a vast range of topi
 pubDate: Sunday, 12 March 2023
 imgSrc: /imgs/2023/3870845711.png
 layout: '@/templates/BasePost.astro'
+authors: [David Li]
 ---
 
 Video summarization is important because it can save time and improve the learning experience for users who rely on videos as a source of information. Video summarization is the process of extracting key information from a lengthy video and presenting it in a condensed form. This is particularly useful when a user is looking for specific information in a video but doesn't have the time or patience to watch the entire video.

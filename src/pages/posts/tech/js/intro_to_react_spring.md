@@ -5,6 +5,7 @@ pubDate: Saturday, 7 November 2024 13:00:00 GMT
 tags: ["react", "reactspring"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/powell_ANGRY.png'
+authors: [David Li]
 ---
 React-spring is a popular animation library for React applications. It allows developers to create smooth and natural animations using physics-based models. The library provides a wide range of animation options and can be used to animate various elements such as text, images, and even entire components.
 

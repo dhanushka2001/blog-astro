@@ -6,6 +6,7 @@ tags: ["typescript", "github actions"]
 layout: '@/templates/BasePost.astro'
 pubDate: Wednesday, 21 July 2023 13:00:00 GMT
 imgSrc: '/imgs/2023/DALL·E 2023-01-07 13.46.29 - banana spaceship.png'
+authors: [David Li]
 ---
 
 In this article we will use jsonip and https://iplist.cc in order to gather data the requester's ip address

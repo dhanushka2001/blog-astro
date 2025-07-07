@@ -6,6 +6,7 @@ layout: '@/templates/BasePost.astro'
 pubDate: '2024-01-20T00:38:00.000Z'
 tags: []
 title: GORM An Object-Relational Mapping Library for Go
+authors: [David Li]
 ---
 
 # GORM: An Object-Relational Mapping Library for Go

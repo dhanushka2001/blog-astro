@@ -5,6 +5,7 @@ description: "Learn how to use Clover API to tokenize credit card information, c
 tags: ["Clover API", "Payment Integration", "Recurring Payments", "Web Development"]
 layout: "@/templates/BasePost.astro"
 imgSrc: "/imgs/2023/clover_api.png"
+authors: [David Li]
 ---
 
 
