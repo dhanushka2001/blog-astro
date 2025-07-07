@@ -6,7 +6,7 @@ In development
 
 ## 🚀 Live Site
 
-The blog is built from **this** repository and deployed to **GitHub Pages** via the [`dhanushka2001/dhanushka2001.github.io`](https://github.com/dhanushka2001/dhanushka2001.github.io) repository @ [`dhanushka2001.github.io`](https://dhanushka2001.github.io)
+The blog is built from **this** repository and deployed to **GitHub Pages** @ [`dhanushka2001.github.io`](https://dhanushka2001.github.io) via the [`dhanushka2001/dhanushka2001.github.io`](https://github.com/dhanushka2001/dhanushka2001.github.io) repository
 
 ## Inspirations:
 
