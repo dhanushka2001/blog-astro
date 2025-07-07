@@ -1,5 +1,7 @@
 # Personal blog
 
+![Deploy](https://github.com/dhanushka2001/blog-astro/actions/workflows/deploy.yml/badge.svg?label=Deploy)
+
 In development
 
 ## Inspirations:
