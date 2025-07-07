@@ -2,7 +2,7 @@ import type { IFrontmatter } from 'astro-boilerplate-components';
 import { ColorTags, Section, Tags } from 'astro-boilerplate-components';
 import type { ReactNode } from 'react';
 
-import { AppConfig } from '@/utils/AppConfig';
+import { authors as AuthorMap } from '@/utils/authors';
 
 export interface CustomIFrontMatter extends IFrontmatter {
   tags: string[];
@@ -17,10 +17,62 @@ const BlogPost = (props: IBlogPostProps) => (
   <Section key={props.frontmatter.title}>
     <div>
       <h1 className="text-center text-3xl font-bold">
-        {props?.frontmatter.title}
+        {props.frontmatter.title}
       </h1>
-      <div className="mt-2 text-center text-sm text-gray-400">
-        By {AppConfig?.author} on {props?.frontmatter?.pubDate}
+      <div className="text-center text-sm text-gray-400">
+        <div className="mt-1">
+          Published:{' '}
+          {new Date(props.frontmatter.pubDate).toLocaleDateString(undefined, {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+          })}
+          {props.frontmatter.updateDate && (
+            <>
+              {' '}
+              · Updated:{' '}
+              {new Date(props.frontmatter.updateDate).toLocaleDateString(
+                undefined,
+                {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                }
+              )}
+            </>
+          )}
+        </div>
+        <div className="mt-2 flex flex-wrap items-center justify-center gap-4">
+          {props.frontmatter.authors?.map((name, idx) => {
+            const author = AuthorMap[name] || {
+              name,
+              avatar: '/assets/images/avatars/default.jpg',
+            };
+
+            return (
+              <div key={idx} className="flex items-center space-x-2">
+                <img
+                  src={author.avatar}
+                  alt={author.name}
+                  className="h-6 w-6 rounded-full object-cover"
+                  loading="lazy"
+                />
+                {author.url ? (
+                  <a
+                    href={author.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    {author.name}
+                  </a>
+                ) : (
+                  <span>{author.name}</span>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
       <div className="flex place-content-center pt-2">
         {props?.frontmatter?.tags?.map((tag) => {
@@ -70,7 +122,7 @@ const BlogPost = (props: IBlogPostProps) => (
         })}
       </div>
       <div className="mx-auto mt-5 max-w-prose">
-        <div className="aspect-w-3 aspect-h-2">
+        <div className="aspect-h-2 aspect-w-3">
           <img
             className="h-full w-full rounded-lg object-cover object-center"
             src={props?.frontmatter.imgSrc}

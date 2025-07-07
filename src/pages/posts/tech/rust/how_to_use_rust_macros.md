@@ -2,9 +2,11 @@
 title: How to use Rust's macros
 description: In this article, we will explore Rust's macros and build a program that demonstrates their usage.
 pubDate: Saturday, 27 December 2024 13:00:00 GMT
+updateDate: 2024-12-28
 tags: ["rust", "ffi"]
 layout: '@/templates/BasePost.astro'
 imgSrc: '/imgs/2023/117117315.png'
+authors: [David Li, Dhanushka Jayagoda]
 ---
 
 
