@@ -4,6 +4,10 @@
 
 In development
 
+## 🚀 Live Site
+
+This blog is deployed to **GitHub Pages** via [`dhanushka2001.github.io`](https://dhanushka2001.github.io/)
+
 ## Inspirations:
 
 - **David Li's blog ([Website](https://friendlyuser.github.io/) | [GitHub](https://github.com/FriendlyUser/astro-tech-blog)) (Tailwind Astro) (FORKED)**
