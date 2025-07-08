@@ -1,3 +1,4 @@
+import Giscus from '@giscus/react';
 import type { IFrontmatter } from 'astro-boilerplate-components';
 import { ColorTags, Section, Tags } from 'astro-boilerplate-components';
 import type { ReactNode } from 'react';
@@ -131,12 +132,26 @@ const BlogPost = (props: IBlogPostProps) => (
           />
         </div>
 
-        <div className="prose prose-invert mt-8 prose-img:rounded-lg">
+        <div className="prose prose-invert mt-6 prose-img:rounded-lg">
           <content>{props.children}</content>
         </div>
+        <Giscus
+          id="comments"
+          repo="dhanushka2001/blog-astro"
+          repoId="R_kgDOPH5Kxw"
+          category="General"
+          categoryId="DIC_kwDOPH5Kx84Cso0r"
+          mapping="pathname"
+          reactionsEnabled="1"
+          emitMetadata="0"
+          inputPosition="bottom"
+          theme="preferred_color_scheme"
+          lang="en"
+          loading="lazy"
+        />
       </div>
     </div>
   </Section>
 );
 
-export { BlogPost };
+export default BlogPost;

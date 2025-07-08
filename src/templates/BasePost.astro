@@ -2,7 +2,7 @@
 import {Tags } from "astro-boilerplate-components";
 
 import type { CustomIFrontMatter } from '@/partials/BlogPost';
-import { BlogPost } from '@/partials/BlogPost';
+import BlogPost from '@/partials/BlogPost.tsx';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 
@@ -53,7 +53,7 @@ const {projects = []} = content || {}
 ---
 
 <Base head={{ title, description: content.description }}>
-  <BlogPost frontmatter={content}>
+  <BlogPost client:load frontmatter={content}>
     <slot />
     {
       projects?.length > 0 && (
