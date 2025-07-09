@@ -141,15 +141,15 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
 
 <details><summary>Using grep and find</summary>
 
-  * For many situations, I wanted to find which files contained a specific word/string. The perfect tool for this is the Unix command-line tool [``grep``](https://en.wikipedia.org/wiki/Grep). There's much more you can do with ``grep`` which you can in this [article](https://www.digitalocean.com/community/tutorials/grep-command-in-linux-unix), but the main command I used was:
+  * For many situations, I wanted to find which files contained a specific word/string. The perfect tool for this is the Unix command-line tool [``grep``](https://en.wikipedia.org/wiki/Grep). There's much more you can do with ``grep`` which you can find in this [article](https://www.digitalocean.com/community/tutorials/grep-command-in-linux-unix), but the command I used was:
 
     ```zsh
     grep -r "<string-name>" *
     ```
 
-    which searches for a string recursively in all directories.
+    which searches for a string recursively in all files in all subdirectories of the current directory.
 
-  * If instead you want to find all files with a filename that contains a certain word/string, then you need to use the Unix command-line tool [``find``](https://en.wikipedia.org/wiki/Find_(Unix)) instead of ``grep``. The command I used is:
+  * If instead you want to find all files with a filename that contains a certain word/string, then you need to use the Unix command-line tool [``find``](https://en.wikipedia.org/wiki/Find_(Unix)) instead of ``grep``. The command I used was:
 
     ```zsh
     find -name '*<string-name>*'
