@@ -27,7 +27,7 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
   
   ![image](https://github.com/user-attachments/assets/55b2f6a2-19f9-4fcb-96b0-1a694d5878d4)
 
-* I wanted to display a small circular avatar next to the author's name, and allow for multiple authors. I also wanted to put the publication date on a separate line, and on the same line an updated date if the blog was updated later.
+* I wanted to display a small circular avatar next to the author's name, and allow for multiple authors. I also wanted to put the publication date on a separate line, as well as an updated date if the blog was updated later.
 
   To support multiple authors, I created a ``src/utils/authors.ts`` file:
 
@@ -137,4 +137,24 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
 
   To be added
 
+</details>
+
+<details><summary>Using grep and find</summary>
+
+  * For many situations, I wanted to find which files contained a specific word/string. The perfect tool for this is the Unix command-line tool [``grep``](https://en.wikipedia.org/wiki/Grep). There's much more you can do with ``grep`` which you can in this [article](https://www.digitalocean.com/community/tutorials/grep-command-in-linux-unix), but the main command I used was:
+
+    ```zsh
+    grep -r "<string-name>" *
+    ```
+
+    which searches for a string recursively in all directories.
+
+  * If instead you want to find all files with a filename that contains a certain word/string, then you need to use the Unix command-line tool [``find``](https://en.wikipedia.org/wiki/Find_(Unix)) instead of ``grep``. The command I used is:
+
+    ```zsh
+    find -name '*<string-name>*'
+    ```
+
+    which I found from [this](https://stackoverflow.com/a/40612754) Stack Overflow answer.
+  
 </details>
