@@ -129,13 +129,127 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
 
 <details><summary>Adding David Li as author to all .md blogs using a Python script</summary>
 
-  To be added
+  * The frontmatter for David Li's ``.md`` blog files did not list the author; it just used the author listed in ``/src/utils/AppConfig.ts`` as a single global author for all blogs. To change this and give each blog its own unique author(s), I needed to add an author category to the frontmatter of all the ``.md`` blog files. As David Li wrote all of the blogs, this just meant adding:
+
+    ```md
+    authors: [David Li]
+    ```
+
+    to the frontmatter of every ``.md`` file. To do this, I used this Python script:
+
+    ```python
+    import os
+    
+    def update_frontmatter(filepath):
+        with open(filepath, 'r', encoding='utf-8') as file:
+            lines = file.readlines()
+    
+        if not lines or lines[0].strip() != '---':
+            return  # No frontmatter
+    
+        # Find where frontmatter ends
+        for i in range(1, len(lines)):
+            if lines[i].strip() == '---':
+                end_index = i
+                break
+        else:
+            return  # No closing '---'
+    
+        # Check if authors already exists
+        frontmatter_lines = lines[:end_index]
+        if any('authors:' in line for line in frontmatter_lines):
+            return  # Already has authors
+    
+        # Insert authors before closing '---'
+        frontmatter_lines.append("authors: [David Li]\n")
+        new_lines = frontmatter_lines + lines[end_index:]
+        
+        with open(filepath, 'w', encoding='utf-8') as file:
+            file.writelines(new_lines)
+    
+    def walk_and_update(directory):
+        for root, _, files in os.walk(directory):
+            for filename in files:
+                if filename.endswith('.md'):
+                    filepath = os.path.join(root, filename)
+                    update_frontmatter(filepath)
+        print("Done.")
+    
+    # Replace this with the path to your blog folder
+    walk_and_update("../src/pages/posts")
+    ```
+
+    which recursively goes through every ``.md`` file in all subdirectories of ``/src/pages/posts/`` and adds ``authors: [David Li]`` to the end of the frontmatter.
   
 </details>
 
 <details><summary>Adding giscus github comments and reactions</summary>
 
-  To be added
+  * One thing I really wanted to add which David Li's blog didn't have was comments. To add comments and reactions at the end of blogs, I used [``giscus``](https://giscus.app/), which does this using GitHub Discussions. The steps are as follows:
+
+  1. Install ``giscus`` with yarn:
+
+     ```console
+     yarn add @giscus/react
+     ```
+
+  2. In ``src/partials/BlogPost.tsx``:
+
+     * Import ``giscus`` at the top:
+    
+       ```tsx
+       import Giscus from '@giscus/react';
+       ```
+
+     * Add this near to the end, entering the data that ``giscus`` gives after setting it up:
+    
+       ```tsx
+       <Giscus
+          id="comments"
+          repo="..."
+          repoId="..."
+          category="..."
+          categoryId="..."
+          mapping="pathname"
+          reactionsEnabled="1"
+          emitMetadata="0"
+          inputPosition="bottom"
+          theme="preferred_color_scheme"
+          lang="en"
+          loading="lazy"
+        />
+       ```
+  
+     * Replace this line at the end with this:
+        
+       ```diff
+       - export { BlogPost };
+       + export default BlogPost;
+       ```
+
+       This allows Astro to hydrate it correctly. Since we're using ``BlogPost`` inside ``BasePost.astro``, and this ``.astro`` file is rendering a React component with interactivity (Giscus), you need to hydrate the ``BlogPost`` component properly using Astro's client directives.
+       
+  3. In ``src/templates/BasePost.astro``:
+
+     Change these lines:
+
+     ```diff
+     - import { BlogPost } from '@/partials/BlogPost';
+     + import BlogPost from '@/partials/BlogPost.tsx';
+     ```
+
+     Need to use default export for ``client:*`` to work.
+
+     ```diff
+     - <BlogPost frontmatter={content}>
+     + <BlogPost client:load frontmatter={content}>
+     ```
+
+     Hydrate the component using ``client:load``.
+
+  * The result:     
+
+    ![image](https://github.com/user-attachments/assets/929104d7-7060-48f0-987d-0024e47df951)
 
 </details>
 
