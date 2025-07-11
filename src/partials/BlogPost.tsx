@@ -135,20 +135,22 @@ const BlogPost = (props: IBlogPostProps) => (
         <div className="prose prose-invert mt-6 prose-img:rounded-lg">
           <content>{props.children}</content>
         </div>
-        <Giscus
-          id="comments"
-          repo="dhanushka2001/blog-astro"
-          repoId="R_kgDOPH5Kxw"
-          category="General"
-          categoryId="DIC_kwDOPH5Kx84Cso0r"
-          mapping="pathname"
-          reactionsEnabled="1"
-          emitMetadata="0"
-          inputPosition="bottom"
-          theme="preferred_color_scheme"
-          lang="en"
-          loading="lazy"
-        />
+        <div id="comments">
+          <Giscus
+            id="comments"
+            repo="dhanushka2001/blog-astro"
+            repoId="R_kgDOPH5Kxw"
+            category="General"
+            categoryId="DIC_kwDOPH5Kx84Cso0r"
+            mapping="pathname"
+            reactionsEnabled="1"
+            emitMetadata="0"
+            inputPosition="bottom"
+            theme="preferred_color_scheme"
+            lang="en"
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
   </Section>

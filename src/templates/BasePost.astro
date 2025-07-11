@@ -6,13 +6,30 @@ import BlogPost from '@/partials/BlogPost.tsx';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 
-import BottomSection from '../partials/BottomSection.astro';
+import BottomSection from '@/partials/BottomSection.astro';
+
+import ScrollButtons from '@/partials/ScrollButtons.tsx';
 
 export interface Props {
   content: CustomIFrontMatter;
 }
-
+  
 const { content } = Astro.props as Props;
+
+const allPosts = await Astro.glob<CustomIFrontMatter>('../pages/posts/**/*.md'); // adjust path if needed
+const sortedPosts = allPosts.sort(
+  (a, b) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()
+);
+
+const currentSlug = Astro.url.pathname.replace(/\/+$/, '').split('/').pop();
+const currentIndex = sortedPosts.findIndex((p) => {
+  const slug = p.url.replace(/\/+$/, '').split('/').pop();
+  return slug === currentSlug;
+});
+
+const prev = sortedPosts[currentIndex + 1];
+const next = sortedPosts[currentIndex - 1];
+
 const title = `${content.title} - ${AppConfig.site_name}`;
 const projectsData = {
   "projects": [
@@ -87,4 +104,34 @@ const {projects = []} = content || {}
   {/*
   <BottomSection />
   */}
+
+  {(prev || next) && (
+  <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-8 text-sm text-gray-400 dark:text-gray-500">
+      {prev && (
+        <div class="w-full sm:w-[48%] xl:w-auto">
+          <div class="text-xs uppercase">Previous</div>
+          <a class="text-blue-400 hover:underline" href={prev.url}>
+            {prev.frontmatter.title}
+          </a>
+        </div>
+      )}
+      {next && (
+        <div class="text-right w-full sm:w-[48%] xl:w-auto">
+          <div class="text-xs uppercase">Next</div>
+          <a class="text-blue-400 hover:underline" href={next.url}>
+	    {next.frontmatter.title}
+	  </a>
+        </div>
+      )}
+    </div>
+  )}
+  
+  <div class="mt-6 text-center">
+    <a href="/posts" class="text-blue-400 hover:underline text-sm">
+      &larr; Back to blog
+    </a>
+  </div>
+
+  <ScrollButtons client:load />
+
 </Base>
