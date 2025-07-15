@@ -5,6 +5,8 @@ on:
     branches: [main]  # Adjust if you're using another branch
     paths-ignore:
       - '**.md'       # Ignore README.md changes
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -15,23 +17,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+      - name: Enable Corepack
+        run: corepack enable
 
-      - name: Cache dependencies
+      - name: Use Yarn 4.9.2
+        run: corepack prepare yarn@4.9.2 --activate
+
+      - name: Cache Yarn PnP
         uses: actions/cache@v3
         with:
           path: |
-            ~/.cache/yarn
-            node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+            .yarn/cache
+            .yarn/install-state.gz
+            .pnp.cjs
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/package.json') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Build site
         run: yarn build
@@ -51,4 +55,3 @@ jobs:
           publish_dir: ./dist
           publish_branch: main
           external_repository: dhanushka2001/dhanushka2001.github.io
-
