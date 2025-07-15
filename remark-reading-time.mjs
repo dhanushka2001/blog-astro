@@ -1,0 +1,14 @@
+import getReadingTime from 'reading-time';
+import { toString } from 'mdast-util-to-string';
+
+export function remarkReadingTime() {
+  return (tree, { data }) => {
+    const textOnPage = toString(tree);
+    const { minutesRead } = getReadingTime(textOnPage);
+
+    data.astro = data.astro || {};
+    data.astro.frontmatter = data.astro.frontmatter || {};
+
+    data.astro.frontmatter.minutesRead = Math.ceil(minutesRead);
+  };
+}

@@ -8,24 +8,33 @@ import { AppConfig } from '@/utils/AppConfig';
 
 import BottomSection from '@/partials/BottomSection.astro';
 
+import GiscusComments from '@/partials/Giscus.tsx';
+
 import ScrollButtons from '@/partials/ScrollButtons.tsx';
+
+import { ScrollIndicator } from '@/partials/ScrollIndicator.tsx';
+
+import type { MarkdownInstance } from 'astro';
+import type { CustomIFrontMatter } from '@/partials/BlogPost';
 
 export interface Props {
   content: CustomIFrontMatter;
+  readingTimeText: string;
 }
-  
-const { content } = Astro.props as Props;
 
-const allPosts = await Astro.glob<CustomIFrontMatter>('../pages/posts/**/*.md'); // adjust path if needed
+const { content, readingTimeText } = Astro.props;
+
+import { getCollection } from 'astro:content';
+const allPosts = await getCollection('posts');
 const sortedPosts = allPosts.sort(
-  (a, b) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()
+  (a, b) =>
+    new Date(b.data.pubDate).getTime() -
+    new Date(a.data.pubDate).getTime()
 );
 
-const currentSlug = Astro.url.pathname.replace(/\/+$/, '').split('/').pop();
-const currentIndex = sortedPosts.findIndex((p) => {
-  const slug = p.url.replace(/\/+$/, '').split('/').pop();
-  return slug === currentSlug;
-});
+const slugParam = Astro.params.slug;
+const currentSlug = Array.isArray(slugParam) ? slugParam.join('/') : slugParam;
+const currentIndex = sortedPosts.findIndex((p) => p.slug === currentSlug);
 
 const prev = sortedPosts[currentIndex + 1];
 const next = sortedPosts[currentIndex - 1];
@@ -69,8 +78,12 @@ const projectsData = {
 const {projects = []} = content || {}
 ---
 
+
 <Base head={{ title, description: content.description }}>
-  <BlogPost client:load frontmatter={content}>
+	
+  <ScrollIndicator client:load />
+
+  <BlogPost frontmatter={content} readingTimeText={readingTimeText}>
     <slot />
     {
       projects?.length > 0 && (
@@ -99,7 +112,15 @@ const {projects = []} = content || {}
         return <></>;
       })
     }
+  
   </BlogPost>
+
+  <div class="mx-auto mt-5 max-w-prose">
+    <!-- Comments section -->
+    <div id="comments" class="mt-10"> 
+      <GiscusComments client:load />
+    </div>
+  </div>
 
   {/*
   <BottomSection />
@@ -110,16 +131,16 @@ const {projects = []} = content || {}
       {prev && (
         <div class="w-full sm:w-[48%] xl:w-auto">
           <div class="text-xs uppercase">Previous</div>
-          <a class="text-blue-400 hover:underline" href={prev.url}>
-            {prev.frontmatter.title}
+          <a class="text-blue-400 hover:underline" href={`/posts/${prev.slug}`}>
+            {prev.data.title}
           </a>
         </div>
       )}
       {next && (
         <div class="text-right w-full sm:w-[48%] xl:w-auto">
           <div class="text-xs uppercase">Next</div>
-          <a class="text-blue-400 hover:underline" href={next.url}>
-	    {next.frontmatter.title}
+          <a class="text-blue-400 hover:underline" href={`/posts/${next.slug}`}>
+	    {next.data.title}
 	  </a>
         </div>
       )}
@@ -133,5 +154,6 @@ const {projects = []} = content || {}
   </div>
 
   <ScrollButtons client:load />
+
 
 </Base>

@@ -6,7 +6,7 @@ import {
   PaginationHeader,
   Section,
 } from 'astro-boilerplate-components';
-
+import { getCollection } from 'astro:content';
 import type { CustomIFrontMatter } from '@/partials/BlogPost';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
@@ -14,16 +14,30 @@ import { sortByDate } from '@/utils/Posts';
 
 type GetStaticPaths = {
   paginate: any;
-}; // Overrides `GetStaticPathsOptions` types from Astro
+}; // Overrides GetStaticPathsOptions types from Astro
 
 export async function getStaticPaths({ paginate }: GetStaticPaths) {
-  const allPosts = await Astro.glob<CustomIFrontMatter>('./**/*.md(x)?');
-  const sortedPosts = sortByDate(allPosts as any);
+  const allPosts = await getCollection('posts');
+  // const allPosts = await getCollection<CustomIFrontMatter>('posts');
+  
+  // Convert content collection entries to match your existing structure
+  const postsWithFrontmatter = allPosts.map((post) => ({
+    ...post,
+    frontmatter: post.data,
+    url: `/posts/${post.slug}`,
+    // Add any other properties your BlogGallery component expects
+  }));
+  
+  const sortedPosts = sortByDate(postsWithFrontmatter as any);
+  // const sortedPosts = sortByDate(allPosts);
+  
+  // Optional: Filter out future posts
   // const filteredPosts = sortedPosts.filter((post) => {
   //   const postDate = new Date(post.frontmatter.pubDate);
   //   const today = new Date();
   //   return postDate <= today;
   // });
+  
   // Return a paginated collection of paths for all posts
   return paginate(sortedPosts, { pageSize: 6 });
 }
@@ -54,5 +68,6 @@ const description = 'Blog post iteration for Astro styled with Tailwind CSS.';
   <Section>
     <NewerOlderPagination page={page} />
   </Section>
+
   <div data-pagefind-body></div>
 </Base>

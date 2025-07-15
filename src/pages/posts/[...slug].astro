@@ -1,0 +1,34 @@
+---
+import BasePost from '@/templates/BasePost.astro';
+import { getCollection, getEntryBySlug, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('posts');
+
+  return entries.map((entry) => ({
+    params: {
+      slug: entry.slug, // Must be a string in Astro 5
+    },
+  }));
+}
+
+// Astro.params.slug is now a string like "tech/python/projects/weather_app"
+const slug = Astro.params.slug;
+
+const entry = await getEntryBySlug('posts', slug);
+if (!entry) {
+  console.error(`404: Entry not found for slug: ${slug}`);
+  return Astro.redirect('/404');
+}
+
+const { Content, remarkPluginFrontmatter } = await render(entry);
+
+const frontmatter = {
+  ...entry.data,
+  ...remarkPluginFrontmatter,
+};
+---
+
+<BasePost content={frontmatter} readingTimeText={frontmatter.minutesRead}>
+  <Content />
+</BasePost>
