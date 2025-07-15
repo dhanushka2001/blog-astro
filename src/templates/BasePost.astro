@@ -17,14 +17,19 @@ import { ScrollIndicator } from '@/partials/ScrollIndicator.tsx';
 import type { MarkdownInstance } from 'astro';
 import type { CustomIFrontMatter } from '@/partials/BlogPost';
 
+import { getCollection } from 'astro:content';
+
 export interface Props {
   content: CustomIFrontMatter;
-  readingTimeText: string;
 }
 
-const { content, readingTimeText } = Astro.props;
+const { content } = Astro.props;
 
-import { getCollection } from 'astro:content';
+// ✅ Fallback in case minutesRead is missing (e.g. plugin didn't run)
+const readingTimeText = content.minutesRead
+  ? `${content.minutesRead}`
+  : 'Reading time unavailable';
+
 const allPosts = await getCollection('posts');
 const sortedPosts = allPosts.sort(
   (a, b) =>
