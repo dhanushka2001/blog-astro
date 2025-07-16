@@ -17,42 +17,18 @@ type GetStaticPaths = {
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('posts');
-  
-  // Convert content collection entries to match your existing structure
-  const postsWithFrontmatter = allPosts.map((post) => ({
-    frontmatter: post.data,
-    url: `/posts/${post.slug}`,
-    // Add any other properties your BlogGallery component expects
-  }));
-  
-  const sortedPosts = sortByDate(
-    postsWithFrontmatter.filter(
-      (post) => post.frontmatter?.pubDate !== undefined
-    )
-  );
-  
-  // Get all tags
-  const tags = sortedPosts
-    .map((post) => {
-      const items = post.frontmatter?.tags;
-      return items;
-    })
-    .reduce((acc, val) => acc.concat(val), []);
-  
-  // Get unique tags
+
+  // Only include posts that have a valid pubDate
+  const filteredPosts = allPosts.filter((post) => post.data?.pubDate);
+
+  const tags = filteredPosts.flatMap((post) => post.data.tags ?? []);
   const uniqueTags = [...new Set(tags)];
-  
-  // Map to params
-  const paths = uniqueTags.map((tag) => {
-    return {
-      params: {
-        tag,
-      },
-    };
-  });
-  
-  return paths;
+
+  return uniqueTags.map((tag) => ({
+    params: { tag },
+  }));
 }
+
 
 const { tag } = Astro.params;
 const titleSuffix = ` - ${AppConfig.site_name}`;
