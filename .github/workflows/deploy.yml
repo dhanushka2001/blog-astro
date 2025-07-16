@@ -23,9 +23,6 @@ jobs:
       - name: Use Yarn 4.9.2
         run: corepack prepare yarn@4.9.2 --activate
 
-      - name: Set Yarn nodeLinker to pnp
-        run: yarn config set nodeLinker pnp
-
       - name: Cache Yarn PnP
         uses: actions/cache@v3
         with:
@@ -33,7 +30,7 @@ jobs:
             .yarn/cache
             .yarn/install-state.gz
             .pnp.cjs
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/package.json') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
