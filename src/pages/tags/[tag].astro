@@ -25,7 +25,11 @@ export async function getStaticPaths() {
     // Add any other properties your BlogGallery component expects
   }));
   
-  const sortedPosts = sortByDate(postsWithFrontmatter as any);
+  const sortedPosts = sortByDate(
+    postsWithFrontmatter.filter(
+      (post) => post.frontmatter?.pubDate !== undefined
+    )
+  );
   
   // Get all tags
   const tags = sortedPosts
