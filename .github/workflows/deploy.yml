@@ -17,20 +17,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'yarn'
+
       - name: Enable Corepack
         run: corepack enable
 
       - name: Use Yarn 4.9.2
         run: corepack prepare yarn@4.9.2 --activate
 
-      - name: Cache Yarn PnP
+      - name: Cache Yarn dependencies
         uses: actions/cache@v3
         with:
           path: |
-            .yarn/cache
             .yarn/install-state.gz
-            .pnp.cjs
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/package.json') }}
+            node_modules
+            .astro
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
