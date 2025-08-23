@@ -27,8 +27,8 @@ const { content } = Astro.props;
 
 // ✅ Fallback in case minutesRead is missing (e.g. plugin didn't run)
 const readingTimeText = content.minutesRead
-  ? `${content.minutesRead}`
-  : 'Reading time unavailable';
+//   ? `${content.minutesRead}`
+//   : 'Reading time unavailable';
 
 const allPosts = await getCollection('posts');
 const sortedPosts = allPosts.sort(
@@ -88,7 +88,7 @@ const {projects = []} = content || {}
 	
   <ScrollIndicator client:load />
 
-  <BlogPost frontmatter={content} readingTimeText={readingTimeText}>
+  <BlogPost frontmatter={content} readingTimeText={content.minutesRead}>
     <slot />
     {
       projects?.length > 0 && (
