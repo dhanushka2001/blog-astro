@@ -272,3 +272,31 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
     which I found from [this](https://stackoverflow.com/a/40612754) Stack Overflow answer.
   
 </details>
+
+<details><summary>Add horizontal padding to Giscus comments and prev/next footer links</summary>
+
+  * The Giscus comments section and the prev/next footer links at the bottom of blogs did not have any horizontal padding between the sides of the screen.
+
+    <img width="498" height="509" alt="blog-margin-old" src="https://github.com/user-attachments/assets/cdeb3a03-5d45-489f-b2da-679f186eddde" />
+
+  * This was luckily a simple fix, just adding ``px-4 sm:px-0`` to the containers:
+
+    ```astro
+    <div class="mx-auto mt-5 max-w-prose">
+      <!-- Comments section -->
+      <div id="comments" class="mt-10 px-4 sm:px-0"> 
+        <GiscusComments client:load />
+      </div>
+    </div>
+
+    {(prev || next) && (
+    <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-400 dark:text-gray-500 px-4 sm:px-0">
+      ...
+    </div>
+    )}
+    ```
+
+    <img width="501" height="511" alt="blog-margin-new" src="https://github.com/user-attachments/assets/03e849f8-0716-4e50-a836-cebb99675630" />
+
+
+</details>
