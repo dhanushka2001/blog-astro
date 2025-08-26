@@ -16,7 +16,7 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
 
 ## Updates
 
-<details><summary>Adding author avatar and multiple authors to blogs</summary>
+<details><summary>Author avatar, multiple authors, and blog update date</summary>
 
 * David Li's blog displays the author name and publication date on the same line using this code inside ``src/partials/BlogPost.tsx``:
 
@@ -301,6 +301,319 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
 
     <img width="501" height="511" alt="blog-margin-new" src="https://github.com/user-attachments/assets/03e849f8-0716-4e50-a836-cebb99675630" />
 
-  * One thing I noticed, which is quite important: **changes won't appear immediately on the GitHub-hosted website; it takes ~2 minutes for the changes to appear after GitHub Actions completes.**
+  * One thing I noticed, which is quite important: **changes won't appear immediately on the GitHub-hosted website; it may take ~2 minutes for the changes to appear after GitHub Actions completes!**
 
 </details>
+
+<details><summary>Update Astro v4→v5</summary>
+
+* I have updated from Astro v4->v5, and I am using Astro's content collections for better schema validation, frontmatter typing, and consistency. Here is ``src/content/config.ts``:
+ 
+    ```ts
+    import { defineCollection, z } from 'astro:content';
+    
+    const posts = defineCollection({
+      type: 'content',
+      schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        pubDate: z.preprocess(
+          (val) => (typeof val === 'string' ? new Date(val) : val),
+          z.date()
+        ),
+        updateDate: z.preprocess(
+          (val) => (typeof val === 'string' ? new Date(val) : val),
+          z.date().optional()
+        ),
+        tags: z.array(z.string()).optional(),
+        authors: z.array(z.string()).optional(),
+        imgSrc: z.string().optional(),
+        imgAlt: z.string().optional(),
+      }),
+    });
+    
+    export const collections = {
+      posts,
+    };
+    ```
+
+</details>
+
+<details><summary>Estimated reading time</summary>
+
+  * The guide to add estimated reading time can be found on the official Astro docs [here](https://docs.astro.build/en/recipes/reading-time/). I will provide the steps below:
+
+  * Step 1: Install Helper Packages
+
+    ```console
+    yarn add reading-time mdast-util-to-string
+    ```
+    
+    * ``reading-time``: to calculate minutes read
+    * ``mdast-util-to-string``: to extract all text from your markdown
+
+  * Step 2: Create a remark plugin.
+
+    This plugin uses the ``mdast-util-to-string`` package to get the Markdown file’s text. This text is then passed to the ``reading-time`` package to calculate the reading time in minutes.
+
+    ``remark-reading-time.mjs``:
+
+    ```mjs
+    import getReadingTime from 'reading-time';
+    import { toString } from 'mdast-util-to-string';
+    
+    export function remarkReadingTime() {
+      return function (tree, { data }) {
+        const textOnPage = toString(tree);
+        const readingTime = getReadingTime(textOnPage);
+        // readingTime.text will give us minutes read as a friendly string,
+        // i.e. "3 min read"
+        data.astro.frontmatter.minutesRead = readingTime.text;
+      };
+    }
+    ```
+  
+  * Step 3: Add the plugin to your config:
+
+    ``astro.config.mjs``:
+
+    ```mjs
+    import { defineConfig } from 'astro/config';
+    import { remarkReadingTime } from './remark-reading-time.mjs';
+    ...
+    
+    export default defineConfig({
+      ...
+      markdown: {
+        remarkPlugins: [remarkReadingTime],
+        ...
+      },
+      ...
+    });
+    ```
+
+  * Step 4: Display Reading Time
+
+    Since our blog posts are stored in a content collection, we access the ``remarkPluginFrontmatter`` from the ``render(entry)`` function. Then, we render ``minutesRead`` in our template wherever we would like it to appear.
+
+    Note that I am using ``[...slug].astro`` instead of just ``[slug].astro`` as the blogs are nested in ``src/content/`` in different subfolders.
+
+    ``src/pages/posts/[...slug].astro``:
+    
+    ```astro
+    ---
+    import BasePost from '@/templates/BasePost.astro';
+    import { getCollection, getEntryBySlug, render } from 'astro:content';
+    
+    export async function getStaticPaths() {
+      const entries = await getCollection('posts');
+    
+      return entries.map((entry) => ({
+        params: {
+          slug: entry.slug, // Must be a string in Astro 5
+        },
+      }));
+    }
+    
+    // Astro.params.slug is now a string like "tech/python/projects/weather_app"
+    const slug = Astro.params.slug;
+    
+    const entry = await getEntryBySlug('posts', slug);
+    if (!entry) {
+      console.error(`404: Entry not found for slug: ${slug}`);
+      return Astro.redirect('/404');
+    }
+    
+    const { Content, remarkPluginFrontmatter } = await render(entry);
+    
+    const frontmatter = {
+      ...entry.data,
+      ...remarkPluginFrontmatter,
+    };
+    ---
+    
+    <BasePost content={frontmatter}>
+      <Content />
+    </BasePost>
+    ```
+
+  * Result, after adding it to ``BlogPost.tsx``:
+
+    <img width="485" height="611" alt="reading-time-old" src="https://github.com/user-attachments/assets/5e5f7db2-a30b-4953-8e39-a429435673ec" />
+
+  * I was stuck trying to implement this feature for a month; it worked in localhost but didn't seem to work in the actual (Github-hosted) website, although now I think the issue was likely that I just didn't wait long enough for the changes to display... **Some changes don't appear immediately and may take ~2 minutes!**
+    
+</details>
+
+<details><summary>Scroll indicator (progress bar)</summary>
+
+  * I borrowed the scroll indicator (progress bar) from [Trung's blog](https://trungtmnguyen.com/). The code can be found on [Trung's GitHub](https://github.com/trungntm/trungtmnguyen.com), I will paste it below as well as what needs to be installed:
+
+    ```console
+    yarn add framer-motion
+    ```
+  
+    ``src/partials/ScrollIndicator.tsx``:
+  
+    ```tsx
+    'use client';
+    
+    import { motion, useScroll } from 'framer-motion';
+    
+    interface ScrollIndicatorProps {
+      backgroundColor?: string;
+    }
+    
+    export const ScrollIndicator = ({
+      backgroundColor = '#2DB7B9',
+    }: ScrollIndicatorProps) => {
+      const { scrollYProgress } = useScroll();
+    
+      return (
+        <motion.div
+          id="scroll-indicator"
+          style={{
+            scaleX: scrollYProgress,
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 5,
+            originX: 0,
+            zIndex: 100,
+            backgroundColor,
+          }}
+        />
+      );
+    };
+    ```
+
+    <img width="552" height="917" alt="progress-bar" src="https://github.com/user-attachments/assets/8a94032d-c420-4811-8503-28da501aa9aa" />
+
+</details>
+
+<details><summary>Scroll-to-top/comments buttons</summary>
+
+  * I also borrowed the code for the scroll to top/comments buttons from [Trung's blog](https://trungtmnguyen.com/). The code can be found on [Trung's GitHub](https://github.com/trungntm/trungtmnguyen.com). I will paste the code below:
+
+    ```tsx
+    'use client';
+    
+    import { useEffect, useState } from 'react';
+    
+    const ScrollButtons = () => {
+      const [show, setShow] = useState(false);
+    
+      useEffect(() => {
+        const onScroll = () => setShow(window.scrollY > 50);
+        window.addEventListener('scroll', onScroll);
+        return () => window.removeEventListener('scroll', onScroll);
+      }, []);
+    
+      return (
+        <div
+          className={`fixed bottom-8 right-8 z-50 flex flex-col gap-3 ${
+            show ? 'opacity-100' : 'opacity-0'
+          } transition-opacity duration-300`}
+        >
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            aria-label="Scroll to top"
+            className="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+          >
+            <svg className="size-5" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                fillRule="evenodd"
+                d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+    
+          <button
+            onClick={() => {
+              const el = document.getElementById('comments');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+            aria-label="Scroll to comments"
+            className="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+          >
+            <svg className="size-5" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                fillRule="evenodd"
+                d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
+      );
+    };
+    
+    export default ScrollButtons;
+    ```
+
+  * I made some changes from Trung's implementation. The scroll-to-top button in Trung's blog is **below** the scroll-to-comments button, and also, the buttons are disabled on mobile for Trung's website. In my implementation, the scroll-to-top button is **above** the scroll-to-comments button, and the buttons are also visible/usable on mobile.
+
+    <img width="529" height="500" alt="scroll-buttons" src="https://github.com/user-attachments/assets/f8e387a4-1106-4660-ae69-a6f4f192f6e6" />
+
+</details>
+
+<details><summary>Move reading time above blog title and italicize</summary>
+
+  * Moved the estimated reading time from next to the publication date to above the blog title, and italicized the text to make it stand out.
+
+    ``src/partials/BlogPost.tsx``:
+
+    ```diff
+    ...
+    export default function BlogPost(props: BlogPostProps) {
+      const { frontmatter, children, readingTimeText } = props;
+    
+      return (
+        <Section key={frontmatter.title}>
+          <div>
+    +       <div className="text-center text-sm italic text-gray-400">
+    +         {readingTimeText}
+    +       </div>
+            <h1 className="text-center text-3xl font-bold">{frontmatter.title}</h1>
+            <div className="text-center text-sm text-gray-400">
+              <div className="mt-1">
+                Published:{' '}
+                {new Date(frontmatter.pubDate).toLocaleDateString(undefined, {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })}
+                {frontmatter.updateDate && (
+                  <>
+                    {' '}
+                    · Updated:{' '}
+                    {new Date(frontmatter.updateDate).toLocaleDateString(
+                      undefined,
+                      {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                      }
+                    )}
+                  </>
+                )}
+    -           {' · '}
+    -           <span>{readingTimeText}</span>
+              </div>
+              ...
+    ```
+
+  * Old implementation:
+
+    <img width="485" height="611" alt="reading-time-old" src="https://github.com/user-attachments/assets/cee720b1-9e99-460d-8df3-12f09d9a03c3" />
+
+  * New implementation:
+ 
+    <img width="484" height="623" alt="reading-time-new" src="https://github.com/user-attachments/assets/40cc550c-076b-423f-97de-88628646f079" />
+
+</details>
+
+
+
