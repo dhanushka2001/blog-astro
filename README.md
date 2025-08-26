@@ -279,7 +279,10 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
 
     <img width="498" height="509" alt="blog-margin-old" src="https://github.com/user-attachments/assets/cdeb3a03-5d45-489f-b2da-679f186eddde" />
 
-  * This was luckily a simple fix, just adding ``px-4 sm:px-0`` to the containers:
+  * This was luckily a simple fix, just adding ``px-4 sm:px-0`` to the containers
+    * ``px-4``: On mobile (<640px), this adds the horizontal padding.
+    * ``sm:px-0``: On larger screens, this makes it go back to no padding since max-w-prose will already centre it nicely.
+
 
     ```astro
     <div class="mx-auto mt-5 max-w-prose">
@@ -298,5 +301,6 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
 
     <img width="501" height="511" alt="blog-margin-new" src="https://github.com/user-attachments/assets/03e849f8-0716-4e50-a836-cebb99675630" />
 
+  * One thing I noticed, which is quite important: **changes won't appear immediately on the GitHub-hosted website; it takes ~2 minutes for the changes to appear after GitHub Actions completes.**
 
 </details>
