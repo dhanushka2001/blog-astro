@@ -31,7 +31,7 @@ const Hero = () => (
       }
       avatar={
         <img
-          className="h-80 w-80 rounded-full"
+          className="size-80 rounded-full"
           src="/assets/images/avatars/dhanushka.png"
           alt="Avatar image"
           loading="lazy"
@@ -39,13 +39,13 @@ const Hero = () => (
       }
       socialButtons={
         <>
-          <a href="https://www.linkedin.com/in/david-li-b1671a10b/">
+          <a href="https://www.linkedin.com/in/dhanushka-jayagoda-3572a91b8/">
             <HeroSocial
               src="/assets/images/linkedin-icon.png"
               alt="Linkedin icon"
             />
           </a>
-          <a href="https://github.com/FriendlyUser">
+          <a href="https://github.com/dhanushka2001/">
             <HeroSocial src="/assets/images/github.png" alt="Github icon" />
           </a>
         </>

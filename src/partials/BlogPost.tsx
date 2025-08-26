@@ -22,6 +22,9 @@ export default function BlogPost(props: BlogPostProps) {
   return (
     <Section key={frontmatter.title}>
       <div>
+        <div className="text-center text-sm italic text-gray-400">
+          {readingTimeText}
+        </div>
         <h1 className="text-center text-3xl font-bold">{frontmatter.title}</h1>
         <div className="text-center text-sm text-gray-400">
           <div className="mt-1">
@@ -45,8 +48,6 @@ export default function BlogPost(props: BlogPostProps) {
                 )}
               </>
             )}
-            {' · '}
-            <span>{readingTimeText}</span>
           </div>
           {/* Author avatars */}
           <div className="mt-2 flex flex-wrap items-center justify-center gap-4">
