@@ -48,7 +48,7 @@ const MobileNav = () => {
       {/* Sidebar panel */}
       {/* w-full = cover whole screen. w-64 = cover right half of screen */}
       <div
-        className={`fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950${
+        className={`fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 ${
           navShow ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
