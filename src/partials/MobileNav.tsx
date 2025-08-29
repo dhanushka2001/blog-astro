@@ -1,10 +1,10 @@
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 
 const navLinks = [
   { title: 'Home', href: '/', active: true },
   { title: 'Blog', href: '/posts', active: true },
-  { title: 'Tags', href: '/tags', active: true }, // placeholder
-  { title: 'About', href: '/about', active: true }, // placeholder
+  { title: 'Tags', href: '/tags', active: true },
+  { title: 'About', href: '/about', active: true },
   { title: 'Photos', href: '/photos', active: true },
 ];
 
@@ -20,6 +20,7 @@ const MobileNav = () => {
 
   return (
     <>
+      {/* Hamburger button */}
       <button
         aria-label="Toggle Menu"
         onClick={onToggleNav}
@@ -38,15 +39,23 @@ const MobileNav = () => {
           />
         </svg>
       </button>
+
+      {/* Overlay */}
+      {navShow && (
+        <div className="fixed inset-0 z-10 bg-black/40" onClick={onToggleNav} />
+      )}
+
+      {/* Sidebar panel */}
+      {/* w-full = cover whole screen. w-64 = cover right half of screen */}
       <div
-        className={`fixed left-0 top-0 z-10 size-full bg-white opacity-95 duration-300 ease-in-out dark:bg-gray-950 dark:opacity-[0.98]${
+        className={`fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950${
           navShow ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <div className="flex justify-end">
           <button
-            className="mr-8 mt-11 size-8"
-            aria-label="Toggle Menu"
+            className="mr-6 mt-6 size-8"
+            aria-label="Close Menu"
             onClick={onToggleNav}
           >
             <svg
@@ -63,11 +72,12 @@ const MobileNav = () => {
             </svg>
           </button>
         </div>
-        <nav className="fixed mt-8 h-full">
-          {navLinks.map((link, index) => (
-            <Fragment key={index}>
-              {link.active && (
-                <div className="px-12 py-4">
+
+        <nav className="mt-8">
+          {navLinks.map(
+            (link, index) =>
+              link.active && (
+                <div key={index} className="px-8 py-4">
                   <a
                     href={link.href}
                     className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
@@ -76,9 +86,8 @@ const MobileNav = () => {
                     {link.title}
                   </a>
                 </div>
-              )}
-            </Fragment>
-          ))}
+              )
+          )}
         </nav>
       </div>
     </>
