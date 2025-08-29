@@ -22,11 +22,11 @@ export default function BlogPost(props: BlogPostProps) {
   return (
     <Section key={frontmatter.title}>
       <div>
-        <div className="text-center text-sm italic text-gray-400">
+        <div className="text-center text-sm italic text-gray-600 dark:text-gray-400">
           {readingTimeText}
         </div>
         <h1 className="text-center text-3xl font-bold">{frontmatter.title}</h1>
-        <div className="text-center text-sm text-gray-400">
+        <div className="text-center text-sm text-gray-600 dark:text-gray-400">
           <div className="mt-1">
             Published:{' '}
             {new Date(frontmatter.pubDate).toLocaleDateString(undefined, {
@@ -124,7 +124,7 @@ export default function BlogPost(props: BlogPostProps) {
             />
           </div>
 
-          <div className="prose prose-invert mt-6 prose-img:rounded-lg">
+          <div className="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100">
             <content>{children}</content>
           </div>
         </div>

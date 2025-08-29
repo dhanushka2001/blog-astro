@@ -1,49 +1,41 @@
 import type { MarkdownInstance } from 'astro';
-import { format } from 'date-fns';
-
-import type { CustomIFrontMatter } from '@/partials/BlogPost';
+import type { IFrontmatter } from 'astro-boilerplate-components';
 
 type IBlogCardProps = {
-  instance: MarkdownInstance<CustomIFrontMatter>;
+  instance: MarkdownInstance<IFrontmatter>;
 };
 
-const CustomBlogCard = (props: IBlogCardProps) => {
-  const { instance } = props;
-  const { data, url } = instance;
-
-  // fallback reading time text
-  const readingTimeText = data.minutesRead
-    ? `${data.minutesRead} min read`
-    : '—';
+const CustomBlogCard = ({ instance }: IBlogCardProps) => {
+  const { title, description, pubDate, imgSrc } = instance.frontmatter;
 
   return (
     <a
-      href={url}
-      className="block hover:translate-y-1" // block makes whole card clickable
-      target="_blank" // temporarily to test
-      rel="noopener noreferrer"
+      href={instance.url}
+      className="flex flex-col self-start overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md transition-transform duration-100 hover:translate-y-2 hover:shadow-lg dark:border-gray-900 dark:bg-slate-800"
     >
-      <div className="overflow-hidden rounded-md bg-slate-800">
-        <div className="aspect-h-2 aspect-w-3">
+      {imgSrc && (
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-lg">
           <img
-            className="size-full object-cover object-center"
-            src={data.imgSrc}
-            alt={data.imgAlt}
-            loading="lazy"
+            src={imgSrc}
+            alt={title}
+            className="absolute inset-0 size-full object-cover"
           />
         </div>
-
-        <div className="px-3 pb-6 pt-4 text-center">
-          <h2 className="text-xl font-semibold">{data.title}</h2>
-
-          <div className="mt-1 text-xs text-gray-400">
-            {format(new Date(data.pubDate), 'LLL d, yyyy')}
-            {' · '}
-            {readingTimeText}
-          </div>
-
-          <div className="mt-2 text-sm">{data.description}</div>
+      )}
+      <div className="p-4">
+        <h3 className="mb-1 text-center text-xl font-semibold text-gray-900 dark:text-gray-100">
+          {title}
+        </h3>
+        <div className="mb-1 text-center text-xs text-gray-500 dark:text-gray-400">
+          {new Date(pubDate).toLocaleDateString(undefined, {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+          })}
         </div>
+        <p className="text-center text-sm text-gray-700 dark:text-gray-200">
+          {description}
+        </p>
       </div>
     </a>
   );
