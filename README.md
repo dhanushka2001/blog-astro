@@ -401,6 +401,8 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
     </Base>
     ```
 
+    <img width="481" height="265" alt="image" src="https://github.com/user-attachments/assets/aca7e58e-8fb5-4ec8-871e-66ed8878356b" />
+
 </details>
 
 ## Progress update 4 - 15/07/25
@@ -448,7 +450,7 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
     };
     ```
 
-    <img width="552" height="917" alt="progress-bar" src="https://github.com/user-attachments/assets/8a94032d-c420-4811-8503-28da501aa9aa" />
+    <img width="537" height="916" alt="image" src="https://github.com/user-attachments/assets/9a16deb5-4cf3-4faf-ab67-cc803f3e151e" />
 
 </details>
 
