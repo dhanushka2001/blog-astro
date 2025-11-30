@@ -9,11 +9,26 @@ export interface Props {
   head: {
     title: string;
     description: string;
+    ogTitle?: string;
+    ogDescription?: string;
+    ogImage?: string;
+    ogUrl?: string;
+    twitterCard?: string;
+    twitterImage?: string;
   };
 }
 
 const {
-  head: { title, description },
+  head: {
+    title,
+    description,
+    ogTitle,
+    ogDescription,
+    ogImage,
+    ogUrl,
+    twitterCard,
+    twitterImage
+  },
 } = Astro.props as Props;
 
 const pageFindUiPrimary = '#0ea5e9';
@@ -43,6 +58,20 @@ const pageFindUiText = '#000000';
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={AppConfig.author} />
+
+    <!-- Open Graph / Social Sharing -->
+    {ogTitle && <meta property="og:title" content={ogTitle} />}
+    {ogDescription && (
+      <meta property="og:description" content={ogDescription} />
+    )}
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogUrl && <meta property="og:url" content={ogUrl} />}
+    <meta property="og:type" content="article" />
+
+    <!-- Twitter Cards -->
+    {twitterCard && <meta name="twitter:card" content={twitterCard} />}
+    {twitterImage && <meta name="twitter:image" content={twitterImage} />}
+
 
     <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />

@@ -84,8 +84,18 @@ const {projects = []} = content || {}
 ---
 
 
-<Base head={{ title, description: content.description }}>
-	
+<Base
+  head={{
+    title,
+    description: content.description,
+    ogTitle: content.title,
+    ogDescription: content.description,
+    ogImage: Astro.site + content.imgSrc,
+    ogUrl: Astro.url,
+    twitterCard: "summary_large_image",
+    twitterImage: Astro.site + content.imgSrc,
+  }}
+>
   <ScrollIndicator client:load />
 
   <BlogPost frontmatter={content} readingTimeText={content.minutesRead}>
