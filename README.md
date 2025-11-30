@@ -1064,3 +1064,108 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
     ```
     
 </details>
+
+## Progress update 8 - 30/11/25
+
+<details><summary>Add thumbnail to link when shared online</summary>
+
+* Currently when sharing links to the blog on social media like X, Discord, WhatsApp, etc., it just displays the title, description, and URL.
+
+  ![IMG_2970](https://github.com/user-attachments/assets/41cd145b-b1e8-450b-b9cd-33fa274917b1)
+
+* To add the blog image as a thumbnail, I just had to add OG & Twitter meta tags to ``Base.astro`` and ``BasePost.astro``, and ensure all images are stored in ``/public/imgs/...`` (and not accessed from external websites), and the image address must start with a ``/``.
+
+  Frontmatter:
+
+  ```diff
+  - imgSrc: 'https://images.unsplash.com/photo-1606482512676-255bf02be7cf?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  + imgSrc: '/imgs/2025/nov/numbers.jpg'
+  ```
+  
+  ``Base.astro``:
+  
+  ```diff
+   head: {
+      title: string;
+      description: string;
+  +   ogTitle?: string;
+  +   ogDescription?: string;
+  +   ogImage?: string;
+  +   ogUrl?: string;
+  +   twitterCard?: string;
+  +   twitterImage?: string;
+    };
+  }
+  ```
+  
+  ```diff
+  const {
+  - head: { title, description },
+  + head: {
+  +   title,
+  +   description,
+  +   ogTitle,
+  +   ogDescription,
+  +   ogImage,
+  +   ogUrl,
+  +   twitterCard,
+  +   twitterImage
+  + },
+  } = Astro.props as Props;
+  ```
+  
+  ```diff
+  <html lang="en">
+    <head>
+      <!-- Theme preload script -->
+      <script is:inline>
+        ...
+      </script>
+  
+      <ViewTransitions />
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta name="author" content={AppConfig.author} />
+  
+  +   <!-- Open Graph / Social Sharing -->
+  +   {ogTitle && <meta property="og:title" content={ogTitle} />}
+  +   {ogDescription && (
+  +     <meta property="og:description" content={ogDescription} />
+  +   )}
+  +   {ogImage && <meta property="og:image" content={ogImage} />}
+  +   {ogUrl && <meta property="og:url" content={ogUrl} />}
+  +   <meta property="og:type" content="article" />
+  
+  +   <!-- Twitter Cards -->
+  +   {twitterCard && <meta name="twitter:card" content={twitterCard} />}
+  +   {twitterImage && <meta name="twitter:image" content={twitterImage} />}
+  
+      ...
+  ```
+  
+  ``BasePost.astro``:
+  
+  ```diff
+  - <Base head={{ title, description: content.description }}>
+  	
+  + <Base
+  +   head={{
+  +     title,
+  +     description: content.description,
+  +     ogTitle: content.title,
+  +     ogDescription: content.description,
+  +     ogImage: Astro.site + content.imgSrc,
+  +     ogUrl: Astro.url,
+  +     twitterCard: "summary_large_image",
+  +     twitterImage: Astro.site + content.imgSrc,
+  +   }}
+  + >
+  ```
+
+* The result:
+
+  ![IMG_2971](https://github.com/user-attachments/assets/80039c68-daf8-40a2-9b41-0eecb5a3f88d)
+
+</details>
