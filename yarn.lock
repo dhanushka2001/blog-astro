@@ -107,14 +107,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/sitemap@npm:3.4.1":
-  version: 3.4.1
-  resolution: "@astrojs/sitemap@npm:3.4.1"
+"@astrojs/sitemap@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "@astrojs/sitemap@npm:3.6.0"
   dependencies:
     sitemap: "npm:^8.0.0"
     stream-replace-string: "npm:^2.0.0"
-    zod: "npm:^3.24.2"
-  checksum: 10c0/d36ba848c753f1abcc9cc603d38be8cb355ed86c8481168b8405d822fbc07d2eb6b971fd25f2e8cb98b889e7d1c2bafb736808ab3f6ad25d6b2da46dd5173b7e
+    zod: "npm:^3.25.76"
+  checksum: 10c0/a88c3c0c476b230cd1717c37d55408c57295539e9d141ff6738bcf38cefeb340a79b1d08c08f9bec39ec7ad6bfbb619454e1ae2053c8a65bbe3f1cd87a9e5904
   languageName: node
   linkType: hard
 
@@ -2295,7 +2295,7 @@ __metadata:
     "@astrojs/markdown-remark": "npm:6.3.2"
     "@astrojs/react": "npm:^4.3.0"
     "@astrojs/rss": "npm:4.0.12"
-    "@astrojs/sitemap": "npm:3.4.1"
+    "@astrojs/sitemap": "npm:^3.6.0"
     "@astrojs/tailwind": "npm:6.0.2"
     "@commitlint/cli": "npm:^17.0.2"
     "@commitlint/config-conventional": "npm:^17.0.2"
@@ -11156,7 +11156,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^3.21.4, zod@npm:^3.24.2":
+"zod@npm:^3.21.4, zod@npm:^3.24.2, zod@npm:^3.25.76":
   version: 3.25.76
   resolution: "zod@npm:3.25.76"
   checksum: 10c0/5718ec35e3c40b600316c5b4c5e4976f7fee68151bc8f8d90ec18a469be9571f072e1bbaace10f1e85cf8892ea12d90821b200e980ab46916a6166a4260a983c

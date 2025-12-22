@@ -1,15 +1,16 @@
 ---
 title: The Two Sneaky Numbers of Digitville
-description: Showing an intuitive (hash table) method and an unintuitive (bitwise XOR) method to solve a Leetcode problem
+description: Solving LeetCode 3289 using both an intuitive hash table approach and an elegant bitwise XOR approach, with explanations and complexity analysis.
 alt: Leetcode Problem 3289. The Two Sneaky Numbers of Digitville
 tags: ["leetcode","c++"]
 layout: '@/templates/BasePost.astro'
 pubDate: Sunday, 30 November 2025 20:15:00 GMT
 imgSrc: '/imgs/2025/nov/numbers.jpg'
+imgAlt: 'Miniature festive red and blue clay houses with numbers painted on them'
 authors: [Dhanushka Jayagoda]
 ---
 
-In this article I will cover two ways to solve this easy [Leetcode problem](https://leetcode.com/problems/the-two-sneaky-numbers-of-digitville). There is an intuitive way using a hash table, and a very unintuitive but beautiful way using bitwise XOR, which this article aims to intuitively explain.
+In this article I will cover two ways to solve [Leetcode problem 3289](https://leetcode.com/problems/the-two-sneaky-numbers-of-digitville). There is an intuitive way using a hash table, and a very unintuitive but beautiful way using bitwise XOR, which this article aims to intuitively explain.
 
 ## <ins>Problem</ins>
 

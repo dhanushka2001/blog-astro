@@ -1169,3 +1169,83 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
   ![IMG_2971](https://github.com/user-attachments/assets/80039c68-daf8-40a2-9b41-0eecb5a3f88d)
 
 </details>
+
+## Progress update 9 - 22/12/25
+
+<details><summary> Add SEO metadata and Google Search Console verification </summary>
+
+  * I noticed that my website was not being shown in Google searches. I don't think it is due to poor SEO, I believe the reasons are:
+    * New website or low domain authority
+    * Few inbound links
+    * Low crawl priority
+    * No sitemap submitted
+    * No Google Search Console setup
+   
+  * I needed to setup Google Search Console (top priority), add a sitemap, and request indexing manually.
+  * To setup Google Search console:
+    * Go to: https://search.google.com/search-console
+    * Click **Add property**
+    * Select **URL prefix** (NOT Domain, DNS verification won’t work for GitHub Pages (``github.io``))
+    * Entered website URL: ``https://dhanushka2001.github.io``
+    * Google will give a list of options:
+      * HTML file upload
+      * HTML meta tag
+      * Google Analytics
+      * Google Tag Manager
+
+      **Choose "HTML tag"**, you'll get something like: ``<meta name="google-site-verification" content="ABC123..." />``
+    * In ``Base.astro``, inside ``<head>`` (near other meta tags), paste that **entire** line.
+    * Then commit and push to remote, wait a few minutes for Github pages to deploy, then go back to Google Search Console and click **Verify**, it should succeed instantly. You'll see something like this:
+   
+      <img width="950" height="917" alt="image" src="https://github.com/user-attachments/assets/20312bdc-96cf-492c-9348-87363c08dd12" />
+
+  * Once verified, next we need to submit a sitemap.
+  * Firstly, install sitemap:
+
+    ```console
+    yarn add @astrojs/sitemap
+    ```
+    
+  * Next step, enable sitemap in ``astro.config.mjs``:
+
+    ```mjs
+    import { defineConfig } from "astro/config";
+    import sitemap from "@astrojs/sitemap";
+    
+    export default defineConfig({
+      site: "https://dhanushka2001.github.io", 
+      integrations: [sitemap()],
+    });
+    ```
+
+    I had already setup ``astro.config.mjs`` with this in place so this was already done.
+
+  * Then, build (``yarn build``), commit and push to remote.
+  * After GitHub Pages deploys, these files will now exist:
+
+    ```
+    /sitemap-index.xml
+    /sitemap-0.xml
+    ```
+
+    Do not edit these files, Astro generates them automatically.
+
+  * Verify sitemap exists by going to ``https://dhanushka2001.github.io/sitemap-index.xml``, you should see XML.
+  * Now submit the sitemap to Google Search Console. In Search Console → Sitemaps → Add new sitemap:
+
+    ```
+    /sitemap-index.xml
+    ```
+
+  * 
+
+
+</details>
+
+<!--
+## Progress update 8 - 30/11/25
+
+<details><summary>...</summary>
+
+</details>
+-->
