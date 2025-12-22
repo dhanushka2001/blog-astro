@@ -71,6 +71,7 @@ const pageFindUiText = '#000000';
       <meta property="og:description" content={ogDescription} />
     )}
     {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogUrl && <link rel="canonical" href={ogUrl} />}
     {ogUrl && <meta property="og:url" content={ogUrl} />}
     <meta property="og:type" content="article" />
 

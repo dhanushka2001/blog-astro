@@ -41,6 +41,9 @@ const slugParam = Astro.params.slug;
 const currentSlug = Array.isArray(slugParam) ? slugParam.join('/') : slugParam;
 const currentIndex = sortedPosts.findIndex((p) => p.slug === currentSlug);
 
+// Absolute post URL
+const postUrl = `${AppConfig.site_url}/posts/${currentSlug}`;
+
 const prev = sortedPosts[currentIndex + 1];
 const next = sortedPosts[currentIndex - 1];
 
@@ -61,7 +64,7 @@ const projectsData = {
     },
     {
       "url": "https://github.com/dli-invest/finreddit",
-      "author": "FriendlyUser",
+      "author": '"FriendlyUser",
       "name": "finreddit",
       "color": "BROWN"
     },
@@ -91,7 +94,7 @@ const {projects = []} = content || {}
     ogTitle: content.title,
     ogDescription: content.description,
     ogImage: Astro.site + content.imgSrc,
-    ogUrl: Astro.url,
+    ogUrl: postUrl, //Astro.url,
     twitterCard: "summary_large_image",
     twitterImage: Astro.site + content.imgSrc,
   }}
