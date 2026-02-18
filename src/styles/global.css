@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Remove backticks globally in prose */
+  .prose code::before,
+  .prose code::after {
+    content: "" !important;
+  }
+
+  /* The GitHub-style Pill for inline code */
+  .prose :not(pre) > code {
+    @apply bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded border border-slate-200 font-medium text-[0.9em];
+  }
+
+  /* Dark mode support */
+  .dark .prose :not(pre) > code {
+    @apply bg-slate-800 text-slate-200 border-slate-700;
+  }
+
+  /* Blue Hyperlinks */
+  .prose a {
+    @apply text-blue-600 no-underline hover:underline font-semibold transition-colors;
+  }
+
+  .dark .prose a {
+    @apply text-blue-400;
+  }
+}

@@ -1237,8 +1237,144 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
     /sitemap-index.xml
     ```
 
-  * 
+</details>
 
+## Progress update 10 - 18/02/26
+
+<details><summary> Add inline code pill and blue hyperlink text styling </summary>
+
+  * Currently inline code and hyperlinks, which is written like this in Markdown:
+
+    ```txt
+    `inline code`, ``inline code``
+
+    [Hyperlink text](https://www.linktoexternalwebsite.com)
+    ```
+
+    appears like this in the blog:
+
+    <img width="584" height="110" alt="image" src="https://github.com/user-attachments/assets/5497f795-9b6a-4b57-a17d-9d640c520d05" />
+
+    <img width="576" height="77" alt="image" src="https://github.com/user-attachments/assets/51dc507b-b208-443f-8350-c9ca8d010b73" />
+
+  * To add the desired formatting, I first decided to update ``tailwind.config.js``, adding this code:
+
+    ```js
+    module.exports = {
+      ...
+      theme: {
+        extend: {
+          typography: {
+            DEFAULT: {
+              css: {
+                // 1. Remove the default backticks
+                'code::before': { content: '""' },
+                'code::after': { content: '""' },
+                
+                // 2. Target ONLY inline code (code not inside a <pre> tag)
+                ':not(pre) > code': {
+                  backgroundColor: '#f1f5f9', // slate-100 (GitHub-ish light gray)
+                  color: '#334155',           // slate-700
+                  padding: '0.2rem 0.4rem',
+                  borderRadius: '6px',        // Rounded "pill" look
+                  fontWeight: '500',          // Medium weight for better legibility
+                  fontSize: '0.9em',          // Slightly smaller to fit in text
+                  border: '1px solid #e2e8f0', // slate-200 border for that "container" feel
+                },
+    
+                // 3. Dark mode overrides (if you use dark:prose-invert)
+                '.dark :not(pre) > code': {
+                  backgroundColor: '#1e293b', // slate-800
+                  color: '#e2e8f0',           // slate-200
+                  borderColor: '#334155',     // slate-700
+                },
+              },
+            },
+          },
+        },
+      },
+      ...
+    };
+    ```
+
+  * But this was quite verbose and not the simplest way to go about it. The cleanest way was to create a ``src/styles/global.css`` file containing:
+ 
+    ```css
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    
+    @layer base {
+      /* Remove backticks globally in prose */
+      .prose code::before,
+      .prose code::after {
+        content: "" !important;
+      }
+    
+      /* The GitHub-style Pill for inline code */
+      .prose :not(pre) > code {
+        @apply bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded border border-slate-200 font-medium text-[0.9em];
+      }
+    
+      /* Dark mode support */
+      .dark .prose :not(pre) > code {
+        @apply bg-slate-800 text-slate-200 border-slate-700;
+      }
+    
+      /* Blue Hyperlinks */
+      .prose a {
+        @apply text-blue-600 no-underline hover:underline font-semibold transition-colors;
+      }
+    
+      .dark .prose a {
+        @apply text-blue-400;
+      }
+    }
+    ```
+
+  * And import it in ``Base.astro`` at the top of the frontmatter (inside the --- fences):
+
+    ```astro
+    ---
+    import '../styles/global.css';
+    import { ViewTransitions } from 'astro:transitions';
+    ...
+    ---
+    ```
+
+  * Now inline code and hyperlinks appear with correct styling:
+
+    * Hyperlink:
+      * Dark mode:
+      
+        <img width="587" height="104" alt="image" src="https://github.com/user-attachments/assets/f5972a37-7aa1-455a-b99b-245614cbc8a7" />
+
+      * Dark mode, hovered over:
+        
+        <img width="583" height="104" alt="image" src="https://github.com/user-attachments/assets/a6ed97dc-36d1-4d22-8492-be16b3696903" />
+  
+      * Light mode:
+        
+        <img width="574" height="94" alt="image" src="https://github.com/user-attachments/assets/25818634-c82f-448b-b4f8-2c920460bafc" />
+  
+      * Light mode, hovered over:
+        
+        <img width="592" height="106" alt="image" src="https://github.com/user-attachments/assets/fbeace47-373f-4b86-becd-a0745392225c" />
+
+    * Inline code:
+      * Dark mode:
+    
+        <img width="578" height="71" alt="image" src="https://github.com/user-attachments/assets/4d47d110-0fb0-4bb0-85a9-34d6b2fe7d49" />
+
+      * Light mode:
+        
+        <img width="578" height="66" alt="image" src="https://github.com/user-attachments/assets/d4bd72af-b477-4060-98f4-ea8550ed1f22" />
+
+
+
+
+
+    
 
 </details>
 
@@ -1248,4 +1384,5 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
 <details><summary>...</summary>
 
 </details>
+
 -->

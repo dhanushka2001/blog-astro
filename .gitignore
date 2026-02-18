@@ -31,3 +31,5 @@ sample_md_file.md
 
 # Ignore npm lockfile
 package-lock.json
+
+temp/
