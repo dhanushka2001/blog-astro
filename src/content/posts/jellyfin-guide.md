@@ -4,9 +4,9 @@ description: A definitive beginner-friendly guide to turn an old Windows PC/lapt
 alt: Guide to turn an old Windows PC into a Jellyfin Media Server and Torrent Box
 tags: ["networking", "jellyfin"]
 layout: '@/templates/BasePost.astro'
-pubDate: Tuesday, 17 March 2026 13:15:00 GMT
+pubDate: Wednesday, 18 March 2026 15:30:00 GMT
 imgSrc: '/imgs/2026/mar/jellyfin.jpg'
-imgAlt: 'Miniature festive red and blue clay houses with numbers painted on them'
+imgAlt: 'Jellyfin Media Server homepage'
 authors: [Dhanushka Jayagoda]
 ---
 
@@ -70,7 +70,7 @@ Find the **MAC address** and **IP address** of your Jellyfin Windows PC/laptop b
 
 **DHCP Reservation ("Fixed Room Assignment"):** In a normal building, rooms can change designation. We're telling the router: "Keep Room 10 designated for the Jellyfin Server."
 
-**Port Forwarding ("The Backdoor"):** We tell the guard (router): "Stand at the backdoor and block all requests, but if anyone asks externally for "8443", send their request internally to Floor 8443, Room 10." We're not leaving the front door open (port 443), but the backdoor isn't exactly hidden or secure. But that's fine, we have other security measures in place (Jellyfin password, Fail2Ban).
+**Port Forwarding ("The Side Door"):** We tell the Guard (Router): "Block all requests, but if anyone knocks externally on **Side Door 8443** (External Port), send their request internally to **Room 10** (Jellyfin Server Local IP), **Desk 8443** (Internal Port)." We're not leaving the front door open (port 443), but the side door isn't exactly hidden or secure. But that's fine, we have other security measures in place (Jellyfin password, Fail2Ban).
 
 1. Access your **Router Settings Page** (accessed by typing a specific IP address into your web browser. You can sometimes find the URL to access the settings page on the sticker on the back/bottom of your WiFi router. The exact address depends on your ISP, for Virgin Media it's ``192.168.0.1``).
 2. Login using the password you were given by your ISP (the default password is usually printed on the sticker on the back/bottom of your WiFi router, you will then need to change the password to your own custom password. If you don't remember your password, you can reset the router and use the default password that's printed on the sticker on your WiFi router).
@@ -123,7 +123,7 @@ DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assign
 
 ## 5. Download Caddy with DuckDNS module
 
-**Caddy Reverse Proxy ("The Concierge"):** We tell Caddy: "Wait internally on **Floor 8443, Room 10** for a secure briefcase (a HTTPS request). You have the key (SSL Certificate) to open the briefcase and see what's inside." Caddy looks inside and says: "Ah, they want the film _Up (2009)_ from the Movie Library" and walks across the room to **Cabinet #8096** (the internal Jellyfin port). Caddy takes the message out of the secure briefcase and hands it to Jellfin. When Jellyfin replies, Caddy puts the movie data into the secure briefcase and sends it back to the guard (router) at the backdoor.
+**Caddy Reverse Proxy ("The Concierge"):** We tell Caddy: "Wait internally in **Room 10, Desk 8443** for a secure briefcase (a HTTPS request). You have the key (SSL Certificate) to open the briefcase and see what's inside." Caddy looks inside and says: "Ah, they want the film _Up (2009)_ from the Movie Library" and walks across the room to **Cabinet #8096** (the internal Jellyfin port). Caddy takes the message out of the secure briefcase and hands it to Jellfin. When Jellyfin replies, Caddy puts the movie data into the secure briefcase and sends it back to the guard (router) at the Side Door.
 
 
 1. Go to https://caddyserver.com/download
@@ -170,7 +170,7 @@ You should now be able to access your Jellyfin Server from another device inside
 
 * **Jellyfin stays hidden:** Jellyfin (Cabinet #8096) is "bolted to the floor" in the back of the room. It never talks to the internet directly. Only Caddy talks to the outside world.
 * **The "Secret Language" (HTTPS):** Jellyfin isn't great at managing SSL certificates. Caddy is an expert. Caddy handles the "Secret Language" so Jellyfin can just focus on "Playing Movies."
-* **One Room, Many Cabinets:** If you later add a music server (e.g. Navidrome) at **Cabinet #4533**, Caddy can manage that too. You don't need a new "Backdoor"; Caddy just looks at the name on the briefcase (e.g. ``music.duckdns.org:8443`` vs ``movies.duckdns.org:8443``) and knows which cabinet to go to.
+* **One Room, Many Cabinets:** If you later add a music server (e.g. Navidrome) at **Cabinet #4533**, Caddy can manage that too. You don't need a new "Side Door"; Caddy just looks at the name on the briefcase (e.g. ``music.duckdns.org:8443`` vs ``movies.duckdns.org:8443``) and knows which cabinet to go to.
 
 We need HTTPS to encrypt passwords entered, especially when accessing the Jellyfin server on public WiFi. In the past, getting that green padlock (SSL/HTTPS) was a manual nightmare. You had to generate a request, pay a provider, download files, and remember to renew them every 90 days. Caddy was the first web server to do **Automatic HTTPS** by default. It talks to **Let's Encrypt** automatically. It handles the request, the installaton, and the renewal without you lifting a finger.
 
