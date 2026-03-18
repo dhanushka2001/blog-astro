@@ -66,5 +66,6 @@
   "volta": {
     "node": "16.15.1"
   },
-  "author": "FriendlyUser (https://github.com/friendlyuser)"
+  "author": "FriendlyUser (https://github.com/friendlyuser)",
+  "packageManager": "yarn@4.9.2"
 }
