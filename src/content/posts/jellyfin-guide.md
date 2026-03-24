@@ -5,6 +5,7 @@ alt: Guide to turn an old Windows PC into a Jellyfin Media Server and Torrent Bo
 tags: ["networking", "jellyfin"]
 layout: '@/templates/BasePost.astro'
 pubDate: Wednesday, 18 March 2026 15:30:00 GMT
+updateDate: 2026-03-24
 imgSrc: '/imgs/2026/mar/jellyfin.jpg'
 imgAlt: 'Jellyfin Media Server homepage'
 authors: [Dhanushka Jayagoda]
@@ -68,16 +69,26 @@ Find the **MAC address** and **IP address** of your Jellyfin Windows PC/laptop b
 
 ## 3. Setup DHCP Reservation and Port Forwarding
 
-**DHCP Reservation ("Fixed Room Assignment"):** In a normal building, rooms can change designation. We're telling the router: "Keep Room 10 designated for the Jellyfin Server."
+<details><summary> What is DHCP? </summary>
 
-**Port Forwarding ("The Side Door"):** We tell the Guard (Router): "Block all requests, but if anyone knocks externally on **Side Door 8443** (External Port), send their request internally to **Room 10** (Jellyfin Server Local IP), **Desk 8443** (Internal Port)." We're not leaving the front door open (port 443), but the side door isn't exactly hidden or secure. But that's fine, we have other security measures in place (Jellyfin password, Fail2Ban).
+**DHCP** stands for **Dynamic Host Configuration Protocol**. It is a network management protocol that automatically assigns IP addresses and other communication parameters to devices on a network. **DHCP** is used for both:
+
+* **Public IP Assignment:** When your router first connects to your ISP, it acts as a **DHCP client**. It requests an address from the ISP's **DHCP server**, which then "leases" your home its single public IP address (your ISP will occassionally change your public IP).
+* **Local IP Assignment:** Once your router has its public address, it switches roles and acts as a **DHCP server** for your house. It assigns unique **local IP addresses** (like ``192.168.1.5``) to your laptop, phone, smart TV, etc., so they can communicate with each other internally.
+
+</details>
+
+**DHCP Reservation ("Fixed Room Assignment"):** In a normal building, rooms can change designation. We're telling the router: "Keep Room 10 designated for the Jellyfin Server."
 
 1. Access your **Router Settings Page** (accessed by typing a specific IP address into your web browser. You can sometimes find the URL to access the settings page on the sticker on the back/bottom of your WiFi router. The exact address depends on your ISP, for Virgin Media it's ``192.168.0.1``).
 2. Login using the password you were given by your ISP (the default password is usually printed on the sticker on the back/bottom of your WiFi router, you will then need to change the password to your own custom password. If you don't remember your password, you can reset the router and use the default password that's printed on the sticker on your WiFi router).
 3. Go to the **DHCP** settings page (for Virgin Media it's under **Advanced settings** → **DHCP**).   
 4. Add a new DHCP **reserved rule** using the **MAC address** and **IP address** of your Jellyfin PC. This ensures that your Jellyfin PC's local IP address _inside_ your house (e.g. ``192.168.0.10``) **never changes**. If this changed (e.g. PC reboot, router reset), your port forward would break.
-5. Now go to the **Port forwarding** settings page (for Virgin Media it's under **Advanced settings** → **Security** → **Port forwarding**).
-6. Add 2 new **port forwarding rules** (replacing ``192.168.0.XX`` with the IP address of your Jellyfin PC):
+
+**Port Forwarding ("The Side Door"):** We tell the Router ("Guard"): "Block all requests, but if anyone at the gate asks for **"Side Door 8443"** (External Port), send their request internally to **Room 10** (Jellyfin Server Local IP), **Desk 8443** (Caddy Internal Port)." We're not leaving the front door open (port 443), but the side door isn't exactly hidden or secure. But that's fine, we have other security measures in place (Jellyfin password, Fail2Ban).
+
+1. Now go to the **Port forwarding** settings page (for Virgin Media it's under **Advanced settings** → **Security** → **Port forwarding**).
+2. Add 2 new **port forwarding rules** (replacing ``192.168.0.XX`` with the IP address of your Jellyfin PC):
 
    <table style="width: 100%;">
      <tr>
@@ -123,7 +134,7 @@ DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assign
 
 ## 5. Download Caddy with DuckDNS module
 
-**Caddy Reverse Proxy ("The Concierge"):** We tell Caddy: "Wait internally in **Room 10, Desk 8443** for a secure briefcase (a HTTPS request). You have the key (SSL Certificate) to open the briefcase and see what's inside." Caddy looks inside and says: "Ah, they want the film _Up (2009)_ from the Movie Library" and walks across the room to **Cabinet #8096** (the internal Jellyfin port). Caddy takes the message out of the secure briefcase and hands it to Jellfin. When Jellyfin replies, Caddy puts the movie data into the secure briefcase and sends it back to the guard (router) at the Side Door.
+**Caddy Reverse Proxy ("The Concierge"):** We tell Caddy: "Wait internally in **Room 10, Desk 8443** for a secure briefcase (a HTTPS request). You have the key (SSL Certificate) to open the briefcase and see what's inside." Caddy looks inside and says: "Ah, they want the film _Up (2009)_ from the Movie Library" and walks across the room to **Cabinet 8096** (the internal Jellyfin port). Caddy takes the message out of the secure briefcase and hands it to Jellfin. When Jellyfin replies, Caddy puts the movie data into the secure briefcase and sends it back to the Guard (Router) at the Side Door.
 
 
 1. Go to https://caddyserver.com/download
@@ -168,9 +179,12 @@ You should now be able to access your Jellyfin Server from another device inside
 
 ### Why we need Caddy
 
-* **Jellyfin stays hidden:** Jellyfin (Cabinet #8096) is "bolted to the floor" in the back of the room. It never talks to the internet directly. Only Caddy talks to the outside world.
+* **Jellyfin stays hidden:** Jellyfin (Cabinet 8096) is in the back of the room. It never talks to the internet directly. Only Caddy talks to the outside world.
 * **The "Secret Language" (HTTPS):** Jellyfin isn't great at managing SSL certificates. Caddy is an expert. Caddy handles the "Secret Language" so Jellyfin can just focus on "Playing Movies."
-* **One Room, Many Cabinets:** If you later add a music server (e.g. Navidrome) at **Cabinet #4533**, Caddy can manage that too. You don't need a new "Side Door"; Caddy just looks at the name on the briefcase (e.g. ``music.duckdns.org:8443`` vs ``movies.duckdns.org:8443``) and knows which cabinet to go to.
+* **One Room, Many Cabinets:** If you later add a music server (Navidrome) at **Cabinet 4533** or a photo server (Immich) at **Cabinet 2283**, Caddy can manage that too. You don't need a new "Side Door"; Caddy just looks at the name on the briefcase (e.g. ``music.duckdns.org:8443`` vs ``movies.duckdns.org:8443`` vs ``photos.duckdns.org:8443``) and knows which cabinet to go to:
+  * **Cabinet 8096** is movies (Jellyfin)
+  * **Cabinet 4533** is music (Navidrome)
+  * **Cabinet 2283** is photos (Immich)
 
 We need HTTPS to encrypt passwords entered, especially when accessing the Jellyfin server on public WiFi. In the past, getting that green padlock (SSL/HTTPS) was a manual nightmare. You had to generate a request, pay a provider, download files, and remember to renew them every 90 days. Caddy was the first web server to do **Automatic HTTPS** by default. It talks to **Let's Encrypt** automatically. It handles the request, the installaton, and the renewal without you lifting a finger.
 
@@ -242,9 +256,9 @@ With your torrent client connected to Hotspot Shield VPN, your P2P traffic is no
   * In **Listening Port > Port used for incoming connections**, click **Random**, then click **Apply** and **OK** (this usually fixes the issue).
   * Wait 5-10 mins again, if the file is still stuck at 0% it's likely that there isn't any seeders (the file is essentially dead), and you will need to find another source that has active seeders.
 
-## 9. Run autofixwifi.bat
+## 9. Run wifi-monitor.bat
 
-Due to the nature of torrenting, WiFi can sometimes be disabled. To prevent this, I have created 2 bat scripts which automatically detect if the WiFi is down, disable and re-enable the WiFi adapter, and re-connect.
+Due to the nature of torrenting, WiFi can sometimes be disabled. To prevent this, I have created 2 bat scripts which automatically detect if the WiFi is down, disables then re-enables the WiFi adapter, and re-connects.
 
 1. Create a new folder, ``C:\wifi\``
 2. Inside the folder, create a new file, ``reset-wifi.bat`` and paste in this script using Notepad:
@@ -277,24 +291,40 @@ Due to the nature of torrenting, WiFi can sometimes be disabled. To prevent this
 
    ```bat
    @echo off
-
+   
+   set /a count=0
+   set limit=3
+   
    :loop
-
    echo Performing periodic WiFi check...
-
+   
+   :: The | find "TTL=" ensures we only count a REAL connection as success
    echo Pinging Google...
-   ping -n 1 8.8.8.8 >nul
+   ping -n 1 8.8.8.8 | find "TTL=" >nul
+   
    if errorlevel 1 (
        echo "Ping failed! :( %time% %date%"
-       echo Internet lost. Closing Chrome..."
+       set /a count=%count%+1
+       echo Internet lost. Failure count: %count%
+   
+       if %count% EQU %limit% goto :threshold_reached
+   
+       echo Closing Chrome...
        taskkill /F /IM chrome.exe /T
        echo Calling reset-wifi.bat...
        call C:\wifi\reset-wifi.bat
-       timeout \t 60 >nul
+       timeout /t 60 >nul
    ) else (
-       echo "Ping successful! :) %time% %date%"
+       echo "Ping successful :) %time% %date%"
+       set /a count=0
    )
-
+   timeout /t 60 >nul
+   goto loop
+   
+   :threshold_reached
+   echo Limit of %limit% reached! Closing Hotspot Shield VPN and resetting counter...
+   taskkill /F /IM hsscp.exe /T
+   set /a count=0
    timeout /t 60 >nul
    goto loop
    ```
@@ -320,7 +350,7 @@ And now all you need to connect to the Jellyfin PC is Internet access, another d
 
 ## 11. Set your Jellyfin PC to never sleep and ensure your WiFi is set to connect automaically when in range
 
-This makes sure your PC never sleeps.
+This makes sure your PC never sleeps. (The PC monitor going black or even the PC auto logging out is perfectly fine, we just don't want the PC to go into sleep/hibernate mode, which would turn off processes).
 
 1. In Windows Settings, go to **Power & sleep settings**
 2. Under **Sleep > When plugged in, PC goes to sleep after**, select **Never**
