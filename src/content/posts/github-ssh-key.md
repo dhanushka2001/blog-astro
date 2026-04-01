@@ -11,7 +11,7 @@ imgAlt: 'GitHub SSH keys'
 authors: [Dhanushka Jayagoda]
 ---
 
-This guide shows you how to set up SSH keys for multiple GitHub accounts (e.g. Personal and Work) on Linux.
+This guide will show you how to set up SSH keys for multiple GitHub accounts (e.g. Personal and Work) on Linux.
 
 Instead of using HTTPS and personal access tokens, SSH allows you to authenticate securely without repeatedly entering credentials when pushing or pulling repositories. As a bonus, you can also use the same keys to sign your commits and get the “Verified” badge on GitHub.
 
@@ -248,5 +248,9 @@ Using ``git pull --rebase`` keeps your history clean by avoiding unnecessary mer
 * ``ssh-add -D`` -- Deletes all keys from the agent, effectively resetting it as if you'd never authenticated this session. Next operation needing a key will prompt for the passphrase again.
 
 * ``git reset --soft HEAD~1`` -- Undo last commit but keep changes staged
-* ``git log -1 --show-signature`` -- Show signature of last commit
+* ``git log -1 --show-signature`` -- Show signature of last commit. You should see:
+
+  ```
+  Good "git" signature for <YOUR_EMAIL> with ED25519 key SHA256:...
+  ```
 * ``git remote set-url origin <NEW_URL>`` -- Changes the remote URL if you accidentally cloned a repo with the wrong remote

@@ -5,7 +5,7 @@ alt: Guide to turn an old Windows PC into a Jellyfin Media Server and Torrent Bo
 tags: ["networking", "jellyfin"]
 layout: '@/templates/BasePost.astro'
 pubDate: Wednesday, 18 March 2026 15:30:00 GMT
-updateDate: 2026-03-24
+updateDate: 2026-04-01
 imgSrc: '/imgs/2026/mar/jellyfin.jpg'
 imgAlt: 'Jellyfin Media Server homepage'
 authors: [Dhanushka Jayagoda]
@@ -24,7 +24,7 @@ You want this flow:
 ```
 Phone / PC / TV (at home or outside)
         ↓
-https://yourserver.duckdns.org:8443
+https://<YOUR_SERVER>.duckdns.org:8443
         ↓
 Caddy (HTTPS reverse proxy)
         ↓
@@ -121,9 +121,9 @@ Find the **MAC address** and **IP address** of your Jellyfin Windows PC/laptop b
 
 ## 4. Create a free DuckDNS domain
 
-DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assigns a custom subdomain (e.g. ``yourserver.duckdns.org``) to your home router's public IP address.
+DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assigns a custom subdomain (e.g. ``<YOUR_SERVER>.duckdns.org``) to your home router's public IP address.
 
-**DuckDNS ("The Map")**: DuckDNS acts as a **Global Phonebook**. When the user types ``yourserver.duckdns.org`` into their browser, the computer "calls" the DuckDNS server and asks, "Where is this building located right now?". DuckDNS checks its latest records and replies, "It's currently at [your public IP]".
+**DuckDNS ("The Map")**: DuckDNS acts as a **Global Phonebook**. When the user types ``<YOUR_SERVER>.duckdns.org`` into their browser, the computer "calls" the DuckDNS server and asks, "Where is this building located right now?". DuckDNS checks its latest records and replies, "It's currently at [your public IP]".
 
 1. Go to https://www.duckdns.org
 2. Sign in (GitHub / Google)
@@ -132,25 +132,39 @@ DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assign
     * Your **domain**
     * Your **token**
 
-## 5. Download Caddy with DuckDNS module
+## 5. Download Caddy with DuckDNS and DynamicDNS module
 
 **Caddy Reverse Proxy ("The Concierge"):** We tell Caddy: "Wait internally in **Room 10, Desk 8443** for a secure briefcase (a HTTPS request). You have the key (SSL Certificate) to open the briefcase and see what's inside." Caddy looks inside and says: "Ah, they want the film _Up (2009)_ from the Movie Library" and walks across the room to **Cabinet 8096** (the internal Jellyfin port). Caddy takes the message out of the secure briefcase and hands it to Jellfin. When Jellyfin replies, Caddy puts the movie data into the secure briefcase and sends it back to the Guard (Router) at the Side Door.
 
 
 1. Go to https://caddyserver.com/download
 2. Change **Platform** to **Windows amd64** (standard for Intel/AMD PCs)
-3. Scroll down (or search) the list of plugins to find and select **caddy-dns/duckdns** (click the box, NOT the hyperlink, you should see "**Extra features: 1**")
+3. Search the list of plugins to find and select **caddy-dns/duckdns** and **mholt/caddy-dynamicdns** (click the box, NOT the hyperlink, you should see "**Extra features: 2**")
 4. Click **Download**
 5. Rename the file to ``caddy.exe`` and move it to a dedicated folder (e.g. ``C:\caddy\``)
 6. Create a new file called ``Caddyfile`` inside the ``caddy`` folder, open it with **Notepad** and paste this:
 
    ```
    {
-       # Global options: tell Caddy to use 8443 for HTTPS internally
+       # Global options
+       auto_https disable_redirects
        https_port 8443
+   
+       # Automatically update your DuckDNS record when your Public IP changes
+       dynamic_dns {
+           provider duckdns <DUCKDNS_TOKEN>
+           domains {
+               <YOUR_SERVER>.duckdns.org @
+           }
+           # This stops the IPv6 warning
+           versions ipv4
+   	
+           # Uncomment to check every 1min for testing purposes
+           # check_interval 1m
+       }
    }
-
-   <yourserver>.duckdns.org:8443 {
+   
+   <YOUR_SERVER>.duckdns.org:8443 {
        # Use the DNS challenge with your DuckDNS token
        tls {
            dns duckdns <DUCKDNS_TOKEN>
@@ -162,7 +176,7 @@ DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assign
    ```
 
    replacing: 
-      * ``<yourserver>`` with your DuckDNS subdomain
+      * ``<YOUR_SERVER>`` with your DuckDNS subdomain
       * ``<DUCKDNS_TOKEN>`` with your DuckDNS token
       * ``192.168.0.XX`` with your Jellyfin PC's local IP Address
 
@@ -175,7 +189,7 @@ DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assign
 
    this command would need to be run again if the PC reboots, so you could make it a script that runs on startup.
 
-You should now be able to access your Jellyfin Server from another device inside or outside your home network using ``https://yourserver.duckdns.org:8443`` (replacing ``yourserver`` with your DuckDNS subdomain).
+You should now be able to access your Jellyfin Server from another device inside or outside your home network using ``https://<YOUR_SERVER>.duckdns.org:8443`` (replacing ``<YOUR_SERVER>`` with your DuckDNS subdomain).
 
 ### Why we need Caddy
 
@@ -234,7 +248,7 @@ Most ISPs will block the Hotspot Shield VPN website. To bypass this you will nee
 2. In **General** and **Advanced**, make sure **all** the options are enabled.
 3. In **Split Tunneling**, enable **Bypass VPN**, and add these apps and sites to the Bypass VPN list:
 
-   * Your Jellyfin DuckDNS domain (select **Add website** and enter ``https://yourserver.duckdns.org:8443`` (replacing ``yourserver``))
+   * Your Jellyfin DuckDNS domain (select **Add website** and enter ``https://<YOUR_SERVER>.duckdns.org:8443`` (replacing ``<YOUR_SERVER>``))
    * **Jellyfin (View Console)**
    * **Jellyfin Tray App**
    * **caddy.exe** (select **Add an application that is not in the list**, then click **Browse** to navigate to the **caddy.exe** in your ``C:\caddy\`` folder)
