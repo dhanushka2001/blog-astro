@@ -22,15 +22,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      # ---------------- auto -------------------
-      - name: Install, build, and upload site
-        uses: withastro/action@v5
-        with:
-          node-version: 22
-          package-manager: yarn
-      # -----------------------------------------
-
-      # ---------------- manual -----------------
+      # -------- manual build to use Yarn 4 --------
       # - name: Setup Node.js
       #   uses: actions/setup-node@v4
       #   with:
