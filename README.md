@@ -1370,11 +1370,64 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
         
         <img width="578" height="66" alt="image" src="https://github.com/user-attachments/assets/d4bd72af-b477-4060-98f4-ea8550ed1f22" />
 
+</details>
 
 
+## Progress update 11 - 02/04/26
+
+<details><summary> Fix deployment commit identity to be github-actions[bot] </summary>
+
+  * I noticed that the deployment commits in the [`dhanushka2001/dhanushka2001.github.io`](https://github.com/dhanushka2001/dhanushka2001.github.io) repo were using my GitHub account as the git identity, despite me explicitly adding this step before the deploy step in ``deploy.yml``:
+
+    ```yml
+    - name: Set Git Identity
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+    ```
+
+  * The issue was apparently because the ``peaceiris/actions-gh-pages`` action defaults to using its own internal logic for the committer, overriding my manual git config steps.
+
+  * To fix this, I needed to explicitly tell the **action** to use the bot details via its specific input parameters.
+
+  * Updated final steps:
+
+    ```diff
+    - - name: Set Git Identity
+    -   run: |
+    -     git config --global user.name "github-actions[bot]"
+    -     git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      
+      - name: Deploy to GitHub Pages 🚀
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.BLOG_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: main
+          external_repository: dhanushka2001/dhanushka2001.github.io
+    +     user_name: 'github-actions[bot]'
+    +     user_email: 'github-actions[bot]@users.noreply.github.com'
+    ```
+
+  * One cool thing I noticed is that, after pushing this commit to fix ``deploy.yml``, it triggers itself to run (as the change was not a ``README.md`` change), but no deployment is pushed to the external [`dhanushka2001/dhanushka2001.github.io`](https://github.com/dhanushka2001/dhanushka2001.github.io) repo.
+  
+    * This is likely because the ``peaceiris/actions-gh-pages`` action detected that the built files in the ``dist/`` folder were **identical** to what was already in my [`dhanushka2001/dhanushka2001.github.io`](https://github.com/dhanushka2001/dhanushka2001.github.io) repo.
+
+    * When you only change the ``.github/workflows/deploy.yml`` file, the **Astro build** still produces the exact same website files. By default, this action skips the push if there are no file changes to avoid "empty" commits.
+
+    * In an Astro project, ``dist/`` stands for **distribution**.
+
+      * **The "Source"**: Your ``src/`` folder contains your Astro components, Markdown files, and raw code that browsers cannot run directly.
+
+      * **The "Build"**: When you (or ``deploy.yml``) run ``yarn build``, Astro "compiles" everything. It converts your components into plain HTML, minifies your CSS, and optimizes your JavaScript.
+
+      * **The "Output"**: The finished, production-ready website files are placed into the ``dist/`` folder. The is the only folder that actually needs to be uploaded to the [`dhanushka2001/dhanushka2001.github.io`](https://github.com/dhanushka2001/dhanushka2001.github.io) repo to make the site go live. (Everything that was **inside** the ``dist/`` folder which **GitHub Actions** created when compiling the ``src/`` folder is placed into the [`dhanushka2001/dhanushka2001.github.io`](https://github.com/dhanushka2001/dhanushka2001.github.io) repo, not the ``dist/`` folder itself).
 
 
-    
+  * Now when I push a change that will change content in the ``dist/`` folder (like blog changes), the **GitHub Actions** workflow in **this** repo actively **pushes** the new files into the external [`dhanushka2001/dhanushka2001.github.io`](https://github.com/dhanushka2001/dhanushka2001.github.io) repo. GitHub Pages automatically detects the new commit and updates the live website, and in the deployment commit it now correctly shows up as ``github-actions[bot]`` rather than me.
+
+    <img height="250" alt="screenshot_20260402_151404" src="https://github.com/user-attachments/assets/62744e95-5005-48c9-9a09-8a152db87d58" />
+
 
 </details>
 
