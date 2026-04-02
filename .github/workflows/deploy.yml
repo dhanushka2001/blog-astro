@@ -86,11 +86,17 @@ jobs:
             echo "changed=true" >> $GITHUB_OUTPUT
             exit 0
           fi
-
-          mkdir /tmp/gh-pages-current
-          git --work-tree=/tmp/gh-pages-current checkout origin/gh-pages -- .
-
-          if diff -rq dist/ /tmp/gh-pages-current/ > /dev/null 2>&1; then
+ 
+          # Hash the entire tree of the last deployment
+          DEPLOYED_HASH=$(git ls-tree -r --name-only origin/gh-pages | sort | xargs -I{} git show origin/gh-pages:{} | sha256sum)
+ 
+          # Hash the freshly built dist/
+          DIST_HASH=$(find dist/ -type f | sort | xargs sha256sum | sha256sum)
+ 
+          echo "Deployed hash: $DEPLOYED_HASH"
+          echo "Dist hash:     $DIST_HASH"
+ 
+          if [ "$DEPLOYED_HASH" = "$DIST_HASH" ]; then
             echo "No changes in dist/ — skipping deploy"
             echo "changed=false" >> $GITHUB_OUTPUT
           else
