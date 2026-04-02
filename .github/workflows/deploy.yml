@@ -48,11 +48,6 @@ jobs:
       - name: Add .nojekyll file
         run: echo > dist/.nojekyll
 
-      - name: Set Git Identity
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
       - name: Deploy to GitHub Pages 🚀
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -60,3 +55,5 @@ jobs:
           publish_dir: ./dist
           publish_branch: main
           external_repository: dhanushka2001/dhanushka2001.github.io
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
