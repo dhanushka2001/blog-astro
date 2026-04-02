@@ -77,7 +77,7 @@ jobs:
       # -----------------------------------------
 
 
-      # --- modern deployment with GitHub Actions ---
+      # ------ deploy with gh-pages branch ------
       - name: Check if dist changed vs gh-pages
         id: dist_check
         run: |
@@ -117,4 +117,4 @@ jobs:
           git commit -m "deploy: https://github.com/${{ github.repository }}/commit/$SHA"
           git push origin gh-pages
 
-      # -----------------------------------------------
+      # -----------------------------------------
