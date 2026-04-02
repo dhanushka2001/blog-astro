@@ -16,7 +16,15 @@ In development
 
 ## 🚀 Live Site
 
-This blog is built from **this** repository and deployed using the [`dhanushka2001/dhanushka2001.github.io`](https://github.com/dhanushka2001/dhanushka2001.github.io) repository to **GitHub Pages** @ [`dhanushka2001.github.io`](https://dhanushka2001.github.io)
+This blog is
+
+```
+          built from this repository
+                      ↓      
+ deployed using my 'dhanushka2001.github.io' repo
+                      ↓
+to GitHub Pages @ https://dhanushka2001.github.io
+```
 
 ## Inspirations
 
@@ -1427,7 +1435,6 @@ This blog is built from **this** repository and deployed using the [`dhanushka20
   * Now when I push a change that will change content in the ``dist/`` folder (like blog changes), the **GitHub Actions** workflow in **this** repo actively **pushes** the new files into the external [`dhanushka2001/dhanushka2001.github.io`](https://github.com/dhanushka2001/dhanushka2001.github.io) repo. GitHub Pages automatically detects the new commit and updates the live website, and in the deployment commit it now correctly shows up as ``github-actions[bot]`` rather than me.
 
     <img height="250" alt="screenshot_20260402_151404" src="https://github.com/user-attachments/assets/62744e95-5005-48c9-9a09-8a152db87d58" />
-
 
 </details>
 
