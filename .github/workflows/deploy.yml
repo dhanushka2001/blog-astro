@@ -5,8 +5,8 @@ on:
     branches: [main]  # Adjust if you're using another branch
     paths-ignore:
       - '**.md'       # Ignore README.md changes
-  pull_request:
-    branches: [main]
+  # pull_request:
+  #   branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -15,8 +15,17 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
+      # ---------------- auto -------------------
+      # - name: Install, build, and upload site
+      #   uses: withastro/action@v5
+      #   with:
+      #     node-version: 22
+      #     package-manager: yarn
+      # -----------------------------------------
+
+      # ---------------- manual -----------------
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -45,15 +54,38 @@ jobs:
       - name: Build site
         run: yarn build
 
-      - name: Add .nojekyll file
-        run: echo > dist/.nojekyll
-
-      - name: Deploy to GitHub Pages 🚀
-        uses: peaceiris/actions-gh-pages@v4
+      # - name: Add .nojekyll file
+      #   run: echo > dist/.nojekyll
+      
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          personal_token: ${{ secrets.BLOG_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: main
-          external_repository: dhanushka2001/dhanushka2001.github.io
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          path: ./dist
+      # -----------------------------------------
+
+
+      # -------- deploy with external repo ------
+      # - name: Deploy to GitHub Pages 🚀
+      #   uses: peaceiris/actions-gh-pages@v4
+      #   with:
+      #     personal_token: ${{ secrets.BLOG_TOKEN }}
+      #     publish_dir: ./dist
+      #     publish_branch: main
+      #     external_repository: dhanushka2001/dhanushka2001.github.io
+      #     user_name: 'github-actions[bot]'
+      #     user_email: 'github-actions[bot]@users.noreply.github.com'
+      # -----------------------------------------
+
+
+  # --- modern deployment with GitHub Actions ---
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v4
+  # -----------------------------------------------
