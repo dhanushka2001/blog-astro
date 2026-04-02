@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>How to use TerminusDB in Rust - Dhanushka&#39;s Blog</title><meta name="description" content="In this article, we will explore how to use TerminusDB in Rust, and how to integrate the two technologies to build efficient and reliable applications.."><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="How to use TerminusDB in Rust"><meta property="og:description" content="In this article, we will explore how to use TerminusDB in Rust, and how to integrate the two technologies to build efficient and reliable applications.."><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/118660664.png"><link rel="canonical" href="undefined/posts/tech/rust/getting_started_with_terminius_db_in_rust"><meta property="og:url" content="undefined/posts/tech/rust/getting_started_with_terminius_db_in_rust"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/118660664.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">5 min read</div><h1 class="text-center text-3xl font-bold">How to use TerminusDB in Rust</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Jan 24, 2024</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/TerminusDB" style="padding-right:3px"><category>TerminusDB</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/rust" style="padding-right:3px"><category>rust</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/118660664.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <p>TerminusDB is a graph database that provides a modern, powerful, and easy-to-use platform for building and deploying applications that require fast and efficient access to large amounts of data. Rust, on the other hand, is a system programming language that provides low-level control over system resources and guarantees memory safety, making it ideal for building high-performance applications that require robustness and stability.</p>
+<p>It  offers several advantages over traditional relational databases and other graph databases:</p>
+<ol>
+<li>
+<p>Schema flexibility: TerminusDB allows for easy schema evolution without data loss, which is particularly useful in situations where the data model is not fully understood at the outset of a project.</p>
+</li>
+<li>
+<p>Version control: TerminusDB has built-in version control, which allows you to easily track changes to your data over time and revert to previous versions if necessary.</p>
+</li>
+<li>
+<p>Query language: TerminusDB uses a powerful query language called WOQL (Web Ontology Query Language), which allows for complex queries and data manipulation.</p>
+</li>
+<li>
+<p>Graph visualization: TerminusDB includes a built-in graph visualization tool that allows you to explore the relationships between your data in an intuitive way.</p>
+</li>
+<li>
+<p>Collaborative editing: TerminusDB supports collaborative editing, which allows multiple users to work on the same database simultaneously.</p>
+</li>
+<li>
+<p>Open source: TerminusDB is an open-source project, which means that its source code is freely available and can be modified and redistributed by anyone.</p>
+</li>
+</ol>
+<p>In this article, we will explore how to use TerminusDB in Rust, and how to integrate the two technologies to build efficient and reliable applications.</p>
+<h2 id="getting-started-with-terminusdb">Getting Started with TerminusDB</h2>
+<p>To get started with TerminusDB, you need to first install it on your system. TerminusDB provides pre-built binaries for different platforms, including Windows, Linux, and macOS, which can be downloaded from their website.</p>
+<p>Once you have installed TerminusDB, you can start using it by running the TerminusDB server, which provides an HTTP API for interacting with the database. You can use any HTTP client library in Rust, such as Reqwest or Hyper, to interact with the TerminusDB server.</p>
+<h2 id="connecting-to-terminusdb-from-rust">Connecting to TerminusDB from Rust</h2>
+<p>To connect to TerminusDB from Rust, you need to use an HTTP client library that supports sending JSON payloads and handling JSON responses. In this article, we will use the Reqwest library, which is a popular Rust HTTP client library that provides a simple and easy-to-use interface for making HTTP requests.</p>
+<p>First, we need to add the Reqwest library to our Rust project by adding the following line to the <code>Cargo.toml</code> file:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[dependencies]</span></span>
+<span class="line"><span>reqwest = { version = "0.11", features = ["json"] }</span></span></code></pre>
+<p>This will download and install the latest version of the Reqwest library, along with the <code>json</code> feature, which provides support for JSON payloads and responses.</p>
+<p>Next, we can create a new Rust module to handle communication with TerminusDB. We will use the <code>reqwest::Client</code> struct to create a new HTTP client, and the <code>reqwest::RequestBuilder</code> struct to build and send HTTP requests:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>use reqwest::Client;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>pub struct TerminusDB {</span></span>
+<span class="line"><span>    client: Client,</span></span>
+<span class="line"><span>    url: String,</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>impl TerminusDB {</span></span>
+<span class="line"><span>    pub fn new(url: &#x26;str) -> TerminusDB {</span></span>
+<span class="line"><span>        let client = Client::new();</span></span>
+<span class="line"><span>        TerminusDB { client, url: url.to_string() }</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    pub async fn query(&#x26;self, query: &#x26;str) -> Result&#x3C;String, reqwest::Error> {</span></span>
+<span class="line"><span>        let url = format!("{}/query", self.url);</span></span>
+<span class="line"><span>        let resp = self.client.post(&#x26;url)</span></span>
+<span class="line"><span>            .header("Content-Type", "application/json")</span></span>
+<span class="line"><span>            .json(&#x26;json!({ "query": query }))</span></span>
+<span class="line"><span>            .send()</span></span>
+<span class="line"><span>            .await?;</span></span>
+<span class="line"><span>        let body = resp.text().await?;</span></span>
+<span class="line"><span>        Ok(body)</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>In this code, we define a <code>TerminusDB</code> struct that contains an instance of the <code>reqwest::Client</code> struct and the URL of the TerminusDB server. We use the <code>new</code> method to create a new instance of the <code>TerminusDB</code> struct, and the <code>query</code> method to send a query to the TerminusDB server and receive the response.</p>
+<p>The <code>query</code> method sends a POST request to the <code>/query</code> endpoint of the TerminusDB server, with a JSON payload containing the query string. It then reads the response body as a string and returns it as a <code>Result&#x3C;String, reqwest::Error></code>.</p>
+<h2 id="using-terminusdb-in-rust">Using TerminusDB in Rust</h2>
+<p>Now that we have a Rust module to handle communication with TerminusDB, we can start using it in our Rust application. Let’s say we want to query the TerminusDB server for all the nodes in a graph, and print their IDs to the console:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>use serde_json::Value;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>#[tokio::main]</span></span>
+<span class="line"><span>async fn main() -> Result&#x3C;(), Box&#x3C;dyn std::error::Error>> {</span></span>
+<span class="line"><span>    let db = TerminusDB::new("http://localhost:6363");</span></span>
+<span class="line"><span>    let query = r#"{"@type": "woql:Select","woql:query_result": {"@type": "woql:Variable","woql:variable_name": "X"}}}"#;</span></span>
+<span class="line"><span>    let resp = db.query(query).await?;</span></span>
+<span class="line"><span>    let json: Value = serde_json::from_str(&#x26;resp)?;</span></span>
+<span class="line"><span>    let bindings = json["bindings"].as_array().unwrap();</span></span>
+<span class="line"><span>    for binding in bindings {</span></span>
+<span class="line"><span>        let id = binding["X"]["@id"].as_str().unwrap();</span></span>
+<span class="line"><span>        println!("{}", id);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    Ok(())</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>In this code, we create a new instance of the <code>TerminusDB</code> struct with the URL of the TerminusDB server. We then define a query string in WOQL format, which selects all the nodes in the graph and returns their IDs as variables.</p>
+<p>We use the <code>query</code> method of the <code>TerminusDB</code> struct to send the query to the server and receive the response. We then parse the response body as a JSON value using the <code>serde_json::from_str</code> function, and extract the bindings of the query using the <code>bindings</code> key of the JSON object.</p>
+<p>Finally, we iterate over the bindings and extract the ID of each node using the <code>@id</code> key of the JSON object. We print the ID to the console using the <code>println!</code> macro.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>TerminusDB is a powerful graph database that provides a modern and easy-to-use platform for building and deploying applications that require fast and efficient access to large amounts of data. Rust is a system programming language that provides low-level control over system resources and guarantees memory safety, making it ideal for building high-performance applications that require robustness and stability.</p>
+<p>In this article, we have explored how to use TerminusDB in Rust, and how to integrate the two technologies to build efficient and reliable applications. We have shown how to connect to TerminusDB from Rust using the Reqwest HTTP client library, and how to send queries to the TerminusDB server and receive responses using JSON payloads and responses.</p>
+<p>By combining the power of TerminusDB and Rust, you can build high-performance and robust applications that can scale to handle large amounts of data and provide fast and efficient access to it.</p>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2023/apache_lucene_a_comprehensive_guide_to_the_world-class_search_library"> Apache Lucene A Comprehensive Guide to the World-class Search Library </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/rust/getting_started_with_mongodb_in_rust"> Using MongoDB in Rust </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Building a report with 13F filings - Dhanushka&#39;s Blog</title><meta name="description" content="sec filings with python and secedgar"><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="Building a report with 13F filings"><meta property="og:description" content="sec filings with python and secedgar"><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2022/dall-e/DALL·E 2022-12-10 21.55.07 - magnifying glass on stonks.png"><link rel="canonical" href="undefined/posts/stonks/web/generate_reports_with_13f_filings_with_markdown"><meta property="og:url" content="undefined/posts/stonks/web/generate_reports_with_13f_filings_with_markdown"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2022/dall-e/DALL·E 2022-12-10 21.55.07 - magnifying glass on stonks.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">7 min read</div><h1 class="text-center text-3xl font-bold">Building a report with 13F filings</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Apr 14, 2023</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/sec" style="padding-right:3px"><category>sec</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-green-400 text-green-900"><a href="/tags/python" style="padding-right:3px"><category>python</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/secedgar" style="padding-right:3px"><category>secedgar</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2022/dall-e/DALL·E 2022-12-10 21.55.07 - magnifying glass on stonks.png" alt="rbc stock analyzer" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <p>View the previous post at <a href="https://friendlyuser.github.io/posts/stonks/scrap_from_sec_with_python">https://friendlyuser.github.io/posts/stonks/scrap_from_sec_with_python</a></p>
+<p>This code fetches 13F filings for a list of companies from the Securities and Exchange Commission’s (SEC) Electronic Data Gathering, Analysis, and Retrieval (EDGAR) system. 13F filings are quarterly reports that detail the holdings of investment managers with at least $100 million in assets. The filings function from the secedgar library is used to retrieve these 13F filings, and the get_company_of_interest function acts as a filter to only return the 13F filings for the companies specified in the company_list variable. This list is read from the holdings_list.txt file. The fetch_filings function uses the save method of the combo_filings object to save the retrieved 13F filings to the temp folder. The get_year_quarter_from_path function extracts the year and quarter from the path of a file and returns them as a tuple of strings.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>from secedgar import filings, FilingType</span></span>
+<span class="line"><span>from datetime import date</span></span>
+<span class="line"><span>import glob</span></span>
+<span class="line"><span>import matplotlib.pyplot as plt</span></span>
+<span class="line"><span>import seaborn as sns</span></span>
+<span class="line"><span>import re</span></span>
+<span class="line"><span>import pandas as pd</span></span>
+<span class="line"><span>import json</span></span>
+<span class="line"><span>from typing import List</span></span>
+<span class="line"><span>from parser import DocParser</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># read company list from holdings_list.txt</span></span>
+<span class="line"><span>with open("holdings_list.txt", "r") as f:</span></span>
+<span class="line"><span>    holdings_list = f.read().splitlines()</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>company_list = holdings_list</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>def get_company_of_interest(filing_entry):</span></span>
+<span class="line"><span>    if "13F" in filing_entry.form_type and filing_entry.company_name.lower() in (name.lower() for name in company_list):</span></span>
+<span class="line"><span>        company_list.append(filing_entry.company_name)</span></span>
+<span class="line"><span>        return True</span></span>
+<span class="line"><span>    return False</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>def fetch_filings():</span></span>
+<span class="line"><span>    # 13F filings for Apple (ticker "aapl")</span></span>
+<span class="line"><span>    # read list from holdings_list.txt</span></span>
+<span class="line"><span>    combo_filings = filings(start_date=date(2022, 1, 1),</span></span>
+<span class="line"><span>                             end_date=date(2022, 12, 20),</span></span>
+<span class="line"><span>                             # filing_type=FilingType.FILING_13F,</span></span>
+<span class="line"><span>                             user_agent="Your name &#x3C;dlcoding20@gmail.com>",</span></span>
+<span class="line"><span>                             entry_filter=get_company_of_interest,</span></span>
+<span class="line"><span>                             rate_limit=5</span></span>
+<span class="line"><span>    )</span></span>
+<span class="line"><span>    # map folder to year and quarter</span></span>
+<span class="line"><span>    combo_filings.save("temp")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>def get_year_quarter_from_path(path: str):</span></span>
+<span class="line"><span>    """ Get year and quarter from path</span></span>
+<span class="line"><span>    """</span></span>
+<span class="line"><span>    # get all numbers from path using regex</span></span>
+<span class="line"><span>    year, quarter = re.findall(r'\d+', path)[0:2]</span></span>
+<span class="line"><span>    return year, quarter</span></span></code></pre>
+<p>This code appears to be parsing 13F filing documents and outputting the results to a file in markdown format. The parse_filings function takes a dictionary of data (data) as input and retrieves a company’s CIK number (a unique identifier assigned by the SEC to publicly traded companies) from the cik field in the data dictionary. If the cik field is not present, it defaults to “1649339”. It also retrieves the desired output filename from the filename field in the data dictionary, defaulting to “burry” if the field is not present. The function then uses the glob library to find all the text files under the temp folder that match the specified CIK number and stores their filenames in the filename variable. It uses the DocParser class to parse each file and filters the resulting documents for those of type “INFORMATION_TABLE”. It then adds the year and quarter of each document to its data frame and stores the resulting document in the final_docs list. If the final_docs list has four elements, the loop breaks. Finally, the function sorts the elements of final_docs by quarter and calls the output_to_md function to output the data to a markdown file. The metadata dictionary stores some metadata about the 13F filing that is included in the output file.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span></span></span>
+<span class="line"><span>def parse_filings(data: dict = {}):</span></span>
+<span class="line"><span>    """ Parse filings</span></span>
+<span class="line"><span>    """</span></span>
+<span class="line"><span>    cik = data.get("cik", "1649339")</span></span>
+<span class="line"><span>    output_name = data.get("filename", "burry")</span></span>
+<span class="line"><span>    # find files under temp/2022/QTR{1,2,3,4}/*.txt with glob</span></span>
+<span class="line"><span>    final_docs = []</span></span>
+<span class="line"><span>    for filename in glob.iglob(f'temp/2022/QTR*/{cik}/*.txt', recursive=True):</span></span>
+<span class="line"><span>        documents = DocParser(filename, "13F").parse()</span></span>
+<span class="line"><span>        # filter for INFORMATION_TABLE</span></span>
+<span class="line"><span>        for document in documents:</span></span>
+<span class="line"><span>            if document["type"] == "INFORMATION_TABLE":</span></span>
+<span class="line"><span>                document["filename"] = filename</span></span>
+<span class="line"><span>                # add year and quarter to document</span></span>
+<span class="line"><span>                year, quarter = get_year_quarter_from_path(filename)</span></span>
+<span class="line"><span>                temp_df = document["df"]</span></span>
+<span class="line"><span>                # add year quarter to df</span></span>
+<span class="line"><span>                temp_df["year"] = year</span></span>
+<span class="line"><span>                temp_df["quarter"] = quarter</span></span>
+<span class="line"><span>                final_docs.append(document)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        if len(final_docs) == 4:</span></span>
+<span class="line"><span>            break</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    # sort by quarter</span></span>
+<span class="line"><span>    final_docs = sorted(final_docs, key=lambda x: x["df"]["quarter"].iloc[0])</span></span>
+<span class="line"><span>    </span></span>
+<span class="line"><span>    metadata ={</span></span>
+<span class="line"><span>        "filename": f"{output_name}.md",</span></span>
+<span class="line"><span>        "company_name": data.get("outputLabel", "Burry"),</span></span>
+<span class="line"><span>        "category": "13F",</span></span>
+<span class="line"><span>        "date": "2022-12-21",</span></span>
+<span class="line"><span>        "start_date": "2022-01-01",</span></span>
+<span class="line"><span>        "end_date": "2022-12-20",</span></span>
+<span class="line"><span>        "cik": cik,</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    # eventually parse all this from a metadata yaml file or json file</span></span>
+<span class="line"><span>    output_to_md(final_docs, metadata)</span></span></code></pre>
+<p>This code appears to be processing and outputting data from 13F filing documents. The output_to_md function takes a list of data frames (final_docs) and a dictionary of metadata (metadata) as input. It first combines all the data frames in final_docs into a single data frame called combined_df. It then groups combined_df by the cusip column and stores the resulting data frame in grouped_df. It then extracts the last two quarters of data from final_docs and stores them in a data frame called last_two_quarters. It then converts the value column in last_two_quarters to numeric values and pivots the data frame by nameOfIssuer and quarter, storing the resulting data frame in pivot_df. It then plots pivot_df as a bar chart and saves the chart to a file. It then merges the last two quarters of data from final_docs using the pd.merge function and stores the resulting data frame in last_two_quarter_diff.</p>
+<p>The function then opens a file with the name specified in the filename field of the metadata dictionary and writes some metadata and the pivoted data frame to it in markdown format. It also writes the data from each data frame in final_docs to the file, grouped by cusip. Finally, it writes the merged data frame (last_two_quarter_diff) to the file in markdown format.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span></span></span>
+<span class="line"><span>def output_to_md(final_docs: List[pd.DataFrame], metadata: dict):</span></span>
+<span class="line"><span>    """ Output dataframe to markdown file</span></span>
+<span class="line"><span>    """</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    combined_df = None</span></span>
+<span class="line"><span>    # iterate across final_docs and append them all</span></span>
+<span class="line"><span>    for doc in final_docs:</span></span>
+<span class="line"><span>        if combined_df is None:</span></span>
+<span class="line"><span>            combined_df = doc["df"]</span></span>
+<span class="line"><span>        else:</span></span>
+<span class="line"><span>            # pandas.concat</span></span>
+<span class="line"><span>            combined_df = pd.concat([combined_df, doc["df"]])</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    # combine df then group by cusip</span></span>
+<span class="line"><span>    grouped_df = combined_df.groupby("cusip")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    # get 2nd last element in list</span></span>
+<span class="line"><span>    last_quarter = final_docs[-2]</span></span>
+<span class="line"><span>    current_quarter = final_docs[-1]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    filename = metadata["filename"]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    csv_filename = filename.replace(".md", ".csv")</span></span>
+<span class="line"><span>    # write to csv</span></span>
+<span class="line"><span>    combined_df.to_csv(csv_filename, index=False)</span></span>
+<span class="line"><span>    merge_df = pd.merge(last_quarter["df"], current_quarter["df"], how="outer") </span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    # quarterly_df = combined_df.groupby("quarter")</span></span>
+<span class="line"><span>    # append last two quarters</span></span>
+<span class="line"><span>    last_two_quarters = pd.concat([last_quarter["df"], current_quarter["df"]])</span></span>
+<span class="line"><span>    last_two_quarters = last_two_quarters[["quarter", "nameOfIssuer", "value"]]</span></span>
+<span class="line"><span>    # plot ax grouped by quarter</span></span>
+<span class="line"><span>    # make value numeric</span></span>
+<span class="line"><span>    # use .loc[row_indexer, col_indexer]</span></span>
+<span class="line"><span>    last_two_quarters.loc[:, "value"] = pd.to_numeric(last_two_quarters["value"])</span></span>
+<span class="line"><span>    png_filename = filename.replace(".md", ".png")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    # make pivot table</span></span>
+<span class="line"><span>    pivot_df = last_two_quarters.pivot(index="nameOfIssuer", columns="quarter", values="value")</span></span>
+<span class="line"><span>    # plot pivot table</span></span>
+<span class="line"><span>    # first color red, second color blue</span></span>
+<span class="line"><span>    ax = pivot_df.plot(kind="bar", color=["blue", "green"])</span></span>
+<span class="line"><span>    # make image big enough for labels</span></span>
+<span class="line"><span>    ax.figure.savefig(png_filename, bbox_inches="tight")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    # quarter diff combined</span></span>
+<span class="line"><span>    last_two_quarter_diff = pd.merge(last_quarter["df"], current_quarter["df"], how="outer", indicator=True)</span></span>
+<span class="line"><span>    with open(filename, "w") as f:</span></span>
+<span class="line"><span>        f.write(f"Title: {metadata['company_name']} - {metadata['cik']} \n")</span></span>
+<span class="line"><span>        f.write(f"Date: {metadata['date']} \n")</span></span>
+<span class="line"><span>        f.write(f"Category: {metadata['category']} \n")</span></span>
+<span class="line"><span>        # merge df</span></span>
+<span class="line"><span>        f.write("## Quarterly holdings \n\n")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        # write png_filename</span></span>
+<span class="line"><span>        f.write(f"![quarterly holdings]({{attach}}images/{png_filename}) \n\n")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        f.write("uses last two quarters to compare \n\n")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        f.write(f"## All tables \n\n")</span></span>
+<span class="line"><span>        # write all tables</span></span>
+<span class="line"><span>        reduced_df = combined_df[["nameOfIssuer", "value", "sshPrnamt", "sshPrnamtType",  "year", "quarter"]]</span></span>
+<span class="line"><span>        # if combined_df has putCall column</span></span>
+<span class="line"><span>        if "putCall" in combined_df.columns:</span></span>
+<span class="line"><span>            reduced_df["putCall"] = combined_df["putCall"]</span></span>
+<span class="line"><span>        f.write(reduced_df.to_markdown(index=False))</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        f.write("\n\n")</span></span>
+<span class="line"><span>        # write header</span></span>
+<span class="line"><span>        f.write("## Tables by cusip \n\n")</span></span>
+<span class="line"><span>        for cusip, group in grouped_df:</span></span>
+<span class="line"><span>            f.write("\n \n")</span></span>
+<span class="line"><span>            f.write(f"### {cusip} \n\n")</span></span>
+<span class="line"><span>            simple_group = group[["nameOfIssuer", "value", "sshPrnamt", "sshPrnamtType", "year", "quarter"]]</span></span>
+<span class="line"><span>            if "putCall" in group.columns:</span></span>
+<span class="line"><span>                simple_group["putCall"] = group["putCall"]</span></span>
+<span class="line"><span>            f.write(simple_group.to_markdown(index=False))</span></span>
+<span class="line"><span>            f.write("\n \n")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        f.write("\n\n")</span></span></code></pre>
+<p>To view the sample output, please go to the following link:</p>
+<p>13F.grandfleet.eu.org</p>
+<p>It is generated by pelican, a static site generator written in python. The source code for the site is available at the following link:</p>
+<p><a href="https://github.com/FriendlyUser/13F-sec">https://github.com/FriendlyUser/13F-sec</a></p>
+<p>Pelican is a static site generator written in Python. It is used to generate static HTML files for a website from templates and content written in a markup language such as Markdown or reStructuredText. Pelican is designed to be flexible, allowing users to customize the look and feel of their website and to extend its functionality through plugins. It also integrates with popular tools such as Jinja2 templates and the Pygments syntax highlighter. Pelican is a popular choice for bloggers, documentation authors, and other users who want to create a simple, fast-loading website without the need for a dynamic backend.</p>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/stonks/thoughts/credit_suisse_failings"> Credit Suisse Crisis: How a European Bank&#39;s Troubles Threaten Global Markets </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/python/projects/password_generator"> How to Create a Password Generator in Python </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

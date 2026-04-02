@@ -1,0 +1,307 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Using UI Frameworks with React - Dhanushka&#39;s Blog</title><meta name="description" content="How to use UI frameworks with react"><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="Using UI Frameworks with React"><meta property="og:description" content="How to use UI frameworks with react"><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/2955132952.png"><link rel="canonical" href="undefined/posts/tech/react/ui_frameworks_in_react"><meta property="og:url" content="undefined/posts/tech/react/ui_frameworks_in_react"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/2955132952.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">13 min read</div><h1 class="text-center text-3xl font-bold">Using UI Frameworks with React</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Nov 29, 2023</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-red-400 text-red-900"><a href="/tags/react" style="padding-right:3px"><category>react</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/bootstrap" style="padding-right:3px"><category>bootstrap</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/material" style="padding-right:3px"><category>material</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/2955132952.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <p>When building complex applications with React, one of the most common tasks you’ll encounter is working with forms. In React, form inputs are usually implemented as controlled components, which means that their value is controlled by React, rather than the DOM. This approach allows for a more declarative programming style and enables better control over the behavior of form elements.</p>
+<p>To create a controlled component, you’ll need to keep the value of the input in the component’s state and update it in response to user input. This can be achieved by adding an <code>onChange</code> event handler to the input, which updates the state with the new value:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>import { useState } from 'react';</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function Form() {</span></span>
+<span class="line"><span> const [name, setName] = useState('');</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> function handleNameChange(event) {</span></span>
+<span class="line"><span> setName(event.target.value);</span></span>
+<span class="line"><span> }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> return (</span></span>
+<span class="line"><span> &#x3C;form></span></span>
+<span class="line"><span> &#x3C;label></span></span>
+<span class="line"><span> Name:</span></span>
+<span class="line"><span> &#x3C;input type="text" value={name} onChange={handleNameChange} /></span></span>
+<span class="line"><span> &#x3C;/label></span></span>
+<span class="line"><span> &#x3C;/form></span></span>
+<span class="line"><span> );</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>In the example above, we’re using the <code>useState</code> hook to keep track of the value of the <code>name</code> input. We’ve also added an <code>onChange</code> event handler to the input that calls the <code>handleNameChange</code> function, which updates the <code>name</code> state with the new value of the input.</p>
+<p>By using a controlled component approach, we can easily validate and manipulate the form data before it is submitted to the server. We can also easily implement complex forms with multiple input fields and validation rules.</p>
+<p>Overall, working with forms and controlled components in React can seem overwhelming at first, but once you understand the basic concepts, it becomes much easier to implement complex forms with ease.</p>
+<p>In a single-page application built with React, navigation is typically handled using React Router. React Router is a powerful library that allows you to define routes and associate them with different components in your application.</p>
+<p>To get started with React Router, you’ll need to install it using npm:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm install react-router-dom</span></span></code></pre>
+<p>Once installed, you can import the components you need from the <code>react-router-dom</code> package. The <code>BrowserRouter</code> component is used to wrap your entire application and define the routes, while the <code>Route</code> component is used to define a specific route and the component that should be rendered when that route is matched.</p>
+<p>Here’s an example of how you might define a simple route in your application:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>import { BrowserRouter, Route } from 'react-router-dom';</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function App() {</span></span>
+<span class="line"><span> return (</span></span>
+<span class="line"><span> &#x3C;BrowserRouter></span></span>
+<span class="line"><span> &#x3C;Route path="/" component={HomePage} /></span></span>
+<span class="line"><span> &#x3C;/BrowserRouter></span></span>
+<span class="line"><span> );</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function HomePage() {</span></span>
+<span class="line"><span> return &#x3C;h1>Welcome to the homepage!&#x3C;/h1>;</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>In this example, we’re using the <code>BrowserRouter</code> component to wrap our entire application, and the <code>Route</code> component to define a route that matches the root URL (<code>/</code>) and renders the <code>HomePage</code> component.</p>
+<p>React Router also provides several other components, such as <code>Link</code> and <code>NavLink</code>, that allow you to create links to different routes in your application. Here’s an example:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>import { BrowserRouter, Route, Link } from 'react-router-dom';</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function App() {</span></span>
+<span class="line"><span> return (</span></span>
+<span class="line"><span> &#x3C;BrowserRouter></span></span>
+<span class="line"><span> &#x3C;nav></span></span>
+<span class="line"><span> &#x3C;ul></span></span>
+<span class="line"><span> &#x3C;li></span></span>
+<span class="line"><span> &#x3C;Link to="/">Home&#x3C;/Link></span></span>
+<span class="line"><span> &#x3C;/li></span></span>
+<span class="line"><span> &#x3C;li></span></span>
+<span class="line"><span> &#x3C;Link to="/about">About&#x3C;/Link></span></span>
+<span class="line"><span> &#x3C;/li></span></span>
+<span class="line"><span> &#x3C;/ul></span></span>
+<span class="line"><span> &#x3C;/nav></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> &#x3C;Route path="/" exact component={HomePage} /></span></span>
+<span class="line"><span> &#x3C;Route path="/about" component={AboutPage} /></span></span>
+<span class="line"><span> &#x3C;/BrowserRouter></span></span>
+<span class="line"><span> );</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function HomePage() {</span></span>
+<span class="line"><span> return &#x3C;h1>Welcome to the homepage!&#x3C;/h1>;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function AboutPage() {</span></span>
+<span class="line"><span> return &#x3C;h1>About Us&#x3C;/h1>;</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>In this example, we’ve added a navigation menu to our application using the <code>Link</code> component. We’ve also defined two routes (<code>/</code> and <code>/about</code>) and associated them with the <code>HomePage</code> and <code>AboutPage</code> components, respectively.</p>
+<p>React Router provides many more features, such as nested routes, route parameters, and route guards, that allow you to build complex navigation systems for your applications. Overall, React Router is an essential tool for building single-page applications with React, and it’s worth taking the time to learn how to use it effectively.</p>
+<p>As your React application grows in complexity, managing application state can become a challenging task. Redux is a powerful library that provides a solution to this problem by centralizing the state of your application in a single store.</p>
+<p>To get started with Redux, you’ll need to install it using npm:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm install redux react-redux</span></span></code></pre>
+<p>Once installed, you can define a Redux store and use it in your application. The store is created using the <code>createStore</code> function, which takes a reducer function as an argument. The reducer function is responsible for updating the state of the store in response to actions dispatched by your application.</p>
+<p>Here’s an example of how you might define a simple store in your application:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>import { createStore } from 'redux';</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>const initialState = {</span></span>
+<span class="line"><span> count: 0,</span></span>
+<span class="line"><span>};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function reducer(state = initialState, action) {</span></span>
+<span class="line"><span> switch (action.type) {</span></span>
+<span class="line"><span> case 'INCREMENT':</span></span>
+<span class="line"><span> return { ...state, count: state.count + 1 };</span></span>
+<span class="line"><span> case 'DECREMENT':</span></span>
+<span class="line"><span> return { ...state, count: state.count - 1 };</span></span>
+<span class="line"><span> default:</span></span>
+<span class="line"><span> return state;</span></span>
+<span class="line"><span> }</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>const store = createStore(reducer);</span></span></code></pre>
+<p>In this example, we’re defining a simple store with a <code>count</code> property that is initialized to zero. We’ve also defined a reducer function that updates the count property in response to two actions: <code>INCREMENT</code> and <code>DECREMENT</code>.</p>
+<p>Once you’ve created your store, you can use it in your React application using the <code>Provider</code> component from the <code>react-redux</code> package. The <code>Provider</code> component takes your store as a prop and wraps your entire application.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>import { Provider } from 'react-redux';</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function App() {</span></span>
+<span class="line"><span> return (</span></span>
+<span class="line"><span> &#x3C;Provider store={store}></span></span>
+<span class="line"><span> &#x3C;Counter /></span></span>
+<span class="line"><span> &#x3C;/Provider></span></span>
+<span class="line"><span> );</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function Counter() {</span></span>
+<span class="line"><span> const count = useSelector((state) => state.count);</span></span>
+<span class="line"><span> const dispatch = useDispatch();</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> function handleIncrement() {</span></span>
+<span class="line"><span> dispatch({ type: 'INCREMENT' });</span></span>
+<span class="line"><span> }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> function handleDecrement() {</span></span>
+<span class="line"><span> dispatch({ type: 'DECREMENT' });</span></span>
+<span class="line"><span> }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> return (</span></span>
+<span class="line"><span> &#x3C;div></span></span>
+<span class="line"><span> &#x3C;h1>Count: {count}&#x3C;/h1></span></span>
+<span class="line"><span> &#x3C;button onClick={handleIncrement}>Increment&#x3C;/button></span></span>
+<span class="line"><span> &#x3C;button onClick={handleDecrement}>Decrement&#x3C;/button></span></span>
+<span class="line"><span> &#x3C;/div></span></span>
+<span class="line"><span> );</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>In this example, we’re using the <code>useSelector</code> and <code>useDispatch</code> hooks from the <code>react-redux</code> package to access the state of the store and dispatch actions, respectively. We’re also defining a <code>Counter</code> component that renders the current count and two buttons that dispatch <code>INCREMENT</code> and <code>DECREMENT</code> actions when clicked.</p>
+<p>Overall, Redux is a powerful tool for managing application state in your React applications, and it can help simplify the process of working with complex state. However, it can also add complexity to your application, so it’s important to evaluate whether it’s the right solution for your specific use case.</p>
+<p>As your React application grows in complexity, writing and running tests becomes more important to ensure that your code is functioning as expected. Jest and Enzyme are two popular tools for testing React applications.</p>
+<p>To get started with Jest and Enzyme, you’ll need to install them using npm:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm install jest enzyme enzyme-adapter-react-16</span></span></code></pre>
+<p>Once installed, you can define tests for your components. Here’s an example of a simple test for a <code>Button</code> component:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>import React from 'react';</span></span>
+<span class="line"><span>import { shallow } from 'enzyme';</span></span>
+<span class="line"><span>import Button from './Button';</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>describe('&#x3C;Button />', () => {</span></span>
+<span class="line"><span> it('renders the button text', () => {</span></span>
+<span class="line"><span> const wrapper = shallow(&#x3C;Button text="Click me" />);</span></span>
+<span class="line"><span> expect(wrapper.text()).toEqual('Click me');</span></span>
+<span class="line"><span> });</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> it('calls the onClick function when clicked', () => {</span></span>
+<span class="line"><span> const onClick = jest.fn();</span></span>
+<span class="line"><span> const wrapper = shallow(&#x3C;Button text="Click me" onClick={onClick} />);</span></span>
+<span class="line"><span> wrapper.simulate('click');</span></span>
+<span class="line"><span> expect(onClick).toHaveBeenCalled();</span></span>
+<span class="line"><span> });</span></span>
+<span class="line"><span>});</span></span></code></pre>
+<p>In this example, we’re using the <code>shallow</code> function from Enzyme to create a shallow render of our <code>Button</code> component. We’re then defining two tests: one that ensures that the button text is rendered correctly, and another that ensures that the <code>onClick</code> function is called when the button is clicked.</p>
+<p>To run your tests, you can use the Jest CLI by adding the following script to your <code>package.json</code> file:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"scripts": {</span></span>
+<span class="line"><span> "test": "jest"</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>You can then run your tests using the following command:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm test</span></span></code></pre>
+<p>Jest will automatically find and run all of the test files in your project.</p>
+<p>Overall, Jest and Enzyme are powerful tools for testing React applications, and they can help ensure that your code is functioning as expected. However, writing and maintaining tests can be time-consuming, so it’s important to evaluate whether it’s worth the investment for your specific use case.</p>
+<p>Building and deploying a React application involves several steps, including configuring your build process, selecting a hosting provider, and deploying your application. In this post, we’ll walk through the steps involved in building and deploying a React application.</p>
+<p>Configuring your build process</p>
+<p>Before you can deploy your React application, you’ll need to configure your build process. The build process converts your source code into a format that can be served by a web server. To configure your build process, you’ll need to install the necessary tools and configure your build settings.</p>
+<p>To get started, you’ll need to install Node.js and npm. Once you have Node.js and npm installed, you can install the necessary dependencies for your build process by running the following command:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm install --save-dev webpack webpack-cli webpack-dev-server</span></span></code></pre>
+<p>Once you have installed the necessary dependencies, you can configure your build settings in a <code>webpack.config.js</code> file. Here’s an example configuration file:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>const path = require('path');</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>module.exports = {</span></span>
+<span class="line"><span> entry: './src/index.js',</span></span>
+<span class="line"><span> output: {</span></span>
+<span class="line"><span> path: path.resolve(__dirname, 'dist'),</span></span>
+<span class="line"><span> filename: 'bundle.js',</span></span>
+<span class="line"><span> },</span></span>
+<span class="line"><span> devServer: {</span></span>
+<span class="line"><span> contentBase: './dist',</span></span>
+<span class="line"><span> },</span></span>
+<span class="line"><span> module: {</span></span>
+<span class="line"><span> rules: [</span></span>
+<span class="line"><span> {</span></span>
+<span class="line"><span> test: /\.js$/,</span></span>
+<span class="line"><span> exclude: /node\_modules/,</span></span>
+<span class="line"><span> use: {</span></span>
+<span class="line"><span> loader: 'babel-loader',</span></span>
+<span class="line"><span> },</span></span>
+<span class="line"><span> },</span></span>
+<span class="line"><span> ],</span></span>
+<span class="line"><span> },</span></span>
+<span class="line"><span>};</span></span></code></pre>
+<p>In this configuration file, we’re specifying that our entry point is <code>src/index.js</code> and our output file is <code>dist/bundle.js</code>. We’re also configuring the <code>devServer</code> to serve our files from the <code>dist</code> directory. Finally, we’re specifying that we want to use the <code>babel-loader</code> to transpile our JavaScript code.</p>
+<p>Selecting a hosting provider</p>
+<p>Once you have configured your build process, you’ll need to select a hosting provider for your application. There are several hosting providers that are well-suited for hosting React applications, including:</p>
+<ul>
+<li>AWS Amplify</li>
+<li>Firebase</li>
+<li>Netlify</li>
+<li>Heroku</li>
+</ul>
+<p>Each of these hosting providers has its own set of features and pricing plans, so it’s important to evaluate your specific needs and budget before selecting a provider.</p>
+<p>Deploying your application</p>
+<p>Once you have selected a hosting provider, you can deploy your application. The exact deployment process will depend on your hosting provider, but typically involves the following steps:</p>
+<ol>
+<li>Build your application using the <code>webpack</code> command.</li>
+<li>Push your build files to your hosting provider.</li>
+<li>Configure any necessary settings for your hosting provider, such as setting environment variables or configuring a custom domain.</li>
+</ol>
+<p>Overall, building and deploying a React application involves several steps, but the process can be streamlined using tools like webpack and hosting providers like AWS Amplify or Netlify. By following best practices and carefully evaluating your options, you can deploy your application with confidence.</p>
+<p>Maintaining and scaling a React application can be challenging as your codebase grows in complexity and your user base expands. In this post, we’ll cover some best practices for maintaining and scaling your React application.</p>
+<p>Organizing your codebase</p>
+<p>As your codebase grows, it’s important to organize your code in a way that is easy to maintain and understand. One common approach is to use a modular architecture, where each component is contained in its own file and organized into logical groups. This can make it easier to navigate your codebase and make changes as needed.</p>
+<p>Another useful technique is to use a state management library like Redux to manage your application state. This can help ensure that your state is consistent across your application and make it easier to manage complex state interactions.</p>
+<p>Optimizing performance</p>
+<p>Optimizing the performance of your React application is critical for maintaining a good user experience, particularly as your user base grows. Some tips for optimizing performance include:</p>
+<ul>
+<li>Use a production build of your application, which is optimized for performance.</li>
+<li>Use code splitting to load only the parts of your application that are needed for a particular route or feature.</li>
+<li>Minimize the number of HTTP requests by using tools like webpack to bundle your files.</li>
+<li>Use lazy loading to defer the loading of non-critical resources until they are needed.</li>
+<li>Use a CDN to cache static assets like images and fonts.</li>
+</ul>
+<p>Testing and debugging</p>
+<p>Testing and debugging are critical for maintaining the quality of your codebase, particularly as your application grows. Some best practices for testing and debugging include:</p>
+<ul>
+<li>Write tests for each component and feature to ensure that they are functioning correctly.</li>
+<li>Use a debugging tool like React Developer Tools to inspect the state and props of your components.</li>
+<li>Use error tracking tools like Sentry or Rollbar to track and resolve errors in your application.</li>
+<li>Use performance profiling tools like Chrome DevTools to identify performance bottlenecks in your application.</li>
+</ul>
+<p>Scaling your infrastructure</p>
+<p>Finally, as your user base grows, you may need to scale your infrastructure to handle increased traffic and load. Some tips for scaling your infrastructure include:</p>
+<ul>
+<li>Use a cloud hosting provider like AWS or Google Cloud that can automatically scale your resources as needed.</li>
+<li>Use load balancers to distribute traffic across multiple instances of your application.</li>
+<li>Use caching tools like Redis or Memcached to cache frequently accessed data and reduce the load on your database.</li>
+<li>Use a content delivery network (CDN) to cache static assets and improve load times for users in different geographic regions.</li>
+</ul>
+<p>Overall, maintaining and scaling a React application requires careful planning and attention to detail. By following best practices and using tools and techniques like modular code organization, performance optimization, testing and debugging, and infrastructure scaling, you can ensure that your application is robust, scalable, and maintainable over the long term.</p>
+<p>Deploying a React application can be challenging, but using Vercel can make the process much easier. Vercel is a cloud platform for static sites and serverless functions, which can help you easily deploy and manage your React application. In this post, we’ll walk through the steps to deploy a React application to Vercel.</p>
+<p>Step 1: Create a Vercel account</p>
+<p>The first step is to create a Vercel account. You can sign up for a free account on the Vercel website. Once you have created an account, you can create a new project.</p>
+<p>Step 2: Connect your Git repository</p>
+<p>The next step is to connect your Git repository to Vercel. This will allow Vercel to automatically deploy changes to your application when you push them to your Git repository. To connect your Git repository, navigate to the “Import Project” page in Vercel, select your Git repository, and follow the prompts to authorize Vercel to access your repository.</p>
+<p>Step 3: Configure your build settings</p>
+<p>Once your Git repository is connected, you will need to configure your build settings. This will tell Vercel how to build and deploy your application. To configure your build settings, navigate to the “Build &#x26; Development Settings” page in Vercel, and configure your settings as follows:</p>
+<ul>
+<li>Set the “Framework Preset” to “React”</li>
+<li>Set the “Build Command” to “npm run build”</li>
+<li>Set the “Output Directory” to “build/”</li>
+</ul>
+<p>Step 4: Deploy your application</p>
+<p>Once your build settings are configured, you can deploy your application. To deploy your application, navigate to the “Deployments” page in Vercel, and click the “Deploy” button. Vercel will build and deploy your application, and provide you with a URL where you can access your deployed application.</p>
+<p>Step 5: Update your DNS settings (optional)</p>
+<p>If you want to use your own domain name for your deployed application, you will need to update your DNS settings to point to your Vercel deployment. To do this, navigate to your domain registrar’s website and configure your DNS settings to point to the Vercel deployment URL.</p>
+<p>Overall, deploying a React application to Vercel is a straightforward process that can be completed in just a few steps. By following these steps, you can easily deploy and manage your React application on Vercel.</p>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/rust/getting_started_with_hyper"> Using Hyper in Rust for Asynchronous HTTP </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/react/react_functional_components"> React Functional Components </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

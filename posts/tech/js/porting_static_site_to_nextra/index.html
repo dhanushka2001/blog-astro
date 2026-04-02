@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Converting saber site to nextra - Dhanushka&#39;s Blog</title><meta name="description" content="In this post I will show you how I ported saber site to nextra."><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="Converting saber site to nextra"><meta property="og:description" content="In this post I will show you how I ported saber site to nextra."><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/1538101898.png"><link rel="canonical" href="undefined/posts/tech/js/porting_static_site_to_nextra"><meta property="og:url" content="undefined/posts/tech/js/porting_static_site_to_nextra"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/1538101898.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">11 min read</div><h1 class="text-center text-3xl font-bold">Converting saber site to nextra</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->May 30, 2024</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/next" style="padding-right:3px"><category>next</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/latex" style="padding-right:3px"><category>latex</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/nextra" style="padding-right:3px"><category>nextra</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/1538101898.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <p>Next.js is a popular open-source framework for building modern web applications with React. It is a production-ready solution for building server-side rendered React applications that can be deployed to a wide variety of environments including the web, mobile devices, and even static hosting.</p>
+<p>Next.js offers several features that make it a powerful and flexible tool for building web applications. Some of its key features include:</p>
+<ol>
+<li>Server-side rendering: Next.js supports server-side rendering, which means that pages can be pre-rendered on the server and delivered to the client as fully formed HTML pages. This can lead to better performance and search engine optimization (SEO) for web applications.</li>
+<li>Automatic code splitting: Next.js automatically splits code into smaller chunks, which are then loaded on demand when needed. This can help to improve the initial load time of the application and reduce the amount of code that needs to be loaded for each page.</li>
+<li>Dynamic imports: Next.js supports dynamic imports, which allows code to be loaded on demand based on user actions. This can help to reduce the initial load time of the application and improve the user experience.</li>
+<li>Hot module replacement: Next.js supports hot module replacement, which means that changes to code can be made in real-time without the need for a full page reload. This can help to improve developer productivity and reduce the time needed for testing and debugging.</li>
+<li>Static site generation: Next.js supports static site generation, which means that pages can be pre-built as static HTML files that can be served directly to the client. This can help to improve performance and reduce the load on the server.</li>
+</ol>
+<p>Overall, Next.js provides a powerful and flexible platform for building modern web applications with React. Its support for server-side rendering, automatic code splitting, dynamic imports, hot module replacement, and static site generation make it a popular choice for developers who want to build fast, scalable, and maintainable web applications.</p>
+<p>Saber is a static site generator that uses Vue.js as its main framework. It allows developers to build fast, modern, and SEO-friendly websites with the power of Vue.js and the simplicity of static site generation.</p>
+<p>With Saber, developers can create static websites with server-side rendering and support for dynamic data, routing, and caching. Saber is designed to be easy to use and flexible, allowing developers to customize the build process and add plugins and themes as needed.</p>
+<p>Some of the key features of Saber include:</p>
+<ol>
+<li>Vue.js-based: Saber is built on top of Vue.js, which is a popular and powerful framework for building web applications. This means that developers can leverage the power of Vue.js to build static websites with dynamic data and server-side rendering.</li>
+<li>Server-side rendering: Saber supports server-side rendering, which means that pages can be pre-rendered on the server and delivered to the client as fully formed HTML pages. This can lead to better performance and search engine optimization (SEO) for web applications.</li>
+<li>Easy theming: Saber makes it easy to create and use custom themes, which can be applied to any Saber site. Themes can include custom layouts, styles, and components.</li>
+<li>Flexible plugin system: Saber has a flexible plugin system that allows developers to add new functionality to their Saber sites. There are many plugins available, including plugins for syntax highlighting, sitemaps, and RSS feeds.</li>
+<li>Markdown-based: Saber uses Markdown as the primary way to create content, which makes it easy for developers and content creators to collaborate and create content for the website.</li>
+</ol>
+<p>Overall, Saber is a powerful and flexible static site generator that makes it easy to build modern, SEO-friendly websites with the power of Vue.js. It’s a great choice for developers who want to build fast and scalable websites without the complexity of traditional server-side applications.</p>
+<p>Saber is a older framework and relies on hacks to implement search and/or analytics plus google adsense. By leveraging newer framework I was aiming to improve the user experience and improve the quality of my <a href="grandfleet.eu.org">latex diagrams site</a>.</p>
+<p>Nextra is an open-source framework for building static websites with Next.js and MDX. It provides a set of pre-configured components and styles to make it easy to build modern, responsive websites that can be deployed anywhere.</p>
+<p>Nextra is built on top of Next.js, which is a popular framework for building server-side rendered React applications. It leverages the power of Next.js to provide features like server-side rendering, automatic code splitting, and dynamic imports.</p>
+<p>Nextra’s primary focus is on making it easy to create documentation websites, blogs, and other content-driven sites with Next.js and MDX. MDX is a format that combines markdown and JSX, which allows developers to write components directly in their markdown content.</p>
+<p>Some of the key features of Nextra include:</p>
+<ol>
+<li>Easy setup: Nextra provides a simple setup process that includes a pre-configured Next.js project with all the necessary components and styles.</li>
+<li>MDX-based: Nextra uses MDX as the primary way to create content, which makes it easy for developers and content creators to collaborate and create content for the website.</li>
+<li>Customizable: Nextra is highly customizable and includes a wide variety of configuration options and components that can be modified to fit the needs of the website.</li>
+<li>Dark mode support: Nextra includes built-in support for dark mode, which can be toggled with a single click.</li>
+<li>Responsive design: Nextra provides a set of responsive styles that make it easy to build websites that look great on any device.</li>
+</ol>
+<p>Overall, Nextra is a powerful and flexible framework for building static websites with Next.js and MDX. It’s a great choice for developers who want to build fast, responsive, and content-driven websites with the power of Next.js and the simplicity of MDX.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> const withNextra = require('nextra')({</span></span>
+<span class="line"><span>  theme: 'nextra-theme-docs',</span></span>
+<span class="line"><span>  themeConfig: './theme.config.tsx',</span></span>
+<span class="line"><span>  images: {</span></span>
+<span class="line"><span>    unoptimized: true</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>})</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>module.exports = withNextra()</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>This is a code snippet from a Next.js configuration file that uses the <code>withNextra</code> Higher Order Function (HOF) to apply the Nextra framework to the Next.js application.</p>
+<p>Here’s what each part of the code does:</p>
+<ol>
+<li><code>const withNextra = require('nextra')(...)</code> - This line imports the <code>withNextra</code> function from the Nextra package and calls it with an options object as an argument. This creates a new HOF that can be used to apply the Nextra framework to a Next.js application.</li>
+<li><code>theme: 'nextra-theme-docs'</code> - This option specifies the name of the Nextra theme to use. In this case, the theme is <code>nextra-theme-docs</code>, which is a pre-built theme that is optimized for documentation websites.</li>
+<li><code>themeConfig: './theme.config.tsx'</code> - This option specifies the location of the theme configuration file. The theme configuration file is a TypeScript module that can be used to customize the Nextra theme.</li>
+<li><code>images: { unoptimized: true }</code> - This option specifies that images should be served in an unoptimized format. This is useful for development purposes when you want to quickly iterate on image assets.</li>
+<li><code>module.exports = withNextra()</code> - This line exports the <code>withNextra</code> HOF with an empty options object as an argument. This applies the Nextra framework to the Next.js application and makes it available for use in the application.</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> import React from 'react'</span></span>
+<span class="line"><span>import { DocsThemeConfig } from 'nextra-theme-docs'</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>const config: DocsThemeConfig = {</span></span>
+<span class="line"><span>  logo: &#x3C;span>Latex Diagrams&#x3C;/span>,</span></span>
+<span class="line"><span>  project: {</span></span>
+<span class="line"><span>    link: 'https://github.com/FriendlyUser/LatexDiagrams',</span></span>
+<span class="line"><span>  },</span></span>
+<span class="line"><span>  chat: {</span></span>
+<span class="line"><span>    link: 'https://discord.com',</span></span>
+<span class="line"><span>  },</span></span>
+<span class="line"><span>  docsRepositoryBase: 'https://github.com/FriendlyUser/LatexDiagrams',</span></span>
+<span class="line"><span>  footer: {</span></span>
+<span class="line"><span>    text: 'Nextra Docs Template',</span></span>
+<span class="line"><span>  },</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>export default config</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>This is a code snippet that creates a configuration object for the Nextra <code>nextra-theme-docs</code> theme.</p>
+<p>Here’s what each part of the code does:</p>
+<ol>
+<li><code>import React from 'react'</code> - This line imports the <code>React</code> library, which is needed to create the logo element.</li>
+<li><code>import { DocsThemeConfig } from 'nextra-theme-docs'</code> - This line imports the <code>DocsThemeConfig</code> type from the <code>nextra-theme-docs</code> package. This type is used to define the structure of the theme configuration object.</li>
+<li><code>const config: DocsThemeConfig = {...}</code> - This line creates a <code>config</code> constant that is of type <code>DocsThemeConfig</code> and assigns it an object that contains various configuration options for the <code>nextra-theme-docs</code> theme.</li>
+<li><code>logo: &#x3C;span>Latex Diagrams&#x3C;/span></code> - This option specifies the logo for the website. In this case, the logo is a simple <code>span</code> element with the text “Latex Diagrams”. This element will be rendered in the top left corner of the website.</li>
+<li><code>project: { link: 'https://github.com/FriendlyUser/LatexDiagrams' }</code> - This option specifies a link to the project repository. This link will be displayed in the top right corner of the website.</li>
+<li><code>chat: { link: 'https://discord.com' }</code> - This option specifies a link to a chat service. This link will be displayed in the top right corner of the website next to the project link.</li>
+<li><code>docsRepositoryBase: 'https://github.com/FriendlyUser/LatexDiagrams'</code> - This option specifies the base URL for the documentation repository. This is used to generate links to specific documentation pages.</li>
+<li><code>footer: { text: 'Nextra Docs Template' }</code> - This option specifies the text that should be displayed in the website footer. In this case, the text is “Nextra Docs Template”.</li>
+<li><code>export default config</code> - This line exports the <code>config</code> constant so that it can be used by other parts of the application that require the <code>nextra-theme-docs</code> theme configuration.</li>
+</ol>
+<p>In order to convert my site from saber to nextra I had to do the following:</p>
+<ol>
+<li>Convert all the markdown files to mdx</li>
+<li>Change the generation script to relative updating pathing for images</li>
+<li>deploy to the nextra site to vercel</li>
+</ol>
+<p>Nextra can use mdx in order to render html pages.</p>
+<p>MDX (Markdown + JSX) is a syntax for combining Markdown and JSX into a single file format. It allows users to write rich content that is easily transformed into HTML or React components.</p>
+<p>MDX extends the capabilities of traditional Markdown syntax by allowing users to embed JSX components within Markdown files. This allows for more dynamic and interactive content, such as live code examples, custom components, and interactive widgets.</p>
+<p>MDX files are processed using a transpiler that converts the combined Markdown and JSX syntax into React components that can be rendered by a React application. This makes it easy to create rich, interactive content for the web that can be easily shared and reused.</p>
+<p>MDX is commonly used for creating documentation, blog posts, and other types of content that require more advanced formatting and interactivity. It is supported by many popular static site generators, including Gatsby, Next.js, and Nuxt.js.</p>
+<p>In addition to supporting MDX, Nextra can also be deployed to vercel and benefits from leverage next.js.</p>
+<p>There are several advantages of using Next.js for building web applications:</p>
+<ol>
+<li>Server-side rendering: Next.js provides server-side rendering (SSR) out of the box. This means that the initial HTML is generated on the server, which can improve performance and SEO. With SSR, the content is available to search engines and social media bots, which can improve the visibility of your website.</li>
+<li>Automatic code splitting: Next.js automatically splits your code into small chunks, which can be loaded on demand. This can improve the initial load time of your website and provide a better user experience.</li>
+<li>Static site generation: Next.js allows you to generate static sites, which can be hosted on a CDN and served to users with low latency. This is great for websites with mostly static content and can improve performance and reduce hosting costs.</li>
+<li>TypeScript support: Next.js has excellent support for TypeScript, a statically typed superset of JavaScript. This can improve code quality and reduce bugs by catching errors at compile time.</li>
+<li>Built-in API routes: Next.js provides built-in API routes that allow you to create API endpoints without the need for an external server. This can simplify your architecture and reduce complexity.</li>
+<li>Automatic image optimization: Next.js can optimize images for the web, which can reduce the size of your images and improve performance.</li>
+<li>Large and active community: Next.js has a large and active community, which means there are many resources, tutorials, and packages available to help you build your application.</li>
+</ol>
+<p>There are several advantages to deploying your application to Vercel:</p>
+<ol>
+<li>Easy deployment: Vercel makes it easy to deploy your application with just a few clicks. You can deploy your application from GitHub, GitLab, Bitbucket, or a zip file.</li>
+<li>Automatic scaling: Vercel automatically scales your application based on the traffic it receives. This means your application will always be available, even if there is a sudden increase in traffic.</li>
+<li>Global CDN: Vercel provides a global content delivery network (CDN) that can improve the performance of your application by serving content from the nearest edge server to the user.</li>
+<li>Serverless architecture: Vercel uses a serverless architecture, which means you only pay for the resources you use. This can reduce hosting costs and improve scalability.</li>
+<li>Built-in integrations: Vercel has built-in integrations with popular tools and services like GitHub, Slack, and Stripe. This makes it easy to set up continuous integration and deployment (CI/CD) pipelines, monitor your application, and handle payments.</li>
+<li>Multiple environments: Vercel allows you to create multiple environments for your application, such as production, staging, and development. This can help you test your application in a safe and controlled environment.</li>
+<li>Large and active community: Vercel has a large and active community, which means there are many resources, tutorials, and packages available to help you build and deploy your application.</li>
+</ol>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/FriendlyUser/dli-vue-docs">https://github.com/FriendlyUser/dli-vue-docs</a></li>
+<li><a href="https://github.com/FriendlyUser/latex-diagrams-docs">https://github.com/FriendlyUser/latex-diagrams-docs</a></li>
+<li><a href="https://latex-diagrams-docs.vercel.app/">https://latex-diagrams-docs.vercel.app/</a></li>
+</ul>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/utils/cloud_env_vars"> Cloud Environment Variables </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2024/getting_started_with_requests_and_proxies"> Optimizing Web Scraping with Proxy Integration: Techniques and Tools </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>
