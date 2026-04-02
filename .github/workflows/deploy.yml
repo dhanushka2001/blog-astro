@@ -9,6 +9,12 @@ on:
   #   branches: [main]
   workflow_dispatch:
 
+# Allow this job to clone the repo and create a page deployment
+permissions:
+  contents: read    # allows checkout
+  pages: write      # allows deployment to GitHub Pages
+  id-token: write   # allows OIDC token for deploy-pages
+
 jobs:
   build:
     runs-on: ubuntu-latest
