@@ -102,16 +102,14 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git stash --include-untracked
+          cp -r dist/ /tmp/dist
           if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
             git checkout gh-pages
           else
             git checkout --orphan gh-pages
-            git rm -rf . --quiet
           fi
-          git stash pop
-          cp -r dist/. .
-          rm -rf dist
+          git rm -rf . --quiet
+          cp -r /tmp/dist/. .
           git add .
           SHA=$(git rev-parse origin/main)
           git commit -m "deploy: https://github.com/${{ github.repository }}/commit/$SHA"
