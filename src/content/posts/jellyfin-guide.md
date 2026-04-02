@@ -134,7 +134,7 @@ DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assign
 
 ## 5. Download Caddy with DuckDNS and DynamicDNS module
 
-**Caddy Reverse Proxy ("The Concierge"):** We tell Caddy: "Wait internally in **Room 10, Desk 8443** for a secure briefcase (a HTTPS request). You have the key (SSL Certificate) to open the briefcase and see what's inside." Caddy looks inside and says: "Ah, they want the film _Up (2009)_ from the Movie Library" and walks across the room to **Cabinet 8096** (the internal Jellyfin port). Caddy takes the message out of the secure briefcase and hands it to Jellfin. When Jellyfin replies, Caddy puts the movie data into the secure briefcase and sends it back to the Guard (Router) at the Side Door.
+**Caddy Reverse Proxy ("The Concierge"):** We tell Caddy: "Wait internally in **Room 10, Desk 8443** for a secure briefcase (a HTTPS request). You have the key (SSL Certificate) to open the briefcase and see what's inside." Caddy looks inside and says: "Ah, they want the film _Up (2009)_ from the Movie Library" and walks across the room to **Cabinet 8096** (the internal Jellyfin port). Caddy takes the message out of the secure briefcase and hands it to Jellyfin. When Jellyfin replies, Caddy puts the movie data into the secure briefcase and sends it back to the Guard (Router) at the Side Door.
 
 
 1. Go to https://caddyserver.com/download
@@ -170,7 +170,7 @@ DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assign
            dns duckdns <DUCKDNS_TOKEN>
        }
 
-       # Proxy to your local Jellfin instance
+       # Proxy to your local Jellyfin instance
        reverse_proxy 192.168.0.XX:8096
    }
    ```
@@ -362,7 +362,7 @@ Install and setup **Chrome Remote Desktop** on your Jellyfin PC here: https://re
 
 And now all you need to connect to the Jellyfin PC is Internet access, another device, and your Google account.
 
-## 11. Set your Jellyfin PC to never sleep and ensure your WiFi is set to connect automaically when in range
+## 11. Set your Jellyfin PC to never sleep and ensure your WiFi is set to connect automatically when in range
 
 This makes sure your PC never sleeps. (The PC monitor going black or even the PC auto logging out is perfectly fine, we just don't want the PC to go into sleep/hibernate mode, which would turn off processes).
 
