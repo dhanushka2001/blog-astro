@@ -114,5 +114,4 @@ jobs:
           SHA=$(git rev-parse origin/main)
           git commit -m "deploy: https://github.com/${{ github.repository }}/commit/$SHA"
           git push origin gh-pages
-
       # -----------------------------------------
