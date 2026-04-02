@@ -1,0 +1,404 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>How to setup your own Jellyfin Media Server - Dhanushka&#39;s Blog</title><meta name="description" content="A definitive beginner-friendly guide to turn an old Windows PC/laptop into a Jellyfin Media Server and Torrent Box, so you can watch your favorite movies/shows on your phone/PC/TV at home or abroad."><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="How to setup your own Jellyfin Media Server"><meta property="og:description" content="A definitive beginner-friendly guide to turn an old Windows PC/laptop into a Jellyfin Media Server and Torrent Box, so you can watch your favorite movies/shows on your phone/PC/TV at home or abroad."><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2026/mar/jellyfin.jpg"><link rel="canonical" href="undefined/posts/jellyfin-guide"><meta property="og:url" content="undefined/posts/jellyfin-guide"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2026/mar/jellyfin.jpg"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">14 min read</div><h1 class="text-center text-3xl font-bold">How to setup your own Jellyfin Media Server</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Mar 18, 2026<!-- --> <!-- -->· Updated:<!-- --> <!-- -->Apr 1, 2026</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/dhanushka.png" alt="Dhanushka Jayagoda" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer" class="hover:underline">Dhanushka Jayagoda</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/networking" style="padding-right:3px"><category>networking</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/jellyfin" style="padding-right:3px"><category>jellyfin</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2026/mar/jellyfin.jpg" alt="Jellyfin Media Server homepage" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <p>In this article I aim to provide a definitive beginner-friendly guide to turn an old Windows PC/laptop into a Jellyfin Media Server and Torrent Box for free, so you can watch your favorite movies/shows on your phone/PC/TV at home or abroad. We’ll be using DHCP reservation, HTTPS port forwarding, DuckDNS, and Caddy.</p>
+<!--
+Talk about how you just need a decent CPU, GPU not required. Prioritise direct-playing by using FFmpeg to pre-transcode (burning-in subtitles, fixing non-standard pixel aspect ratio (SAR), etc.)
+-->
+<h2 id="the-big-picture">The Big Picture</h2>
+<p>You want this flow:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Phone / PC / TV (at home or outside)</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>https://&#x3C;YOUR_SERVER>.duckdns.org:8443</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>Caddy (HTTPS reverse proxy)</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>Jellyfin (localhost:8096)</span></span></code></pre>
+<!--
+* **DuckDNS** gives you a free domain name. Note:
+    * Your **domain**
+    * Your **token**
+* **Caddy**:
+    * Handles HTTPS automatically (no cert headaches)
+    * Forwards traffic securely to Jellyfin
+* **Router port forwarding** exposes only HTTPS (443)
+* Jellyfin stays **off the public internet directly**
+-->
+<h2 id="1-install-jellyfin-on-windows">1. Install Jellyfin on Windows</h2>
+<p>Install Jellyfin on your old Windows PC/laptop: <a href="https://jellyfin.org/docs/general/installation/windows/">https://jellyfin.org/docs/general/installation/windows/</a></p>
+<h2 id="2-get-the-pcs-local-ip-address-and-mac-address">2. Get the PC’s local IP address and MAC address</h2>
+<p>Find the <strong>MAC address</strong> and <strong>IP address</strong> of your Jellyfin Windows PC/laptop by opening <strong>Command Prompt</strong> and running:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ipconfig /all</span></span></code></pre>
+<p>If you’re using WiFi make sure to look under <strong>Wireless LAN adapter Wi-Fi</strong>. If you’re using Ethernet look under <strong>Ethernet adapter</strong>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Wireless LAN adapter Wi-Fi:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Physical Address. . . . . . . . : XX-XX-XX-XX-XX-XX  &#x3C;-- MAC ADDRESS</span></span>
+<span class="line"><span>  IPv4 Address. . . . . . . . . . : 192.168.0.XX       &#x3C;-- IP ADDRESS</span></span></code></pre>
+<p>You can access your Jellyfin server by going to <code>http://localhost:8096</code> or <code>http://192.168.0.XX:8096</code> (replacing <code>192.168.0.XX</code> with the PC’s local IP address).</p>
+<p>This only works on the Jellyfin PC itself though. To make the Jellyfin server accessible on other devices inside and outside the network, we have to do a bit of networking.</p>
+<h2 id="3-setup-dhcp-reservation-and-port-forwarding">3. Setup DHCP Reservation and Port Forwarding</h2>
+<details><summary> What is DHCP? </summary>
+<p><strong>DHCP</strong> stands for <strong>Dynamic Host Configuration Protocol</strong>. It is a network management protocol that automatically assigns IP addresses and other communication parameters to devices on a network. <strong>DHCP</strong> is used for both:</p>
+<ul>
+<li><strong>Public IP Assignment:</strong> When your router first connects to your ISP, it acts as a <strong>DHCP client</strong>. It requests an address from the ISP’s <strong>DHCP server</strong>, which then “leases” your home its single public IP address (your ISP will occassionally change your public IP).</li>
+<li><strong>Local IP Assignment:</strong> Once your router has its public address, it switches roles and acts as a <strong>DHCP server</strong> for your house. It assigns unique <strong>local IP addresses</strong> (like <code>192.168.1.5</code>) to your laptop, phone, smart TV, etc., so they can communicate with each other internally.</li>
+</ul>
+</details>
+<p><strong>DHCP Reservation (“Fixed Room Assignment”):</strong> In a normal building, rooms can change designation. We’re telling the router: “Keep Room 10 designated for the Jellyfin Server.”</p>
+<ol>
+<li>Access your <strong>Router Settings Page</strong> (accessed by typing a specific IP address into your web browser. You can sometimes find the URL to access the settings page on the sticker on the back/bottom of your WiFi router. The exact address depends on your ISP, for Virgin Media it’s <code>192.168.0.1</code>).</li>
+<li>Login using the password you were given by your ISP (the default password is usually printed on the sticker on the back/bottom of your WiFi router, you will then need to change the password to your own custom password. If you don’t remember your password, you can reset the router and use the default password that’s printed on the sticker on your WiFi router).</li>
+<li>Go to the <strong>DHCP</strong> settings page (for Virgin Media it’s under <strong>Advanced settings</strong> → <strong>DHCP</strong>).</li>
+<li>Add a new DHCP <strong>reserved rule</strong> using the <strong>MAC address</strong> and <strong>IP address</strong> of your Jellyfin PC. This ensures that your Jellyfin PC’s local IP address <em>inside</em> your house (e.g. <code>192.168.0.10</code>) <strong>never changes</strong>. If this changed (e.g. PC reboot, router reset), your port forward would break.</li>
+</ol>
+<p><strong>Port Forwarding (“The Side Door”):</strong> We tell the Router (“Guard”): “Block all requests, but if anyone at the gate asks for <strong>“Side Door 8443”</strong> (External Port), send their request internally to <strong>Room 10</strong> (Jellyfin Server Local IP), <strong>Desk 8443</strong> (Caddy Internal Port).” We’re not leaving the front door open (port 443), but the side door isn’t exactly hidden or secure. But that’s fine, we have other security measures in place (Jellyfin password, Fail2Ban).</p>
+<ol>
+<li>
+<p>Now go to the <strong>Port forwarding</strong> settings page (for Virgin Media it’s under <strong>Advanced settings</strong> → <strong>Security</strong> → <strong>Port forwarding</strong>).</p>
+</li>
+<li>
+<p>Add 2 new <strong>port forwarding rules</strong> (replacing <code>192.168.0.XX</code> with the IP address of your Jellyfin PC):</p>
+<table style="width: 100%;">
+  <tbody><tr>
+    <th colspan="2" style="text-align: center;">Local</th>
+    <th colspan="2" style="text-align: center;">External</th>
+  </tr>
+  <tr>
+    <th style="text-align: center;">IP address</th>
+    <th style="text-align: center;">Port range</th>
+    <th style="text-align: center;">Port range</th>
+    <th style="text-align: center;">Protocol</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">192.168.0.XX</td>
+    <td style="text-align: center;">80-80</td>
+    <td style="text-align: center;">80-80</td>
+    <td style="text-align: center;">TCP</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">192.168.0.XX</td>
+    <td style="text-align: center;">8443-8443</td>
+    <td style="text-align: center;">8443-8443</td>
+    <td style="text-align: center;">TCP</td>
+  </tr>
+</tbody></table>
+<ul>
+<li><strong>Rule 1 (80→80):</strong> Good for automatic redirects and standard HTTP.</li>
+<li><strong>Rule 2 (8443→8443):</strong> This is your main HTTPS “highway”. Since many ISPs block the standard <strong>Port 443</strong> to restrict home web hosting, <strong>8443</strong> acts as a stealthy “universal backup” that bypasses these blocks.
+<ul>
+<li><strong>The Downside:</strong> Because it’s not the “standard” port, you must add <code>:8443</code> to the end of your URL when connecting. It’s a small trade-off for a direct connection without needing third-party tools like Tailscale (which requires you to install their VPN on your devices) or Cloudflare (requires a paid domain).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-create-a-free-duckdns-domain">4. Create a free DuckDNS domain</h2>
+<p>DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assigns a custom subdomain (e.g. <code>&#x3C;YOUR_SERVER>.duckdns.org</code>) to your home router’s public IP address.</p>
+<p><strong>DuckDNS (“The Map”)</strong>: DuckDNS acts as a <strong>Global Phonebook</strong>. When the user types <code>&#x3C;YOUR_SERVER>.duckdns.org</code> into their browser, the computer “calls” the DuckDNS server and asks, “Where is this building located right now?”. DuckDNS checks its latest records and replies, “It’s currently at [your public IP]”.</p>
+<ol>
+<li>Go to <a href="https://www.duckdns.org">https://www.duckdns.org</a></li>
+<li>Sign in (GitHub / Google)</li>
+<li>Choose a subdomain (make it short and memorable, this will be the URL you use to access your media server through the internet)</li>
+<li>Note:
+<ul>
+<li>Your <strong>domain</strong></li>
+<li>Your <strong>token</strong></li>
+</ul>
+</li>
+</ol>
+<h2 id="5-download-caddy-with-duckdns-and-dynamicdns-module">5. Download Caddy with DuckDNS and DynamicDNS module</h2>
+<p><strong>Caddy Reverse Proxy (“The Concierge”):</strong> We tell Caddy: “Wait internally in <strong>Room 10, Desk 8443</strong> for a secure briefcase (a HTTPS request). You have the key (SSL Certificate) to open the briefcase and see what’s inside.” Caddy looks inside and says: “Ah, they want the film <em>Up (2009)</em> from the Movie Library” and walks across the room to <strong>Cabinet 8096</strong> (the internal Jellyfin port). Caddy takes the message out of the secure briefcase and hands it to Jellyfin. When Jellyfin replies, Caddy puts the movie data into the secure briefcase and sends it back to the Guard (Router) at the Side Door.</p>
+<ol>
+<li>
+<p>Go to <a href="https://caddyserver.com/download">https://caddyserver.com/download</a></p>
+</li>
+<li>
+<p>Change <strong>Platform</strong> to <strong>Windows amd64</strong> (standard for Intel/AMD PCs)</p>
+</li>
+<li>
+<p>Search the list of plugins to find and select <strong>caddy-dns/duckdns</strong> and <strong>mholt/caddy-dynamicdns</strong> (click the box, NOT the hyperlink, you should see “<strong>Extra features: 2</strong>”)</p>
+</li>
+<li>
+<p>Click <strong>Download</strong></p>
+</li>
+<li>
+<p>Rename the file to <code>caddy.exe</code> and move it to a dedicated folder (e.g. <code>C:\caddy\</code>)</p>
+</li>
+<li>
+<p>Create a new file called <code>Caddyfile</code> inside the <code>caddy</code> folder, open it with <strong>Notepad</strong> and paste this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>{</span></span>
+<span class="line"><span>    # Global options</span></span>
+<span class="line"><span>    auto_https disable_redirects</span></span>
+<span class="line"><span>    https_port 8443</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    # Automatically update your DuckDNS record when your Public IP changes</span></span>
+<span class="line"><span>    dynamic_dns {</span></span>
+<span class="line"><span>        provider duckdns &#x3C;DUCKDNS_TOKEN></span></span>
+<span class="line"><span>        domains {</span></span>
+<span class="line"><span>            &#x3C;YOUR_SERVER>.duckdns.org @</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>        # This stops the IPv6 warning</span></span>
+<span class="line"><span>        versions ipv4</span></span>
+<span class="line"><span>	</span></span>
+<span class="line"><span>        # Uncomment to check every 1min for testing purposes</span></span>
+<span class="line"><span>        # check_interval 1m</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>&#x3C;YOUR_SERVER>.duckdns.org:8443 {</span></span>
+<span class="line"><span>    # Use the DNS challenge with your DuckDNS token</span></span>
+<span class="line"><span>    tls {</span></span>
+<span class="line"><span>        dns duckdns &#x3C;DUCKDNS_TOKEN></span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    # Proxy to your local Jellyfin instance</span></span>
+<span class="line"><span>    reverse_proxy 192.168.0.XX:8096</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>replacing:</p>
+<ul>
+<li><code>&#x3C;YOUR_SERVER></code> with your DuckDNS subdomain</li>
+<li><code>&#x3C;DUCKDNS_TOKEN></code> with your DuckDNS token</li>
+<li><code>192.168.0.XX</code> with your Jellyfin PC’s local IP Address</li>
+</ul>
+</li>
+<li>
+<p>Open <strong>Command Prompt</strong>, <code>cd</code> into the <code>caddy</code> folder, and run this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>caddy run --config Caddyfile</span></span></code></pre>
+<p>this command would need to be run again if the PC reboots, so you could make it a script that runs on startup.</p>
+</li>
+</ol>
+<p>You should now be able to access your Jellyfin Server from another device inside or outside your home network using <code>https://&#x3C;YOUR_SERVER>.duckdns.org:8443</code> (replacing <code>&#x3C;YOUR_SERVER></code> with your DuckDNS subdomain).</p>
+<h3 id="why-we-need-caddy">Why we need Caddy</h3>
+<ul>
+<li><strong>Jellyfin stays hidden:</strong> Jellyfin (Cabinet 8096) is in the back of the room. It never talks to the internet directly. Only Caddy talks to the outside world.</li>
+<li><strong>The “Secret Language” (HTTPS):</strong> Jellyfin isn’t great at managing SSL certificates. Caddy is an expert. Caddy handles the “Secret Language” so Jellyfin can just focus on “Playing Movies.”</li>
+<li><strong>One Room, Many Cabinets:</strong> If you later add a music server (Navidrome) at <strong>Cabinet 4533</strong> or a photo server (Immich) at <strong>Cabinet 2283</strong>, Caddy can manage that too. You don’t need a new “Side Door”; Caddy just looks at the name on the briefcase (e.g. <code>music.duckdns.org:8443</code> vs <code>movies.duckdns.org:8443</code> vs <code>photos.duckdns.org:8443</code>) and knows which cabinet to go to:
+<ul>
+<li><strong>Cabinet 8096</strong> is movies (Jellyfin)</li>
+<li><strong>Cabinet 4533</strong> is music (Navidrome)</li>
+<li><strong>Cabinet 2283</strong> is photos (Immich)</li>
+</ul>
+</li>
+</ul>
+<p>We need HTTPS to encrypt passwords entered, especially when accessing the Jellyfin server on public WiFi. In the past, getting that green padlock (SSL/HTTPS) was a manual nightmare. You had to generate a request, pay a provider, download files, and remember to renew them every 90 days. Caddy was the first web server to do <strong>Automatic HTTPS</strong> by default. It talks to <strong>Let’s Encrypt</strong> automatically. It handles the request, the installaton, and the renewal without you lifting a finger.</p>
+<h3 id="the-two-ips-internal-local-vs-external-public">The Two IPs: Internal (Local) vs. External (Public)</h3>
+<ul>
+<li><strong>Static DHCP (Internal/Local):</strong> This is what you did in your Router Settings Page. It ensures your Jellyfin PC’s address <em>inside</em> your house (e.g. <code>192.168.0.10</code>) <strong>never changes</strong>. If this changes, your port forward would break.</li>
+<li><strong>Dynamic DNS (DDNS) (External/Public):</strong> This is your “Public IP”—the one the whole world sees. Your ISP changes this occasionally. If it changes, <strong>DuckDNS</strong> needs to be told your new “building address”, or the URL won’t work.</li>
+<li><strong>Automatic DDNS</strong> in Caddy simply tells DuckDNS: “Hey, my home IP just changed to [New public IP], update the map!” without you having to log into the DuckDNS website manually.</li>
+</ul>
+<p>The next steps will setup the Jellyfin PC as a Torrent Box.</p>
+<h2 id="6-download-hotspot-shield-free-vpn">6. Download Hotspot Shield Free VPN</h2>
+<p>Hotspot Shield VPN is the best and frankly only free VPN I’ve found that:</p>
+<ul>
+<li>allows P2P (Peer-to-Peer) traffic for torrenting</li>
+<li>has unlimited data (2Mbps speed cap, good enough)</li>
+<li>has good enough privacy</li>
+</ul>
+<p>The free tier also includes a kill-switch, auto-connect, and split-tunneling; all of which we’ll use.</p>
+<p>Download Hotspot Shield Free VPN here: <a href="https://hotspotshield.com/free-vpn">https://hotspotshield.com/free-vpn</a>.</p>
+<p>Most ISPs will block the Hotspot Shield VPN website. To bypass this you will need to change your Jellyfin PC’s DNS.</p>
+<ol>
+<li>
+<p>Go to <strong>Settings</strong> → <strong>Network &#x26; Internet</strong> → <strong>WiFi (or Ethernet)</strong> → <strong>Change adapter options</strong></p>
+</li>
+<li>
+<p>Right-click the active WiFi adapter or Ethernet and select <strong>Properties</strong></p>
+</li>
+<li>
+<p>Click on <strong>Internet Protocol Version 4 (TCP/IPv4)</strong> and select <strong>Properties</strong></p>
+</li>
+<li>
+<p>In <strong>General</strong>, select <strong>Use the following DNS server addresses</strong> and enter:</p>
+<table style="width: 50%;">
+  <tbody><tr>
+    <td style="text-align: left;">Preferred DNS server:</td>
+    <td style="text-align: left;">1.1.1.1</td>
+  </tr>
+  <tr>
+    <td style="text-align: left;">Alternative DNS server:</td>
+    <td style="text-align: left;">1.0.0.1</td>
+  </tr>
+</tbody></table>
+<p>This uses Cloudflare (<strong>1.1.1.1</strong>) DNS which is consistently ranked as the fastest, privacy-first public DNS.</p>
+</li>
+</ol>
+<h2 id="7-setup-split-tunneling-in-the-vpn">7. Setup split tunneling in the VPN</h2>
+<ol>
+<li>
+<p>Once you’ve downloaded Hotspot Shield VPN, open it and go to Settings (you don’t need to make an account).</p>
+</li>
+<li>
+<p>In <strong>General</strong> and <strong>Advanced</strong>, make sure <strong>all</strong> the options are enabled.</p>
+</li>
+<li>
+<p>In <strong>Split Tunneling</strong>, enable <strong>Bypass VPN</strong>, and add these apps and sites to the Bypass VPN list:</p>
+<ul>
+<li>Your Jellyfin DuckDNS domain (select <strong>Add website</strong> and enter <code>https://&#x3C;YOUR_SERVER>.duckdns.org:8443</code> (replacing <code>&#x3C;YOUR_SERVER></code>))</li>
+<li><strong>Jellyfin (View Console)</strong></li>
+<li><strong>Jellyfin Tray App</strong></li>
+<li><strong>caddy.exe</strong> (select <strong>Add an application that is not in the list</strong>, then click <strong>Browse</strong> to navigate to the <strong>caddy.exe</strong> in your <code>C:\caddy\</code> folder)</li>
+</ul>
+</li>
+</ol>
+<p>Now split tunneling is enabled. This means we can setup the torrent client to only connect through the VPN (next step) but keep Caddy and Jellyfin on the home network WiFi.</p>
+<h2 id="8-download-qbittorrent-and-enable-connection-only-through-vpn">8. Download qBittorrent and enable connection only through VPN</h2>
+<ol>
+<li>Download qBittorrent: <a href="https://qbittorrent.org/">https://qbittorrent.org/</a></li>
+<li>Once installed, open qBitTorrent and click <strong>Tools</strong> on the toolbar at the top of the GUI program.</li>
+<li>Click <strong>Options</strong>, then in the left vertical toolbar click <strong>Advanced</strong></li>
+<li>In <strong>Network interface</strong>, select <strong>HotspotShield WinTun</strong> (you may have to turn ON the VPN to see this option. For our purposes we can leave the VPN ON 24/7. You can verify that it’s ON and that split tunneling is working by hovering your cursor on the WiFi icon in the bottom-right of the Windows Taskbar, you should see both your home WiFi and HotspotShield WinTun have “Internet Access”).</li>
+</ol>
+<p>With your torrent client connected to Hotspot Shield VPN, your P2P traffic is now encrypted and your IP address is masked (please also use Incognito mode when accessing torrent sites). <strong>Disclaimer:</strong> This guide is for educational purposes only. I do not condone the use of qBittorrent for copyright infringement.</p>
+<p><strong>One important tip:</strong> When torrenting, you may notice that the file is stuck at 0%. This is normal. Firstly verify that the <strong>Network interface</strong> is set to <strong>HotspotShield WinTun</strong>. Then wait 5-10 mins, if the file is still stuck at 0% then:</p>
+<ul>
+<li>Go to <strong>Tools > Options > Connection</strong> in qBittorrent</li>
+<li>In <strong>Listening Port > Port used for incoming connections</strong>, click <strong>Random</strong>, then click <strong>Apply</strong> and <strong>OK</strong> (this usually fixes the issue).</li>
+<li>Wait 5-10 mins again, if the file is still stuck at 0% it’s likely that there isn’t any seeders (the file is essentially dead), and you will need to find another source that has active seeders.</li>
+</ul>
+<h2 id="9-run-wifi-monitorbat">9. Run wifi-monitor.bat</h2>
+<p>Due to the nature of torrenting, WiFi can sometimes be disabled. To prevent this, I have created 2 bat scripts which automatically detect if the WiFi is down, disables then re-enables the WiFi adapter, and re-connects.</p>
+<ol>
+<li>
+<p>Create a new folder, <code>C:\wifi\</code></p>
+</li>
+<li>
+<p>Inside the folder, create a new file, <code>reset-wifi.bat</code> and paste in this script using Notepad:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>@echo off</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>echo Resetting WiFi...</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>:: Disables the adapter</span></span>
+<span class="line"><span>echo Disabling adapter...</span></span>
+<span class="line"><span>netsh interface set interface "Wi-Fi" admin=disable</span></span>
+<span class="line"><span>timeout /t 5</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>:: Enables the adapter</span></span>
+<span class="line"><span>echo Re-enabling adapter...</span></span>
+<span class="line"><span>netsh interface set interface "Wi-Fi" admin=enable</span></span>
+<span class="line"><span>timeout /t 10</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>:: Connects to your specific network</span></span>
+<span class="line"><span>echo Connecting back to WiFi...</span></span>
+<span class="line"><span>netsh wlan connect name="&#x3C;YOUR-WIFI-NETWORK-SSID>"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>echo WiFi reset complete</span></span></code></pre>
+<p>replacing <code>&#x3C;YOUR-WIFI-NETWORK-SSID></code> with your WiFi Network SSID.</p>
+</li>
+<li>
+<p>Create another file, <code>wifi-monitor.bat</code> and paste in this script:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>@echo off</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>set /a count=0</span></span>
+<span class="line"><span>set limit=3</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>:loop</span></span>
+<span class="line"><span>echo Performing periodic WiFi check...</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>:: The | find "TTL=" ensures we only count a REAL connection as success</span></span>
+<span class="line"><span>echo Pinging Google...</span></span>
+<span class="line"><span>ping -n 1 8.8.8.8 | find "TTL=" >nul</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>if errorlevel 1 (</span></span>
+<span class="line"><span>    echo "Ping failed! :( %time% %date%"</span></span>
+<span class="line"><span>    set /a count=%count%+1</span></span>
+<span class="line"><span>    echo Internet lost. Failure count: %count%</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if %count% EQU %limit% goto :threshold_reached</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    echo Closing Chrome...</span></span>
+<span class="line"><span>    taskkill /F /IM chrome.exe /T</span></span>
+<span class="line"><span>    echo Calling reset-wifi.bat...</span></span>
+<span class="line"><span>    call C:\wifi\reset-wifi.bat</span></span>
+<span class="line"><span>    timeout /t 60 >nul</span></span>
+<span class="line"><span>) else (</span></span>
+<span class="line"><span>    echo "Ping successful :) %time% %date%"</span></span>
+<span class="line"><span>    set /a count=0</span></span>
+<span class="line"><span>)</span></span>
+<span class="line"><span>timeout /t 60 >nul</span></span>
+<span class="line"><span>goto loop</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>:threshold_reached</span></span>
+<span class="line"><span>echo Limit of %limit% reached! Closing Hotspot Shield VPN and resetting counter...</span></span>
+<span class="line"><span>taskkill /F /IM hsscp.exe /T</span></span>
+<span class="line"><span>set /a count=0</span></span>
+<span class="line"><span>timeout /t 60 >nul</span></span>
+<span class="line"><span>goto loop</span></span></code></pre>
+<p>this works only if you use Chrome as your browser for torrent sites. If you use other browsers, you will need to adjust the <code>taskkill /F /IM chrome.exe /T</code> line.</p>
+</li>
+<li>
+<p>Right-click <code>wifi-monitor.bat</code> and click <strong>Run as administrator</strong></p>
+</li>
+</ol>
+<p>Just like with the Caddy, <code>wifi-monitor.bat</code> will need to be manually run again if your PC reboots. You could make a script to automatically run these scripts on startup, but instead we will just prevent the PC from ever rebooting. (If your PC regularly reboots due to factors outside your control, e.g. power cuts, then you would need to enable “Restore on AC/Power Loss” in the BIOS, and setup a script to automatically run Caddy and wifi-monitor.bat).</p>
+<p>If Hotspot Shield VPN fails to connect after this:</p>
+<ul>
+<li>Uninstall Hotspot Shield VPN</li>
+<li>In the uninstallation screen, click <strong>Repair</strong>. Then it should work.</li>
+</ul>
+<h2 id="10-download-chrome-remote-desktop">10. Download Chrome Remote Desktop.</h2>
+<p>This is cool, but wouldn’t it be cooler if we could remotely access our Jellyfin PC so we can start new torrents when abroad? With <strong>Chrome Remote Desktop</strong> we can! It allows us to connect to the Jellyfin Windows PC from another PC, laptop, or even your phone. This means we can see the progress of torrents, or even start a new torrent, and move files into the Jellyfin Media folder.</p>
+<p>Install and setup <strong>Chrome Remote Desktop</strong> on your Jellyfin PC here: <a href="https://remotedesktop.google.com/">https://remotedesktop.google.com/</a></p>
+<p>And now all you need to connect to the Jellyfin PC is Internet access, another device, and your Google account.</p>
+<h2 id="11-set-your-jellyfin-pc-to-never-sleep-and-ensure-your-wifi-is-set-to-connect-automatically-when-in-range">11. Set your Jellyfin PC to never sleep and ensure your WiFi is set to connect automatically when in range</h2>
+<p>This makes sure your PC never sleeps. (The PC monitor going black or even the PC auto logging out is perfectly fine, we just don’t want the PC to go into sleep/hibernate mode, which would turn off processes).</p>
+<ol>
+<li>In Windows Settings, go to <strong>Power &#x26; sleep settings</strong></li>
+<li>Under <strong>Sleep > When plugged in, PC goes to sleep after</strong>, select <strong>Never</strong></li>
+</ol>
+<p>Final step! Ensure WiFi is set to auto-connect</p>
+<ol>
+<li>Open <strong>Network &#x26; Internet settings</strong></li>
+<li>Click <strong>Properties</strong></li>
+<li>Ensure <strong>Connect automatically when in range</strong> is Enabled.</li>
+</ol>
+<p>And at last we’re done! Happy self-hosting and streaming!</p>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/two_sneaky_numbers_of_digitville"> The Two Sneaky Numbers of Digitville </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/github-ssh-key"> How to setup GitHub SSH keys on Linux </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

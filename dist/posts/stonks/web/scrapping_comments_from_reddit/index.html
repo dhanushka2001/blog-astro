@@ -1,0 +1,423 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Using golang to filter through reddit posts - Dhanushka&#39;s Blog</title><meta name="description" content="Leverage the reddit api to get the latest posts multiple subreddits."><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="Using golang to filter through reddit posts"><meta property="og:description" content="Leverage the reddit api to get the latest posts multiple subreddits."><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/3493235193_A_dream_of_a_distant_galaxy__concept_art.png"><link rel="canonical" href="undefined/posts/stonks/web/scrapping_comments_from_reddit"><meta property="og:url" content="undefined/posts/stonks/web/scrapping_comments_from_reddit"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/3493235193_A_dream_of_a_distant_galaxy__concept_art.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r9" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r6" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">11 min read</div><h1 class="text-center text-3xl font-bold">Using golang to filter through reddit posts</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Nov 7, 2023</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/reddit" style="padding-right:3px"><category>reddit</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-orange-400 text-orange-900"><a href="/tags/golang" style="padding-right:3px"><category>golang</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/3493235193_A_dream_of_a_distant_galaxy__concept_art.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <p>Reddit is a social news aggregation, web content rating, and discussion website. Users can submit posts, such as text or direct links, and other users can vote on these posts, causing them to rise or fall in popularity. Reddit is organized into communities, known as “subreddits,” which cover a vast array of topics and interests.</p>
+<p>Web scraping with Go (Golang) can be useful in a variety of ways:</p>
+<ol>
+<li>Data collection: Web scraping allows you to extract large amounts of data from websites, which can be useful for data analysis and research.</li>
+<li>Price monitoring: Go can be used to monitor the prices of products on various websites and notify users of price changes.</li>
+<li>Content aggregation: Go can be used to aggregate content from multiple websites into a single source, making it easier to find and view relevant information.</li>
+<li>Automation: Go can be used to automate repetitive tasks, such as filling out forms or visiting websites, to save time and effort.</li>
+<li>Testing: Go can be used to test websites for functional and performance issues, making it easier to identify and fix problems.</li>
+</ol>
+<p>In summary, web scraping with Go is useful for data collection, price monitoring, content aggregation, automation, and testing, among other uses.</p>
+<p>Parsing subreddits with the Reddit API involves using the API to extract data from Reddit and display it in a specific format. To parse subreddits using the Reddit API, you need to have an API key or access token. Once you have this, you can make HTTP requests to the Reddit API to retrieve data for a specific subreddit. The API will return the data in JSON format, which can then be processed and displayed in a way that meets your needs.</p>
+<p>For example, to retrieve the top 10 posts in a subreddit, you can make a GET request to the following URL:</p>
+<p><a href="https://www.reddit.com/r/%5Bsubreddit%5D/top.json?limit=10">https://www.reddit.com/r/[subreddit]/top.json?limit=10</a></p>
+<p>Where [subreddit] is the name of the subreddit you want to retrieve data from.</p>
+<p>There are many libraries available in Go that simplify the process of making API calls and processing the resulting data. By using one of these libraries, you can focus on the data you want to extract and display, without having to worry about the details of making API calls and processing the results.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> package login </span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>import (</span></span>
+<span class="line"><span>	"github.com/jzelinskie/geddit"</span></span>
+<span class="line"><span>	"log"</span></span>
+<span class="line"><span>	"github.com/dli-invest/finreddit/pkg/util"</span></span>
+<span class="line"><span>)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// returns oauth session for reddit</span></span>
+<span class="line"><span>// or fails - fine for my purposes</span></span>
+<span class="line"><span>func RedditOAuth() (*geddit.OAuthSession, error) {</span></span>
+<span class="line"><span>	client_id := util.GetEnvVar("REDDIT_CLIENT_ID")</span></span>
+<span class="line"><span>	client_secret := util.GetEnvVar("REDDIT_CLIENT_SECRET")</span></span>
+<span class="line"><span>	password := util.GetEnvVar("REDDIT_PASSWORD")</span></span>
+<span class="line"><span>	username := util.GetEnvVar("REDDIT_USERNAME")</span></span>
+<span class="line"><span>	o, err := geddit.NewOAuthSession(</span></span>
+<span class="line"><span>		client_id,</span></span>
+<span class="line"><span>		client_secret,</span></span>
+<span class="line"><span>		"Stonk Market Scrapper see source https://github.com/dli-invest/finreddit",</span></span>
+<span class="line"><span>		"http://friendlyuser.github.io",</span></span>
+<span class="line"><span>	)</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		log.Println(err)</span></span>
+<span class="line"><span>		return nil, err</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	// Create new auth token for confidential clients (personal scripts/apps).</span></span>
+<span class="line"><span>	err = o.LoginAuth(username, password)</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		log.Println(err)</span></span>
+<span class="line"><span>		return nil, err</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	return o, nil</span></span>
+<span class="line"><span>} </span></span></code></pre>
+<p>This code defines a Go function named “RedditOAuth” that is used to authenticate a user to the Reddit API using the “geddit” library. The function starts by retrieving four environment variables (“REDDIT_CLIENT_ID”, “REDDIT_CLIENT_SECRET”, “REDDIT_PASSWORD”, and “REDDIT_USERNAME”) using the “util.GetEnvVar” function from the “github.com/dli-invest/finreddit/pkg/util” package.</p>
+<p>Next, the function creates a new OAuth session using the “geddit.NewOAuthSession” function and the retrieved environment variables. If an error occurs while creating the OAuth session, it is logged and returned.</p>
+<p>Finally, the function logs in the user using the “o.LoginAuth” method and the “username” and “password” environment variables. If an error occurs while logging in, it is logged and returned. If the login is successful, the OAuth session is returned.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> package reddit</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>import (</span></span>
+<span class="line"><span>	"fmt"</span></span>
+<span class="line"><span>	"log"</span></span>
+<span class="line"><span>	"strings"</span></span>
+<span class="line"><span>	"time"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	"github.com/dli-invest/finreddit/pkg/csvs"</span></span>
+<span class="line"><span>	"github.com/dli-invest/finreddit/pkg/discord"</span></span>
+<span class="line"><span>	"github.com/dli-invest/finreddit/pkg/login"</span></span>
+<span class="line"><span>	"github.com/dli-invest/finreddit/pkg/types"</span></span>
+<span class="line"><span>	"github.com/dli-invest/finreddit/pkg/util"</span></span>
+<span class="line"><span>	"github.com/jzelinskie/geddit"</span></span>
+<span class="line"><span>)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// gets submissions a given SRConfiguration</span></span>
+<span class="line"><span>func GetSubmissions(session *geddit.OAuthSession, cfg types.SRConfig) []*geddit.Submission {</span></span>
+<span class="line"><span>	subreddit := cfg.Name</span></span>
+<span class="line"><span>	limit := cfg.Limit</span></span>
+<span class="line"><span>	subOpts := geddit.ListingOptions{</span></span>
+<span class="line"><span>		Limit: limit,</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	if cfg.After != "" {</span></span>
+<span class="line"><span>		subOpts.After = cfg.After</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	submissions, err := session.SubredditSubmissions(subreddit, geddit.NewSubmissions, subOpts)</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		log.Fatal("Failed to retrieve subreddit posts for " + subreddit)</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	// further filter entries by minScore and minComments</span></span>
+<span class="line"><span>	var validSubmissions = []*geddit.Submission{}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	for _, submission := range submissions {</span></span>
+<span class="line"><span>		if submission.NumComments != 0 &#x26;&#x26; cfg.MinScore != 0 {</span></span>
+<span class="line"><span>			if submission.NumComments >= cfg.MinComments &#x26;&#x26; submission.Score >= cfg.MinScore {</span></span>
+<span class="line"><span>				validSubmissions = append(validSubmissions, submission)</span></span>
+<span class="line"><span>				continue</span></span>
+<span class="line"><span>			}</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span>		if cfg.LinkFlairText != "" {</span></span>
+<span class="line"><span>			// checking for flair</span></span>
+<span class="line"><span>			if strings.Contains(submission.LinkFlairText, cfg.LinkFlairText) {</span></span>
+<span class="line"><span>				validSubmissions = append(validSubmissions, submission)</span></span>
+<span class="line"><span>				continue</span></span>
+<span class="line"><span>			}</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span>		if len(cfg.Phrases) != 0 {</span></span>
+<span class="line"><span>			// search through phrases</span></span>
+<span class="line"><span>			title := strings.ToLower(submission.Title)</span></span>
+<span class="line"><span>			// check matches word</span></span>
+<span class="line"><span>			for _, phrase := range cfg.Phrases {</span></span>
+<span class="line"><span>				// check if phrase is contained in title</span></span>
+<span class="line"><span>				lowerPhrase := strings.ToLower(phrase)</span></span>
+<span class="line"><span>				addSubmission := strings.Contains(title, lowerPhrase)</span></span>
+<span class="line"><span>				if addSubmission {</span></span>
+<span class="line"><span>					validSubmissions = append(validSubmissions, submission)</span></span>
+<span class="line"><span>					continue</span></span>
+<span class="line"><span>				}</span></span>
+<span class="line"><span>			}</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	return validSubmissions</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// Scans subreddits from config file</span></span>
+<span class="line"><span>// for example cmd/scan_sr/simple.yml</span></span>
+<span class="line"><span>func ScanSRs(cfgPathStr string) {</span></span>
+<span class="line"><span>	// login to reddit</span></span>
+<span class="line"><span>	o, err := login.RedditOAuth()</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		log.Fatal("Failed to initialize Reddit Scrapper")</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	// read subreddits from config file</span></span>
+<span class="line"><span>	cfgPath := util.MkPathFromStr(cfgPathStr)</span></span>
+<span class="line"><span>	cfg, err := util.NewConfig(cfgPath)</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		log.Fatal(err)</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	csvsPath := util.MkPathFromStr(cfg.Data.CsvPath)</span></span>
+<span class="line"><span>	// print header row only used when</span></span>
+<span class="line"><span>	if cfg.Data.NoMessage {</span></span>
+<span class="line"><span>		fmt.Printf("%s\t%s\t%s\t%s\t%s\t%s\n", "subreddit", "url", "title", "author", "linkFlairText", "date")</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	for _, srCfg := range cfg.Data.SubReddits {</span></span>
+<span class="line"><span>		srSubmissions := GetSubmissions(o, srCfg)</span></span>
+<span class="line"><span>		for _, s := range srSubmissions {</span></span>
+<span class="line"><span>			// check if submission is in csv already</span></span>
+<span class="line"><span>			// aware that constantly opening the csv is inefficient</span></span>
+<span class="line"><span>			// but I am dealing with a reasonable amount of entires</span></span>
+<span class="line"><span>			hasValue := csvs.FindInCsv(csvsPath, s.FullID, 1)</span></span>
+<span class="line"><span>			if hasValue {</span></span>
+<span class="line"><span>				// no value, do nothing here</span></span>
+<span class="line"><span>			} else {</span></span>
+<span class="line"><span>				// seems like a lot of posts, wondering if I will hit</span></span>
+<span class="line"><span>				// post limit, sleep 2 seconds after each post.</span></span>
+<span class="line"><span>				// append to csv</span></span>
+<span class="line"><span>				sData := [][]string{{srCfg.Name, s.FullID, s.URL}}</span></span>
+<span class="line"><span>				csvs.AppendToCsv(csvsPath, sData)</span></span>
+<span class="line"><span>				if cfg.Data.NoMessage {</span></span>
+<span class="line"><span>					// output this as a csv for parsing in other programs</span></span>
+<span class="line"><span>					// fmt.Println("Not sending to subreddit")</span></span>
+<span class="line"><span>					fmt.Printf("%s\t%s\t%s\t%s\t%s\t%f\n", s.Subreddit, s.FullPermalink(), s.Title, s.Author, s.LinkFlairText, s.DateCreated)</span></span>
+<span class="line"><span>				} else {</span></span>
+<span class="line"><span>					discordPayload := MapSubmissionToEmbed(s)</span></span>
+<span class="line"><span>					_, err := discord.SendWebhook(discordPayload)</span></span>
+<span class="line"><span>					if err != nil {</span></span>
+<span class="line"><span>						fmt.Println(s.FullID)</span></span>
+<span class="line"><span>						fmt.Println(err)</span></span>
+<span class="line"><span>					}</span></span>
+<span class="line"><span>					time.Sleep(2 * time.Second)</span></span>
+<span class="line"><span>				}</span></span>
+<span class="line"><span>			}</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>func MapSubmissionToEmbed(submission *geddit.Submission) types.DiscordPayload {</span></span>
+<span class="line"><span>	description := fmt.Sprintf(</span></span>
+<span class="line"><span>		"%s (%d Likes, %d Comments)",</span></span>
+<span class="line"><span>		submission.Author,</span></span>
+<span class="line"><span>		submission.Score,</span></span>
+<span class="line"><span>		submission.NumComments)</span></span>
+<span class="line"><span>	// get timestamp</span></span>
+<span class="line"><span>	var dateCreated int64 = int64(submission.DateCreated)</span></span>
+<span class="line"><span>	t := time.Unix(dateCreated, 0)</span></span>
+<span class="line"><span>	timestamp := t.Format(time.RFC3339)</span></span>
+<span class="line"><span>	title := fmt.Sprintf("%s - %s", submission.Subreddit, submission.Title)</span></span>
+<span class="line"><span>	discordEmbed := []types.DiscordEmbed{{</span></span>
+<span class="line"><span>		Title:       title,</span></span>
+<span class="line"><span>		Url:         submission.URL,</span></span>
+<span class="line"><span>		Description: description,</span></span>
+<span class="line"><span>		Timestamp:   timestamp,</span></span>
+<span class="line"><span>	}}</span></span>
+<span class="line"><span>	discordPayload := types.DiscordPayload{Embeds: discordEmbed}</span></span>
+<span class="line"><span>	return discordPayload</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>This code is a Reddit scraper in Golang, which is a part of a project “finreddit”. It uses the geddit library for connecting to the Reddit API and retrieve submissions from given subreddit. The code filters the submissions based on various conditions such as minimum score, minimum comments, link flair text, and certain phrases. The filtered submissions are then appended to a CSV file. The code also includes a ScanSRs function, which reads subreddit configurations from a YAML file, logs into Reddit using OAuth authentication, and retrieves the submissions using the GetSubmissions function.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> package csvs</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// csv utilties to prevent duplicate entries</span></span>
+<span class="line"><span>// probably manually clear out every now and then</span></span>
+<span class="line"><span>import (</span></span>
+<span class="line"><span>    "encoding/csv"</span></span>
+<span class="line"><span>    "fmt"</span></span>
+<span class="line"><span>    "os"</span></span>
+<span class="line"><span>)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// read csv from file path</span></span>
+<span class="line"><span>func ReadCsvFile(filePath string) [][]string {</span></span>
+<span class="line"><span>    f, err := os.Open(filePath)</span></span>
+<span class="line"><span>    if err != nil {</span></span>
+<span class="line"><span>        fmt.Println("Unable to read input file " + filePath, err)</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    defer f.Close()</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    csvReader := csv.NewReader(f)</span></span>
+<span class="line"><span>    records, err := csvReader.ReadAll()</span></span>
+<span class="line"><span>    if err != nil {</span></span>
+<span class="line"><span>        fmt.Println("Unable to parse file as CSV for " + filePath, err)</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    return records</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>func AppendRowToCsv(fileName string, data []string) {</span></span>
+<span class="line"><span>    f, err := os.OpenFile(fileName, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		fmt.Println(err)</span></span>
+<span class="line"><span>		return</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    w := csv.NewWriter(f)</span></span>
+<span class="line"><span>    err = w.Write(data)</span></span>
+<span class="line"><span>    if err != nil {</span></span>
+<span class="line"><span>        fmt.Println("Append Error")</span></span>
+<span class="line"><span>        fmt.Println(err)</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    w.Flush()</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// append rows to csvs</span></span>
+<span class="line"><span>func AppendToCsv(fileName string, data [][]string) {</span></span>
+<span class="line"><span>    f, err := os.OpenFile(fileName, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		fmt.Println(err)</span></span>
+<span class="line"><span>		return</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>    w := csv.NewWriter(f)</span></span>
+<span class="line"><span>    for _, row:= range data {</span></span>
+<span class="line"><span>        err = w.Write(row)</span></span>
+<span class="line"><span>        if err != nil {</span></span>
+<span class="line"><span>            fmt.Println("Append Error")</span></span>
+<span class="line"><span>            fmt.Println(err)</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	w.Flush()</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// check if value exists in csv</span></span>
+<span class="line"><span>func FindInCsv(filePath string, searchValue string, searchColumn int) (bool) {</span></span>
+<span class="line"><span>    records := ReadCsvFile(filePath)</span></span>
+<span class="line"><span>    foundValue := false</span></span>
+<span class="line"><span>    for _, row:= range records {</span></span>
+<span class="line"><span>        valueInRow := row[searchColumn]</span></span>
+<span class="line"><span>        if searchValue == valueInRow {</span></span>
+<span class="line"><span>            foundValue = true</span></span>
+<span class="line"><span>            break</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>    return foundValue</span></span>
+<span class="line"><span>} </span></span></code></pre>
+<p>This is a Go library for working with CSV (Comma Separated Values) files. It provides functions to read, append and check if a value exists in a CSV file.</p>
+<ul>
+<li><code>ReadCsvFile</code> reads a CSV file from the given file path and returns the data as a two-dimensional slice of strings.</li>
+<li><code>AppendRowToCsv</code> appends a single row of data to the CSV file with the given file name.</li>
+<li><code>AppendToCsv</code> appends multiple rows of data to the CSV file with the given file name.</li>
+<li><code>FindInCsv</code> checks if a value exists in a specific column of the CSV file at the given file path. It returns a boolean indicating whether the value was found.</li>
+</ul>
+<p>A Discord webhook is a tool that allows you to send messages to a Discord channel from an external source. It is a URL that enables you to send messages to a specific Discord channel from your own website, application, or other platform. The messages appear as if they were sent by a user within Discord, but they are actually sent programmatically. This allows you to integrate Discord into your own systems, such as sending notifications, updates, or other automated messages.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> package discord </span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>import (</span></span>
+<span class="line"><span>	"os"</span></span>
+<span class="line"><span>	"log"</span></span>
+<span class="line"><span>	"encoding/json"</span></span>
+<span class="line"><span>	"net/http"</span></span>
+<span class="line"><span>	"github.com/dli-invest/finreddit/pkg/types"</span></span>
+<span class="line"><span>	"bytes"</span></span>
+<span class="line"><span>)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>func SendWebhook(discordWebhook types.DiscordPayload) (*http.Response, error){</span></span>
+<span class="line"><span>	discordUrl := os.Getenv("DISCORD_WEBHOOK")</span></span>
+<span class="line"><span>	if discordUrl == "" {</span></span>
+<span class="line"><span>		log.Fatal("DISCORD_WEBHOOK not set")</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	webhookData, err := json.Marshal(discordWebhook)</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		log.Fatal(err)</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	resp, err := http.Post(discordUrl, "application/json", bytes.NewBuffer(webhookData))</span></span>
+<span class="line"><span>	return resp, err</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>This is a Go function named “SendWebhook” that posts a Discord webhook to a specified Discord channel. The Discord webhook URL is obtained from an environment variable named “DISCORD_WEBHOOK”. The input to the function is a DiscordPayload of type “types.DiscordPayload” and contains the data to be sent in the webhook. The function then uses the “json” package to marshal the input into a JSON string, and the “http” package to send a HTTP POST request to the Discord webhook URL with the JSON string as the payload. The response from the POST request and any error are returned from the function.</p>
+<p>GitHub Actions allows you to automate tasks such as building, testing, and deploying code. It also supports automating tasks to run on a schedule using workflows. You can create a workflow that runs on a schedule using the “schedule” trigger in your workflow file.</p>
+<p>Here’s an example of a workflow that runs every day at 8pm UTC:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>name: Schedule Task</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>on:</span></span>
+<span class="line"><span> schedule:</span></span>
+<span class="line"><span> - cron: '0 20 \* \* \*'</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>jobs:</span></span>
+<span class="line"><span> task:</span></span>
+<span class="line"><span> runs-on: ubuntu-latest</span></span>
+<span class="line"><span> steps:</span></span>
+<span class="line"><span> - name: Run Task</span></span>
+<span class="line"><span> run: echo "Running Task on Schedule"</span></span></code></pre>
+<p>This workflow specifies that it should run on a schedule using the <code>schedule</code> trigger and the <code>cron</code> value of <code>0 20 * * *</code>. The <code>cron</code> value represents a standard cron syntax that specifies the schedule. In this case, it runs every day at 8pm UTC.</p>
+<p>You can add additional steps in the <code>steps</code> section to perform any other tasks you need to automate. You can also use environment variables in your workflow to pass in any required information, such as API keys or file paths.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> on:</span></span>
+<span class="line"><span>  schedule:</span></span>
+<span class="line"><span>    # * is a special character in YAML so you have to quote this string</span></span>
+<span class="line"><span>    - cron: '50 * * * *'</span></span>
+<span class="line"><span>  push:</span></span>
+<span class="line"><span>    branches:</span></span>
+<span class="line"><span>      - main</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>env: </span></span>
+<span class="line"><span>  REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}</span></span>
+<span class="line"><span>  REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}</span></span>
+<span class="line"><span>  REDDIT_PASSWORD: ${{ secrets.REDDIT_PASSWORD }}</span></span>
+<span class="line"><span>  REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}</span></span>
+<span class="line"><span>  DISCORD_WEBHOOK: ${{ secrets.DISCORD_REDDIT_WEBHOOK}}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>name: Send Updates</span></span>
+<span class="line"><span>jobs:</span></span>
+<span class="line"><span>  run:</span></span>
+<span class="line"><span>    strategy:</span></span>
+<span class="line"><span>      matrix:</span></span>
+<span class="line"><span>        go-version: [1.15.x]</span></span>
+<span class="line"><span>        platform: [ubuntu-latest]</span></span>
+<span class="line"><span>    runs-on: ${{ matrix.platform }}</span></span>
+<span class="line"><span>    steps:</span></span>
+<span class="line"><span>    - name: Install Go</span></span>
+<span class="line"><span>      if: success()</span></span>
+<span class="line"><span>      uses: actions/setup-go@v2</span></span>
+<span class="line"><span>      with:</span></span>
+<span class="line"><span>        go-version: ${{ matrix.go-version }}</span></span>
+<span class="line"><span>    - name: Checkout code</span></span>
+<span class="line"><span>      uses: actions/checkout@v2</span></span>
+<span class="line"><span>    - name: Run job</span></span>
+<span class="line"><span>      run: go run cmd/scan_sr/manga.go</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    - name: Commit files</span></span>
+<span class="line"><span>      id: commit</span></span>
+<span class="line"><span>      run: |</span></span>
+<span class="line"><span>        git config --local user.email "action@github.com"</span></span>
+<span class="line"><span>        git config --local user.name "GitHub Action"</span></span>
+<span class="line"><span>        git add internal/*.csv</span></span>
+<span class="line"><span>        git commit -m "Updating csv"</span></span>
+<span class="line"><span>      continue-on-error: true</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    - name: Push changes</span></span>
+<span class="line"><span>      uses: ad-m/github-push-action@master</span></span>
+<span class="line"><span>      continue-on-error: true</span></span>
+<span class="line"><span>      with:</span></span>
+<span class="line"><span>        github_token: ${{ secrets.GITHUB_TOKEN }}</span></span>
+<span class="line"><span>        branch: ${{ github.ref }}</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>This code is a GitHub Actions workflow that automates the task of sending updates. The schedule of the task is set to run every hour at 50 minutes past the hour, and it will only run when the main branch is pushed.</p>
+<p>The workflow sets environment variables for Reddit API credentials (client ID, client secret, password, and username) and a Discord webhook URL, all of which are stored as GitHub secrets.</p>
+<p>The job runs on an Ubuntu latest machine and uses Go version 1.15.x. The job checks out the code, runs the scan_sr/manga.go script, and if successful, commits the updated csv files to the repository and pushes the changes. The action uses a GitHub push action to push the changes.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/dli-invest/finreddit">https://github.com/dli-invest/finreddit</a></li>
+<li><a href="https://pkg.go.dev/github.com/dli-invest/finreddit">https://pkg.go.dev/github.com/dli-invest/finreddit</a></li>
+</ul>  <h5>Related Projects</h5> <a href="https://github.com/dli-invest/finreddit" style="text-decoration:none;width:200px;text-align:center"> <h3> <div class="rounded-md px-2 py-1 text-xs font-semibold undefined">finreddit</div> </h3> </a> </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r7" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2023/apache_kafka_an_introduction_to_distributed_streaming"> Apache Kafka An Introduction to Distributed Streaming </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2023/making_custom_gpt_bots_with_openai"> Custom ChatGPT Bots: Revolutionizing Coding Tasks </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r8" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Embedding GPT in Excel Applications: A Guide for Beginners - Dhanushka&#39;s Blog</title><meta name="description" content="A beginner's guide to embedding OpenAI's GPT in Excel plugins, enhancing spreadsheets with AI's power for automation and efficiency. This article covers the basics of creating an Excel Add-in, integrating GPT, and demonstrates the benefits of AI-driven Excel applications."><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="Embedding GPT in Excel Applications: A Guide for Beginners"><meta property="og:description" content="A beginner's guide to embedding OpenAI's GPT in Excel plugins, enhancing spreadsheets with AI's power for automation and efficiency. This article covers the basics of creating an Excel Add-in, integrating GPT, and demonstrates the benefits of AI-driven Excel applications."><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/3292707171.png"><link rel="canonical" href="undefined/posts/tech/2024/gpt_integration_in_excel"><meta property="og:url" content="undefined/posts/tech/2024/gpt_integration_in_excel"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/3292707171.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">8 min read</div><h1 class="text-center text-3xl font-bold">Embedding GPT in Excel Applications: A Guide for Beginners</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Mar 30, 2024</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/GPT" style="padding-right:3px"><category>GPT</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/Excel" style="padding-right:3px"><category>Excel</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/AI Integration" style="padding-right:3px"><category>AI Integration</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/Software Development" style="padding-right:3px"><category>Software Development</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/JavaScript" style="padding-right:3px"><category>JavaScript</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/TypeScript" style="padding-right:3px"><category>TypeScript</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/Excel Add-in" style="padding-right:3px"><category>Excel Add-in</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/OpenAI" style="padding-right:3px"><category>OpenAI</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/Automation" style="padding-right:3px"><category>Automation</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/Productivity" style="padding-right:3px"><category>Productivity</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/3292707171.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <h1 id="embedding-gpt-in-excel-applications-a-guide-for-beginners">Embedding GPT in Excel Applications: A Guide for Beginners</h1>
+<p>In the ever-evolving landscape of technology, the integration of advanced AI tools like OpenAI’s Generative Pre-trained Transformer (GPT) into everyday applications has opened new frontiers for automation and efficiency. One such practical application is embedding GPT into Excel plugins, enabling users to harness the power of AI directly within their spreadsheets. This article will guide beginners through understanding how to embed GPT into an Excel plugin, using a basic plugin as an example, and discuss the potential benefits of this approach.</p>
+<p>Creating an Excel plugin, also known as an Excel Add-in, using JavaScript or TypeScript involves several steps, from setting up your development environment to writing the code and testing your Add-in within Excel. This guide will walk you through the process, focusing on a simple example to get you started.</p>
+<h3 id="step-1-prerequisites">Step 1: Prerequisites</h3>
+<ul>
+<li><strong>Microsoft Office</strong>: You need Excel installed on your computer or access to Excel on the web.</li>
+<li><strong>Node.js</strong>: Install Node.js, which includes npm (node package manager), to run the development server and manage your project’s dependencies.</li>
+<li><strong>Yeoman and Yeoman Office Generator</strong>: Yeoman helps scaffold new projects, and the Yeoman Office Generator (<code>generator-office</code>) provides templates for creating Office Add-ins.</li>
+</ul>
+<h3 id="step-2-setting-up-your-project">Step 2: Setting Up Your Project</h3>
+<ol>
+<li>
+<p><strong>Install Yeoman and the Yeoman Office Generator</strong>:</p>
+<p>Open a terminal or command prompt and run the following command:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm install -g yo generator-office</span></span></code></pre>
+</li>
+<li>
+<p><strong>Scaffold Your Excel Add-in Project</strong>:</p>
+<p>Run the Yeoman generator for Office Add-ins:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>yo office</span></span></code></pre>
+<p>Follow the prompts to set up your project. Choose:</p>
+<ul>
+<li><strong>Project Type</strong>: Office Add-in Task Pane project</li>
+<li><strong>Script Type</strong>: JavaScript or TypeScript (according to your preference)</li>
+<li><strong>Office Application</strong>: Excel</li>
+</ul>
+<p>This will create a new directory with your project’s name and set up a basic project structure.</p>
+</li>
+</ol>
+<h3 id="step-3-understanding-the-project-structure">Step 3: Understanding the Project Structure</h3>
+<p>Your project directory will contain several files and folders:</p>
+<ul>
+<li><strong>src</strong>: Contains the source code for your project.
+<ul>
+<li><strong>taskpane.html</strong>: The HTML file for the task pane UI.</li>
+<li><strong>taskpane.js</strong> (or <strong>taskpane.ts</strong> for TypeScript): The JavaScript or TypeScript file that contains the logic for your Add-in.</li>
+</ul>
+</li>
+<li><strong>package.json</strong>: Manages your project’s dependencies and scripts.</li>
+<li><strong>manifest.xml</strong>: The XML file that describes your Add-in to Excel.</li>
+</ul>
+<h3 id="step-4-developing-your-add-in">Step 4: Developing Your Add-in</h3>
+<p>Open the <code>taskpane.html</code> and <code>taskpane.js</code> (or <code>.ts</code>) files in your preferred code editor to start adding your custom code. For example, you might want to fetch data from a web API and display it in Excel.</p>
+<h4 id="sample-javascript-code">Sample JavaScript Code</h4>
+<p>If you’re using JavaScript, your <code>taskpane.js</code> might look something like this to write data to an Excel sheet:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Office.onReady((info) => {</span></span>
+<span class="line"><span>  if (info.host === Office.HostType.Excel) {</span></span>
+<span class="line"><span>    document.getElementById("run").onclick = run;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>});</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>async function run() {</span></span>
+<span class="line"><span>  try {</span></span>
+<span class="line"><span>    await Excel.run(async (context) => {</span></span>
+<span class="line"><span>      const sheet = context.workbook.worksheets.getActiveWorksheet();</span></span>
+<span class="line"><span>      const range = sheet.getRange("A1");</span></span>
+<span class="line"><span>      range.values = [["Hello, Excel!"]];</span></span>
+<span class="line"><span>      await context.sync();</span></span>
+<span class="line"><span>    });</span></span>
+<span class="line"><span>  } catch (error) {</span></span>
+<span class="line"><span>    console.error(error);</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<h4 id="sample-typescript-code">Sample TypeScript Code</h4>
+<p>For TypeScript, you might have a <code>taskpane.ts</code> with similar functionality:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Office.onReady((info: Office.InitializationReason) => {</span></span>
+<span class="line"><span>  if (info.host === Office.HostType.Excel) {</span></span>
+<span class="line"><span>    const runButton: HTMLButtonElement = document.getElementById("run") as HTMLButtonElement;</span></span>
+<span class="line"><span>    runButton.onclick = run;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>});</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>async function run(): Promise&#x3C;void> {</span></span>
+<span class="line"><span>  try {</span></span>
+<span class="line"><span>    await Excel.run(async (context: Excel.RequestContext) => {</span></span>
+<span class="line"><span>      const sheet: Excel.Worksheet = context.workbook.worksheets.getActiveWorksheet();</span></span>
+<span class="line"><span>      const range: Excel.Range = sheet.getRange("A1");</span></span>
+<span class="line"><span>      range.values = [["Hello, Excel!"]];</span></span>
+<span class="line"><span>      await context.sync();</span></span>
+<span class="line"><span>    });</span></span>
+<span class="line"><span>  } catch (error) {</span></span>
+<span class="line"><span>    console.error(error);</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<h3 id="step-5-testing-your-add-in">Step 5: Testing Your Add-in</h3>
+<ol>
+<li>
+<p><strong>Start the Local Web Server</strong>:</p>
+<p>Run the following command in your project directory:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm start</span></span></code></pre>
+<p>This command starts a local web server and opens your default web browser to the Office Add-in loading page.</p>
+</li>
+<li>
+<p><strong>Load Your Add-in in Excel</strong>:</p>
+<ul>
+<li>For Excel on the desktop, use the <code>Upload My Add-in</code> button on the Office Add-in loading page to upload the manifest file.</li>
+<li>For Excel on the web, go to <code>Insert</code> > <code>Office Add-ins</code> > <code>Upload My Add-in</code> and upload your manifest file.</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-6-publish-your-add-in">Step 6: Publish Your Add-in</h3>
+<p>To share your Add-in with others, you need to publish it to an Add-in catalog or to the Office Store. The specifics of this process depend on your target audience and distribution needs.</p>
+<h2 id="introduction-to-the-stock-excel-plugin">Introduction to the Stock Excel Plugin</h2>
+<p>The example provided demonstrates a basic Excel plugin designed to showcase how developers can integrate AI functionalities into Excel. The plugin utilizes HTML for the user interface and JavaScript for backend logic, incorporating OpenAI’s GPT and the AlphaVantage API to offer investment advice and stock information directly within Excel.</p>
+<h3 id="key-components-of-the-plugin">Key Components of the Plugin</h3>
+<ol>
+<li>
+<p><strong>HTML File (User Interface):</strong> This file defines the visual layout and elements of the plugin, including the welcome message, input field, and search button. It also includes references to external resources like Fluent UI for styling and Office.js for integrating with Excel.</p>
+</li>
+<li>
+<p><strong>JavaScript File (Logic and API Calls):</strong> This file contains the logic for the plugin, handling events (e.g., clicking the search button), making API calls to OpenAI for generating stock recommendations based on user input, and fetching stock details from AlphaVantage.</p>
+</li>
+<li>
+<p><strong>Environment Variables:</strong> The <code>OPENAI_KEY</code> and <code>ALPHAVANTAGE_KEY</code> are used to authenticate requests to the respective APIs. Note that the provided OpenAI key is expired and for demonstration purposes only.</p>
+</li>
+</ol>
+<h2 id="how-it-works">How It Works</h2>
+<p>When the user enters a description of a company in the input field and clicks the “Search” button, the plugin executes the following steps:</p>
+<ol>
+<li><strong>Capture User Input:</strong> The plugin retrieves the user’s input from the text field.</li>
+<li><strong>OpenAI Chat Function:</strong> It then calls the <code>openAiChat</code> function, sending the input to OpenAI’s API to receive a stock ticker recommendation based on the input.</li>
+<li><strong>AlphaVantage Function:</strong> With the recommended stock ticker, the plugin calls the <code>alphaVantage</code> function to fetch detailed information about the stock from the AlphaVantage API.</li>
+<li><strong>Display Information:</strong> Finally, the plugin displays the fetched stock information in the plugin interface.</li>
+</ol>
+<h3 id="understanding-the-code-structure">Understanding the Code Structure</h3>
+<p>The integration is made up of two main components: an HTML file that serves as the user interface and a JavaScript file that contains the logic and API calls to OpenAI and AlphaVantage.</p>
+<h4 id="html-file-user-interface">HTML File: User Interface</h4>
+<p>This file (<code>index.html</code>) sets up the UI of the Excel plugin. It includes references to external libraries and stylesheets, such as Office.js (for Excel integration) and Fluent UI (for styling). The body of the HTML file contains elements like headers, sections, and inputs that form the user interface of the plugin.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;!DOCTYPE html></span></span>
+<span class="line"><span>&#x3C;html></span></span>
+<span class="line"><span>&#x3C;head></span></span>
+<span class="line"><span>    &#x3C;meta charset="UTF-8" /></span></span>
+<span class="line"><span>    &#x3C;meta http-equiv="X-UA-Compatible" content="IE=Edge" /></span></span>
+<span class="line"><span>    &#x3C;meta name="viewport" content="width=device-width, initial-scale=1"></span></span>
+<span class="line"><span>    &#x3C;title>Contoso Task Pane Add-in&#x3C;/title></span></span>
+<span class="line"><span>    &#x3C;script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js">&#x3C;/script></span></span>
+<span class="line"><span>    &#x3C;link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/></span></span>
+<span class="line"><span>    &#x3C;link href="taskpane.css" rel="stylesheet" type="text/css" /></span></span>
+<span class="line"><span>&#x3C;/head></span></span>
+<span class="line"><span>&#x3C;body class="ms-font-m ms-welcome ms-Fabric"></span></span>
+<span class="line"><span>    &#x3C;header class="ms-welcome__header ms-bgColor-neutralLighter"></span></span>
+<span class="line"><span>        &#x3C;img width="90" height="90" src="../../assets/logo-filled.png" alt="Contoso" title="Contoso" /></span></span>
+<span class="line"><span>        &#x3C;h1 class="ms-font-su">Welcome&#x3C;/h1></span></span>
+<span class="line"><span>    &#x3C;/header></span></span>
+<span class="line"><span>    &#x3C;section id="sideload-msg" class="ms-welcome__main"></span></span>
+<span class="line"><span>        &#x3C;h2 class="ms-font-xl">Please &#x3C;a href="https://learn.microsoft.com/">sideload&#x3C;/a> your add-in to see app body.&#x3C;/h2></span></span>
+<span class="line"><span>    &#x3C;/section></span></span>
+<span class="line"><span>    &#x3C;main id="app-body" class="ms-welcome__main" style="display: none;"></span></span>
+<span class="line"><span>        &#x3C;p class="ms-font-l">Input a description of a company and hit &#x3C;b>Search&#x3C;/b>.&#x3C;/p></span></span>
+<span class="line"><span>        &#x3C;input type="textarea" id="prompt" placeholder="enter prompt here">&#x3C;/input></span></span>
+<span class="line"><span>        &#x3C;div role="button" id="run" class="ms-welcome__action ms-Button"></span></span>
+<span class="line"><span>            &#x3C;span class="ms-Button-label">Search&#x3C;/span></span></span>
+<span class="line"><span>        &#x3C;/div></span></span>
+<span class="line"><span>        &#x3C;div id="description">&#x3C;/div></span></span>
+<span class="line"><span>    &#x3C;/main></span></span>
+<span class="line"><span>&#x3C;/body></span></span>
+<span class="line"><span>&#x3C;/html></span></span></code></pre>
+<h4 id="javascript-file-logic-and-api-calls">JavaScript File: Logic and API Calls</h4>
+<p>This file (<code>commands.js</code>) is responsible for the plugin’s functionality. It uses the Office JavaScript API to interact with Excel and fetches from OpenAI and AlphaVantage to get stock recommendations and details.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>import fetch from "cross-fetch";</span></span>
+<span class="line"><span>import { OPENAI_KEY, ALPHAVANTAGE_KEY } from "./env";</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Office.onReady((info) => {</span></span>
+<span class="line"><span>  if (info.host === Office.HostType.Excel) {</span></span>
+<span class="line"><span>    document.getElementById("sideload-msg").style.display = "none";</span></span>
+<span class="line"><span>    document.getElementById("app-body").style.display = "flex";</span></span>
+<span class="line"><span>    document.getElementById("run").onclick = run;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>});</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>async function openAiChat(prompt) {</span></span>
+<span class="line"><span>  const apiKey = OPENAI_KEY;</span></span>
+<span class="line"><span>  const response = await fetch("https://api.openai.com/v1/chat/completions", {</span></span>
+<span class="line"><span>    method: "POST",</span></span>
+<span class="line"><span>    headers: {</span></span>
+<span class="line"><span>      "Content-Type": "application/json",</span></span>
+<span class="line"><span>      Authorization: `Bearer ${apiKey}`,</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span>    body: JSON.stringify({</span></span>
+<span class="line"><span>      model: "gpt-3.5-turbo",</span></span>
+<span class="line"><span>      messages: [{ role: "system", content: "Investment advice prompt" }, { role: "user", content: prompt }],</span></span>
+<span class="line"><span>      temperature: 0.7,</span></span>
+<span class="line"><span>    }),</span></span>
+<span class="line"><span>  });</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  const data = await response.json();</span></span>
+<span class="line"><span>  return data.choices[0].message.content;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>async function alphaVantage(symbol) {</span></span>
+<span class="line"><span>  const url = `https://www.alphavantage.co/query?function=OVERVIEW&#x26;symbol=${symbol}&#x26;apikey=${ALPHAVANTAGE_KEY}`;</span></span>
+<span class="line"><span>  const response = await fetch(url);</span></span>
+<span class="line"><span>  const data = await response.json();</span></span>
+<span class="line"><span>  return data;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>async function run() {</span></span>
+<span class="line"><span>  try {</span></span>
+<span class="line"><span>    await Excel.run(async (context) => {</span></span>
+<span class="line"><span>      const inputValue = document.getElementById("prompt").value;</span></span>
+<span class="line"><span>      await context.sync();</span></span>
+<span class="line"><span>      const stockResponse = await openAiChat(inputValue);</span></span>
+<span class="line"><span>      const tickerData = JSON.parse(stockResponse);</span></span>
+<span class="line"><span>      const results = await alphaVantage(tickerData.ticker);</span></span>
+<span class="line"><span>      document.getElementById("description").innerHTML = results.Description;</span></span>
+<span class="line"><span>    });</span></span>
+<span class="line"><span>  } catch (error) {</span></span>
+<span class="line"><span>    console.error(error);</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// Note: OPENAI_KEY and ALPHAVANTAGE_KEY are placeholders and should be replaced with valid API keys.</span></span></code></pre>
+<h3 id="benefits-of-embedding-gpt-in-excel">Benefits of Embedding GPT in Excel</h3>
+<p>Embedding GPT into Excel applications like this plugin enables several powerful capabilities:</p>
+<ul>
+<li><strong>Automation:</strong> Reduces manual data entry and analysis, saving users valuable time and effort.</li>
+<li><strong>Intelligence:</strong> Leverages AI to provide insightful recommendations and data, enhancing decision-making.</li>
+<li><strong>Customization:</strong> Allows for tailored functionalities to meet specific user needs, making Excel a more versatile tool.</li>
+<li><strong>Accessibility:</strong> Brings advanced AI capabilities into a familiar environment, making it more accessible to a broader audience.</li>
+</ul>
+<h3 id="conclusion">Conclusion</h3>
+<p>Integrating GPT into Excel plugins represents a significant leap forward in making AI accessible and usable in everyday applications. This guide and the provided example serve as a starting point for beginners to explore the integration of AI into Excel, highlighting the steps involved and the benefits of such an approach. As you become more comfortable with these concepts, you can expand upon this foundation to create even more sophisticated and customized Excel plugins, leveraging the full power of AI to transform how we work with data.</p>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2024/pytest_adding_fixtures"> Leveraging Pytest Fixtures and Markers to Exclude Specific Test Cases </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2023/hangfire_background_processing_a_comprehensive_guide"> Hangfire Background Processing A Comprehensive Guide </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

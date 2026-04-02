@@ -1,0 +1,595 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Creating a cluster on a map in react native - Dhanushka&#39;s Blog</title><meta name="description" content="In this post I will show you how to clusters on a map in react native."><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="Creating a cluster on a map in react native"><meta property="og:description" content="In this post I will show you how to clusters on a map in react native."><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/3793215953.png"><link rel="canonical" href="undefined/posts/tech/js/react_native_maps"><meta property="og:url" content="undefined/posts/tech/js/react_native_maps"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/3793215953.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">17 min read</div><h1 class="text-center text-3xl font-bold">Creating a cluster on a map in react native</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->May 22, 2024</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/react-native" style="padding-right:3px"><category>react-native</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/js" style="padding-right:3px"><category>js</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/3793215953.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <h1 id="what-supercluster-and-how-does-it-work">What supercluster and how does it work?</h1>
+<p>In cosmology, a supercluster is a large group of galaxy clusters or galaxy groups; they are among the largest known structures in the universe. The Milky Way is part of the Local Group galaxy group (which contains more than 54 galaxies), which in turn is part of the Virgo Supercluster, which is part of the Laniakea Supercluster. The large size and low density of superclusters means that they, unlike clusters, expand with the Hubble expansion. The number of superclusters in the observable universe is estimated to be 10 million.</p>
+<p>Superclusters form massive structures of galaxies, called “filaments”, “supercluster complexes”, “walls” or “sheets”, that may span between several hundred million light-years to 10 billion light-years, covering more than 5% of the observable universe. These are the largest structures known to date. Observations of superclusters can give information about the initial condition of the universe, when these superclusters were created.</p>
+<p>Here is how a supercluster works:</p>
+<ol>
+<li>Galaxies are attracted to each other by gravity.</li>
+<li>As galaxies move towards each other, they collide and merge.</li>
+<li>Over time, these collisions and mergers create larger and larger groups of galaxies.</li>
+<li>These groups of galaxies eventually form superclusters.</li>
+<li>Superclusters are held together by gravity.</li>
+<li>The gravity of superclusters helps to shape the structure of the universe.</li>
+</ol>
+<p>Superclusters are important because they can help us to understand the evolution of the universe. By studying superclusters, we can learn about how galaxies formed and evolved, and how the universe is structured.</p>
+<p>Here are some interesting facts about superclusters:</p>
+<ul>
+<li>The largest supercluster known to date is the Hercules–Corona Borealis Great Wall, which is about 10 billion light-years across.</li>
+<li>The Milky Way is located in the Laniakea Supercluster, which is about 500 million light-years across.</li>
+<li>Superclusters are constantly moving and evolving.</li>
+<li>Superclusters are thought to be the largest structures in the universe that are held together by gravity.</li>
+</ul>
+<p>Superclusters are a fascinating and important part of the universe. By studying them, we can learn more about the evolution of the universe and the structure of space.</p>
+<h1 id="why-are-clusters-on-maps-useful">Why are clusters on maps useful</h1>
+<p>Clusters on maps are useful because they can help us to visualize and understand large amounts of data. When you have a large number of markers on a map, it can be difficult to see the individual markers and the relationships between them. Clustering groups markers together based on their location, which makes it easier to see the big picture.</p>
+<p>There are many different ways to use clusters on maps. For example, you can use clusters to visualize the distribution of population, businesses, or other types of data. You can also use clusters to identify areas of interest, such as areas with high crime rates or areas with a lot of traffic.</p>
+<p>Here are some of the benefits of using clusters on maps:</p>
+<ul>
+<li>They can help you to visualize large amounts of data.</li>
+<li>They can help you to identify patterns and trends in the data.</li>
+<li>They can help you to make better decisions about the data.</li>
+<li>They can help you to communicate the data to others.</li>
+</ul>
+<p>Here are some examples of how clusters on maps can be used:</p>
+<ul>
+<li>A city planner can use clusters to visualize the distribution of population and identify areas with high density.</li>
+<li>A business owner can use clusters to visualize the distribution of businesses and identify areas with high competition.</li>
+<li>A crime analyst can use clusters to visualize the distribution of crime and identify areas with high crime rates.</li>
+<li>A traffic engineer can use clusters to visualize the distribution of traffic and identify areas with high traffic congestion.</li>
+</ul>
+<p>Clusters on maps are a powerful tool that can be used to visualize and understand large amounts of data. By using clusters, you can make better decisions, communicate the data to others, and gain a better understanding of the world around you.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> import { Text } from "react-native";</span></span>
+<span class="line"><span>import { COLORS } from "@theme/colors";</span></span>
+<span class="line"><span>import React, { FC, memo } from "react";</span></span>
+<span class="line"><span>import { StyleSheet, TouchableOpacity, View } from "react-native";</span></span>
+<span class="line"><span>import { Marker } from "react-native-maps";</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>interface ClusterMarkerProps {</span></span>
+<span class="line"><span>	geometry: any,</span></span>
+<span class="line"><span>	properties: any,</span></span>
+<span class="line"><span>	onPress: () => void,</span></span>
+<span class="line"><span>	tracksViewChanges: boolean</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>const ClusterMarker: FC&#x3C;ClusterMarkerProps> = ({ geometry, properties, onPress, tracksViewChanges }) => {</span></span>
+<span class="line"><span>	const points = properties.point_count;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return (</span></span>
+<span class="line"><span>		&#x3C;Marker</span></span>
+<span class="line"><span>			key={`${geometry.coordinates[0]}_${geometry.coordinates[1]}`}</span></span>
+<span class="line"><span>			coordinate={{</span></span>
+<span class="line"><span>				longitude: geometry.coordinates[0],</span></span>
+<span class="line"><span>				latitude: geometry.coordinates[1],</span></span>
+<span class="line"><span>			}}</span></span>
+<span class="line"><span>			style={{ zIndex: points + 1 }}</span></span>
+<span class="line"><span>			onPress={onPress}</span></span>
+<span class="line"><span>			tracksViewChanges={tracksViewChanges}</span></span>
+<span class="line"><span>		></span></span>
+<span class="line"><span>			&#x3C;TouchableOpacity activeOpacity={0.5} style={styles.container}></span></span>
+<span class="line"><span>				&#x3C;View style={styles.cluster}></span></span>
+<span class="line"><span>					&#x3C;Text style={styles.text}>{points}&#x3C;/Text></span></span>
+<span class="line"><span>				&#x3C;/View></span></span>
+<span class="line"><span>			&#x3C;/TouchableOpacity></span></span>
+<span class="line"><span>		&#x3C;/Marker></span></span>
+<span class="line"><span>	);</span></span>
+<span class="line"><span>}; </span></span></code></pre>
+<p>The code provided is a React Native component that renders a marker on a map. The component takes four props:</p>
+<ul>
+<li><code>geometry</code>: The geometry of the marker, which is an object with the following properties:
+<ul>
+<li><code>coordinates</code>: The coordinates of the marker, which is an array of two numbers: the longitude and the latitude.</li>
+</ul>
+</li>
+<li><code>properties</code>: The properties of the marker, which is an object with any additional information you want to associate with the marker.</li>
+<li><code>onPress</code>: A function that is called when the marker is pressed.</li>
+<li><code>tracksViewChanges</code>: A boolean that specifies whether the marker should be updated when the map view changes.</li>
+</ul>
+<p>The component renders a <code>Marker</code> component with the following properties:</p>
+<ul>
+<li><code>key</code>: A unique identifier for the marker.</li>
+<li><code>coordinate</code>: The coordinates of the marker.</li>
+<li><code>style</code>: The style of the marker.</li>
+<li><code>onPress</code>: The function that is called when the marker is pressed.</li>
+<li><code>tracksViewChanges</code>: A boolean that specifies whether the marker should be updated when the map view changes.</li>
+</ul>
+<p>The component also renders a <code>TouchableOpacity</code> component with the following properties:</p>
+<ul>
+<li><code>activeOpacity</code>: The opacity of the component when it is pressed.</li>
+<li><code>style</code>: The style of the component.</li>
+</ul>
+<p>The <code>TouchableOpacity</code> component renders a <code>View</code> component with the following properties:</p>
+<ul>
+<li><code>style</code>: The style of the component.</li>
+</ul>
+<p>The <code>View</code> component renders a <code>Text</code> component with the following properties:</p>
+<ul>
+<li><code>style</code>: The style of the text.</li>
+</ul>
+<p>The text in the <code>Text</code> component displays the number of markers that are in the cluster.</p>
+<p>The <code>ClusterMarker</code> component is a useful tool for visualizing large amounts of data on a map. By using this component, you can easily create markers that represent groups of markers. This can help you to see the big picture and identify areas of interest.</p>
+<p>We can add styles and a default export to the ClusterMarker.tsx file</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> import React, { forwardRef, memo, useEffect, useMemo, useRef, useState } from "react";</span></span>
+<span class="line"><span>import { Dimensions, LayoutAnimation, LayoutAnimationConfig, Platform } from "react-native";</span></span>
+<span class="line"><span>import MapView, { Details, Region } from "react-native-maps";</span></span>
+<span class="line"><span>import SuperCluster from "supercluster";</span></span>
+<span class="line"><span>import ClusterMarker from "./ClusterMarker";</span></span>
+<span class="line"><span>import {</span></span>
+<span class="line"><span>	calculateBBox,</span></span>
+<span class="line"><span>	markerToGeoJSONFeature,</span></span>
+<span class="line"><span>	returnMapZoom,</span></span>
+<span class="line"><span>	getSearchRadiusFromPresets,</span></span>
+<span class="line"><span>	getRegionForCoordinates</span></span>
+<span class="line"><span>} from "./helpers";</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>interface ClusteredMapViewProps {</span></span>
+<span class="line"><span>	children: React.ReactNode,</span></span>
+<span class="line"><span>	clusteringEnabled: boolean,</span></span>
+<span class="line"><span>	animationEnabled: boolean,</span></span>
+<span class="line"><span>	preserveClusterPressBehavior: boolean,</span></span>
+<span class="line"><span>	layoutAnimationConf: LayoutAnimationConfig,</span></span>
+<span class="line"><span>	tracksViewChanges: boolean,</span></span>
+<span class="line"><span>	// SuperCluster parameters</span></span>
+<span class="line"><span>	radius: number,</span></span>
+<span class="line"><span>	maxZoom: number,</span></span>
+<span class="line"><span>	minZoom: number,</span></span>
+<span class="line"><span>	minPoints: number,</span></span>
+<span class="line"><span>	extent: number,</span></span>
+<span class="line"><span>	nodeSize: number,</span></span>
+<span class="line"><span>	// Callbacks</span></span>
+<span class="line"><span>	onRegionChangeComplete: (e: Region) => Promise&#x3C;void>,</span></span>
+<span class="line"><span>	onClusterPress: (cluster, children: React.ReactNode) => void,</span></span>
+<span class="line"><span>	onMarkersChange: () => void,</span></span>
+<span class="line"><span>	mapRef: () => void,</span></span>
+<span class="line"><span>} </span></span></code></pre>
+<p>The code  provided is an interface for a React Native component that renders a map with clustering capabilities. The interface takes the following props:</p>
+<ul>
+<li><code>children</code>: The children of the component, which can be any React Native component.</li>
+<li><code>clusteringEnabled</code>: A boolean that specifies whether clustering is enabled.</li>
+<li><code>animationEnabled</code>: A boolean that specifies whether animation is enabled when markers are clustered or unclustered.</li>
+<li><code>preserveClusterPressBehavior</code>: A boolean that specifies whether the press behavior of clusters should be preserved when they are unclustered.</li>
+<li><code>layoutAnimationConf</code>: A <code>LayoutAnimationConfig</code> object that specifies the animation configuration for when markers are clustered or unclustered.</li>
+<li><code>tracksViewChanges</code>: A boolean that specifies whether the component should be updated when the map view changes.</li>
+<li><code>radius</code>: The radius of the clusters, in meters.</li>
+<li><code>maxZoom</code>: The maximum zoom level at which clustering is enabled.</li>
+<li><code>minZoom</code>: The minimum zoom level at which clustering is enabled.</li>
+<li><code>minPoints</code>: The minimum number of markers required to form a cluster.</li>
+<li><code>extent</code>: The extent of the map, in meters.</li>
+<li><code>nodeSize</code>: The size of the nodes in the cluster tree, in pixels.</li>
+<li><code>onRegionChangeComplete</code>: A function that is called when the region of the map changes.</li>
+<li><code>onClusterPress</code>: A function that is called when a cluster is pressed.</li>
+<li><code>onMarkersChange</code>: A function that is called when the markers change.</li>
+<li><code>mapRef</code>: A reference to the <code>MapView</code> component.</li>
+</ul>
+<p>The component renders a <code>MapView</code> component with the following properties:</p>
+<ul>
+<li><code>children</code>: The children of the component.</li>
+<li><code>clusteringEnabled</code>: A boolean that specifies whether clustering is enabled.</li>
+<li><code>animationEnabled</code>: A boolean that specifies whether animation is enabled when markers are clustered or unclustered.</li>
+<li><code>preserveClusterPressBehavior</code>: A boolean that specifies whether the press behavior of clusters should be preserved when they are unclustered.</li>
+<li><code>layoutAnimationConf</code>: A <code>LayoutAnimationConfig</code> object that specifies the animation configuration for when markers are clustered or unclustered.</li>
+<li><code>tracksViewChanges</code>: A boolean that specifies whether the component should be updated when the map view changes.</li>
+<li><code>radius</code>: The radius of the clusters, in meters.</li>
+<li><code>maxZoom</code>: The maximum zoom level at which clustering is enabled.</li>
+<li><code>minZoom</code>: The minimum zoom level at which clustering is enabled.</li>
+<li><code>minPoints</code>: The minimum number of markers required to form a cluster.</li>
+<li><code>extent</code>: The extent of the map, in meters.</li>
+<li><code>nodeSize</code>: The size of the nodes in the cluster tree, in pixels.</li>
+<li><code>onRegionChangeComplete</code>: A function that is called when the region of the map changes.</li>
+<li><code>onClusterPress</code>: A function that is called when a cluster is pressed.</li>
+<li><code>onMarkersChange</code>: A function that is called when the markers change.</li>
+</ul>
+<p>The component also renders a <code>SuperCluster</code> component with the following properties:</p>
+<ul>
+<li><code>data</code>: The data for the clusters.</li>
+<li><code>radius</code>: The radius of the clusters, in meters.</li>
+<li><code>maxZoom</code>: The maximum zoom level at which clustering is enabled.</li>
+<li><code>minZoom</code>: The minimum zoom level at which clustering is enabled.</li>
+<li><code>minPoints</code>: The minimum number of markers required to form a cluster.</li>
+<li><code>extent</code>: The extent of the map, in meters.</li>
+<li><code>nodeSize</code>: The size of the nodes in the cluster tree, in pixels.</li>
+</ul>
+<p>The <code>SuperCluster</code> component uses the <code>radius</code> prop to cluster markers that are within a certain distance of each other. The <code>maxZoom</code> and <code>minZoom</code> props specify the maximum and minimum zoom levels at which clustering is enabled. The <code>minPoints</code> prop specifies the minimum number of markers required to form a cluster. The <code>extent</code> prop specifies the extent of the map, in meters. The <code>nodeSize</code> prop specifies the size of the nodes in the cluster tree, in pixels.</p>
+<p>The <code>ClusteredMapView</code> component is a useful tool for visualizing large amounts of data on a map. By using this component, you can easily create a map with clusters of markers. This can help you to see the big picture and identify areas of interest.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> const ClusteredMapView = forwardRef(</span></span>
+<span class="line"><span>	(</span></span>
+<span class="line"><span>		{</span></span>
+<span class="line"><span>			radius,</span></span>
+<span class="line"><span>			maxZoom,</span></span>
+<span class="line"><span>			minZoom,</span></span>
+<span class="line"><span>			minPoints,</span></span>
+<span class="line"><span>			extent,</span></span>
+<span class="line"><span>			nodeSize,</span></span>
+<span class="line"><span>			children,</span></span>
+<span class="line"><span>			onClusterPress,</span></span>
+<span class="line"><span>			onRegionChangeComplete,</span></span>
+<span class="line"><span>			onMarkersChange,</span></span>
+<span class="line"><span>			preserveClusterPressBehavior,</span></span>
+<span class="line"><span>			clusteringEnabled,</span></span>
+<span class="line"><span>			layoutAnimationConf,</span></span>
+<span class="line"><span>			animationEnabled,</span></span>
+<span class="line"><span>			tracksViewChanges,</span></span>
+<span class="line"><span>			...restProps</span></span>
+<span class="line"><span>		}: ClusteredMapViewProps,</span></span>
+<span class="line"><span>		ref,</span></span>
+<span class="line"><span>	) => {</span></span>
+<span class="line"><span>		const [markers, updateMarkers] = useState([]);</span></span>
+<span class="line"><span>		const [otherChildren, updateChildren] = useState&#x3C;React.ReactNode>();</span></span>
+<span class="line"><span>		const [superCluster, setSuperCluster] = useState(null);</span></span>
+<span class="line"><span>		const [currentRegion, updateRegion] = useState&#x3C;Region>(restProps.region || restProps.initialRegion);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>		const mapRef = useRef();</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>		let propsChildren = [];</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>		if (children) {</span></span>
+<span class="line"><span>			propsChildren = useMemo(() => React.Children.toArray(children), [children]);</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>		useEffect(() => {</span></span>
+<span class="line"><span>			const rawData = [];</span></span>
+<span class="line"><span>			const otherChildren = [];</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>			if (!clusteringEnabled) {</span></span>
+<span class="line"><span>				updateMarkers([]);</span></span>
+<span class="line"><span>				updateChildren(propsChildren);</span></span>
+<span class="line"><span>				setSuperCluster(null);</span></span>
+<span class="line"><span>				return;</span></span>
+<span class="line"><span>			}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>			propsChildren.forEach((child, index) => {</span></span>
+<span class="line"><span>				if (child.props.coordinates) { // child is a marker</span></span>
+<span class="line"><span>					rawData.push(markerToGeoJSONFeature(child, index));</span></span>
+<span class="line"><span>				} else {</span></span>
+<span class="line"><span>					otherChildren.push(child);</span></span>
+<span class="line"><span>				}</span></span>
+<span class="line"><span>			});</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>			const superCluster = new SuperCluster({</span></span>
+<span class="line"><span>				radius,</span></span>
+<span class="line"><span>				maxZoom,</span></span>
+<span class="line"><span>				minZoom,</span></span>
+<span class="line"><span>				minPoints,</span></span>
+<span class="line"><span>				extent,</span></span>
+<span class="line"><span>				nodeSize,</span></span>
+<span class="line"><span>			});</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>			superCluster.load(rawData);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>			const bBox = calculateBBox(currentRegion);</span></span>
+<span class="line"><span>			const zoom = returnMapZoom(currentRegion, bBox, minZoom);</span></span>
+<span class="line"><span>			const markers = superCluster.getClusters(bBox, zoom);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>			updateMarkers(markers);</span></span>
+<span class="line"><span>			updateChildren(otherChildren);</span></span>
+<span class="line"><span>			setSuperCluster(superCluster);</span></span>
+<span class="line"><span>		}, [propsChildren, clusteringEnabled]);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>		const _onRegionChangeComplete = (region: Region, details: Details) => {</span></span>
+<span class="line"><span>			if (superCluster &#x26;&#x26; region) {</span></span>
+<span class="line"><span>				const bBox = calculateBBox(region);</span></span>
+<span class="line"><span>				const zoom = returnMapZoom(region, bBox, minZoom);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>				const markers = superCluster.getClusters(bBox, zoom);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>				if (animationEnabled &#x26;&#x26; Platform.OS === "ios") {</span></span>
+<span class="line"><span>					LayoutAnimation.configureNext(layoutAnimationConf);</span></span>
+<span class="line"><span>				}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>				updateMarkers(markers);</span></span>
+<span class="line"><span>				onMarkersChange(markers);</span></span>
+<span class="line"><span>				onRegionChangeComplete(region, details, markers);</span></span>
+<span class="line"><span>				updateRegion(region);</span></span>
+<span class="line"><span>			} else {</span></span>
+<span class="line"><span>				onRegionChangeComplete(region, details);</span></span>
+<span class="line"><span>			}</span></span>
+<span class="line"><span>		};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>		const _onClusterPress = (cluster) => () => {</span></span>
+<span class="line"><span>			const children = superCluster.getLeaves(cluster.id, Infinity);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>			if (preserveClusterPressBehavior) {</span></span>
+<span class="line"><span>				onClusterPress(cluster, children);</span></span>
+<span class="line"><span>				return;</span></span>
+<span class="line"><span>			}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>			const coordinates = children.map(({ geometry }) => ({</span></span>
+<span class="line"><span>				latitude: geometry.coordinates[1],</span></span>
+<span class="line"><span>				longitude: geometry.coordinates[0],</span></span>
+<span class="line"><span>			}));</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>			const newRegion = getRegionForCoordinates(coordinates);</span></span>
+<span class="line"><span>			const zoomOutFactor = 1.25; // arbitrary value</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>			// increase delta so the map is a bit zoomed out</span></span>
+<span class="line"><span>			// otherwise markers might appear at the edges of the screen</span></span>
+<span class="line"><span>			newRegion.latitudeDelta = newRegion.latitudeDelta * zoomOutFactor;</span></span>
+<span class="line"><span>			newRegion.longitudeDelta = newRegion.longitudeDelta * zoomOutFactor;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>			mapRef.current.animateToRegion(newRegion);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>			const radiusInMiles = newRegion.latitudeDelta * 69;</span></span>
+<span class="line"><span>			const searchRadius = getSearchRadiusFromPresets(radiusInMiles);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>			onClusterPress(newRegion, searchRadius)</span></span>
+<span class="line"><span>		};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>		return (</span></span>
+<span class="line"><span>			&#x3C;MapView</span></span>
+<span class="line"><span>				{...restProps}</span></span>
+<span class="line"><span>				ref={(map) => {</span></span>
+<span class="line"><span>					mapRef.current = map;</span></span>
+<span class="line"><span>					if (ref) ref.current = map;</span></span>
+<span class="line"><span>					restProps.mapRef(map);</span></span>
+<span class="line"><span>				}}</span></span>
+<span class="line"><span>				onRegionChangeComplete={_onRegionChangeComplete}</span></span>
+<span class="line"><span>			></span></span>
+<span class="line"><span>				{markers.map((marker) =></span></span>
+<span class="line"><span>					marker.properties.point_count === 0 ? (</span></span>
+<span class="line"><span>						propsChildren[marker.properties.index]</span></span>
+<span class="line"><span>					) : (</span></span>
+<span class="line"><span>						&#x3C;ClusterMarker</span></span>
+<span class="line"><span>							key={`cluster-${marker.id}`}</span></span>
+<span class="line"><span>							{...marker}</span></span>
+<span class="line"><span>							onPress={_onClusterPress(marker)}</span></span>
+<span class="line"><span>							tracksViewChanges={tracksViewChanges}</span></span>
+<span class="line"><span>						/></span></span>
+<span class="line"><span>					)</span></span>
+<span class="line"><span>				)}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>				{otherChildren}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>			&#x3C;/MapView></span></span>
+<span class="line"><span>		);</span></span>
+<span class="line"><span>	},</span></span>
+<span class="line"><span>); </span></span></code></pre>
+<p>The code provided is a React Native component that renders a map with clustering capabilities. The component takes the following props:</p>
+<ul>
+<li><code>radius</code>: The radius of the clusters, in meters.</li>
+<li><code>maxZoom</code>: The maximum zoom level at which clustering is enabled.</li>
+<li><code>minZoom</code>: The minimum zoom level at which clustering is enabled.</li>
+<li><code>minPoints</code>: The minimum number of markers required to form a cluster.</li>
+<li><code>extent</code>: The extent of the map, in meters.</li>
+<li><code>nodeSize</code>: The size of the nodes in the cluster tree, in pixels.</li>
+<li><code>children</code>: The children of the component, which can be any React Native component.</li>
+<li><code>onClusterPress</code>: A function that is called when a cluster is pressed.</li>
+<li><code>onRegionChangeComplete</code>: A function that is called when the region of the map changes.</li>
+<li><code>onMarkersChange</code>: A function that is called when the markers change.</li>
+<li><code>preserveClusterPressBehavior</code>: A boolean that specifies whether the press behavior of clusters should be preserved when they are unclustered.</li>
+<li><code>clusteringEnabled</code>: A boolean that specifies whether clustering is enabled.</li>
+<li><code>layoutAnimationConf</code>: A <code>LayoutAnimationConfig</code> object that specifies the animation configuration for when markers are clustered or unclustered.</li>
+<li><code>animationEnabled</code>: A boolean that specifies whether animation is enabled when markers are clustered or unclustered.</li>
+<li><code>tracksViewChanges</code>: A boolean that specifies whether the component should be updated when the map view changes.</li>
+<li><code>mapRef</code>: A reference to the <code>MapView</code> component.</li>
+</ul>
+<p>The component renders a <code>MapView</code> component with the following properties:</p>
+<ul>
+<li><code>children</code>: The children of the component.</li>
+<li><code>clusteringEnabled</code>: A boolean that specifies whether clustering is enabled.</li>
+<li><code>animationEnabled</code>: A boolean that specifies whether animation is enabled when markers are clustered or unclustered.</li>
+<li><code>preserveClusterPressBehavior</code>: A boolean that specifies whether the press behavior of clusters should be preserved when they are unclustered.</li>
+<li><code>layoutAnimationConf</code>: A <code>LayoutAnimationConfig</code> object that specifies the animation configuration for when markers are clustered or unclustered.</li>
+<li><code>tracksViewChanges</code>: A boolean that specifies whether the component should be updated when the map view changes.</li>
+<li><code>radius</code>: The radius of the clusters, in meters.</li>
+<li><code>maxZoom</code>: The maximum zoom level at which clustering is enabled.</li>
+<li><code>minZoom</code>: The minimum zoom level at which clustering is enabled.</li>
+<li><code>minPoints</code>: The minimum number of markers required to form a cluster.</li>
+<li><code>extent</code>: The extent of the map, in meters.</li>
+<li><code>nodeSize</code>: The size of the nodes in the cluster tree, in pixels.</li>
+<li><code>onRegionChangeComplete</code>: A function that is called when the region of the map changes.</li>
+<li><code>onClusterPress</code>: A function that is called when a cluster is pressed.</li>
+<li><code>onMarkersChange</code>: A function that is called when the markers change.</li>
+</ul>
+<p>The component also renders a <code>SuperCluster</code> component with the following properties:</p>
+<ul>
+<li><code>data</code>: The data for the clusters.</li>
+<li><code>radius</code>: The radius of the clusters, in meters.</li>
+<li><code>maxZoom</code>: The maximum zoom level at which clustering is enabled.</li>
+<li><code>minZoom</code>: The minimum zoom level at which clustering is enabled.</li>
+<li><code>minPoints</code>: The minimum number of markers required to form a cluster.</li>
+<li><code>extent</code>: The extent of the map, in meters.</li>
+<li><code>nodeSize</code>: The size of the nodes in the cluster tree, in pixels.</li>
+</ul>
+<p>The <code>SuperCluster</code> component uses the <code>radius</code> prop to cluster markers that are within a certain distance of each other. The <code>maxZoom</code> and <code>minZoom</code> props specify the maximum and minimum zoom levels at which clustering is enabled. The <code>minPoints</code> prop specifies the minimum number of markers required to form a cluster. The <code>extent</code> prop specifies the extent of the map, in meters. The <code>nodeSize</code> prop specifies the size of the nodes in the cluster tree, in pixels.</p>
+<p>The <code>ClusteredMapView</code> component is a useful tool for visualizing large amounts of data on a map. By using this component, you can easily create a map with clusters of markers. This can help you to see the big picture and identify areas of interest.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> ClusteredMapView.defaultProps = {</span></span>
+<span class="line"><span>	clusteringEnabled: true,</span></span>
+<span class="line"><span>	animationEnabled: true,</span></span>
+<span class="line"><span>	preserveClusterPressBehavior: false,</span></span>
+<span class="line"><span>	layoutAnimationConf: LayoutAnimation.Presets.spring,</span></span>
+<span class="line"><span>	tracksViewChanges: false,</span></span>
+<span class="line"><span>	// SuperCluster parameters</span></span>
+<span class="line"><span>	radius: Dimensions.get("window").width * 0.06,</span></span>
+<span class="line"><span>	maxZoom: 20,</span></span>
+<span class="line"><span>	minZoom: 1,</span></span>
+<span class="line"><span>	minPoints: 2,</span></span>
+<span class="line"><span>	extent: 512,</span></span>
+<span class="line"><span>	nodeSize: 64,</span></span>
+<span class="line"><span>	// Map parameters</span></span>
+<span class="line"><span>	// Callbacks</span></span>
+<span class="line"><span>	onRegionChangeComplete: () => { },</span></span>
+<span class="line"><span>	onClusterPress: () => { },</span></span>
+<span class="line"><span>	onMarkersChange: () => { },</span></span>
+<span class="line"><span>	mapRef: () => { },</span></span>
+<span class="line"><span>};</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>The code you provided is the default props for the <code>ClusteredMapView</code> component. The default props are used when the component is created without any props.</p>
+<p>The following are the default props for the <code>ClusteredMapView</code> component:</p>
+<ul>
+<li><code>clusteringEnabled</code>: A boolean that specifies whether clustering is enabled. The default value is <code>true</code>.</li>
+<li><code>animationEnabled</code>: A boolean that specifies whether animation is enabled when markers are clustered or unclustered. The default value is <code>true</code>.</li>
+<li><code>preserveClusterPressBehavior</code>: A boolean that specifies whether the press behavior of clusters should be preserved when they are unclustered. The default value is <code>false</code>.</li>
+<li><code>layoutAnimationConf</code>: A <code>LayoutAnimationConfig</code> object that specifies the animation configuration for when markers are clustered or unclustered. The default value is <code>LayoutAnimation.Presets.spring</code>.</li>
+<li><code>tracksViewChanges</code>: A boolean that specifies whether the component should be updated when the map view changes. The default value is <code>false</code>.</li>
+<li><code>radius</code>: The radius of the clusters, in meters. The default value is <code>Dimensions.get("window").width * 0.06</code>.</li>
+<li><code>maxZoom</code>: The maximum zoom level at which clustering is enabled. The default value is <code>20</code>.</li>
+<li><code>minZoom</code>: The minimum zoom level at which clustering is enabled. The default value is <code>1</code>.</li>
+<li><code>minPoints</code>: The minimum number of markers required to form a cluster. The default value is <code>2</code>.</li>
+<li><code>extent</code>: The extent of the map, in meters. The default value is <code>512</code>.</li>
+<li><code>nodeSize</code>: The size of the nodes in the cluster tree, in pixels. The default value is <code>64</code>.</li>
+<li><code>onRegionChangeComplete</code>: A function that is called when the region of the map changes. The default value is an empty function.</li>
+<li><code>onClusterPress</code>: A function that is called when a cluster is pressed. The default value is an empty function.</li>
+<li><code>onMarkersChange</code>: A function that is called when the markers change. The default value is an empty function.</li>
+<li><code>mapRef</code>: A reference to the <code>MapView</code> component. The default value is an empty function.</li>
+</ul>
+<p>The default props can be overridden when the component is created by passing in props with the desired values.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> import GeoViewport from "@mapbox/geo-viewport";</span></span>
+<span class="line"><span>import { Dimensions } from "react-native";</span></span>
+<span class="line"><span>import { distancePresets } from "@screens/book/SearchResults";</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>const { width, height } = Dimensions.get("window");</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>export const calculateBBox = (region) => {</span></span>
+<span class="line"><span>	let lngD;</span></span>
+<span class="line"><span>	if (region.longitudeDelta &#x3C; 0) lngD = region.longitudeDelta + 360;</span></span>
+<span class="line"><span>	else lngD = region.longitudeDelta;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return [</span></span>
+<span class="line"><span>		region.longitude - lngD, // westLng - min lng</span></span>
+<span class="line"><span>		region.latitude - region.latitudeDelta, // southLat - min lat</span></span>
+<span class="line"><span>		region.longitude + lngD, // eastLng - max lng</span></span>
+<span class="line"><span>		region.latitude + region.latitudeDelta, // northLat - max lat</span></span>
+<span class="line"><span>	];</span></span>
+<span class="line"><span>};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>export const returnMapZoom = (region, bBox, minZoom) => {</span></span>
+<span class="line"><span>	const viewport =</span></span>
+<span class="line"><span>		region.longitudeDelta >= 40</span></span>
+<span class="line"><span>			? { zoom: minZoom }</span></span>
+<span class="line"><span>			: GeoViewport.viewport(bBox, [width, height]);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return viewport.zoom;</span></span>
+<span class="line"><span>};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>export const markerToGeoJSONFeature = (marker, index) => {</span></span>
+<span class="line"><span>	return {</span></span>
+<span class="line"><span>		type: "Feature",</span></span>
+<span class="line"><span>		geometry: {</span></span>
+<span class="line"><span>			coordinates: [</span></span>
+<span class="line"><span>				marker.props.coordinates.longitude,</span></span>
+<span class="line"><span>				marker.props.coordinates.latitude,</span></span>
+<span class="line"><span>			],</span></span>
+<span class="line"><span>			type: "Point",</span></span>
+<span class="line"><span>		},</span></span>
+<span class="line"><span>		properties: {</span></span>
+<span class="line"><span>			point_count: 0,</span></span>
+<span class="line"><span>			index,</span></span>
+<span class="line"><span>		},</span></span>
+<span class="line"><span>	};</span></span>
+<span class="line"><span>};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>const _removeChildrenFromProps = (props) => {</span></span>
+<span class="line"><span>	const newProps = {};</span></span>
+<span class="line"><span>	Object.keys(props).forEach((key) => {</span></span>
+<span class="line"><span>		if (key !== "children") {</span></span>
+<span class="line"><span>			newProps[key] = props[key];</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span>	});</span></span>
+<span class="line"><span>	return newProps;</span></span>
+<span class="line"><span>};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>export const getSearchRadiusFromPresets = (radiusInMiles) => {</span></span>
+<span class="line"><span>	let radius = distancePresets[distancePresets.length - 1];</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	for (const distancePreset of distancePresets) {</span></span>
+<span class="line"><span>		if (distancePreset >= radiusInMiles) {</span></span>
+<span class="line"><span>			radius = distancePreset;</span></span>
+<span class="line"><span>			break;</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return radius;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>export function getRegionForCoordinates(points) {</span></span>
+<span class="line"><span>	// points should be an array of { latitude: X, longitude: Y }</span></span>
+<span class="line"><span>	let minX, maxX, minY, maxY;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	// init first point</span></span>
+<span class="line"><span>	((point) => {</span></span>
+<span class="line"><span>		minX = point.latitude;</span></span>
+<span class="line"><span>		maxX = point.latitude;</span></span>
+<span class="line"><span>		minY = point.longitude;</span></span>
+<span class="line"><span>		maxY = point.longitude;</span></span>
+<span class="line"><span>	})(points[0]);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	// calculate rect</span></span>
+<span class="line"><span>	points.map((point) => {</span></span>
+<span class="line"><span>		minX = Math.min(minX, point.latitude);</span></span>
+<span class="line"><span>		maxX = Math.max(maxX, point.latitude);</span></span>
+<span class="line"><span>		minY = Math.min(minY, point.longitude);</span></span>
+<span class="line"><span>		maxY = Math.max(maxY, point.longitude);</span></span>
+<span class="line"><span>	});</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	const midX = (minX + maxX) / 2;</span></span>
+<span class="line"><span>	const midY = (minY + maxY) / 2;</span></span>
+<span class="line"><span>	const deltaX = (maxX - minX);</span></span>
+<span class="line"><span>	const deltaY = (maxY - minY);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return {</span></span>
+<span class="line"><span>		latitude: midX,</span></span>
+<span class="line"><span>		longitude: midY,</span></span>
+<span class="line"><span>		latitudeDelta: deltaX,</span></span>
+<span class="line"><span>		longitudeDelta: deltaY</span></span>
+<span class="line"><span>	};</span></span>
+<span class="line"><span>} </span></span></code></pre>
+<p>The code provided is a set of functions that are useful for working with maps. The functions include:</p>
+<ul>
+<li><code>calculateBBox()</code>: Calculates the bounding box of a region.</li>
+<li><code>returnMapZoom()</code>: Returns the zoom level for a region.</li>
+<li><code>markerToGeoJSONFeature()</code>: Converts a marker to a GeoJSON feature.</li>
+<li><code>_removeChildrenFromProps()</code>: Removes the <code>children</code> prop from an object.</li>
+<li><code>getSearchRadiusFromPresets()</code>: Gets the search radius from a preset.</li>
+<li><code>getRegionForCoordinates()</code>: Gets the region for a set of coordinates.</li>
+</ul>
+<p>These functions can be used to create maps, cluster markers, and get information about maps.</p>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/utils/customizing_vscode_settings"> How to customize vscode settings </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/git_hosting"> In this post I will compare github, gitlab, and bitbucket </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

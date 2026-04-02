@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Options to implement search on your website - Dhanushka&#39;s Blog</title><meta name="description" content="Options to implement search on your website"><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="Options to implement search on your website"><meta property="og:description" content="Options to implement search on your website"><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/481242631.png"><link rel="canonical" href="undefined/posts/tech/react/search_on_webpage"><meta property="og:url" content="undefined/posts/tech/react/search_on_webpage"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/481242631.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">9 min read</div><h1 class="text-center text-3xl font-bold">Options to implement search on your website</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Dec 15, 2024</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-red-400 text-red-900"><a href="/tags/react" style="padding-right:3px"><category>react</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/context" style="padding-right:3px"><category>context</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/481242631.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <h1 id="algolia-search">Algolia Search</h1>
+<p>Algolia is a powerful and scalable search-as-a-service solution that allows you to add lightning-fast search functionality to your website or application. It provides a simple and easy-to-use API that can be integrated into your website or application using a variety of SDKs, including JavaScript, PHP, and Python.</p>
+<p>To add Algolia search to your website, you first need to sign up for an Algolia account and create an index for your website’s data. Once you have created an index, you can then use one of Algolia’s SDKs to integrate search functionality into your website or application.</p>
+<p>Here’s an example of how to add Algolia search to your website using the JavaScript SDK:</p>
+<p>Install the Algolia JavaScript SDK:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm install algoliasearch</span></span></code></pre>
+<p>Initialize the Algolia client with your application ID and API key:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>const algoliasearch = require('algoliasearch');</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>const client = algoliasearch('APPLICATION_ID', 'API_KEY');</span></span></code></pre>
+<p>Index your data:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>const index = client.initIndex('INDEX_NAME');</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>const data = [</span></span>
+<span class="line"><span>  { objectID: '1', title: 'Product 1', description: 'This is the first product' },</span></span>
+<span class="line"><span>  { objectID: '2', title: 'Product 2', description: 'This is the second product' },</span></span>
+<span class="line"><span>  { objectID: '3', title: 'Product 3', description: 'This is the third product' },</span></span>
+<span class="line"><span>];</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>index.addObjects(data, (err, content) => {</span></span>
+<span class="line"><span>  if (err) {</span></span>
+<span class="line"><span>    console.error(err);</span></span>
+<span class="line"><span>  } else {</span></span>
+<span class="line"><span>    console.log(content);</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>});</span></span></code></pre>
+<ol start="4">
+<li>Implement search functionality in your website:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>const searchInput = document.querySelector('#search-input');</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>searchInput.addEventListener('input', () => {</span></span>
+<span class="line"><span>  index.search(searchInput.value, (err, content) => {</span></span>
+<span class="line"><span>    if (err) {</span></span>
+<span class="line"><span>      console.error(err);</span></span>
+<span class="line"><span>    } else {</span></span>
+<span class="line"><span>      console.log(content.hits);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  });</span></span>
+<span class="line"><span>});</span></span></code></pre>
+<p>This code initializes the Algolia client, indexes some data, and implements a search input that listens for user input and performs a search on the Algolia index. The search results are then logged to the console.</p>
+<p>Algolia search provides many powerful features, such as faceting, typo-tolerance, and relevance ranking, that can help you deliver a better search experience to your website’s users.</p>
+<h2 id="custom-search-with-react-and-fusejs">Custom search with React and Fuse.js</h2>
+<p>Adding a search functionality to your website can greatly improve its usability. However, implementing search can be a challenging task. In this post, we’ll go through the steps to add a custom search feature to your website using React and Fuse.js.</p>
+<p>Fuse.js is a lightweight fuzzy-search library that can easily be integrated with React. It allows you to search through a collection of items with support for various options like searching for partial matches, exact matches, and more. With Fuse.js, you can also configure the search algorithm and its options to improve search results.</p>
+<h3 id="installation">Installation</h3>
+<p>First, you’ll need to install Fuse.js as a dependency in your project. You can do this using npm:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm install fuse.js</span></span></code></pre>
+<h3 id="usage">Usage</h3>
+<p>Once you have installed Fuse.js, you can use it in your React components. Here’s an example of how to implement a search component using Fuse.js:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>import React, { useState } from 'react';</span></span>
+<span class="line"><span>import Fuse from 'fuse.js';</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>const Search = ({ data }) => {</span></span>
+<span class="line"><span> const [query, setQuery] = useState('');</span></span>
+<span class="line"><span> const options = {</span></span>
+<span class="line"><span> keys: ['title', 'author.name'],</span></span>
+<span class="line"><span> };</span></span>
+<span class="line"><span> const fuse = new Fuse(data, options);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> const results = fuse.search(query);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> return (</span></span>
+<span class="line"><span> &#x3C;div></span></span>
+<span class="line"><span> &#x3C;input</span></span>
+<span class="line"><span> type="text"</span></span>
+<span class="line"><span> value={query}</span></span>
+<span class="line"><span> onChange={(e) => setQuery(e.target.value)}</span></span>
+<span class="line"><span> /></span></span>
+<span class="line"><span> &#x3C;ul></span></span>
+<span class="line"><span> {results.map((item) => (</span></span>
+<span class="line"><span> &#x3C;li key={item.id}></span></span>
+<span class="line"><span> {item.title} by {item.author.name}</span></span>
+<span class="line"><span> &#x3C;/li></span></span>
+<span class="line"><span> ))}</span></span>
+<span class="line"><span> &#x3C;/ul></span></span>
+<span class="line"><span> &#x3C;/div></span></span>
+<span class="line"><span> );</span></span>
+<span class="line"><span>};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>export default Search;</span></span></code></pre>
+<p>Here, we’ve defined a <code>Search</code> component that accepts an array of <code>data</code> as a prop. In our case, <code>data</code> is an array of objects that represent books. We use the <code>useState</code> hook to keep track of the search query.</p>
+<p>We then create a new instance of <code>Fuse</code> using the <code>data</code> array and an options object. In this case, we’re searching for matches in the <code>title</code> and <code>author.name</code> keys.</p>
+<p>Finally, we render an input element and a list of results. The list is created by mapping over the <code>results</code> array returned by <code>fuse.search()</code>.</p>
+<p>That’s it! With just a few lines of code, you can add a custom search feature to your React app using Fuse.js. The library is highly configurable, allowing you to fine-tune search results to match your specific needs.</p>
+<p>Using Google Search on Your Site</p>
+<p>Adding a search bar to your website can improve its usability by allowing users to quickly find what they’re looking for. One popular solution is to use Google Search, which provides accurate and relevant results based on the user’s query.</p>
+<p>In this post, we’ll go through the steps to add Google Search to your website.</p>
+<h3 id="1-create-a-custom-search-engine">1. Create a Custom Search Engine</h3>
+<p>First, you’ll need to create a Custom Search Engine (CSE) in your Google account. Go to the <a href="https://programmablesearchengine.google.com/about/">Google Custom Search Engine</a> page and click on the “Get Started” button.</p>
+<p>Follow the steps to create your CSE, including entering the website you want to search and any additional search features you want to enable. Once you’ve created your CSE, you’ll be given a unique search engine ID that you can use to integrate Google Search on your site.</p>
+<h3 id="2-add-the-search-bar">2. Add the Search Bar</h3>
+<p>Next, you’ll need to add the Google Search bar to your website. You can do this by copying the code snippet provided by Google and pasting it into your HTML code.</p>
+<p>Here’s an example of what the HTML code for the search bar might look like:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>html`&#x3C;form action="https://www.google.com/search" method="get"></span></span>
+<span class="line"><span> &#x3C;input type="hidden" name="cx" value="YOUR\_SEARCH\_ENGINE\_ID"></span></span>
+<span class="line"><span> &#x3C;input type="hidden" name="ie" value="UTF-8"></span></span>
+<span class="line"><span> &#x3C;input type="text" name="q" size="40" placeholder="Search..."></span></span>
+<span class="line"><span> &#x3C;input type="submit" name="submit" value="Search"></span></span>
+<span class="line"><span>&#x3C;/form></span></span></code></pre>
+<p>Make sure to replace <code>YOUR_SEARCH_ENGINE_ID</code> with your actual search engine ID.</p>
+<h3 id="3-style-the-search-bar">3. Style the Search Bar</h3>
+<p>Finally, you can style the search bar to match your website’s design. Here’s an example of how you might style the search bar using CSS:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>form {</span></span>
+<span class="line"><span> display: flex;</span></span>
+<span class="line"><span> justify-content: center;</span></span>
+<span class="line"><span> align-items: center;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>input[type="text"] {</span></span>
+<span class="line"><span> font-size: 1rem;</span></span>
+<span class="line"><span> padding: 0.5rem;</span></span>
+<span class="line"><span> border: none;</span></span>
+<span class="line"><span> border-bottom: 2px solid #ccc;</span></span>
+<span class="line"><span> margin-right: 0.5rem;</span></span>
+<span class="line"><span> flex: 1;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>input[type="submit"] {</span></span>
+<span class="line"><span> background-color: #333;</span></span>
+<span class="line"><span> color: #fff;</span></span>
+<span class="line"><span> padding: 0.5rem 1rem;</span></span>
+<span class="line"><span> border: none;</span></span>
+<span class="line"><span> cursor: pointer;</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>This CSS code will center the search bar on the page and style the input and submit buttons.</p>
+<p>That’s it! By following these simple steps, you can add Google Search to your website and provide a powerful search feature for your users. With Google’s advanced search algorithms and indexing capabilities, your users will be able to find the content they’re looking for quickly and easily.</p>
+<h2 id="adding-search-using-php">Adding Search Using PHP</h2>
+<p>Adding a search feature to your website can help your users find the content they’re looking for quickly and easily. In this post, we’ll go through the steps to add a search bar to your website using PHP.</p>
+<h3 id="1-create-the-search-form">1. Create the Search Form</h3>
+<p>The first step is to create a search form in HTML. Here’s an example of what the HTML code might look like:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;form action="search.php" method="get"></span></span>
+<span class="line"><span> &#x3C;input type="text" name="query" placeholder="Search..."></span></span>
+<span class="line"><span> &#x3C;input type="submit" name="submit" value="Search"></span></span>
+<span class="line"><span>&#x3C;/form></span></span></code></pre>
+<p>This code creates a form with an input field for the search query and a submit button. The form action is set to “search.php”, which is the name of the PHP script that will handle the search.</p>
+<h3 id="2-create-the-php-script">2. Create the PHP Script</h3>
+<p>Next, you’ll need to create the PHP script that will handle the search. Here’s an example of what the PHP code might look like:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;?php</span></span>
+<span class="line"><span>// Check if the search form has been submitted</span></span>
+<span class="line"><span>if (isset($\_GET['submit'])) {</span></span>
+<span class="line"><span> // Get the search query</span></span>
+<span class="line"><span> $query = $\_GET['query'];</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span> // Perform the search</span></span>
+<span class="line"><span> $results = perform\_search($query);</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span> // Display the search results</span></span>
+<span class="line"><span> foreach ($results as $result) {</span></span>
+<span class="line"><span> echo "&#x3C;div class='result'>";</span></span>
+<span class="line"><span> echo "&#x3C;h3>{$result['title']}&#x3C;/h3>";</span></span>
+<span class="line"><span> echo "&#x3C;p>{$result['description']}&#x3C;/p>";</span></span>
+<span class="line"><span> echo "&#x3C;a href='{$result['url']}'>Read More&#x3C;/a>";</span></span>
+<span class="line"><span> echo "&#x3C;/div>";</span></span>
+<span class="line"><span> }</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// Function to perform the search</span></span>
+<span class="line"><span>function perform\_search($query) {</span></span>
+<span class="line"><span> // Connect to the database</span></span>
+<span class="line"><span> $conn = mysqli\_connect("localhost", "username", "password", "database");</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span> // Escape the search query</span></span>
+<span class="line"><span> $query = mysqli\_real\_escape\_string($conn, $query);</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span> // Perform the search query</span></span>
+<span class="line"><span> $sql = "SELECT \* FROM articles WHERE title LIKE '%$query%' OR content LIKE '%$query%'";</span></span>
+<span class="line"><span> $result = mysqli\_query($conn, $sql);</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span> // Fetch the search results</span></span>
+<span class="line"><span> $results = array();</span></span>
+<span class="line"><span> while ($row = mysqli\_fetch\_assoc($result)) {</span></span>
+<span class="line"><span> $results[] = $row;</span></span>
+<span class="line"><span> }</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span> // Close the database connection</span></span>
+<span class="line"><span> mysqli\_close($conn);</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span> // Return the search results</span></span>
+<span class="line"><span> return $results;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>?></span></span></code></pre>
+<p>This code checks if the search form has been submitted and gets the search query. It then calls the <code>perform_search</code> function, which connects to the database and performs a search query based on the search query. The search results are then displayed using a <code>foreach</code> loop.</p>
+<h3 id="3-style-the-search-results">3. Style the Search Results</h3>
+<p>Finally, you can style the search results to match your website’s design. Here’s an example of how you might style the search results using CSS:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.result {</span></span>
+<span class="line"><span> margin-bottom: 1rem;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>.result h3 {</span></span>
+<span class="line"><span> margin-bottom: 0.5rem;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>.result p {</span></span>
+<span class="line"><span> margin-bottom: 0.5rem;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>.result a {</span></span>
+<span class="line"><span> color: #333;</span></span>
+<span class="line"><span> text-decoration: none;</span></span>
+<span class="line"><span> border-bottom: 1px dotted #333;</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>This CSS code will style the search results with a title, description, and link.</p>
+<p>By following these simple steps, you can add a search feature to your website using PHP. With PHP’s ability to connect to databases and perform search queries, you can create a powerful search feature that will improve the usability of your website.</p>
+<h2 id="adding-search-using-pagefind">Adding Search Using PageFind</h2>
+<p>PageFind is a static site search engine that allows you to add search functionality to your static website without relying on external search engines or services. It is a lightweight JavaScript library that is easy to install and use.</p>
+<p>Note: PageFind requires a static site bundle to be generated and uploaded to a server. It does not work in development mode.</p>
+<h3 id="1-install-pagefind">1. Install PageFind</h3>
+<p>To install PageFind, you can either download the library from the official website or use a package manager like npm. Here’s an example of how to install PageFind using npm:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm install pagefind</span></span></code></pre>
+<h3 id="2-generate-a-search-index">2. Generate a Search Index</h3>
+<p>Before you can use PageFind, you need to generate static pages for your website and then call pagefind to generate a search index.</p>
+<h3 id="3-include-pagefind-in-your-website">3. Include PageFind in Your Website</h3>
+<p>To use PageFind, you need to include the PageFind library in your website. Here’s an example of how to do this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;script src="path/to/pagefind.js">&#x3C;/script></span></span></code></pre>
+<h3 id="4-initialize-pagefind">4. Initialize PageFind</h3>
+<p>After including PageFind in your website, you need to initialize it. Here’s an example of how to do this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>const pagefind = new PageFind({</span></span>
+<span class="line"><span> searchInput: document.querySelector('#search-input'),</span></span>
+<span class="line"><span> resultsContainer: document.querySelector('#search-results'),</span></span>
+<span class="line"><span> indexUrl: 'path/to/search.json',</span></span>
+<span class="line"><span>});</span></span></code></pre>
+<p>This code initializes PageFind with a search input field, a container for the search results, and the path to the search index.</p>
+<h3 id="5-customize-pagefind">5. Customize PageFind</h3>
+<p>PageFind comes with a set of default options that can be customized to fit your website’s design and functionality. Here’s an example of how to customize PageFind:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>const pagefind = new PageFind({</span></span>
+<span class="line"><span> searchInput: document.querySelector('#search-input'),</span></span>
+<span class="line"><span> resultsContainer: document.querySelector('#search-results'),</span></span>
+<span class="line"><span> indexUrl: 'path/to/search.json',</span></span>
+<span class="line"><span> minQueryLength: 2,</span></span>
+<span class="line"><span> maxResults: 10,</span></span>
+<span class="line"><span> resultTemplate: (result) => </span></span>
+<span class="line"><span> &#x3C;div class="result"></span></span>
+<span class="line"><span> &#x3C;h3>${result.title}&#x3C;/h3></span></span>
+<span class="line"><span> &#x3C;p>${result.description}&#x3C;/p></span></span>
+<span class="line"><span> &#x3C;a href="${result.url}">Read More&#x3C;/a></span></span>
+<span class="line"><span> &#x3C;/div></span></span>
+<span class="line"><span> ,</span></span>
+<span class="line"><span>});</span></span></code></pre>
+<p>This code customizes PageFind with a minimum query length of 2, a maximum of 10 search results, and a custom result template.</p>
+<p>PageFind is a powerful and lightweight static site search engine that can be easily integrated into your static website. By following these simple steps, you can add search functionality to your website and improve the user experience for your visitors. Note that PageFind requires a static site bundle to be generated and uploaded to a server and does not work in development mode.</p>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/java/abstract_classes_in_kotlin"> Abstract Classes in Kotlin </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2023/a_comprehensive_guide_to_data_visualization_with_seaborn_in_python"> A Comprehensive Guide to Data Visualization with Seaborn in Python </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

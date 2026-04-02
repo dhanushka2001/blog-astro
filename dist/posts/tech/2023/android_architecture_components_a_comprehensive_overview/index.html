@@ -1,0 +1,274 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Android Architecture Components A Comprehensive Overview - Dhanushka&#39;s Blog</title><meta name="description" content="In this article , we will delve into the various components of AAC, explaining their usage and benefits to Android developers"><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="Android Architecture Components A Comprehensive Overview"><meta property="og:description" content="In this article , we will delve into the various components of AAC, explaining their usage and benefits to Android developers"><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/2223533571.png"><link rel="canonical" href="undefined/posts/tech/2023/android_architecture_components_a_comprehensive_overview"><meta property="og:url" content="undefined/posts/tech/2023/android_architecture_components_a_comprehensive_overview"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/2223533571.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">6 min read</div><h1 class="text-center text-3xl font-bold">Android Architecture Components A Comprehensive Overview</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Aug 17, 2023</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/2223533571.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <h1 id="android-architecture-components-a-comprehensive-overview">Android Architecture Components: A Comprehensive Overview</h1>
+<p>Android Architecture Components (AAC) are a collection of libraries designed to help developers build robust, maintainable, and testable applications. Developed by Google, these components provide a solid foundation for creating applications that adhere to best practices and architectural patterns. In this article, we will delve into the various components of AAC, explaining their usage and benefits to Android developers.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#livedata">LiveData</a></li>
+<li><a href="#viewmodel">ViewModel</a></li>
+<li><a href="#room-persistence-library">Room Persistence Library</a></li>
+<li><a href="#databinding">DataBinding</a></li>
+<li><a href="#workmanager">WorkManager</a></li>
+<li><a href="#navigation-component">Navigation Component</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+<h2 id="introduction">Introduction</h2>
+<p>In the past, Android developers faced several challenges while creating applications, such as handling lifecycle events, managing UI components, or persisting data. Android Architecture Components provide a set of tools and guidelines to address these issues, making it easier for developers to craft scalable and maintainable apps.</p>
+<p>Here is a list of key AAC components that we will discuss in this article:</p>
+<ul>
+<li>LiveData</li>
+<li>ViewModel</li>
+<li>Room Persistence Library</li>
+<li>DataBinding</li>
+<li>WorkManager</li>
+<li>Navigation Component</li>
+</ul>
+<h2 id="livedata">LiveData</h2>
+<p><strong>LiveData</strong> is an observable data holder class designed to handle lifecycle-aware data. It respects the lifecycle of other app components, such as Activities, Fragments, or Services, and automatically manages subscription and unsubscription operations. LiveData ensures that UI components receive updates only when they are in an active state, avoiding common issues like memory leaks or crashes due to stopped activities.</p>
+<h3 id="advantages">Advantages</h3>
+<ul>
+<li>Ensures UI components are only updated when they are active.</li>
+<li>Reduces boilerplate code for handling lifecycle events.</li>
+<li>Provides a consistent way to observe data changes across the application.</li>
+</ul>
+<h3 id="usage">Usage</h3>
+<p>To use LiveData, wrap your data source with <code>LiveData</code> and expose it through a method. You can then observe the LiveData instance in your UI components, such as Activities or Fragments, providing a <code>LifecycleOwner</code> and an <code>Observer</code> for handling data updates.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>class UserViewModel : ViewModel() {</span></span>
+<span class="line"><span>    private val _userLiveData = MutableLiveData&#x3C;User>()</span></span>
+<span class="line"><span>    val userLiveData: LiveData&#x3C;User> get() = _userLiveData</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    fun loadUser(userId: String) {</span></span>
+<span class="line"><span>        // Load user data from a repository and update _userLiveData</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>class UserActivity : AppCompatActivity() {</span></span>
+<span class="line"><span>    private lateinit var userViewModel: UserViewModel</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    override fun onCreate(savedInstanceState: Bundle?) {</span></span>
+<span class="line"><span>        super.onCreate(savedInstanceState)</span></span>
+<span class="line"><span>        setContentView(R.layout.activity_user)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        userViewModel.userLiveData.observe(this, Observer { user -></span></span>
+<span class="line"><span>            // Update UI with the new user data</span></span>
+<span class="line"><span>        })</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        // Load user data        val userId = "123"</span></span>
+<span class="line"><span>        userViewModel.loadUser(userId)</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<h2 id="viewmodel">ViewModel</h2>
+<p><strong>ViewModel</strong> is a class designed to store and manage UI-related data in a lifecycle-conscious way. Its main purpose is to separate data handling from UI components, such as Activities or Fragments, and to preserve data during configuration changes, such as screen rotations. ViewModel instances are automatically retained during configuration changes and are not destroyed until their associated UI component is permanently removed.</p>
+<h3 id="advantages-1">Advantages</h3>
+<ul>
+<li>Preserves data during configuration changes.</li>
+<li>Separates data handling from UI components, promoting a clean architecture.</li>
+<li>Simplifies testing by allowing developers to test ViewModel classes independently from UI components.</li>
+</ul>
+<h3 id="usage-1">Usage</h3>
+<p>To create a ViewModel, extend the <code>ViewModel</code> class and expose your data through properties or methods. You can then obtain an instance of your ViewModel in your UI component using the <code>ViewModelProvider</code> class.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>class CounterViewModel : ViewModel() {</span></span>
+<span class="line"><span>    private var _count = MutableLiveData&#x3C;Int>(0)</span></span>
+<span class="line"><span>    val count: LiveData&#x3C;Int> get() = _count</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    fun increment() {</span></span>
+<span class="line"><span>        _count.value = _count.value?.plus(1)</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>class CounterActivity : AppCompatActivity() {</span></span>
+<span class="line"><span>    private lateinit var counterViewModel: CounterViewModel</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    override fun onCreate(savedInstanceState: Bundle?) {</span></span>
+<span class="line"><span>        super.onCreate(savedInstanceState)</span></span>
+<span class="line"><span>        setContentView(R.layout.activity_counter)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        counterViewModel = ViewModelProvider(this).get(CounterViewModel::class.java)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        counterViewModel.count.observe(this, Observer { count -></span></span>
+<span class="line"><span>            // Update UI with the new count</span></span>
+<span class="line"><span>        })</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        // Increment the count on button click</span></span>
+<span class="line"><span>        findViewById&#x3C;Button>(R.id.increment_button).setOnClickListener {</span></span>
+<span class="line"><span>            counterViewModel.increment()</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<h2 id="room-persistence-library">Room Persistence Library</h2>
+<p><strong>Room</strong> is a persistence library that provides an abstraction layer over SQLite, helping developers create robust and maintainable database applications. It offers compile-time checks for SQL queries, reducing the risk of runtime errors, and simplifies database access by using annotations and Kotlin/Java objects.</p>
+<h3 id="advantages-2">Advantages</h3>
+<ul>
+<li>Provides type-safe and compile-time checked SQL queries.</li>
+<li>Reduces boilerplate code for database operations.</li>
+<li>Easily integrates with other Architecture Components, such as LiveData and ViewModel.</li>
+</ul>
+<h3 id="usage-2">Usage</h3>
+<p>To use Room, define your data entities as Kotlin/Java classes and annotate them with <code>@Entity</code>. Create a Data Access Object (DAO) interface for each entity, and annotate the interface with <code>@Dao</code>. Finally, define a Room database by extending the <code>RoomDatabase</code> class and annotating it with <code>@Database</code>. You can then build an instance of your Room database and use it to perform database operations.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>// Define the User entity</span></span>
+<span class="line"><span>@Entity</span></span>
+<span class="line"><span>data class User(</span></span>
+<span class="line"><span>    @PrimaryKey val id: String,</span></span>
+<span class="line"><span>    val name: String,</span></span>
+<span class="line"><span>    val age: Int</span></span>
+<span class="line"><span>)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// Create a DAO for the User entity</span></span>
+<span class="line"><span>@Dao</span></span>
+<span class="line"><span>interface UserDao {</span></span>
+<span class="line"><span>    @Query("SELECT * FROM user WHERE id = :userId")</span></span>
+<span class="line"><span>    fun getUser(userId: String): LiveData&#x3C;User></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    @Insert</span></span>
+<span class="line"><span>    fun insertUser(user: User)</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// Define the Room database</span></span>
+<span class="line"><span>@Database(entities = [User::class], version = 1)</span></span>
+<span class="line"><span>abstract class AppDatabase : RoomDatabase() {</span></span>
+<span class="line"><span>    abstract fun userDao(): UserDao</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// Build an instance of the Room database</span></span>
+<span class="line"><span>val db = Room.databaseBuilder(</span></span>
+<span class="line"><span>    context,</span></span>
+<span class="line"><span>    AppDatabase::class.java,</span></span>
+<span class="line"><span>    "app_database"</span></span>
+<span class="line"><span>).build()</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// Use the database instance to perform operations</span></span>
+<span class="line"><span>val userDao = db.userDao()</span></span>
+<span class="line"><span>val user = User("123", "John Doe", 25)</span></span>
+<span class="line"><span>userDao.insertUser(user)</span></span>
+<span class="line"><span>userDao.getUser("123").observe(this, Observer { user -></span></span>
+<span class="line"><span>    // Update UI with the new user data</span></span>
+<span class="line"><span>})</span></span></code></pre>
+<h2 id="databinding">DataBinding</h2>
+<p><strong>DataBinding</strong> is a support library that allows developers to bind UI components directly to data sources, reducing the need for boilerplate code to update the UI when data changes. It supports two-way data binding, meaning that changes in the UI can automatically update the data source, and vice versa.</p>
+<h3 id="advantages-3">Advantages</h3>
+<ul>
+<li>Reduces boilerplate code for updating the UI.</li>
+<li>Provides a clear separation of UI and data handling code.</li>
+<li>Improves performance by minimizing UI updates and avoiding unnecessary operations.</li>
+</ul>
+<h3 id="usage-3">Usage</h3>
+<p>To enable DataBinding in your project, add the following to your app’s <code>build.gradle</code> file:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>android {</span></span>
+<span class="line"><span>    ...</span></span>
+<span class="line"><span>    buildFeatures {</span></span>
+<span class="line"><span>        dataBinding true</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>Next, wrap your layout XML with a <code>&#x3C;layout></code> tag and add <code>&#x3C;data></code> elements to define variables. In your UI component, use the generated binding class to inflate the layout and bind the data to the UI.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;!-- activity_main.xml --></span></span>
+<span class="line"><span>&#x3C;layout xmlns:android="http://schemas.android.com/apk/res/android"></span></span>
+<span class="line"><span>    &#x3C;data></span></span>
+<span class="line"><span>        &#x3C;variable</span></span>
+<span class="line"><span>            name="user"</span></span>
+<span class="line"><span>            type="com.example.User" /></span></span>
+<span class="line"><span>    &#x3C;/data></span></span>
+<span class="line"><span>    &#x3C;LinearLayout</span></span>
+<span class="line"><span>        android:layout_width="match_parent"</span></span>
+<span class="line"><span>        android:layout_height="match_parent"</span></span>
+<span class="line"><span>        android:orientation="vertical"></span></span>
+<span class="line"><span>        &#x3C;TextView</span></span>
+<span class="line"><span>            android:id="@+id/user_name"</span></span>
+<span class="line"><span>            android:layout_width="wrap_content"</span></span>
+<span class="line"><span>            android:layout_height="wrap_content"</span></span>
+<span class="line"><span>            android:text="@{user.name}" /></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        &#x3C;TextView</span></span>
+<span class="line"><span>            android:id="@+id/user_age"</span></span>
+<span class="line"><span>            android:layout_width="wrap_content"</span></span>
+<span class="line"><span>            android:layout_height="wrap_content"</span></span>
+<span class="line"><span>            android:text="@{Integer.toString(user.age)}" /></span></span>
+<span class="line"><span>    &#x3C;/LinearLayout></span></span>
+<span class="line"><span>&#x3C;/layout></span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>class MainActivity : AppCompatActivity() {</span></span>
+<span class="line"><span>    private lateinit var binding: ActivityMainBinding</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    override fun onCreate(savedInstanceState: Bundle?) {</span></span>
+<span class="line"><span>        super.onCreate(savedInstanceState)</span></span>
+<span class="line"><span>        </span></span>
+<span class="line"><span>        // Inflate the layout using DataBindingUtil</span></span>
+<span class="line"><span>        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        // Bind the data to the UI</span></span>
+<span class="line"><span>        val user = User("123", "John Doe", 25)</span></span>
+<span class="line"><span>        binding.user = user</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<h2 id="workmanager">WorkManager</h2>
+<p><strong>WorkManager</strong> is a library for managing deferrable, guaranteed background work in Android applications. It takes care of compatibility issues and provides a clean API for scheduling tasks, even when the app is not running or the device is rebooted. WorkManager chooses the best way to run your tasks, depending on factors such as the device’s API level and the app’s constraints.</p>
+<h3 id="advantages-4">Advantages</h3>
+<ul>
+<li>Simplifies background task scheduling and execution.</li>
+<li>Ensures tasks are executed, even when the app is not running or the device is rebooted.</li>
+<li>Handles compatibility and API level differences gracefully.</li>
+</ul>
+<h3 id="usage-4">Usage</h3>
+<p>To use WorkManager, create a class that extends <code>Worker</code> and override the <code>doWork()</code> method. This method contains the code that will be executed when your task is run. You can then create a <code>WorkRequest</code> to schedule your task, and a <code>WorkManager</code> instance to enqueue the request.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>// Define a Worker class</span></span>
+<span class="line"><span>class MyWorker(context: Context, workerParams: WorkerParameters) :</span></span>
+<span class="line"><span>    Worker(context, workerParams) {</span></span>
+<span class="line"><span>    override fun doWork(): Result {</span></span>
+<span class="line"><span>        // Perform your background task here</span></span>
+<span class="line"><span>        return Result.success()</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// Schedule a task using WorkManager</span></span>
+<span class="line"><span>val workRequest</span></span></code></pre>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/js/what_is_a_package_json_file"> What is a package.json file in javascript </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2023/a_guide_to_using_python-telegram-bot_in_python"> A Guide to Using Python-telegram-bot in Python </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>
