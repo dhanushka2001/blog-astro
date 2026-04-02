@@ -65,25 +65,25 @@ jobs:
 
 
       # -------- deploy with external repo ------
-      # - name: Deploy to GitHub Pages 🚀
-      #   uses: peaceiris/actions-gh-pages@v4
-      #   with:
-      #     personal_token: ${{ secrets.BLOG_TOKEN }}
-      #     publish_dir: ./dist
-      #     publish_branch: main
-      #     external_repository: dhanushka2001/dhanushka2001.github.io
-      #     user_name: 'github-actions[bot]'
-      #     user_email: 'github-actions[bot]@users.noreply.github.com'
+      - name: Deploy to GitHub Pages 🚀
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.BLOG_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: main
+          external_repository: dhanushka2001/dhanushka2001.github.io
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
       # -----------------------------------------
 
 
       # ------ deploy with gh-pages branch ------
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+      # - name: Deploy to gh-pages
+      #   uses: peaceiris/actions-gh-pages@v4
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./dist
+      #     publish_branch: gh-pages
+      #     user_name: 'github-actions[bot]'
+      #     user_email: 'github-actions[bot]@users.noreply.github.com'
       # -----------------------------------------
