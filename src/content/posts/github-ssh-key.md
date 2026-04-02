@@ -11,7 +11,7 @@ imgAlt: 'GitHub SSH keys'
 authors: [Dhanushka Jayagoda]
 ---
 
-This guide will show you how to set up SSH keys for multiple GitHub accounts (e.g. Personal and Work) on Linux.
+This guide will show you how to setup SSH keys for multiple GitHub accounts (e.g. Personal and Work) on Linux.
 
 Instead of using HTTPS and personal access tokens, SSH allows you to authenticate securely without repeatedly entering credentials when pushing or pulling repositories. As a bonus, you can also use the same keys to sign your commits and get the “Verified” badge on GitHub.
 
