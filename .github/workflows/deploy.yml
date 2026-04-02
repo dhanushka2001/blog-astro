@@ -9,19 +9,18 @@ on:
   #   branches: [main]
   workflow_dispatch:
 
-# Allow this job to clone the repo and create a page deployment
+# Uncomment this for modern deployment
 permissions:
-  contents: read    # allows checkout
-  pages: write      # allows deployment to GitHub Pages
-  id-token: write   # allows OIDC token for deploy-pages
+  contents:  write  # allows git push
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       # ---------------- auto -------------------
       # - name: Install, build, and upload site
@@ -44,7 +43,7 @@ jobs:
         run: corepack prepare yarn@4.9.2 --activate
 
       - name: Cache Yarn dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             .yarn/install-state.gz
@@ -60,13 +59,8 @@ jobs:
       - name: Build site
         run: yarn build
 
-      # - name: Add .nojekyll file
-      #   run: echo > dist/.nojekyll
-      
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
+      - name: Add .nojekyll file
+        run: touch dist/.nojekyll
       # -----------------------------------------
 
 
@@ -83,15 +77,44 @@ jobs:
       # -----------------------------------------
 
 
-  # --- modern deployment with GitHub Actions ---
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages 🚀
-        id: deployment
-        uses: actions/deploy-pages@v4
-  # -----------------------------------------------
+      # --- modern deployment with GitHub Actions ---
+      - name: Check if dist changed vs gh-pages
+        id: dist_check
+        run: |
+          if ! git fetch origin gh-pages 2>/dev/null; then
+            echo "No gh-pages branch yet — first deploy"
+            echo "changed=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          mkdir /tmp/gh-pages-current
+          git --work-tree=/tmp/gh-pages-current checkout origin/gh-pages -- .
+
+          if diff -rq dist/ /tmp/gh-pages-current/ > /dev/null 2>&1; then
+            echo "No changes in dist/ — skipping deploy"
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Deploy to gh-pages
+        if: steps.dist_check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
+            git checkout gh-pages
+          else
+            git checkout --orphan gh-pages
+            git rm -rf . --quiet
+          fi
+
+          cp -r dist/. .
+          rm -rf dist
+          git add .
+          SHA=$(git rev-parse origin/main)
+          git commit -m "deploy: https://github.com/${{ github.repository }}/commit/$SHA"
+          git push origin gh-pages
+
+      # -----------------------------------------------
