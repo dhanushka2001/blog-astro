@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Searching for news with google news rss feeds - Dhanushka&#39;s Blog</title><meta name="description" content="Here we'll look at how to use google news rss feeds to create custom news rss feeds."><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="Searching for news with google news rss feeds"><meta property="og:description" content="Here we'll look at how to use google news rss feeds to create custom news rss feeds."><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/4067359065.png"><link rel="canonical" href="undefined/posts/tech/net/news_app_csharp"><meta property="og:url" content="undefined/posts/tech/net/news_app_csharp"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/4067359065.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">8 min read</div><h1 class="text-center text-3xl font-bold">Searching for news with google news rss feeds</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Dec 7, 2023</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/googleNews" style="padding-right:3px"><category>googleNews</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/dotnet" style="padding-right:3px"><category>dotnet</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/4067359065.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <p>Google News is a news aggregator and personalized news service developed by Google. It was launched in 2002 and has since become one of the largest news aggregators on the web. The service collects news articles from thousands of sources, including national and international news organizations, as well as local and regional publishers, and presents them in a format that makes it easy to quickly find and read the news that interests you. Google News uses algorithms to analyze and rank news articles, ensuring that the most relevant and up-to-date articles are displayed first. The service is free and can be accessed through a web browser or mobile app.</p>
+<p>You can use the Google News RSS (Really Simple Syndication) feed to find news articles based on a custom search query. The basic format for using the Google News RSS feed is as follows:</p>
+<p><a href="https://news.google.com/rss/search?q=SEARCH_QUERY">https://news.google.com/rss/search?q=SEARCH_QUERY</a></p>
+<p>Replace “SEARCH_QUERY” with the keyword or phrase you want to search for, and include it in the URL. For example, if you want to find news articles about technology, you can use the following URL:</p>
+<p><a href="https://news.google.com/rss/search?q=technology">https://news.google.com/rss/search?q=technology</a></p>
+<p>You can use this URL to subscribe to the RSS feed using a news reader or aggregator, or you can access the feed directly in your web browser to see a list of news articles related to your search query.</p>
+<p>Note that the Google News RSS feed is subject to change and may not be available in all countries. Also, be aware that the terms of service for Google News state that you may not use the service to scrape or display its content on another website or application without permission.</p>
+<p>For the full source code please view</p>
+<p><a href="https://github.com/FriendlyUser/news-alert/blob/master/News.cs">https://github.com/FriendlyUser/news-alert/blob/master/News.cs</a></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> using System;</span></span>
+<span class="line"><span>//Request library</span></span>
+<span class="line"><span>using System.Net;</span></span>
+<span class="line"><span>using System.IO;</span></span>
+<span class="line"><span>using System.Web;</span></span>
+<span class="line"><span>using System.Xml;</span></span>
+<span class="line"><span>using System.Text.Json;</span></span>
+<span class="line"><span>using System.Text.Json.Serialization;</span></span>
+<span class="line"><span>using System.Collections.Generic;</span></span>
+<span class="line"><span>using System.Threading.Tasks;</span></span>
+<span class="line"><span>using Elasticsearch.Net;</span></span>
+<span class="line"><span>using System.Net.Http;</span></span>
+<span class="line"><span>namespace news_alert</span></span>
+<span class="line"><span>{</span></span>
+<span class="line"><span>    public class News</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>        public static readonly HttpClient client = new HttpClient();</span></span>
+<span class="line"><span>    </span></span>
+<span class="line"><span>        static public void SendItemToDiscord(XmlNode item) {</span></span>
+<span class="line"><span>            // set discord webhook as private env</span></span>
+<span class="line"><span>            string webhook = Environment.GetEnvironmentVariable("DISCORD_WEBHOOK");</span></span>
+<span class="line"><span>            string esInstance = Environment.GetEnvironmentVariable("ES_INSTANCE");</span></span>
+<span class="line"><span>            if (webhook == null) {</span></span>
+<span class="line"><span>                Console.WriteLine("GET A DISCORD WEBHOOK");</span></span>
+<span class="line"><span>                return;</span></span>
+<span class="line"><span>            }</span></span>
+<span class="line"><span>            var request = (HttpWebRequest)WebRequest.Create(webhook);</span></span>
+<span class="line"><span>            request.ContentType = "application/json";</span></span>
+<span class="line"><span>            request.Method = "POST";</span></span>
+<span class="line"><span>            DateTime pubDate = Convert.ToDateTime(item["pubDate"].InnerText);</span></span>
+<span class="line"><span>            string postLink = item["link"].InnerText;</span></span>
+<span class="line"><span>            string discordTemplate = "{0} \n {1} \n {2} ";</span></span>
+<span class="line"><span>            string discordMessage = string.Format(discordTemplate, item["title"].InnerText,</span></span>
+<span class="line"><span>                item["pubDate"].InnerText, postLink);</span></span>
+<span class="line"><span>            // write message of data sent to discord</span></span>
+<span class="line"><span>            var w = new WebhookData() { content = discordMessage };</span></span>
+<span class="line"><span>            using (var streamWriter = new StreamWriter(request.GetRequestStream()))</span></span>
+<span class="line"><span>            {</span></span>
+<span class="line"><span>                streamWriter.Write(JsonSerializer.Serialize&#x3C;WebhookData>(w));</span></span>
+<span class="line"><span>            }</span></span>
+<span class="line"><span>            var httpResponse = (HttpWebResponse)request.GetResponse();</span></span>
+<span class="line"><span>            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))</span></span>
+<span class="line"><span>            {</span></span>
+<span class="line"><span>                var result = streamReader.ReadToEnd();</span></span>
+<span class="line"><span>            }</span></span>
+<span class="line"><span>            // send data to es instance</span></span>
+<span class="line"><span>            var settings = new ConnectionConfiguration(new Uri(esInstance))</span></span>
+<span class="line"><span>                .RequestTimeout(TimeSpan.FromMinutes(2));</span></span>
+<span class="line"><span>            var lowlevelClient = new ElasticLowLevelClient(settings);</span></span>
+<span class="line"><span>            var post = new Post</span></span>
+<span class="line"><span>            {</span></span>
+<span class="line"><span>                guid = item["guid"].InnerText</span></span>
+<span class="line"><span>            };</span></span>
+<span class="line"><span>            var asyncIndexResponse = lowlevelClient.Index&#x3C;StringResponse>("post", PostData.Serializable(post)); </span></span>
+<span class="line"><span>            string responseString = asyncIndexResponse.Body;</span></span>
+<span class="line"><span>            Console.WriteLine(responseString);</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        static async Task Main(string[] args)</span></span>
+<span class="line"><span>        {</span></span>
+<span class="line"><span>            await checkNews();</span></span>
+<span class="line"><span>            await Task.Run(() => checkPrices());</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>        static async public Task checkPrices() {</span></span>
+<span class="line"><span>            string stockUrl = Environment.GetEnvironmentVariable("STOCK_URL");</span></span>
+<span class="line"><span>            if (stockUrl == null) {</span></span>
+<span class="line"><span>                Console.WriteLine("GET A Stock URL WEBHOOK");</span></span>
+<span class="line"><span>                return;</span></span>
+<span class="line"><span>            }</span></span>
+<span class="line"><span>            List&#x3C;StockData> stocks = new List&#x3C;StockData>();</span></span>
+<span class="line"><span>            stocks.Add(new StockData() {ticker="NEXCF", targetPrice=1.60});</span></span>
+<span class="line"><span>            foreach (StockData stock in stocks)</span></span>
+<span class="line"><span>            {</span></span>
+<span class="line"><span>                Console.WriteLine(stock.ticker);</span></span>
+<span class="line"><span>                // query api</span></span>
+<span class="line"><span>            }</span></span>
+<span class="line"><span>            // either return a completed Task, or await for it (there is a difference!</span></span>
+<span class="line"><span>            await Task.CompletedTask;</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>        static async public Task checkNews() {</span></span>
+<span class="line"><span>            var searchItems = new List&#x3C;string> { "hydrogen",</span></span>
+<span class="line"><span>                "analyticGPT", "natural gas", "recession",</span></span>
+<span class="line"><span>                "Tech layoffs", "Bard AI"</span></span>
+<span class="line"><span>            };</span></span>
+<span class="line"><span>            foreach (string searchText in searchItems)</span></span>
+<span class="line"><span>            {</span></span>
+<span class="line"><span>                // line of items of cli list</span></span>
+<span class="line"><span>                string xml = await FetchData(searchText);</span></span>
+<span class="line"><span>                XmlDocument doc = new XmlDocument();</span></span>
+<span class="line"><span>                doc.LoadXml(xml);</span></span>
+<span class="line"><span>                // only print the first few elements</span></span>
+<span class="line"><span>                XmlNodeList items = doc.GetElementsByTagName("item");</span></span>
+<span class="line"><span>                DateTime utcDate = DateTime.UtcNow;</span></span>
+<span class="line"><span>                for (int i=0; i &#x3C; 5; i++)</span></span>
+<span class="line"><span>                {   string pubDateStr = "";</span></span>
+<span class="line"><span>                    try {</span></span>
+<span class="line"><span>                        pubDateStr = items[i]["pubDate"].InnerText;</span></span>
+<span class="line"><span>                    } catch (NullReferenceException e) {</span></span>
+<span class="line"><span>                        Console.WriteLine("\nException Caught!");	</span></span>
+<span class="line"><span>                        Console.WriteLine("Message :{0} ",e.Message);</span></span>
+<span class="line"><span>                        continue;</span></span>
+<span class="line"><span>                    }</span></span>
+<span class="line"><span>                    DateTime pubDate = Convert.ToDateTime(pubDateStr);</span></span>
+<span class="line"><span>                    // Console.WriteLine(pubDate);</span></span>
+<span class="line"><span>                    if (utcDate.Subtract(pubDate).TotalHours &#x3C; 24 * 2) {</span></span>
+<span class="line"><span>                        Console.WriteLine("Within 2 days");</span></span>
+<span class="line"><span>                        // check if id is in db</span></span>
+<span class="line"><span>                        string esInstance = Environment.GetEnvironmentVariable("ES_INSTANCE");</span></span>
+<span class="line"><span>                        var settings = new ConnectionConfiguration(new Uri(esInstance))</span></span>
+<span class="line"><span>                            .RequestTimeout(TimeSpan.FromMinutes(2));</span></span>
+<span class="line"><span>                        var lowlevelClient = new ElasticLowLevelClient(settings);</span></span>
+<span class="line"><span>                        var searchResponse = lowlevelClient.Search&#x3C;StringResponse>("post", PostData.Serializable(new</span></span>
+<span class="line"><span>                        {</span></span>
+<span class="line"><span>                            query = new</span></span>
+<span class="line"><span>                            {</span></span>
+<span class="line"><span>                                match = new</span></span>
+<span class="line"><span>                                {</span></span>
+<span class="line"><span>                                    guid = items[i]["guid"].InnerText// items[i]["guid"].InnerText</span></span>
+<span class="line"><span>                                }</span></span>
+<span class="line"><span>                            }</span></span>
+<span class="line"><span>                        }));</span></span>
+<span class="line"><span>                        var successful = searchResponse.Success;</span></span>
+<span class="line"><span>                        var responseJson = searchResponse.Body;</span></span>
+<span class="line"><span>                        SearchResult searchResult = JsonSerializer.Deserialize&#x3C;SearchResult>(responseJson);</span></span>
+<span class="line"><span>                        if (searchResult.hits.total.value == 0) {</span></span>
+<span class="line"><span>                            SendItemToDiscord(items[i]);</span></span>
+<span class="line"><span>                        } else {</span></span>
+<span class="line"><span>                            Console.WriteLine("Match Already in DB, not going to print");</span></span>
+<span class="line"><span>                        }</span></span>
+<span class="line"><span>                    }</span></span>
+<span class="line"><span>                }</span></span>
+<span class="line"><span>            }</span></span>
+<span class="line"><span>            await Task.CompletedTask;</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>        static async public Task&#x3C;string> FetchData(string searchText) {</span></span>
+<span class="line"><span>            var query = HttpUtility.ParseQueryString(string.Empty);</span></span>
+<span class="line"><span>            query["q"] = searchText;</span></span>
+<span class="line"><span>            string queryString = query.ToString();</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>            string htmlData = string.Empty;</span></span>
+<span class="line"><span>            string urlTemplate = @"https://news.google.com/rss/search?{0}";</span></span>
+<span class="line"><span>            string url = string.Format(urlTemplate, queryString);</span></span>
+<span class="line"><span>            try	</span></span>
+<span class="line"><span>            {</span></span>
+<span class="line"><span>              string responseBody = await client.GetStringAsync(url);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>              Console.WriteLine(responseBody);</span></span>
+<span class="line"><span>              return await Task.FromResult(responseBody);</span></span>
+<span class="line"><span>            }</span></span>
+<span class="line"><span>            catch(HttpRequestException e)</span></span>
+<span class="line"><span>            {</span></span>
+<span class="line"><span>              Console.WriteLine("\nException Caught!");	</span></span>
+<span class="line"><span>              Console.WriteLine("Message :{0} ",e.Message);</span></span>
+<span class="line"><span>            }</span></span>
+<span class="line"><span>            return await Task.FromResult("");</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>This code is a .NET Core console application that performs two main functions: checking for news articles and checking for stock prices. The news checking function fetches the latest news articles from an API and sends a summary of the latest articles that contain keywords from a predefined list of search terms to a Discord channel. The function also sends the information to an Elasticsearch instance for tracking. The stock price checking function queries a stock API to get the latest stock prices of a predefined list of stocks and logs the results.</p>
+<p>Here’s a high-level overview of the code:</p>
+<ol>
+<li>The “News” class contains the main logic for the application.</li>
+<li>The “SendItemToDiscord” method sends a summary of a news article to a Discord channel. The method uses the Discord webhook URL, which is stored as an environment variable, to post a message to a specific Discord channel. The method also uses the Elasticsearch instance URL, stored as another environment variable, to index the article for tracking purposes.</li>
+<li>The “checkNews” method checks for the latest news articles that contain the keywords from a predefined list of search terms. The method calls the “FetchData” method to retrieve the latest news articles in XML format and parses the XML to extract the article summaries. The method then sends the latest articles to the Discord channel using the “SendItemToDiscord” method.</li>
+<li>The “checkPrices” method checks for the latest stock prices of a predefined list of stocks. The method uses the stock API URL, stored as an environment variable, to retrieve the latest stock prices. The method logs the results of the stock prices.</li>
+<li>The “Main” method is the entry point of the application and calls the “checkNews” and “checkPrices” methods. The “checkNews” and “checkPrices” methods are executed as asynchronous tasks.</li>
+</ol>
+<p>Using RSS feeds as a news source for investing purposes can be a useful way to stay up to date on the latest financial news and market developments. This can be especially useful for investors who are interested in a particular sector or industry, as they can subscribe to RSS feeds from news sources that specialize in that area.</p>
+<p>By subscribing to these feeds, investors can receive notifications as soon as new articles or reports are published, which can provide them with valuable insights and information about the market and specific investments. Additionally, investors can use RSS feeds to track the latest news on companies they are interested in, which can help them stay informed about important developments and trends.</p>
+<p>However, it is important for investors to keep in mind that not all news sources are created equal. Some sources may have biases or agendas, and it is important to be critical and evaluate the information being presented. It is also important to seek out multiple sources of information, as relying solely on one source may lead to a skewed or incomplete view of the market and individual investments.</p>
+<p>Elasticsearch is a search engine based on the Lucene library. It provides a distributed, multitenant-capable full-text search engine with a RESTful web interface and schema-free JSON documents. It is used for various purposes, including:</p>
+<ol>
+<li>Full-Text Search: Elasticsearch is particularly useful for full-text search queries, with its ability to search through large volumes of data quickly and efficiently.</li>
+<li>Analytics and Business Intelligence: Elasticsearch can be used to gather insights from data and to perform advanced analytics tasks, such as aggregations and data analysis.</li>
+<li>Log Management and Analysis: Elasticsearch is widely used for log management and analysis, making it possible to quickly search through large amounts of log data to identify patterns and troubleshoot issues.</li>
+<li>Application Performance Monitoring: Elasticsearch can be used to monitor the performance of applications, as well as to store and analyze log data, providing real-time visibility into the health of the application and its components.</li>
+<li>Geospatial Data: Elasticsearch has built-in support for geospatial data, making it possible to search, filter and aggregate data based on location.</li>
+<li>E-commerce: Elasticsearch can be used to power search and recommendations in e-commerce applications, helping users find the products they are looking for quickly and easily.</li>
+<li>Security Information and Event Management (SIEM): Elasticsearch can be used as part of a SIEM solution to collect, store, and analyze security-related data from various sources, such as network devices and applications.</li>
+</ol>
+<p>These are just a few of the many use cases for Elasticsearch, and it is a highly versatile technology that can be used in a wide range of applications and industries.</p>
+<p>Yes, Bonsai.io is one of the providers that offer free hosting for Elasticsearch. With their free plan, you can host a single cluster with up to 3GB of storage and 20GB of bandwidth per month. However, it’s worth noting that the free plan is intended for experimentation and learning, and may not be suitable for production-level workloads. Bonsai.io also offers paid plans with more advanced features, higher storage, and better performance.</p>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/python/convert_pdfs_to_pngs_imagemagick"> Converting pdfs to pngs with imagemagick </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2023/using_webassembly_for_scientific_computing"> Using WebAssembly for Scientific Computing </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

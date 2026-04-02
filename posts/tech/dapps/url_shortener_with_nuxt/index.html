@@ -1,0 +1,385 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Url shortener with nuxt - Dhanushka&#39;s Blog</title><meta name="description" content="Using solidity to create a url shortener dapp."><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="Url shortener with nuxt"><meta property="og:description" content="Using solidity to create a url shortener dapp."><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/3267094508_short_ruler_in_the_grass.png"><link rel="canonical" href="undefined/posts/tech/dapps/url_shortener_with_nuxt"><meta property="og:url" content="undefined/posts/tech/dapps/url_shortener_with_nuxt"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/3267094508_short_ruler_in_the_grass.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">9 min read</div><h1 class="text-center text-3xl font-bold">Url shortener with nuxt</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Jun 20, 2023</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/solidity" style="padding-right:3px"><category>solidity</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/dapp" style="padding-right:3px"><category>dapp</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/3267094508_short_ruler_in_the_grass.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <p>This is a Solidity contract that defines a simple contract for creating and retrieving a “link” (a URL). The contract has three events: Log, LinkAdded, and LinkExists. The Log event is not used in the contract, so it will never be emitted. The LinkAdded event is emitted when a new link is created, and it includes the ID of the link and the URL. The LinkExists event is not a real event, but rather a modifier that is used to ensure that a link with the given ID exists before allowing certain functions to be called.</p>
+<p>The contract has a struct called LinkTemplate which represents a link and has two fields: userAddress, the address of the user who created the link, and url, the URL of the link. The contract also has a mapping called linkMapping which maps link IDs to LinkTemplate structs. The lastLinkId variable is used to keep track of the last link ID that was used.</p>
+<p>The contract has a constructor which sets the lastLinkId to 0. The createNewLink function is used to create a new link by adding a new entry to the linkMapping mapping with a new link ID and the LinkTemplate struct for the new link. The getLink function is used to retrieve the user address and URL of a given link ID by looking up the LinkTemplate struct in the linkMapping mapping. The linkExists modifier is used to ensure that the link with the given ID actually exists before allowing the getLink function to be called.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pragma solidity ^0.4.24;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>contract e0x {</span></span>
+<span class="line"><span>	event Log(string message);</span></span>
+<span class="line"><span>	event LinkAdded(uint linkId, string url);</span></span>
+<span class="line"><span>	</span></span>
+<span class="line"><span>	struct LinkTemplate {</span></span>
+<span class="line"><span>		address userAddress;</span></span>
+<span class="line"><span>		string url;</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	</span></span>
+<span class="line"><span>	uint lastLinkId;</span></span>
+<span class="line"><span>	mapping (uint => LinkTemplate) public linkMapping;</span></span>
+<span class="line"><span>	</span></span>
+<span class="line"><span>	constructor() public {</span></span>
+<span class="line"><span>		lastLinkId = 0;</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	</span></span>
+<span class="line"><span>	</span></span>
+<span class="line"><span>	function createNewLink(string url) public returns (uint) {</span></span>
+<span class="line"><span>	    lastLinkId++;</span></span>
+<span class="line"><span>		linkMapping[lastLinkId] = LinkTemplate(msg.sender, url);</span></span>
+<span class="line"><span>		emit LinkAdded(lastLinkId, url);</span></span>
+<span class="line"><span>		return lastLinkId;</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	</span></span>
+<span class="line"><span>	modifier linkExists(uint linkId) {</span></span>
+<span class="line"><span>	    //link with the given hash does not exist</span></span>
+<span class="line"><span>		if(linkMapping[linkId].userAddress == 0x0000000000000000000000000000000000000000) {</span></span>
+<span class="line"><span>			revert();</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span>		_;</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	</span></span>
+<span class="line"><span>	function getLink(uint linkId) linkExists(linkId) public constant</span></span>
+<span class="line"><span>		returns(</span></span>
+<span class="line"><span>			address,</span></span>
+<span class="line"><span>			string</span></span>
+<span class="line"><span>		) {</span></span>
+<span class="line"><span>		    LinkTemplate memory link = linkMapping[linkId];</span></span>
+<span class="line"><span>			return(</span></span>
+<span class="line"><span>				link.userAddress,</span></span>
+<span class="line"><span>			    link.url</span></span>
+<span class="line"><span>			);</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>This is a Vue.js single-page application (SPA) that uses the Ethereum network and a smart contract to redirect the user to a URL. The contract is called EthUrl and it is located at a specific Ethereum address. The contract has an Application Binary Interface (ABI) which is used to interact with the contract’s functions. The contract is being used to retrieve the URL associated with a given ID.</p>
+<p>The SPA has a single template with a div element containing a message and a Loader component that is displayed while the redirect is being processed. The Loader component is imported from another file.</p>
+<p>The SPA has a single script that defines an exported default object with various properties. The mounted property is a hook that is called after the SPA is mounted to the DOM. It calls the initContract and redirect methods when the SPA is mounted. The initContract method is used to create a new random Ethereum wallet and connect it to the provider for the Ethereum network. The redirect method is used to retrieve the URL associated with the given ID using the getLink function of the EthUrl contract. If the ID is not provided or the getLink function fails, an error message is displayed.</p>
+<p>The SPA also has a single style block that applies styles to the .loading-page class. This class is applied to the div element in the template and is used to style the loading page that is displayed while the redirect is being processed.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;template></span></span>
+<span class="line"><span>  &#x3C;div></span></span>
+<span class="line"><span>    &#x3C;div class="loading-page"></span></span>
+<span class="line"><span>      &#x3C;p>Redirecting...&#x3C;/p></span></span>
+<span class="line"><span>      &#x3C;Loader /></span></span>
+<span class="line"><span>    &#x3C;/div></span></span>
+<span class="line"><span>  &#x3C;/div></span></span>
+<span class="line"><span>&#x3C;/template></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>&#x3C;script></span></span>
+<span class="line"><span>  import { ethers } from 'ethers';</span></span>
+<span class="line"><span>  import EthUrlABI from '../store/EthUrlABI'</span></span>
+<span class="line"><span>  import Loader from '~/components/Loader.vue'</span></span>
+<span class="line"><span>  const address = '0xa40d4c7fb56635a8a2a4d47ab7975bdcda57ac2a' // insert deployed EIP20 token address here</span></span>
+<span class="line"><span>  let provider = ethers.getDefaultProvider('kovan');</span></span>
+<span class="line"><span>  let wallet = ethers.Wallet.createRandom();</span></span>
+<span class="line"><span>  wallet = wallet.connect(provider);</span></span>
+<span class="line"><span>  let contract = new ethers.Contract(address, EthUrlABI, wallet);</span></span>
+<span class="line"><span>  export default {</span></span>
+<span class="line"><span>    head: {</span></span>
+<span class="line"><span>      title: 'Url Redirect Page'</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span>    components: {</span></span>
+<span class="line"><span>		  Loader</span></span>
+<span class="line"><span>	  },</span></span>
+<span class="line"><span>    mounted () {</span></span>
+<span class="line"><span>        this.initContract()</span></span>
+<span class="line"><span>        this.redirect()</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span>    methods: {</span></span>
+<span class="line"><span>        initContract() {</span></span>
+<span class="line"><span>          let address = "0xa40d4c7fb56635a8a2a4d47ab7975bdcda57ac2a";</span></span>
+<span class="line"><span>          let abi = EthUrlABI</span></span>
+<span class="line"><span>          wallet = ethers.Wallet.createRandom();</span></span>
+<span class="line"><span>          wallet = wallet.connect(provider);</span></span>
+<span class="line"><span>        },</span></span>
+<span class="line"><span>        redirect(){</span></span>
+<span class="line"><span>          var id =this.$route.params.id </span></span>
+<span class="line"><span>          if(!id){</span></span>
+<span class="line"><span>              return</span></span>
+<span class="line"><span>          }</span></span>
+<span class="line"><span>          contract.getLink(id).then(url => {</span></span>
+<span class="line"><span>              window.location.href = url[1];</span></span>
+<span class="line"><span>          })</span></span>
+<span class="line"><span>          .catch(error => {</span></span>
+<span class="line"><span>              console.log(error)</span></span>
+<span class="line"><span>              return window.alert("INVALID ID VALUE",error); </span></span>
+<span class="line"><span>          }) </span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>      }</span></span>
+<span class="line"><span>	  }</span></span>
+<span class="line"><span>&#x3C;/script></span></span>
+<span class="line"><span>&#x3C;style scoped></span></span>
+<span class="line"><span>.loading-page {</span></span>
+<span class="line"><span>  position: fixed;</span></span>
+<span class="line"><span>  top: 0;</span></span>
+<span class="line"><span>  left: 0;</span></span>
+<span class="line"><span>  width: 100%;</span></span>
+<span class="line"><span>  height: 100%;</span></span>
+<span class="line"><span>  background: rgba(255, 255, 255, 0.8);</span></span>
+<span class="line"><span>  text-align: center;</span></span>
+<span class="line"><span>  padding-top: 200px;</span></span>
+<span class="line"><span>  font-size: 30px;</span></span>
+<span class="line"><span>  font-family: sans-serif;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>&#x3C;/style></span></span></code></pre>
+<p>For the main page to create new urls, we can use the following code:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;template></span></span>
+<span class="line"><span>  &#x3C;section class="container"></span></span>
+<span class="line"><span>    &#x3C;div></span></span>
+<span class="line"><span>      &#x3C;app-logo /></span></span>
+<span class="line"><span>      &#x3C;h1 class="title">nuxt-shortener&#x3C;/h1></span></span>
+<span class="line"><span>      &#x3C;h2 class="subtitle">Shorten your Urls here&#x3C;/h2></span></span>
+<span class="line"><span>	&#x3C;div class="card"></span></span>
+<span class="line"><span>		&#x3C;div class="row"></span></span>
+<span class="line"><span>			&#x3C;div></span></span>
+<span class="line"><span>				URL:</span></span>
+<span class="line"><span>				&#x3C;input</span></span>
+<span class="line"><span>					class="url-field" </span></span>
+<span class="line"><span>					v-model="fullURL"</span></span>
+<span class="line"><span>					title="fullURL"</span></span>
+<span class="line"><span>					@change="validURL"</span></span>
+<span class="line"><span>				/></span></span>
+<span class="line"><span>				&#x3C;button class="addlink" @click="shorten" :disabled="txnPending">Send&#x3C;/button></span></span>
+<span class="line"><span>				&#x3C;br /></span></span>
+<span class="line"><span>				&#x3C;Loader v-show="txnPending" /></span></span>
+<span class="line"><span>				&#x3C;!-- Link to etherscan based on network, do later, for now hardcode etherscan.--></span></span>
+<span class="line"><span>				&#x3C;p v-show="txnPending">Transaction being made&#x3C;/p></span></span>
+<span class="line"><span>				&#x3C;a target="_blank" v-show="txnPending" v-bind:href="this.txnHashURL">View on Etherscan&#x3C;/a></span></span>
+<span class="line"><span>				&#x3C;span v-show="shortURL !== null">View at: &#x3C;/span></span></span>
+<span class="line"><span>				&#x3C;a v-show="shortURL !== null" v-bind:href="this.shortURL">{{this.shortURL}}&#x3C;/a></span></span>
+<span class="line"><span>			&#x3C;/div></span></span>
+<span class="line"><span>			&#x3C;modal</span></span>
+<span class="line"><span>				v-show="isModalVisible"</span></span>
+<span class="line"><span>				@close="closeModal"</span></span>
+<span class="line"><span>				v-bind:title="modalTitle"</span></span>
+<span class="line"><span>				v-bind:content="this.modalContent"</span></span>
+<span class="line"><span>			/></span></span>
+<span class="line"><span>     	 &#x3C;/div></span></span>
+<span class="line"><span>		&#x3C;/div></span></span>
+<span class="line"><span>    &#x3C;/div></span></span>
+<span class="line"><span>  &#x3C;/section></span></span>
+<span class="line"><span>&#x3C;/template></span></span></code></pre>
+<p>This is a template for a Vue.js component that includes a form for entering a URL and a button for shortening the URL. The form includes an input field for entering the URL and a Loader component that is displayed while a transaction is pending. When the user clicks the “Send” button, the shorten method is called. If a transaction is pending, the button is disabled and the Loader component is displayed.</p>
+<p>The template also includes a modal component that can be displayed by setting the isModalVisible property to true. The modal has a title and content that are set using the modalTitle and modalContent properties, respectively. The modal has a close button that calls the closeModal method when clicked.</p>
+<p>This is a script for a Vue.js component that interacts with an Ethereum smart contract to create shortened URLs. The component has several properties and methods that are used to manage the state of the component and interact with the contract.</p>
+<p>The component has a data property that returns an object with several properties that are used to manage the state of the component. The fullURL property is a string that stores the user-entered URL. The urlValid property is a boolean that indicates whether the user-entered URL is valid. The shortURL property is a string that stores the shortened URL. The txnPending property is a boolean that indicates whether a transaction is pending. The txnHashURL property is a string that stores the URL for viewing the transaction on Etherscan. The isModalVisible, modalTitle, and modalContent properties are used to manage the modal component.</p>
+<p>The component has a mounted hook that is called after the component is mounted to the DOM. It calls the detectWeb3, initContract, checkNetwork, and batchEvents methods. The detectWeb3 method is used to check for the presence of the Ethereum browser extension (e.g., MetaMask). The initContract method is used to create an instance of the EthUrl contract using the contract’s ABI and address. The checkNetwork method is used to check that the user is connected to the correct Ethereum network. The batchEvents method is used to listen for events emitted by the contract.</p>
+<p>The component has several methods for interacting with the contract and managing the component’s state. The validURL method is used to validate the user-entered URL. The checkNetwork method is used to check that the user is connected to the correct Ethereum network. The shorten method is used to create a shortened URL using the createNewLink function of the EthUrl contract. The closeModal method is used to close the modal component. The showModal method is used to show the modal component.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;script></span></span>
+<span class="line"><span>// add check web3 and other features to make that the application can be loaded, could use my old </span></span>
+<span class="line"><span>// logic to check for network ids</span></span>
+<span class="line"><span>import AppLogo from '~/components/AppLogo.vue'</span></span>
+<span class="line"><span>import Loader from '~/components/Loader.vue'</span></span>
+<span class="line"><span>import modal from '~/components/modal.vue'</span></span>
+<span class="line"><span>import EthUrlABI from '~/store/EthUrlABI'</span></span>
+<span class="line"><span>import {ethers} from 'ethers'</span></span>
+<span class="line"><span>//import { Web3Provider } from 'ethers/providers';</span></span>
+<span class="line"><span>let provider = ''  //= new ethers.providers.Web3Provider(web3.currentProvider);</span></span>
+<span class="line"><span>let address = "0xa40d4c7fb56635a8a2a4d47ab7975bdcda57ac2a";</span></span>
+<span class="line"><span>let contract //= new ethers.Contract(address, EthUrlABI, provider.getSigner());</span></span>
+<span class="line"><span>export default {</span></span>
+<span class="line"><span>	components: {</span></span>
+<span class="line"><span>		AppLogo,</span></span>
+<span class="line"><span>		modal,</span></span>
+<span class="line"><span>		Loader</span></span>
+<span class="line"><span>	},</span></span>
+<span class="line"><span>	data() {</span></span>
+<span class="line"><span>		return {</span></span>
+<span class="line"><span>			fullURL: '',</span></span>
+<span class="line"><span>			urlValid: false,</span></span>
+<span class="line"><span>			shortURL: null,</span></span>
+<span class="line"><span>			txnPending: false,</span></span>
+<span class="line"><span>			txnHashURL: '',</span></span>
+<span class="line"><span>			isModalVisible: false,</span></span>
+<span class="line"><span>			modalTitle: null,</span></span>
+<span class="line"><span>			modalContent: null</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span>	},</span></span>
+<span class="line"><span>	mounted() {</span></span>
+<span class="line"><span>		this.detectWeb3()</span></span>
+<span class="line"><span>		this.initContract()</span></span>
+<span class="line"><span>		this.checkNetwork()</span></span>
+<span class="line"><span>		this.batchEvents(EthUrlABI, address)</span></span>
+<span class="line"><span>	},</span></span>
+<span class="line"><span>	methods: {</span></span>
+<span class="line"><span>		validURL() {</span></span>
+<span class="line"><span>			var re =/^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+(?:[a-z\u00a1-\uffff]{2,}\.?))(?::\d{2,5})?(?:[/?#]\S*)?$/i;</span></span>
+<span class="line"><span>			if(this.fullURL !== '') {</span></span>
+<span class="line"><span>				this.urlValid = re.test(this.fullURL)</span></span>
+<span class="line"><span>			}</span></span>
+<span class="line"><span>			console.log(re.test(this.fullURL))</span></span>
+<span class="line"><span>			return re.test(this.fullURL)</span></span>
+<span class="line"><span>		},</span></span>
+<span class="line"><span>		checkNetwork() {</span></span>
+<span class="line"><span>			console.log('CHECKING NETWORK');</span></span>
+<span class="line"><span>			contract.getLink(1)</span></span>
+<span class="line"><span>			.then((output) => {</span></span>
+<span class="line"><span>				console.log('OUTPUT',output);</span></span>
+<span class="line"><span>			})</span></span>
+<span class="line"><span>			.catch((err) => {</span></span>
+<span class="line"><span>				console.log('ERROR',err);</span></span>
+<span class="line"><span>				console.log('Not logged into metamask, please relog and refresh.')</span></span>
+<span class="line"><span>				this.modalTitle = 'Metamask Locked.'</span></span>
+<span class="line"><span>				this.modalContent = 'Please login into metamask and refresh.'</span></span>
+<span class="line"><span>				this.showModal()</span></span>
+<span class="line"><span>			}); </span></span>
+<span class="line"><span>		},</span></span>
+<span class="line"><span>		async detectWeb3() {</span></span>
+<span class="line"><span>			console.log('stupid')</span></span>
+<span class="line"><span>			if (window.ethereum) {</span></span>
+<span class="line"><span>				window.web3 = new Web3(ethereum);</span></span>
+<span class="line"><span>				try {</span></span>
+<span class="line"><span>					// Request account access if needed</span></span>
+<span class="line"><span>					await ethereum.enable();</span></span>
+<span class="line"><span>					// Acccounts now exposed</span></span>
+<span class="line"><span>					web3.eth.sendTransaction({/* ... */})</span></span>
+<span class="line"><span>					// close any message that tells people to open metamask</span></span>
+<span class="line"><span>					this.closeModal()</span></span>
+<span class="line"><span>				} catch (error) {</span></span>
+<span class="line"><span>				}</span></span>
+<span class="line"><span>			} else if (window.web3) {</span></span>
+<span class="line"><span>				window.web3 = new Web3(web3.currentProvider);</span></span>
+<span class="line"><span>				// Acccounts always exposed</span></span>
+<span class="line"><span>				web3.eth.sendTransaction({/* ... */})</span></span>
+<span class="line"><span>				// close any message that tells people to open metamask</span></span>
+<span class="line"><span>				this.closeModal()</span></span>
+<span class="line"><span>			}</span></span>
+<span class="line"><span>			// Non-dapp browsers...</span></span>
+<span class="line"><span>			else {</span></span>
+<span class="line"><span>				this.modalTitle = 'Non Dapp Browser Detected.'</span></span>
+<span class="line"><span>				this.modalContent = 'Oops, looks like you need to install metamask. See https://metamask.io/.'</span></span>
+<span class="line"><span>				this.showModal()</span></span>
+<span class="line"><span>				console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');</span></span>
+<span class="line"><span>			}</span></span>
+<span class="line"><span>		},</span></span>
+<span class="line"><span>		initContract() {</span></span>
+<span class="line"><span>			provider = new ethers.providers.Web3Provider(web3.currentProvider);</span></span>
+<span class="line"><span>			contract = new ethers.Contract(address, EthUrlABI, provider.getSigner());</span></span>
+<span class="line"><span>    		console.log('e0x Contract Initiated');</span></span>
+<span class="line"><span>		},</span></span>
+<span class="line"><span>		batchEvents(abi, address) {</span></span>
+<span class="line"><span>			//batch listening of events</span></span>
+<span class="line"><span>			const MyContract = web3.eth.contract(EthUrlABI);</span></span>
+<span class="line"><span>			const myContractInstance = MyContract.at(address);</span></span>
+<span class="line"><span>			const events = myContractInstance.allEvents({event: 'LinkAdded', fromBlock: 0, toBlock: 'latest'});</span></span>
+<span class="line"><span>			</span></span>
+<span class="line"><span>			events.watch(function(error, result){</span></span>
+<span class="line"><span>				console.log(result);</span></span>
+<span class="line"><span>				//console.log(result.args.url, result.args.linkId.toNumber(), result.blockNumber, result.transactionHash);</span></span>
+<span class="line"><span>				console.log(error,result)</span></span>
+<span class="line"><span>				/*</span></span>
+<span class="line"><span>				var shortUrl = '{0}/s?id={1}'.f(window.location.origin, result.args.linkId.toNumber());</span></span>
+<span class="line"><span>				var shorterUrl = shortUrl.replace('https://','');</span></span>
+<span class="line"><span>				var shorterUrl = shorterUrl.replace('http://','');</span></span>
+<span class="line"><span>				var row = "\</span></span>
+<span class="line"><span>					&#x3C;tr>\</span></span>
+<span class="line"><span>						&#x3C;td>&#x3C;p class='smaller'>{0}&#x3C;/p>&#x3C;/td>\</span></span>
+<span class="line"><span>						&#x3C;td style='min-width:133px'>&#x3C;a class='small' target='_blank' href='{1}'>&#x3C;strong>{2}&#x3C;/strong>&#x3C;/a>&#x3C;/td>\</span></span>
+<span class="line"><span>						&#x3C;td>&#x3C;a target='_blank' href='https://ropsten.etherscan.io/block/{3}'>&#x3C;code>{3}&#x3C;/code>&#x3C;/a>&#x3C;/td>\</span></span>
+<span class="line"><span>						&#x3C;td>&#x3C;a target='_blank' href='https://ropsten.etherscan.io/tx/{4}'>link&#x3C;/a>&#x3C;/td>\</span></span>
+<span class="line"><span>					&#x3C;/tr>".f(result.args.url,shortUrl,shorterUrl,result.blockNumber,result.transactionHash);</span></span>
+<span class="line"><span>					**/</span></span>
+<span class="line"><span>					// console.log(row);</span></span>
+<span class="line"><span>					// $("#tx-table").prepend(row);</span></span>
+<span class="line"><span>			})</span></span>
+<span class="line"><span>		},</span></span>
+<span class="line"><span>		async shorten() {</span></span>
+<span class="line"><span>			// this.detectWeb3();</span></span>
+<span class="line"><span>			if(this.fullURL === ''){</span></span>
+<span class="line"><span>				this.modalTitle = 'Url Empty'</span></span>
+<span class="line"><span>				this.modalContent = 'Please enter in an url.'</span></span>
+<span class="line"><span>				this.showModal()</span></span>
+<span class="line"><span>				return </span></span>
+<span class="line"><span>			}</span></span>
+<span class="line"><span>			if(!this.validURL()){</span></span>
+<span class="line"><span>				this.modalTitle = 'Url Invalid'</span></span>
+<span class="line"><span>				this.modalContent = 'Please enter in a valid url.'</span></span>
+<span class="line"><span>				this.showModal()</span></span>
+<span class="line"><span>				return </span></span>
+<span class="line"><span>			}</span></span>
+<span class="line"><span>			try {</span></span>
+<span class="line"><span>				const tx = await contract.createNewLink(this.fullURL)</span></span>
+<span class="line"><span>				this.txnPending = true</span></span>
+<span class="line"><span>				this.txnHashURL = 'https://kovan.etherscan.io/tx/' + tx.hash</span></span>
+<span class="line"><span>			} catch(error) {</span></span>
+<span class="line"><span>				this.modalTitle = 'Rejected Transaction'</span></span>
+<span class="line"><span>				this.modalContent = 'Darn, did I mention making links is free.'</span></span>
+<span class="line"><span>				this.showModal()</span></span>
+<span class="line"><span>				console.log(error)</span></span>
+<span class="line"><span>			}</span></span>
+<span class="line"><span>			// add this functionality to vue dapp and ipfs dapp</span></span>
+<span class="line"><span>			contract.on("LinkAdded", (linkId, linkUrl) => {</span></span>
+<span class="line"><span>				if(linkUrl !== this.fullURL){</span></span>
+<span class="line"><span>					console.log('NOT MY EVENT');</span></span>
+<span class="line"><span>					return</span></span>
+<span class="line"><span>				}</span></span>
+<span class="line"><span>				var shortUrl = linkId.toNumber()</span></span>
+<span class="line"><span>				// $("#info").prepend( "Short URL: &#x3C;a target='_blank' href='{0}'>{0}&#x3C;/a>&#x3C;br>".f(shortUrl) );</span></span>
+<span class="line"><span>				console.log("EVENT LISTENER", shortUrl, linkId.toNumber(), linkUrl);</span></span>
+<span class="line"><span>				this.modalTitle = 'Link Added!'</span></span>
+<span class="line"><span>				const url = window.location.href + linkId</span></span>
+<span class="line"><span>				this.modalContent = 'Congrats, your link is available at ' + url</span></span>
+<span class="line"><span>				this.showModal()</span></span>
+<span class="line"><span>				this.txnPending = false</span></span>
+<span class="line"><span>				this.shortURL = url</span></span>
+<span class="line"><span>    		})</span></span>
+<span class="line"><span>		},</span></span>
+<span class="line"><span>		showModal() {</span></span>
+<span class="line"><span>        	this.isModalVisible = true;</span></span>
+<span class="line"><span>      	},</span></span>
+<span class="line"><span>		closeModal() {</span></span>
+<span class="line"><span>			this.isModalVisible = false;</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>&#x3C;/script></span></span></code></pre>
+<h2 id="references">References</h2>
+<p>See <a href="https://github.com/FriendlyUser/nuxt-url-shorter">https://github.com/FriendlyUser/nuxt-url-shorter</a></p>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2023/an_introduction_to_pygame_zero_building_your_first_game_in_python"> An Introduction to Pygame Zero Building Your First Game in Python </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2023/swifts_operators_a_comprehensive_guide"> Swift&#39;s Operators A Comprehensive Guide </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

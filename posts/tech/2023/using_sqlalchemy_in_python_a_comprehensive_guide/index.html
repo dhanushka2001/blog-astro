@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Using SQLAlchemy in Python A Comprehensive Guide - Dhanushka&#39;s Blog</title><meta name="description" content="In this article, we will explore SQLAlchemy, a powerful and versatile Object Relational Mapper (ORM) for Python that makes database interactions easy and efficient"><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="Using SQLAlchemy in Python A Comprehensive Guide"><meta property="og:description" content="In this article, we will explore SQLAlchemy, a powerful and versatile Object Relational Mapper (ORM) for Python that makes database interactions easy and efficient"><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/DALL·E 2023-01-16 12.01.55 - Two futuristic towers with a skybridge covered in lush foliage, digital art.png"><link rel="canonical" href="undefined/posts/tech/2023/using_sqlalchemy_in_python_a_comprehensive_guide"><meta property="og:url" content="undefined/posts/tech/2023/using_sqlalchemy_in_python_a_comprehensive_guide"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/DALL·E 2023-01-16 12.01.55 - Two futuristic towers with a skybridge covered in lush foliage, digital art.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">5 min read</div><h1 class="text-center text-3xl font-bold">Using SQLAlchemy in Python A Comprehensive Guide</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Oct 24, 2023</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/DALL·E 2023-01-16 12.01.55 - Two futuristic towers with a skybridge covered in lush foliage, digital art.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <h1 id="using-sqlalchemy-in-python-a-comprehensive-guide">Using SQLAlchemy in Python: A Comprehensive Guide</h1>
+<p>In this article, we will explore SQLAlchemy, a powerful and versatile Object Relational Mapper (ORM) for Python that makes database interactions easy and efficient. We will learn how to install and use SQLAlchemy, create a simple application, and understand some of its most powerful features.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#introduction">Introduction to SQLAlchemy</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#basic-usage">Basic Usage</a>
+<ol>
+<li><a href="#creating-models">Creating Models</a></li>
+<li><a href="#creating-engine">Creating and Configuring the Engine</a></li>
+<li><a href="#creating-sessions">Creating and Using Sessions</a></li>
+<li><a href="#inserting-data">Inserting Data</a></li>
+<li><a href="#querying-data">Querying Data</a></li>
+<li><a href="#updating-data">Updating Data</a></li>
+<li><a href="#deleting-data">Deleting Data</a></li>
+</ol>
+</li>
+<li><a href="#advanced-features">Advanced Features</a>
+<ol>
+<li><a href="#relationships">Relationships</a></li>
+<li><a href="#transactions">Transactions</a></li>
+<li><a href="#inheritance">Inheritance</a></li>
+</ol>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+<p><a name="introduction"></a></p>
+<h2 id="1-introduction-to-sqlalchemy">1. Introduction to SQLAlchemy</h2>
+<p>SQLAlchemy is a popular Python library that provides a full suite of well-organized tools to interact with relational databases. It simplifies the process of writing SQL queries and performing CRUD operations by providing a high-level, Pythonic API.</p>
+<p>One of the main advantages of using SQLAlchemy is that it allows developers to write database-agnostic code. This means that you can switch between different SQL databases (such as PostgreSQL, MySQL, SQLite) with minimal code changes.</p>
+<p><a name="installation"></a></p>
+<h2 id="2-installation">2. Installation</h2>
+<p>To install SQLAlchemy, simply run the following command:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pip install sqlalchemy</span></span></code></pre>
+<p><a name="basic-usage"></a></p>
+<h2 id="3-basic-usage">3. Basic Usage</h2>
+<p><a name="creating-models"></a></p>
+<h3 id="31-creating-models">3.1. Creating Models</h3>
+<p>The first step in using SQLAlchemy is to define your data models. Models are Python classes that represent database tables. They define the structure of the tables and the relationships between them. Here’s a simple example:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>from sqlalchemy import Column, Integer, String</span></span>
+<span class="line"><span>from sqlalchemy.ext.declarative import declarative_base</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Base = declarative_base()</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>class User(Base):</span></span>
+<span class="line"><span>    __tablename__ = 'users'</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    id = Column(Integer, primary_key=True)</span></span>
+<span class="line"><span>    name = Column(String)</span></span>
+<span class="line"><span>    age = Column(Integer)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    def __repr__(self):</span></span>
+<span class="line"><span>        return f"&#x3C;User(name={self.name}, age={self.age})>"</span></span></code></pre>
+<p>In this example, we define a <code>User</code> model with three columns: <code>id</code>, <code>name</code>, and <code>age</code>. The <code>__tablename__</code> attribute is used to specify the name of the database table.</p>
+<p><a name="creating-engine"></a></p>
+<h3 id="32-creating-and-configuring-the-engine">3.2. Creating and Configuring the Engine</h3>
+<p>The next step is to create an “engine” that connects to your database. The engine is responsible for managing database connections and translating Python code into SQL commands.</p>
+<p>To create an engine, you need to provide a connection string, which specifies the database type, credentials, and other options. Here’s an example:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>from sqlalchemy import create_engine</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## Replace this connection string with your own</span></span>
+<span class="line"><span>connection_string = 'sqlite:///example.db'</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>engine = create_engine(connection_string)</span></span></code></pre>
+<p>In this example, we create a SQLite database called <code>example.db</code>. For other databases, the connection string format will be different. You can find more information about connection strings in the <a href="https://docs.sqlalchemy.org/en/14/core/engines.html">SQLAlchemy documentation</a>.</p>
+<p>Once you have created an engine, you can use it to create the tables defined by your models:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Base.metadata.create_all(engine)</span></span></code></pre>
+<p><a name="creating-sessions"></a></p>
+<h3 id="33-creating-and-using-sessions">3.3. Creating and Using Sessions</h3>
+<p>To interact with the database, you need to create a “session”. A session is an object that manages the state of your objects and keeps track of any pending changes.</p>
+<p>To create a session, you can use the <code>sessionmaker</code> function:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>from sqlalchemy.orm import sessionmaker</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Session = sessionmaker(bind=engine)</span></span>
+<span class="line"><span>session = Session()</span></span></code></pre>
+<p><a name="inserting-data"></a></p>
+<h3 id="34-inserting-data">3.4. Inserting Data</h3>
+<p>To insert data into the database, you can create instances of your models and add them to the session. Here’s an example:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>new_user = User(name="Alice", age=30)</span></span>
+<span class="line"><span>session.add(new_user)</span></span>
+<span class="line"><span>session.commit()</span></span></code></pre>
+<p>In this example, we create a new <code>User</code> object, add it to the session, and then call <code>session.commit()</code> to save the changes to the database.</p>
+<p><a name="querying-data"></a></p>
+<h3 id="35-querying-data">3.5. Querying Data</h3>
+<p>To query data from the database, you canuse the <code>session.query()</code> method. This method returns a <code>Query</code> object that allows you to filter, order, and group the results. Here’s an example:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>## Get all users</span></span>
+<span class="line"><span>users = session.query(User).all()</span></span>
+<span class="line"><span>print(users)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## Get a specific user by ID</span></span>
+<span class="line"><span>user = session.query(User).get(1)</span></span>
+<span class="line"><span>print(user)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## Get users with a specific name</span></span>
+<span class="line"><span>users = session.query(User).filter_by(name="Alice").all()</span></span>
+<span class="line"><span>print(users)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## Get users with a specific age</span></span>
+<span class="line"><span>users = session.query(User).filter(User.age == 30).all()</span></span>
+<span class="line"><span>print(users)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## Get users sorted by age, ascending</span></span>
+<span class="line"><span>users = session.query(User).order_by(User.age).all()</span></span>
+<span class="line"><span>print(users)</span></span></code></pre>
+<p>In this example, we demonstrate various ways to query the <code>User</code> model. You can combine filters, ordering, and other options to create complex queries.</p>
+<p><a name="updating-data"></a></p>
+<h3 id="36-updating-data">3.6. Updating Data</h3>
+<p>To update data in the database, you can modify the attributes of your model instances and then call <code>session.commit()</code> to save the changes. Here’s an example:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>## Update a specific user's age</span></span>
+<span class="line"><span>user = session.query(User).get(1)</span></span>
+<span class="line"><span>user.age = 35</span></span>
+<span class="line"><span>session.commit()</span></span></code></pre>
+<p>In this example, we update the age of a <code>User</code> object and then commit the changes to the database.</p>
+<p><a name="deleting-data"></a></p>
+<h3 id="37-deleting-data">3.7. Deleting Data</h3>
+<p>To delete data from the database, you can use the <code>session.delete()</code> method. Here’s an example:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>## Delete a specific user by ID</span></span>
+<span class="line"><span>user = session.query(User).get(1)</span></span>
+<span class="line"><span>session.delete(user)</span></span>
+<span class="line"><span>session.commit()</span></span></code></pre>
+<p>In this example, we delete a <code>User</code> object from the database and then commit the changes.</p>
+<p><a name="advanced-features"></a></p>
+<h2 id="4-advanced-features">4. Advanced Features</h2>
+<p><a name="relationships"></a></p>
+<h3 id="41-relationships">4.1. Relationships</h3>
+<p>SQLAlchemy allows you to define relationships between your models using the <code>relationship()</code> function. This makes it easy to navigate between related objects and perform queries that involve multiple tables. Here’s an example:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>from sqlalchemy import ForeignKey</span></span>
+<span class="line"><span>from sqlalchemy.orm import relationship</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>class Post(Base):</span></span>
+<span class="line"><span>    __tablename__ = 'posts'</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    id = Column(Integer, primary_key=True)</span></span>
+<span class="line"><span>    title = Column(String)</span></span>
+<span class="line"><span>    content = Column(String)</span></span>
+<span class="line"><span>    user_id = Column(Integer, ForeignKey('users.id'))</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    author = relationship("User", back_populates="posts")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>User.posts = relationship("Post", order_by=Post.id, back_populates="author")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Base.metadata.create_all(engine)</span></span></code></pre>
+<p>In this example, we define a <code>Post</code> model with a foreign key to the <code>User</code> model. We then create a relationship between the two models using the <code>relationship()</code> function.</p>
+<p><a name="transactions"></a></p>
+<h3 id="42-transactions">4.2. Transactions</h3>
+<p>SQLAlchemy provides built-in support for transactions, which allow you to group multiple operations into a single, atomic unit of work. To use transactions, you can use the <code>session.begin()</code> method:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>## Start a new transaction</span></span>
+<span class="line"><span>session.begin()</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>try:</span></span>
+<span class="line"><span>    ## Perform some operations</span></span>
+<span class="line"><span>    user1 = User(name="Bob", age=25)</span></span>
+<span class="line"><span>    user2 = User(name="Carol", age=28)</span></span>
+<span class="line"><span>    session.add_all([user1, user2])</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    ## Commit the transaction</span></span>
+<span class="line"><span>    session.commit()</span></span>
+<span class="line"><span>except:</span></span>
+<span class="line"><span>    ## Roll back the transaction in case of errors</span></span>
+<span class="line"><span>    session.rollback()</span></span>
+<span class="line"><span>    raise</span></span></code></pre>
+<p>In this example, we start a new transaction using <code>session.begin()</code>, perform some operations, and then commit the transaction using <code>session.commit()</code>. If an error occurs, we roll back the transaction using <code>session.rollback()</code>.</p>
+<p><a name="inheritance"></a></p>
+<h3 id="43-inheritance">4.3. Inheritance</h3>
+<p>SQLAlchemy supports various inheritance strategies, including single table inheritance, concrete table inheritance, and joined table inheritance. This allows you to model complex hierarchies of objects and reuse code between related models. Here’s an example using single table inheritance:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>from sqlalchemy import Enum</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>class Animal(Base):</span></span>
+<span class="line"><span>    __tablename__ = 'animals'</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    id = Column(Integer, primary_key=True)</span></span>
+<span class="line"><span>    name = Column(String)</span></span>
+<span class="line"><span>    type = Column(Enum("cat", "dog", name="animal_type"), nullable=False)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    __mapper_args__ = {</span></span>
+<span class="line"><span>        'polymorphic_identity': 'animal',</span></span>
+<span class="line"><span>        'polymorphic_on': type</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>class Cat(Animal):</span></span>
+<span class="line"><span>    __mapper_args__ = {</span></span>
+<span class="line"><span>        'polymorphic_identity': 'cat',</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    meow_sound = Column(String)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>class Dog(Animal):</span></span>
+<span class="line"><span>    __mapper_args__ = {</span></span>
+<span class="line"><span>        'polymorphic_identity': 'dog',</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    bark_sound = Column(String)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Base.metadata.create_all(engine)</span></span></code></pre>
+<p>In this example, we define a base <code>Animal</code> model and two subclasses, <code>Cat</code> and <code>Dog</code>. We use single table inheritance to store</p>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2023/using_celery_in_python_a_comprehensive_guide"> Using Celery in Python A Comprehensive Guide </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2023/using_pyserial_in_python_a_comprehensive_guide"> Using PySerial in Python A Comprehensive Guide </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

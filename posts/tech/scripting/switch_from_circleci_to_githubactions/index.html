@@ -1,0 +1,409 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>How I converted circleCi to github actions - Dhanushka&#39;s Blog</title><meta name="description" content="For my latex diagrams project I converted the ci from circle to github actions."><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="How I converted circleCi to github actions"><meta property="og:description" content="For my latex diagrams project I converted the ci from circle to github actions."><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/1924742632.png"><link rel="canonical" href="undefined/posts/tech/scripting/switch_from_circleci_to_githubactions"><meta property="og:url" content="undefined/posts/tech/scripting/switch_from_circleci_to_githubactions"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/1924742632.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r9" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r6" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">11 min read</div><h1 class="text-center text-3xl font-bold">How I converted circleCi to github actions</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Feb 19, 2023</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/latex" style="padding-right:3px"><category>latex</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/github actions" style="padding-right:3px"><category>github actions</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/circleci" style="padding-right:3px"><category>circleci</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/ci" style="padding-right:3px"><category>ci</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/1924742632.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <p>Continuous Integration (CI) is a software development practice that involves continuously integrating code changes into a single codebase repository, typically multiple times a day. The main goal of Continuous Integration is to catch and fix integration problems as early as possible in the development process, which helps to ensure that the code remains stable and that the software is always in a releasable state.</p>
+<p>In practice, Continuous Integration is typically achieved through automated build and testing processes. Whenever code changes are committed to the repository, an automated build process is triggered which compiles the code, runs automated tests and checks the code for any syntax errors or other problems. If the build and tests are successful, the code changes are considered to be integrated and can be safely merged into the main branch of the codebase. If the build or tests fail, the development team is notified, and the code can be corrected before it’s merged into the main branch.</p>
+<p>Continuous Integration is an important aspect of Agile software development and is often used in combination with Continuous Deployment and Continuous Delivery to provide a fast, reliable, and efficient software delivery pipeline.</p>
+<p>CircleCI is a cloud-based Continuous Integration and Continuous Deployment (CI/CD) platform that provides an automated process for building, testing, and deploying software applications. It helps teams to detect and fix integration problems as early as possible in the development process, allowing them to reduce the time-to-market and improve the overall quality of their applications.</p>
+<p>CircleCI offers features such as parallel testing, custom environment variables, and a large library of pre-built integrations with popular tools and services like GitHub, AWS, and Google Cloud. CircleCI is also known for its easy-to-use interface and customizable workflows.</p>
+<p>GitHub Actions is a similar service that is integrated with GitHub. It provides a platform for automating software workflows, including Continuous Integration, Continuous Deployment, and Continuous Delivery. GitHub Actions can be triggered by events like code commits or pull requests, and it provides a wide range of pre-built actions for tasks like building, testing, and deploying applications.</p>
+<p>In comparison, both CircleCI and GitHub Actions offer similar functionality, but there are some differences. For example, CircleCI has a more robust and flexible environment, while GitHub Actions is tightly integrated with the GitHub ecosystem and provides native integration with other GitHub services like pull requests and issue tracking. Another difference is that CircleCI offers more resources for parallelism and concurrency, making it better suited for complex build and test processes.</p>
+<p>Ultimately, the choice between CircleCI and GitHub Actions will depend on the specific needs of your team and the characteristics of your projects. Both are powerful tools for Continuous Integration and Continuous Deployment and can help teams to deliver high-quality software applications quickly and reliably.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> version: 2</span></span>
+<span class="line"><span>jobs:</span></span>
+<span class="line"><span>  latex:</span></span>
+<span class="line"><span>    docker:</span></span>
+<span class="line"><span>      - image: grandfleet/dolwarp:v0.70</span></span>
+<span class="line"><span>    working_directory: ~/latex</span></span>
+<span class="line"><span>    # Make pdf documents with tex</span></span>
+<span class="line"><span>    steps:</span></span>
+<span class="line"><span>      - run: apt-get update &#x26;&#x26; apt-get install xpdf imagemagick git -y</span></span>
+<span class="line"><span>      - checkout</span></span>
+<span class="line"><span>      - run: chmod +x ./compile_tex.sh &#x26;&#x26; ./compile_tex.sh -p 2 -l 1 -r 1 -o ReadMe.md</span></span>
+<span class="line"><span>      - persist_to_workspace:</span></span>
+<span class="line"><span>          root: .</span></span>
+<span class="line"><span>          paths: </span></span>
+<span class="line"><span>            - BlogDiagrams/*.pdf</span></span>
+<span class="line"><span>            - ControlSystems/*.pdf</span></span>
+<span class="line"><span>            - DSP/*.pdf</span></span>
+<span class="line"><span>            - DVP/*.pdf</span></span>
+<span class="line"><span>            - ElectroMag/*.pdf</span></span>
+<span class="line"><span>            - EngineeringSoftwareDesign/*.pdf</span></span>
+<span class="line"><span>            - PCC/*.pdf</span></span>
+<span class="line"><span>            - ReportDiagrams/*.pdf</span></span>
+<span class="line"><span>      - store_artifacts:</span></span>
+<span class="line"><span>          root: .</span></span>
+<span class="line"><span>          path: .</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  # think about restricting to master, but whatever, I don't update that much</span></span>
+<span class="line"><span>  trigger:</span></span>
+<span class="line"><span>    docker:</span></span>
+<span class="line"><span>      - image: node:latest</span></span>
+<span class="line"><span>    working_directory: ~/docs</span></span>
+<span class="line"><span>    steps:</span></span>
+<span class="line"><span>      - run:</span></span>
+<span class="line"><span>          name: "Trigger saber npx build"</span></span>
+<span class="line"><span>          command: | </span></span>
+<span class="line"><span>            curl -X POST https://circleci.com/api/v2/project/gh/FriendlyUser/dli-vue-docs/pipeline?circle_token=${CIRCLE_API_TOKEN} \</span></span>
+<span class="line"><span>            -H 'Circle-Token: ${CIRCLE_API_TOKEN}' \</span></span>
+<span class="line"><span>            -H 'Content-Type: application/json' \</span></span>
+<span class="line"><span>            -H 'Accept: application/json' \</span></span>
+<span class="line"><span>            -H 'x-attribution-login: Circle CI' \</span></span>
+<span class="line"><span>            -H 'x-attribution-actor-id: TFT'</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>workflows:</span></span>
+<span class="line"><span>  version: 2</span></span>
+<span class="line"><span>  build_and_test:</span></span>
+<span class="line"><span>    jobs:</span></span>
+<span class="line"><span>      - latex</span></span>
+<span class="line"><span>      - trigger:</span></span>
+<span class="line"><span>          requires:</span></span>
+<span class="line"><span>            - latex</span></span>
+<span class="line"><span>          filters:</span></span>
+<span class="line"><span>            branches:</span></span>
+<span class="line"><span>              only:</span></span>
+<span class="line"><span>                - master</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>This is a YAML configuration file for CircleCI, a Continuous Integration (CI) platform. The configuration file defines a workflow that consists of two jobs: “latex” and “trigger”.</p>
+<p>The “latex” job uses a Docker image “grandfleet/dolwarp:v0.70” as the environment for building, testing, and deploying code. The job performs several steps, including updating the system, installing necessary packages, checking out the code from the repository, and running the script “compile_tex.sh”. The script is used to compile TeX files into PDF documents. After the script execution, the artifacts (PDF documents) are persisted in the workspace and stored as artifacts.</p>
+<p>The “trigger” job uses a Node.js environment and triggers another pipeline to run. It makes an HTTP POST request to CircleCI’s API, passing an API token as an environment variable and several headers, to trigger the pipeline.</p>
+<p>The workflow defined in this configuration file is called “build_and_test”, which runs both “latex” and “trigger” jobs. The “trigger” job requires the successful completion of the “latex” job and is only triggered for the “master” branch.</p>
+<p>In conclusion, this YAML configuration file defines a CircleCI workflow for building, testing, and deploying code changes, as well as triggering another pipeline for additional steps in the software development process.</p>
+<p>Yes, triggering another workflow from a workflow in CircleCI is possible. To do this, you can make use of the CircleCI API and the “curl” command in your job steps to send an HTTP request to the API endpoint that triggers another workflow.</p>
+<p>Here is an example of triggering another workflow from a workflow in CircleCI:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>yaml`version: 2</span></span>
+<span class="line"><span>jobs:</span></span>
+<span class="line"><span> trigger\_workflow:</span></span>
+<span class="line"><span> docker:</span></span>
+<span class="line"><span> - image: node:latest</span></span>
+<span class="line"><span> working\_directory: ~/</span></span>
+<span class="line"><span> steps:</span></span>
+<span class="line"><span> - run:</span></span>
+<span class="line"><span> name: "Trigger another workflow"</span></span>
+<span class="line"><span> command: | </span></span>
+<span class="line"><span> curl -X POST https://circleci.com/api/v2/project/gh/&#x3C;OWNER>/&#x3C;REPO>/pipeline \</span></span>
+<span class="line"><span> -H 'Circle-Token: ${CIRCLE\_API\_TOKEN}' \</span></span>
+<span class="line"><span> -H 'Content-Type: application/json' \</span></span>
+<span class="line"><span> -H 'Accept: application/json' \</span></span>
+<span class="line"><span> -d '{ "branch": "${CIRCLE\_BRANCH}" }'</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>workflows:</span></span>
+<span class="line"><span> version: 2</span></span>
+<span class="line"><span> build\_and\_test:</span></span>
+<span class="line"><span> jobs:</span></span>
+<span class="line"><span> - trigger\_workflow:</span></span>
+<span class="line"><span> filters:</span></span>
+<span class="line"><span> branches:</span></span>
+<span class="line"><span> only:</span></span>
+<span class="line"><span> - master</span></span></code></pre>
+<p>In this example, the “trigger_workflow” job uses a Node.js environment and sends an HTTP POST request to the CircleCI API endpoint that triggers another workflow. The request includes the CircleCI API token as a header, and the branch name is passed as a data payload in the request body.</p>
+<p>The workflow defined in this configuration file is called “build_and_test”, which runs the “trigger_workflow” job. The “trigger_workflow” job is only triggered for the “master” branch.</p>
+<p>Note that you need to replace the placeholders <code>&#x3C;OWNER></code> and <code>&#x3C;REPO></code> with the GitHub repository owner name and repository name, respectively. Also, the <code>CIRCLE_API_TOKEN</code> environment variable needs to be set in the CircleCI project’s environment variables to provide the API token.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> version: 2</span></span>
+<span class="line"><span>jobs:</span></span>
+<span class="line"><span>  latex:</span></span>
+<span class="line"><span>    docker:</span></span>
+<span class="line"><span>      - image: grandfleet/dolwarp:v0.70</span></span>
+<span class="line"><span>    working_directory: ~/latex</span></span>
+<span class="line"><span>    # Make pdf documents with tex</span></span>
+<span class="line"><span>    steps:</span></span>
+<span class="line"><span>      - run: apt-get update &#x26;&#x26; apt-get install xpdf imagemagick git -y</span></span>
+<span class="line"><span>      - run: yes YES | git clone https://github.com/FriendlyUser/LatexDiagrams.git || true</span></span>
+<span class="line"><span>      - run:</span></span>
+<span class="line"><span>          name: Build Tex</span></span>
+<span class="line"><span>          command: |</span></span>
+<span class="line"><span>            cd LatexDiagrams</span></span>
+<span class="line"><span>            chmod +x ./compile_tex.sh &#x26;&#x26; ./compile_tex.sh -p 2 -l 1 -r 1 -o ReadMe.md || true</span></span>
+<span class="line"><span>            chmod +x ./CompileSaberMd.sh &#x26;&#x26; ./CompileSaberMd.sh</span></span>
+<span class="line"><span>            pwd</span></span>
+<span class="line"><span>      - store_artifacts:</span></span>
+<span class="line"><span>          path: /data/latex/LatexDiagrams/saber</span></span>
+<span class="line"><span>      - persist_to_workspace:</span></span>
+<span class="line"><span>          root: .</span></span>
+<span class="line"><span>          paths:</span></span>
+<span class="line"><span>          - LatexDiagrams/saber</span></span>
+<span class="line"><span>          - saber</span></span>
+<span class="line"><span>          - LatexDiagrams</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  saber:</span></span>
+<span class="line"><span>    docker:</span></span>
+<span class="line"><span>      - image: circleci/node:14.17 # ...with this image as the primary container; this is where all `steps` will run</span></span>
+<span class="line"><span>    environment:</span></span>
+<span class="line"><span>      - TARGET_BRANCH: gh-pages</span></span>
+<span class="line"><span>      - USERNAME: FriendlyUser</span></span>
+<span class="line"><span>      - REPO: dli-vue-docs</span></span>
+<span class="line"><span>    steps:</span></span>
+<span class="line"><span>      - checkout</span></span>
+<span class="line"><span>      - attach_workspace:</span></span>
+<span class="line"><span>          at: .</span></span>
+<span class="line"><span>      - run: ls &#x26;&#x26; npm update &#x26;&#x26; npm install &#x26;&#x26; npm update || true</span></span>
+<span class="line"><span>      # move build files in saber pages and go back to the root folder</span></span>
+<span class="line"><span>      - run: cd LatexDiagrams/saber &#x26;&#x26; ls &#x26;&#x26; mv static ../../ &#x26;&#x26; cp -r pages ../../ &#x26;&#x26; cd ../../</span></span>
+<span class="line"><span>      - run: ls</span></span>
+<span class="line"><span>      - run: </span></span>
+<span class="line"><span>          name: saber build</span></span>
+<span class="line"><span>          command: |</span></span>
+<span class="line"><span>            ls</span></span>
+<span class="line"><span>            npm run update || true &#x26;&#x26; npm run build</span></span>
+<span class="line"><span>            # sed -i '36i script: [{src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", "data-ad-client": "ca-pub-2479144310234386", async: true }]' saber-browser.js</span></span>
+<span class="line"><span>            # npx saber build</span></span>
+<span class="line"><span>            cp assets/ads.txt public || true</span></span>
+<span class="line"><span>      - run:</span></span>
+<span class="line"><span>          name: deployment</span></span>
+<span class="line"><span>          command: |</span></span>
+<span class="line"><span>            git config --global user.email "lidavid@uvic.ca"</span></span>
+<span class="line"><span>            git config --global user.name "$USERNAME"</span></span>
+<span class="line"><span>            git clone $CIRCLE_REPOSITORY_URL out</span></span>
+<span class="line"><span>            cd out</span></span>
+<span class="line"><span>            git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH</span></span>
+<span class="line"><span>            git rm -rf .</span></span>
+<span class="line"><span>            echo "" > .nojekyl</span></span>
+<span class="line"><span>            cd ../</span></span>
+<span class="line"><span>            ls</span></span>
+<span class="line"><span>            cp -a public/ out/</span></span>
+<span class="line"><span>            mkdir -p out/.circleci &#x26;&#x26; cp -a .circleci/. out/.circleci/.</span></span>
+<span class="line"><span>            cd out</span></span>
+<span class="line"><span>            cp -r public/ . || true</span></span>
+<span class="line"><span>            git remote rm origin</span></span>
+<span class="line"><span>            git remote add origin https://$USERNAME:$GITHUB_TOKEN@github.com/$USERNAME/$REPO.git</span></span>
+<span class="line"><span>            echo "" > .nojekyll || true</span></span>
+<span class="line"><span>            git add -A</span></span>
+<span class="line"><span>            git commit -m "Automated deployment: ${CIRCLE_SHA1} [ci skip]" --allow-empty</span></span>
+<span class="line"><span>            git push origin $TARGET_BRANCH</span></span>
+<span class="line"><span>            # sudo npm install -g surge</span></span>
+<span class="line"><span>            # rm -rf .git</span></span>
+<span class="line"><span>            # echo  dli-vue-docs.surge.sh > CNAME</span></span>
+<span class="line"><span>            # echo | surge . dli-vue-docs.surge.sh</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>workflows:</span></span>
+<span class="line"><span>  version: 2</span></span>
+<span class="line"><span>  build_and_test:</span></span>
+<span class="line"><span>    jobs:</span></span>
+<span class="line"><span>      - latex:</span></span>
+<span class="line"><span>          filters:</span></span>
+<span class="line"><span>              branches:</span></span>
+<span class="line"><span>                ignore:</span></span>
+<span class="line"><span>                  - gh-pages</span></span>
+<span class="line"><span>      - saber:</span></span>
+<span class="line"><span>          requires:</span></span>
+<span class="line"><span>            - latex</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>This YAML file defines a CircleCI configuration that builds a LaTeX document and a Vue.js-based static site. The file has two jobs, “latex” and “saber”.</p>
+<p>The “latex” job runs inside a Docker container based on the “grandfleet/dolwarp:v0.70” image. The steps of the job are:</p>
+<ul>
+<li>Install xpdf, imagemagick, and git.</li>
+<li>Clone the repository at “<a href="https://github.com/FriendlyUser/LatexDiagrams.git">https://github.com/FriendlyUser/LatexDiagrams.git</a>”.</li>
+<li>Compile the LaTeX document using the “compile_tex.sh” and “CompileSaberMd.sh” scripts.</li>
+<li>Store the artifacts in the “saber” directory.</li>
+<li>Persist the “LatexDiagrams/saber”, “saber”, and “LatexDiagrams” directories to the workspace.</li>
+</ul>
+<p>The “saber” job runs inside a Docker container based on the “circleci/node:14.17” image. The steps of the job are:</p>
+<ul>
+<li>Check out the code.</li>
+<li>Attach the workspace created in the “latex” job.</li>
+<li>Update and install the npm packages.</li>
+<li>Copy the files from the “LatexDiagrams/saber” directory to the root directory.</li>
+<li>Build the static site using the “npm run build” command.</li>
+<li>Deploy the static site to the “gh-pages” branch on GitHub.</li>
+</ul>
+<p>Finally, the file defines a workflow named “build_and_test”, which runs the “latex” job first, and then the “saber” job, which requires the “latex” job to complete successfully. The “latex” job is ignored for branches named “gh-pages”.</p>
+<p>You can use GitHub Actions to trigger a deployment to GitHub Pages by setting up a workflow in your repository. The workflow will run whenever you push changes to the repository or when a specific event occurs.</p>
+<p>Here’s an example of a workflow that deploys a static website to GitHub Pages using the <code>actions/github-pages</code> action:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>yaml`name: Deploy to GitHub Pages</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>on:</span></span>
+<span class="line"><span> push:</span></span>
+<span class="line"><span> branches:</span></span>
+<span class="line"><span> - main</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>env:</span></span>
+<span class="line"><span> ACCESS\_TOKEN: ${{ secrets.ACCESS\_TOKEN }}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>jobs:</span></span>
+<span class="line"><span> deploy:</span></span>
+<span class="line"><span> runs-on: ubuntu-latest</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> steps:</span></span>
+<span class="line"><span> - name: Checkout code</span></span>
+<span class="line"><span> uses: actions/checkout@v2</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> - name: Deploy to GitHub Pages</span></span>
+<span class="line"><span> uses: actions/github-pages@v3</span></span>
+<span class="line"><span> with:</span></span>
+<span class="line"><span> token: ${{ env.ACCESS\_TOKEN }}</span></span>
+<span class="line"><span> target-branch: gh-pages</span></span></code></pre>
+<p>In this example, the workflow will run whenever you push changes to the <code>main</code> branch of your repository. The workflow will check out your code and then use the <code>actions/github-pages</code> action to deploy the static website to the <code>gh-pages</code> branch of your repository.</p>
+<p>You can store the GitHub access token in the repository secrets to prevent it from being leaked.</p>
+<p>Note that this is just one way to set up a deployment to GitHub Pages using GitHub Actions. You can also use other actions or write your own custom deployment scripts if needed.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> ---</span></span>
+<span class="line"><span>name: Full Build</span></span>
+<span class="line"><span>on:</span></span>
+<span class="line"><span>  push:</span></span>
+<span class="line"><span>    branches:</span></span>
+<span class="line"><span>      - master</span></span>
+<span class="line"><span>jobs:</span></span>
+<span class="line"><span>  buildtex:</span></span>
+<span class="line"><span>    runs-on: ubuntu-latest</span></span>
+<span class="line"><span>    container:</span></span>
+<span class="line"><span>      image: docker://grandfleet/dolwarp:v0.70</span></span>
+<span class="line"><span>    steps:</span></span>
+<span class="line"><span>      - name: Checkout code</span></span>
+<span class="line"><span>        uses: actions/checkout@v3</span></span>
+<span class="line"><span>      - name: Install dependencies</span></span>
+<span class="line"><span>        run: |</span></span>
+<span class="line"><span>          apt-get update &#x26;&#x26; apt-get install xpdf imagemagick git -y</span></span>
+<span class="line"><span>      - name: Compile TeX</span></span>
+<span class="line"><span>        run: |</span></span>
+<span class="line"><span>          chmod +x ./compile_tex.sh &#x26;&#x26; ./compile_tex.sh</span></span>
+<span class="line"><span>          ./compile_tex.sh -p 2 -l 1 -r 1 -o ReadMe.md</span></span>
+<span class="line"><span>      - name: Persist Tex Artifacts</span></span>
+<span class="line"><span>        uses: actions/upload-artifact@v1</span></span>
+<span class="line"><span>        with:</span></span>
+<span class="line"><span>          id: latex</span></span>
+<span class="line"><span>          path: .</span></span>
+<span class="line"><span>          name: latex</span></span>
+<span class="line"><span>  buildfiles:</span></span>
+<span class="line"><span>    needs: buildtex</span></span>
+<span class="line"><span>    runs-on: ubuntu-latest</span></span>
+<span class="line"><span>    steps:</span></span>
+<span class="line"><span>      - name: Checkout code</span></span>
+<span class="line"><span>        uses: actions/checkout@v3</span></span>
+<span class="line"><span>      - name: Download Latex Artifacts</span></span>
+<span class="line"><span>        uses: actions/download-artifact@v1</span></span>
+<span class="line"><span>        with:</span></span>
+<span class="line"><span>          name: latex</span></span>
+<span class="line"><span>          path: .</span></span>
+<span class="line"><span>      - name: Commit files</span></span>
+<span class="line"><span>        run: ></span></span>
+<span class="line"><span>          mkdir ~/.git</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>          git config --local user.name "github-actions[bot]"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>          git add ReadMe.md *.png || true</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>          git commit -m "Update images and readme" || true</span></span>
+<span class="line"><span>      - name: Push changes</span></span>
+<span class="line"><span>        uses: ad-m/github-push-action@master</span></span>
+<span class="line"><span>      - name: Compile Saber docs</span></span>
+<span class="line"><span>        run: chmod +x ./CompileSaberMd.sh &#x26;&#x26; ./CompileSaberMd.sh</span></span>
+<span class="line"><span>      - name: Setup Node</span></span>
+<span class="line"><span>        uses: actions/setup-node@v3</span></span>
+<span class="line"><span>        with:</span></span>
+<span class="line"><span>          node-version: 14.x</span></span>
+<span class="line"><span>      - name: Checkout dli-vue-docs</span></span>
+<span class="line"><span>        uses: actions/checkout@v2</span></span>
+<span class="line"><span>        with:</span></span>
+<span class="line"><span>          repository: FriendlyUser/dli-vue-docs</span></span>
+<span class="line"><span>          path: dli-vue-docs</span></span>
+<span class="line"><span>      - name: Move saber folder</span></span>
+<span class="line"><span>        run: |</span></span>
+<span class="line"><span>          mv saber/pages/* dli-vue-docs/pages/</span></span>
+<span class="line"><span>          ls saber/static/software || true</span></span>
+<span class="line"><span>          mv saber/static dli-vue-docs || true</span></span>
+<span class="line"><span>          mv saber dli-vue-docs || true</span></span>
+<span class="line"><span>      - name: Persist artifacts</span></span>
+<span class="line"><span>        uses: actions/upload-artifact@v1</span></span>
+<span class="line"><span>        with:</span></span>
+<span class="line"><span>          path: dli-vue-docs</span></span>
+<span class="line"><span>          name: saber</span></span>
+<span class="line"><span>      - name: setup node</span></span>
+<span class="line"><span>        run: |</span></span>
+<span class="line"><span>          cd dli-vue-docs</span></span>
+<span class="line"><span>          ls</span></span>
+<span class="line"><span>          npm install</span></span>
+<span class="line"><span>      - name: build app</span></span>
+<span class="line"><span>        run: |</span></span>
+<span class="line"><span>          rm -rf .git</span></span>
+<span class="line"><span>          cd dli-vue-docs</span></span>
+<span class="line"><span>          npm run build</span></span>
+<span class="line"><span>          cp assets/ads.txt public || true</span></span>
+<span class="line"><span>          rm -rf .git</span></span>
+<span class="line"><span>          ls</span></span>
+<span class="line"><span>          mv public ../</span></span>
+<span class="line"><span>          cd ../</span></span>
+<span class="line"><span>          ls </span></span>
+<span class="line"><span>      - uses: crazy-max/ghaction-github-pages@v3</span></span>
+<span class="line"><span>        with:</span></span>
+<span class="line"><span>          target_branch: gh-pages</span></span>
+<span class="line"><span>          build_dir: public</span></span>
+<span class="line"><span>        env:</span></span>
+<span class="line"><span>          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}</span></span>
+<span class="line"><span>      - name: Persist artifacts</span></span>
+<span class="line"><span>        uses: actions/upload-artifact@v1</span></span>
+<span class="line"><span>        with:</span></span>
+<span class="line"><span>          path: public</span></span>
+<span class="line"><span>          name: output</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>The above Github Actions workflow does the following:</p>
+<ol>
+<li>Triggers on a push event to the “master” branch.</li>
+<li>In the “buildtex” job, the code is checked out and dependencies are installed.</li>
+<li>Then, the TeX code is compiled using the “compile_tex.sh” script.</li>
+<li>The TeX artifacts are persisted using the “actions/upload-artifact@v1” action.</li>
+<li>In the “buildfiles” job, the code is checked out again and the TeX artifacts are downloaded.</li>
+<li>The files (ReadMe.md, *.png) are committed and pushed using the “ad-m/github-push-action@master” action.</li>
+<li>The “CompileSaberMd.sh” script is used to compile Saber documentation.</li>
+<li>The “dli-vue-docs” repository is checked out, and the “saber” folder is moved to it.</li>
+<li>The “dli-vue-docs” artifacts are persisted using the “actions/upload-artifact@v1” action.</li>
+<li>The Node environment is set up and the “dli-vue-docs” app is built using the “npm run build” command.</li>
+<li>The “crazy-max/ghaction-github-pages@v3” action is used to deploy the “public” directory to the “gh-pages” branch.</li>
+<li>The “public” artifacts are persisted using the “actions/upload-artifact@v1” action.</li>
+</ol>
+<p>Note: You may need to adjust this workflow according to your specific requirements and setup.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/FriendlyUser/dli-vue-docs/blob/master/.circleci/config.yml">https://github.com/FriendlyUser/dli-vue-docs/blob/master/.circleci/config.yml</a></li>
+<li><a href="https://github.com/FriendlyUser/dolwarp">https://github.com/FriendlyUser/dolwarp</a></li>
+<li><a href="https://github.com/FriendlyUser/LatexDiagrams">https://github.com/FriendlyUser/LatexDiagrams</a></li>
+</ul>  <h5>Related Projects</h5> <a href="https://github.com/FriendlyUser/LatexDiagrams" style="text-decoration:none;width:200px;text-align:center"> <h3> <div class="rounded-md px-2 py-1 text-xs font-semibold bg-red-400 text-red-900">LatexDiagrams</div> </h3> </a> </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r7" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/js/async_programming_with_javascript"> Async Programming With Javascript </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/js/vuepress_theme_cool"> Introducing Vuepress Theme Cool - A Vuepress Theme for Blogs and documentation </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r8" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

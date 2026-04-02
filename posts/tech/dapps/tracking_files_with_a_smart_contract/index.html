@@ -1,0 +1,379 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Tracking files with a smart contract - Dhanushka&#39;s Blog</title><meta name="description" content="react native template for a basic app"><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="Tracking files with a smart contract"><meta property="og:description" content="react native template for a basic app"><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/DALL·E 2022-12-26 21.10.41 - decentralized network diagram simple bobble heads.png"><link rel="canonical" href="undefined/posts/tech/dapps/tracking_files_with_a_smart_contract"><meta property="og:url" content="undefined/posts/tech/dapps/tracking_files_with_a_smart_contract"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/DALL·E 2022-12-26 21.10.41 - decentralized network diagram simple bobble heads.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">10 min read</div><h1 class="text-center text-3xl font-bold">Tracking files with a smart contract</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Jun 2, 2023</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/solidity" style="padding-right:3px"><category>solidity</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/dapp" style="padding-right:3px"><category>dapp</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/DALL·E 2022-12-26 21.10.41 - decentralized network diagram simple bobble heads.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <h2 id="smart-contracts">Smart Contracts</h2>
+<p>This Solidity contract is a simple file list that stores information about files that are uploaded to it. It uses a struct called File to store each file’s information, which includes a unique ID, the file’s IPFS hash, the file’s name, an array of tags, the owner’s address, and a timestamp.</p>
+<p>The contract has a mapping called files, which maps an address (the owner’s address) to an array of File structs. It also has another mapping called lastIds, which stores the last ID used for each owner’s File array.</p>
+<p>The contract has two events: fileAdded and tagsAdded. The fileAdded event is triggered when a new file is added to the list, and it includes the file’s ID, IPFS hash, and name as parameters. The tagsAdded event is triggered when tags are added to a file, and it includes the file’s tags as a parameter.</p>
+<p>The contract has two public functions: addFile and getFileTags. The addFile function allows a user to add a new file to the list by providing the file’s IPFS hash, name, and tags. It stores the new file in the files mapping and increments the lastIds value for the owner. The getFileTags function allows a user to retrieve the tags for a specific file by providing the owner’s address and the file’s index in the owner’s File array. It returns the file’s tags as an array of bytes32 values.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pragma solidity ^0.4.24;</span></span>
+<span class="line"><span>contract FileList {</span></span>
+<span class="line"><span>   struct File {</span></span>
+<span class="line"><span>      uint256 id;</span></span>
+<span class="line"><span>      string ipfshash;</span></span>
+<span class="line"><span>      bytes32 filename;</span></span>
+<span class="line"><span>      bytes32[5] tags;</span></span>
+<span class="line"><span>      address owner;</span></span>
+<span class="line"><span>      uint256 timestamp;</span></span>
+<span class="line"><span>   }</span></span>
+<span class="line"><span>   uint256 public constant maxAmountOfFiles = 1000;</span></span>
+<span class="line"><span>   // Owner => files</span></span>
+<span class="line"><span>   mapping(address => File[maxAmountOfFiles]) public files;</span></span>
+<span class="line"><span>   // Owner => last files id</span></span>
+<span class="line"><span>   mapping(address => uint256) public lastIds;</span></span>
+<span class="line"><span>   // consider mapping hash to set of tags</span></span>
+<span class="line"><span>   </span></span>
+<span class="line"><span>   /// @dev main event for smart contract, needed for drizzle to update list of files</span></span>
+<span class="line"><span>   event fileAdded (uint256 fileid, string ipfshash, bytes32 _filename);</span></span>
+<span class="line"><span>   event tagsAdded (bytes32[5] tags);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>   /// @dev Add a file to the list</span></span>
+<span class="line"><span>   /// @param ipfshash an ipfshash returned after an image is finished uploaded</span></span>
+<span class="line"><span>   /// @param _filename name of file as a bytes32 as filenames should be short</span></span>
+<span class="line"><span>   /// @param tags array of bytes32 used for sorting/searching files (e,g. blockchain, school, textbook)</span></span>
+<span class="line"><span>   /// @notice updates mappings todos and lastIds</span></span>
+<span class="line"><span>   function addFile(string ipfshash, bytes32 _filename, bytes32[5] tags) public {</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>      File memory myFile = File(lastIds[msg.sender], ipfshash, _filename, tags,  msg.sender, now);</span></span>
+<span class="line"><span>      // explicitly store tags</span></span>
+<span class="line"><span>      myFile.tags = tags;</span></span>
+<span class="line"><span>      emit tagsAdded (myFile.tags);</span></span>
+<span class="line"><span>      // store new file in mapping</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      files[msg.sender][lastIds[msg.sender]] = myFile;</span></span>
+<span class="line"><span>      // emit event, also need for drizzle</span></span>
+<span class="line"><span>      emit fileAdded(lastIds[msg.sender],ipfshash,_filename);</span></span>
+<span class="line"><span>      if(lastIds[msg.sender] >= maxAmountOfFiles) lastIds[msg.sender] = 0;</span></span>
+<span class="line"><span>      else lastIds[msg.sender]++;</span></span>
+<span class="line"><span>   }</span></span>
+<span class="line"><span>   </span></span>
+<span class="line"><span>   /// @dev return the tags for a specific file </span></span>
+<span class="line"><span>   /// @param owner --- address of person who uploaded the file </span></span>
+<span class="line"><span>   /// @param _index --- the file desired, (first file uploaded, second , etc ...)</span></span>
+<span class="line"><span>   function getFileTags(address owner, uint256 _index) external view returns (bytes32[5]) {</span></span>
+<span class="line"><span>       return files[owner][_index].tags;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>This Solidity contract is an authentication contract that allows users to sign up, log in, update their information, and delete their accounts.</p>
+<p>The contract has a struct called User that stores a user’s name and the timestamp of when the user was created. It has a mapping called users that maps an address (the user’s address) to a User struct. It also has an array called allUsers that stores the addresses of all users that have signed up.</p>
+<p>The contract has four events: UserCreated, UserUpdated, UserDeleted, and UserLoggedIn. The UserCreated event is triggered when a new user is created and includes the user’s address, name, and creation timestamp as parameters. The UserUpdated event is triggered when a user updates their name and includes the user’s address and new name as parameters. The UserDeleted event is triggered when a user deletes their account and includes the user’s address as a parameter. The UserLoggedIn event is triggered when a user logs in and includes the user’s address as a parameter.</p>
+<p>The contract has four public functions: login, signup, update, and destroy. The login function allows a user to log in to their account by returning their name. The signup function allows a user to create a new account by providing their name. It checks if the user already exists and, if not, creates a new user and stores it in the users mapping. The update function allows a user to update their name by providing a new name. It updates the user’s name in the users mapping. The destroy function allows a user to delete their account. It removes the user’s information from the users mapping and emits the UserDeleted event.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pragma solidity ^0.4.24;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>/// @author David Li &#x3C;davidli012345@gmail.com></span></span>
+<span class="line"><span>/// @dev basic authentication contract</span></span>
+<span class="line"><span>/// @notice tracks list of all users</span></span>
+<span class="line"><span>contract Authentication {</span></span>
+<span class="line"><span>  struct User {</span></span>
+<span class="line"><span>    bytes32 name;</span></span>
+<span class="line"><span>    uint256 created_at;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  </span></span>
+<span class="line"><span>  event UserCreated(address indexed _address, bytes32 _name, uint256 _created_at);</span></span>
+<span class="line"><span>  event UserUpdated(address indexed _address, bytes32 _name);</span></span>
+<span class="line"><span>  event UserDeleted(address indexed _address);</span></span>
+<span class="line"><span>  </span></span>
+<span class="line"><span>  // make info public???</span></span>
+<span class="line"><span>  mapping (address => User) private users;</span></span>
+<span class="line"><span>  </span></span>
+<span class="line"><span>  // public array that contains list of all users that have registered </span></span>
+<span class="line"><span>  address[] public allUsers;</span></span>
+<span class="line"><span>  modifier onlyExistingUser {</span></span>
+<span class="line"><span>    // Check if user exists or terminate</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    require(!(users[msg.sender].name == 0x0));</span></span>
+<span class="line"><span>    _;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  modifier onlyValidName(bytes32 name) {</span></span>
+<span class="line"><span>    // Only valid names allowed</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    require(!(name == 0x0));</span></span>
+<span class="line"><span>    _;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  </span></span>
+<span class="line"><span>  /// @return username</span></span>
+<span class="line"><span>  function login() </span></span>
+<span class="line"><span>  public</span></span>
+<span class="line"><span>  view </span></span>
+<span class="line"><span>  onlyExistingUser</span></span>
+<span class="line"><span>  returns (bytes32) {</span></span>
+<span class="line"><span>    return (users[msg.sender].name);</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  </span></span>
+<span class="line"><span>  /// @param name the username to be created. </span></span>
+<span class="line"><span>  /// @dev checks if user exists</span></span>
+<span class="line"><span>  /// If yes return user name </span></span>
+<span class="line"><span>  /// If no, check if name was sent </span></span>
+<span class="line"><span>  /// If yes, create and return user </span></span>
+<span class="line"><span>  /// @return username of created user</span></span>
+<span class="line"><span>  function signup(bytes32 name)</span></span>
+<span class="line"><span>  public</span></span>
+<span class="line"><span>  payable</span></span>
+<span class="line"><span>  onlyValidName(name)</span></span>
+<span class="line"><span>  returns (bytes32) {</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if (users[msg.sender].name == 0x0)</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>        users[msg.sender].name = name;</span></span>
+<span class="line"><span>	    users[msg.sender].created_at = now;</span></span>
+<span class="line"><span>        </span></span>
+<span class="line"><span>        allUsers.push(msg.sender);</span></span>
+<span class="line"><span>        emit UserCreated(msg.sender,name,now);</span></span>
+<span class="line"><span>        return (users[msg.sender].name);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    return (users[msg.sender].name);</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  </span></span>
+<span class="line"><span>  /// @param name updating username</span></span>
+<span class="line"><span>  /// @dev updating user name </span></span>
+<span class="line"><span>  /// @return updated username </span></span>
+<span class="line"><span>  function update(bytes32 name)</span></span>
+<span class="line"><span>  public</span></span>
+<span class="line"><span>  payable</span></span>
+<span class="line"><span>  onlyValidName(name)</span></span>
+<span class="line"><span>  onlyExistingUser</span></span>
+<span class="line"><span>  returns (bytes32) {</span></span>
+<span class="line"><span>    // Update user name.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if (users[msg.sender].name != 0x0)</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>        users[msg.sender].name = name;</span></span>
+<span class="line"><span>        </span></span>
+<span class="line"><span>        emit UserUpdated(msg.sender,name);</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>        return (users[msg.sender].name);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  </span></span>
+<span class="line"><span>  /// @dev destroy existing username </span></span>
+<span class="line"><span>  function destroy () </span></span>
+<span class="line"><span>  public </span></span>
+<span class="line"><span>  onlyExistingUser {</span></span>
+<span class="line"><span>    delete users[msg.sender];</span></span>
+<span class="line"><span>    emit UserDeleted(msg.sender);</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>This code is a part of a Drizzle-React application. It exports a component called HomeContainer, which is connected to the Drizzle store using the drizzleConnect function from the drizzle-react library. The drizzleConnect function takes a component (in this case, the Home component) and a function called mapStateToProps as arguments and returns a new component that is connected to the Drizzle store.</p>
+<p>The mapStateToProps function maps the state of the Drizzle store (which includes the accounts, contracts, and drizzleStatus properties) to the props of the Home component. This allows the Home component to access the state of the Drizzle store and use it to display information about the Ethereum accounts and contracts in the application.</p>
+<p>The HomeContainer component will be re-rendered whenever the state of the Drizzle store changes, which allows it to stay up-to-date with the latest information from the Ethereum network.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>import Home from './Home'</span></span>
+<span class="line"><span>import { drizzleConnect } from 'drizzle-react'</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// May still need this even with data function to refresh component on updates for this contract.</span></span>
+<span class="line"><span>const mapStateToProps = state => {</span></span>
+<span class="line"><span>  return {</span></span>
+<span class="line"><span>    accounts: state.accounts,</span></span>
+<span class="line"><span>    contracts: state.contracts,</span></span>
+<span class="line"><span>    drizzleStatus: state.drizzleStatus</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>const HomeContainer = drizzleConnect(Home, mapStateToProps)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>export default HomeContainer</span></span></code></pre>
+<p>This code is a React component that displays a table of files stored in a Solidity contract. It receives the contract’s address and the owner’s address as props and uses them to retrieve information about the files from the contract.</p>
+<p>The component uses the Drizzle context and the drizzle-react library to interact with the contract. It has a constructor function that initializes the component’s state and binds the contract’s methods and properties to the component. It also has a componentDidMount lifecycle method that is called when the component is mounted to the DOM. In this method, the component retrieves the last ID of the files stored in the contract for the owner’s address and uses a loop to retrieve information about each file. It then stores the file information in a table and updates the component’s state with the table.</p>
+<p>The component has a timeConverter helper function that converts a Unix timestamp to a human-readable date and time string. It also has a loadTableRow function that generates a table row for a file by mapping the file’s information to table cells.</p>
+<p>Finally, the component has a render method that generates the HTML for the component. It uses the loadTableRow function to generate a table row for each file in the table and displays the table to the user.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>import React, { Component } from 'react'</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>import { IPFSURL } from '../util/constants'</span></span>
+<span class="line"><span>import EthAddress from './EthAddress'</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>import ErrorBoundary from './ErrorBoundary'</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>class FileTable extends Component {</span></span>
+<span class="line"><span>  /**</span></span>
+<span class="line"><span>     *</span></span>
+<span class="line"><span>     * @param {props} props the standard props object in react</span></span>
+<span class="line"><span>     * @param {context} context the drizzle context object used to manage contract state</span></span>
+<span class="line"><span>     */</span></span>
+<span class="line"><span>  constructor (props, context) {</span></span>
+<span class="line"><span>    super(props, context)</span></span>
+<span class="line"><span>    this.drizzle = this.context.drizzle</span></span>
+<span class="line"><span>    this.web3 = this.props.web3</span></span>
+<span class="line"><span>    this.contracts = this.props.contracts</span></span>
+<span class="line"><span>    this.fileListAddress = this.drizzle.contracts.FileList.methods</span></span>
+<span class="line"><span>    this.fileArray = []</span></span>
+<span class="line"><span>    this.state = {</span></span>
+<span class="line"><span>      lastIds: 0,</span></span>
+<span class="line"><span>      table: [],</span></span>
+<span class="line"><span>      fileOwnerAddress: this.props.fileOwnerAddress</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  componentDidMount () {</span></span>
+<span class="line"><span>    // consider using cacheCall to store the actual table, so that it updates</span></span>
+<span class="line"><span>    this.drizzle.contracts.FileList.methods.lastIds(this.state.fileOwnerAddress).call()</span></span>
+<span class="line"><span>      .then((lastIds) => {</span></span>
+<span class="line"><span>        this.setState({</span></span>
+<span class="line"><span>          lastIds: lastIds</span></span>
+<span class="line"><span>        })</span></span>
+<span class="line"><span>      })</span></span>
+<span class="line"><span>    var table = []</span></span>
+<span class="line"><span>    // looks like an struct within an array can't be stored so easily</span></span>
+<span class="line"><span>    // var tags = []</span></span>
+<span class="line"><span>    // improve error handling when zero files are added</span></span>
+<span class="line"><span>    this.drizzle.contracts.FileList.methods.lastIds(this.state.fileOwnerAddress).call()</span></span>
+<span class="line"><span>      .then((lastIds) => {</span></span>
+<span class="line"><span>        // eslint-disable-line no-loop-func</span></span>
+<span class="line"><span>        for (let i = 0; i &#x3C; lastIds; i++) {</span></span>
+<span class="line"><span>          this.drizzle.contracts.FileList.methods.files(this.state.fileOwnerAddress, i).call()</span></span>
+<span class="line"><span>            .then((fileItem) => {</span></span>
+<span class="line"><span>              // add file item to table, missing tags</span></span>
+<span class="line"><span>              fileItem.filename = this.drizzle.web3.utils.hexToUtf8(fileItem.filename)</span></span>
+<span class="line"><span>              fileItem.timestamp = this.timeConverter(fileItem.timestamp)</span></span>
+<span class="line"><span>              /** Can't return bytes from struct array, maybe split this into into another loop?. */</span></span>
+<span class="line"><span>              this.drizzle.contracts.FileList.methods.getFileTags(this.state.fileOwnerAddress, i).call()</span></span>
+<span class="line"><span>                .then((tags) => {</span></span>
+<span class="line"><span>                  // console.log(tags)</span></span>
+<span class="line"><span>                  // convert all non 0 bytes tag fields to hex</span></span>
+<span class="line"><span>                  for (var j = 0; j &#x3C; 5; j++) {</span></span>
+<span class="line"><span>                    if (tags[j] !== '0x0000000000000000000000000000000000000000000000000000000000000000') {</span></span>
+<span class="line"><span>                      // console.log(tags[j])</span></span>
+<span class="line"><span>                      tags[j] = this.drizzle.web3.utils.hexToUtf8(tags[j])</span></span>
+<span class="line"><span>                    } else {</span></span>
+<span class="line"><span>                      // console.log(tags[j])</span></span>
+<span class="line"><span>                      tags[j] = 'N/A'</span></span>
+<span class="line"><span>                    }</span></span>
+<span class="line"><span>                  }</span></span>
+<span class="line"><span>                  fileItem.tags = tags</span></span>
+<span class="line"><span>                  console.log(tags)</span></span>
+<span class="line"><span>                })</span></span>
+<span class="line"><span>              // console.log(fileItem)</span></span>
+<span class="line"><span>              // add fileItem to table</span></span>
+<span class="line"><span>              table.push(fileItem)</span></span>
+<span class="line"><span>            })</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>      })</span></span>
+<span class="line"><span>    // consider modification all timestamps (now => unix timestamp)</span></span>
+<span class="line"><span>    // also modify tags to shorter them to string</span></span>
+<span class="line"><span>    // so have another function cleanup table and then set this.fileArray</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    this.fileArray = table</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  timeConverter (unixTimeStamp) {</span></span>
+<span class="line"><span>    var a = new Date(unixTimeStamp * 1000)</span></span>
+<span class="line"><span>    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']</span></span>
+<span class="line"><span>    var year = a.getFullYear()</span></span>
+<span class="line"><span>    var month = months[a.getMonth()]</span></span>
+<span class="line"><span>    var date = a.getDate()</span></span>
+<span class="line"><span>    var hour = a.getHours()</span></span>
+<span class="line"><span>    var min = a.getMinutes()</span></span>
+<span class="line"><span>    var sec = a.getSeconds()</span></span>
+<span class="line"><span>    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec</span></span>
+<span class="line"><span>    return time</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  loadTableRow (index) {</span></span>
+<span class="line"><span>    this.drizzle.contracts.FileList.methods.files(this.state.fileOwnerAddress, 0).call()</span></span>
+<span class="line"><span>      .then((fileItem) => {</span></span>
+<span class="line"><span>        return fileItem</span></span>
+<span class="line"><span>      })</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  render () {</span></span>
+<span class="line"><span>    // See https://menubar.io/reactjs-tables</span></span>
+<span class="line"><span>    return (</span></span>
+<span class="line"><span>      &#x3C;div className='container'></span></span>
+<span class="line"><span>        &#x3C;ErrorBoundary></span></span>
+<span class="line"><span>          &#x3C;h2> Files Table &#x3C;/h2></span></span>
+<span class="line"><span>          &#x3C;table className='table'></span></span>
+<span class="line"><span>            &#x3C;thead></span></span>
+<span class="line"><span>              &#x3C;tr></span></span>
+<span class="line"><span>                &#x3C;th>&#x3C;i className='fas fa-file' /> FileName&#x3C;/th></span></span>
+<span class="line"><span>                &#x3C;th>&#x3C;i className='fas fa-user' /> Owner Eth Address&#x3C;/th></span></span>
+<span class="line"><span>                &#x3C;th>&#x3C;abbr title='Unique Identifier on the interplanetery file system'> &#x3C;i className='fas fa-hashtag' /> Ipfs Hash &#x3C;/abbr> &#x3C;/th></span></span>
+<span class="line"><span>                &#x3C;th>&#x3C;abbr title='Unix Timestamp'> &#x3C;i className='fas fa-clock' />  TimeStamp&#x3C;/abbr>&#x3C;/th></span></span>
+<span class="line"><span>                &#x3C;th>&#x3C;i className='fas fa-tag' /> Tags&#x3C;/th></span></span>
+<span class="line"><span>              &#x3C;/tr></span></span>
+<span class="line"><span>            &#x3C;/thead></span></span>
+<span class="line"><span>            &#x3C;tbody></span></span>
+<span class="line"><span>              {this.fileArray !== undefined &#x26;&#x26;</span></span>
+<span class="line"><span>                 this.fileArray.map(ipfsRow =></span></span>
+<span class="line"><span>                   &#x3C;tr></span></span>
+<span class="line"><span>                     &#x3C;td key={ipfsRow.filename}>{ipfsRow.filename}&#x3C;/td></span></span>
+<span class="line"><span>                     &#x3C;td></span></span>
+<span class="line"><span>                       &#x3C;EthAddress</span></span>
+<span class="line"><span>                         address={ipfsRow.owner}</span></span>
+<span class="line"><span>                         visibleCharacters={12}</span></span>
+<span class="line"><span>                         networkId={this.props.web3.networkId === undefined ? 1 : this.props.web3.networkId}</span></span>
+<span class="line"><span>                         etherscan</span></span>
+<span class="line"><span>                       /></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>                     &#x3C;/td></span></span>
+<span class="line"><span>                     &#x3C;td>&#x3C;a href={IPFSURL + ipfsRow.ipfshash} target='_blank'></span></span>
+<span class="line"><span>                        View File &#x3C;/a></span></span>
+<span class="line"><span>                     &#x3C;/td></span></span>
+<span class="line"><span>                     &#x3C;td>{ipfsRow.timestamp}&#x3C;/td></span></span>
+<span class="line"><span>                     {/** Return inputted Tags */</span></span>
+<span class="line"><span>                       (ipfsRow.tags !== undefined &#x26;&#x26; ipfsRow.tags.length > 3) &#x26;&#x26;</span></span>
+<span class="line"><span>                       &#x3C;td></span></span>
+<span class="line"><span>                         &#x3C;div className='tags'></span></span>
+<span class="line"><span>                           &#x3C;span className='tag is-success'>{ipfsRow.tags[0]}&#x3C;/span></span></span>
+<span class="line"><span>                           &#x3C;span className='tag is-info'>{ipfsRow.tags[1]}&#x3C;/span></span></span>
+<span class="line"><span>                           &#x3C;span className='tag is-danger'>{ipfsRow.tags[2]}&#x3C;/span></span></span>
+<span class="line"><span>                           &#x3C;span className='tag is-link'>{ipfsRow.tags[3]}&#x3C;/span></span></span>
+<span class="line"><span>                           &#x3C;span className='tag is-primary'>{ipfsRow.tags[4]}&#x3C;/span></span></span>
+<span class="line"><span>                         &#x3C;/div></span></span>
+<span class="line"><span>                       &#x3C;/td></span></span>
+<span class="line"><span>                     }</span></span>
+<span class="line"><span>                   &#x3C;/tr></span></span>
+<span class="line"><span>                 )}</span></span>
+<span class="line"><span>            &#x3C;/tbody></span></span>
+<span class="line"><span>          &#x3C;/table></span></span>
+<span class="line"><span>        &#x3C;/ErrorBoundary></span></span>
+<span class="line"><span>      &#x3C;/div></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    )</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/rust/getting_started_with_logging_in_rust"> Using the `log` Crate in Rust </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/java/publishing_package_for_java"> Publishing a java package to github and jitpack </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

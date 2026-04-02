@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Using python to scrap data for a pokedex - Dhanushka&#39;s Blog</title><meta name="description" content="Using the beta graphql api for pokeapi to get all the pokemon data"><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="Using python to scrap data for a pokedex"><meta property="og:description" content="Using the beta graphql api for pokeapi to get all the pokemon data"><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/DALL·E 2022-12-25 21.48.03 - teddy bear on coach looking out the window at a tree.png"><link rel="canonical" href="undefined/posts/tech/flutter/scrapping_data_for_pokedex"><meta property="og:url" content="undefined/posts/tech/flutter/scrapping_data_for_pokedex"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/DALL·E 2022-12-25 21.48.03 - teddy bear on coach looking out the window at a tree.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">8 min read</div><h1 class="text-center text-3xl font-bold">Using python to scrap data for a pokedex</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->May 7, 2023</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/graphql" style="padding-right:3px"><category>graphql</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/pokeapi" style="padding-right:3px"><category>pokeapi</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-green-400 text-green-900"><a href="/tags/python" style="padding-right:3px"><category>python</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/DALL·E 2022-12-25 21.48.03 - teddy bear on coach looking out the window at a tree.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <p>We can use the new graphql pokeapi to easily get all the pokemon of interest, and then use the unoffical bulbapedia api (mediawiki api) to grab the images. This is a quick and dirty script to do this. I will probably make a more robust version later, but this is good enough for now.</p>
+<p>Here are some advantages of using GraphQL:</p>
+<ol>
+<li>
+<p>Flexibility: GraphQL allows the client to specify exactly which fields it wants in the response, and the server only returns those fields. This means that the client can request only the data it needs, which can be more efficient than receiving a fixed set of data from a REST API.</p>
+</li>
+<li>
+<p>Strongly-typed: GraphQL has a strong type system that allows the server to specify the types of data it can return, and the client to specify the types of data it expects to receive. This can help prevent errors and make it easier to write code that relies on the API.</p>
+</li>
+<li>
+<p>Easier to evolve: GraphQL APIs can be evolved more easily because the client has more control over which fields it receives. This means that new fields can be added to the API without breaking existing clients, as long as the new fields are optional.</p>
+</li>
+<li>
+<p>Better performance: Because GraphQL allows the client to specify exactly which fields it wants, the server can avoid doing unnecessary work and return the data more efficiently. This can lead to better performance compared to REST APIs, which may return a fixed set of data that includes fields the client doesn’t need.</p>
+</li>
+<li>
+<p>Strong community: GraphQL has a strong and growing community of developers and tools that support it, which can make it easier to find resources and get help when needed.</p>
+</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>import requests</span></span>
+<span class="line"><span>import json</span></span>
+<span class="line"><span>import os</span></span>
+<span class="line"><span>import urllib.parse</span></span>
+<span class="line"><span>from bs4 import BeautifulSoup</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>query = """</span></span>
+<span class="line"><span>query samplePokeAPIquery {</span></span>
+<span class="line"><span>  pokemon: pokemon_v2_pokemon {</span></span>
+<span class="line"><span>    name</span></span>
+<span class="line"><span>    id</span></span>
+<span class="line"><span>    pokemon_species_id</span></span>
+<span class="line"><span>    pokemon_v2_pokemontypes {</span></span>
+<span class="line"><span>      pokemon_v2_type {</span></span>
+<span class="line"><span>        name</span></span>
+<span class="line"><span>        move_damage_class_id</span></span>
+<span class="line"><span>        generation_id</span></span>
+<span class="line"><span>        id</span></span>
+<span class="line"><span>      }</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>"""</span></span>
+<span class="line"><span>def get_data():</span></span>
+<span class="line"><span>    url = "https://beta.pokeapi.co/graphql/v1beta"</span></span>
+<span class="line"><span>    headers = {</span></span>
+<span class="line"><span>        "Content-Type": "application/json",</span></span>
+<span class="line"><span>        "X-Method-Used": "graphiql",</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    response = requests.post(url, json={"query": query}, headers=headers, timeout=10)</span></span>
+<span class="line"><span>    data = response.json()</span></span>
+<span class="line"><span>    # save in scripts</span></span>
+<span class="line"><span>    with open("raw_poke_data.json", "w") as f:</span></span>
+<span class="line"><span>        f.write(json.dumps(data))</span></span>
+<span class="line"><span>    return data</span></span></code></pre>
+<p>This script is using the requests library to send a GraphQL query to the PokeAPI (a RESTful API for Pokémon data) and then saving the response to a file called raw_poke_data.json. The GraphQL query being sent to the API requests data about Pokémon, including their name, ID, and the types of Pokémon they are. The requests.post function is used to send the query to the API, and the response is saved as a JSON object in the data variable.</p>
+<p>The headers variable is a dictionary that contains information about the request being sent to the API. In this case, the Content-Type and X-Method-Used headers are being set. The Content-Type header specifies the format of the request body (in this case, application/json), and the X-Method-Used header specifies that the GraphiQL interface was used to generate the query.</p>
+<p>Finally, the json.dumps function is used to convert the data object to a JSON string, which is then written to the raw_poke_data.json file using the f.write method.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>def parse_bulbagarden_by_pokemon_name(pokemon_name: str):</span></span>
+<span class="line"><span>    print(f"Getting image for {pokemon_name}")</span></span>
+<span class="line"><span>    params = {</span></span>
+<span class="line"><span>        "action": "parse",</span></span>
+<span class="line"><span>        "format": "json",</span></span>
+<span class="line"><span>        "page": f"{pokemon_name}_(Pokémon)",</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    json_page = requests.get(f"https://bulbapedia.bulbagarden.net/w/api.php", params=params, timeout=20).json()</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    # check for error propxerty</span></span>
+<span class="line"><span>    if "error" in json_page:</span></span>
+<span class="line"><span>        print(json_page["error"])</span></span>
+<span class="line"><span>        raise AssertionError("Error in parsing bulbagarden")</span></span>
+<span class="line"><span>    html = json_page["parse"]["text"]["*"]</span></span>
+<span class="line"><span>    soup = BeautifulSoup(html, "html.parser")</span></span>
+<span class="line"><span>    # find all images in soup and get the one with the pokemon name</span></span>
+<span class="line"><span>    images = soup.find_all("img")</span></span>
+<span class="line"><span>    # strip all non-alphanumeric characters from pokemon name</span></span>
+<span class="line"><span>    clean_name = "".join([char for char in pokemon_name if char.isalnum()])</span></span>
+<span class="line"><span>    for image in images:</span></span>
+<span class="line"><span>        if clean_name.upper() in image["src"].upper():</span></span>
+<span class="line"><span>            return image["src"]</span></span>
+<span class="line"><span>        else:</span></span>
+<span class="line"><span>            # return one if it is 250px</span></span>
+<span class="line"><span>            if "250px" in image["src"]:</span></span>
+<span class="line"><span>                return image["src"]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>if __name__ == "__main__":</span></span>
+<span class="line"><span>    # if raw_poke_data.json is not present, get data from pokeapi</span></span>
+<span class="line"><span>    if not os.path.exists("pokemon_data.json"):</span></span>
+<span class="line"><span>        data = get_data()</span></span>
+<span class="line"><span>    else:</span></span>
+<span class="line"><span>        # load</span></span>
+<span class="line"><span>        with open("pokemon_data.json", "r") as f:</span></span>
+<span class="line"><span>            data = json.loads(f.read())</span></span>
+<span class="line"><span>    for pokemon in data["data"]["pokemon"]:</span></span>
+<span class="line"><span>        if "img_src" in pokemon and pokemon["img_src"] != None:</span></span>
+<span class="line"><span>            continue</span></span>
+<span class="line"><span>        # adjust pokmeon name by removing everything past -</span></span>
+<span class="line"><span>        adjusted_name = adjust_pokemon_name(pokemon["name"])</span></span>
+<span class="line"><span>        if adjusted_name == None:</span></span>
+<span class="line"><span>            print(f"Could not find image for {pokemon['name']}")</span></span>
+<span class="line"><span>            continue</span></span>
+<span class="line"><span>        img_src = parse_bulbagarden_by_pokemon_name(adjusted_name)</span></span>
+<span class="line"><span>        # save image url in pokemon</span></span>
+<span class="line"><span>        if img_src == None:</span></span>
+<span class="line"><span>            print(f"Could not find image for {pokemon['name']}")</span></span>
+<span class="line"><span>            raise AssertionError("Could not find image")</span></span>
+<span class="line"><span>        pokemon["img_src"] = img_src</span></span>
+<span class="line"><span>        with open("pokemon_data.json", "w") as f:</span></span>
+<span class="line"><span>            f.write(json.dumps(data))</span></span></code></pre>
+<p>This script is using the parse_bulbagarden_by_pokemon_name function to get the image URL for a Pokémon with a given name. It first makes an HTTP GET request to the Bulbapedia API with the given Pokémon name as a parameter. The response is a JSON object that contains information about the requested Pokémon page on Bulbapedia.</p>
+<p>The script then uses the BeautifulSoup library to parse the HTML of the Pokémon page, searches for all img tags in the HTML, and returns the URL of the first image that matches the given Pokémon name or that has a 250px width. If no matching image is found, the function returns None.</p>
+<p>The script then checks if an “img_src” field is present in the Pokémon data and, if not, calls the parse_bulbagarden_by_pokemon_name function to get the image URL for the Pokémon. If the image URL is successfully retrieved, it is added to the Pokémon data and the updated data is saved to the “pokemon_data.json” file. If no image URL is found, an error message is printed.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>def adjust_pokemon_name(pokemon_name: str):</span></span>
+<span class="line"><span>    # remove everything after -</span></span>
+<span class="line"><span>    if pokemon_name == "nidoran-f":</span></span>
+<span class="line"><span>        return "nidoran♀"</span></span>
+<span class="line"><span>    if pokemon_name == "nidoran-m":</span></span>
+<span class="line"><span>        return "nidoran♂"</span></span>
+<span class="line"><span>    if pokemon_name == "farfetchd":</span></span>
+<span class="line"><span>        # farfetch'd, need to encode '</span></span>
+<span class="line"><span>        return "farfetch%27d"</span></span>
+<span class="line"><span>    if pokemon_name == "mr-mime":</span></span>
+<span class="line"><span>        return "Mr._Mime"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "mime-jr":</span></span>
+<span class="line"><span>        return "Mime_Jr."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "deoxys-normal":</span></span>
+<span class="line"><span>        return "Deoxys"</span></span>
+<span class="line"><span>    if pokemon_name == "wormadam-plant":</span></span>
+<span class="line"><span>        return "Wormadam"</span></span>
+<span class="line"><span>    if pokemon_name == "giratina-altered":</span></span>
+<span class="line"><span>        return "Giratina"</span></span>
+<span class="line"><span>    if pokemon_name == "flabebe":</span></span>
+<span class="line"><span>        return "Flabébé"</span></span>
+<span class="line"><span>    if pokemon_name == "meowstic-male":</span></span>
+<span class="line"><span>        return "Meowstic"</span></span>
+<span class="line"><span>    if pokemon_name == "Aegislash":</span></span>
+<span class="line"><span>        return "Aegislash"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "type-null":</span></span>
+<span class="line"><span>        return "Type:_Null"</span></span>
+<span class="line"><span>    if pokemon_name == "minior-red-meteor":</span></span>
+<span class="line"><span>        return "Minior"</span></span>
+<span class="line"><span>    if pokemon_name == "mimikyu-disguised":</span></span>
+<span class="line"><span>        return "Mimikyu"</span></span>
+<span class="line"><span>    if pokemon_name == "jangmo-o":</span></span>
+<span class="line"><span>        return "Jangmo-o"</span></span>
+<span class="line"><span>    if pokemon_name == "hakamo-o":</span></span>
+<span class="line"><span>        return "Hakamo-o"</span></span>
+<span class="line"><span>    if pokemon_name == "kommo-o":</span></span>
+<span class="line"><span>        return "Kommo-o"</span></span>
+<span class="line"><span>    if pokemon_name == "tapu-koko":</span></span>
+<span class="line"><span>        return "Tapu_Koko"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "tapu-lele":</span></span>
+<span class="line"><span>        return "Tapu_Lele"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "tapu-bulu":</span></span>
+<span class="line"><span>        return "Tapu_Bulu"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "tapu-fini":</span></span>
+<span class="line"><span>        return "Tapu_Fini"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "toxtricity-amped":</span></span>
+<span class="line"><span>        return "Toxtricity"</span></span>
+<span class="line"><span>    if pokemon_name == "sirfetchd":</span></span>
+<span class="line"><span>        return "Sirfetch'd"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "mr-rime":</span></span>
+<span class="line"><span>        return "Mr._Rime"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "eiscue-ice":</span></span>
+<span class="line"><span>        return "Eiscue"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "indeedee-male":</span></span>
+<span class="line"><span>        return "Indeedee"</span></span>
+<span class="line"><span>    if pokemon_name == "morpeko-full-belly":</span></span>
+<span class="line"><span>        return "Morpeko"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "urshifu-single-strike":</span></span>
+<span class="line"><span>        return "Urshifu"</span></span>
+<span class="line"><span>    if pokemon_name == "zacian-hero":</span></span>
+<span class="line"><span>        return "Zacian"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "basculegion-male":</span></span>
+<span class="line"><span>        return "Basculegion"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "enamorus-incarnate":</span></span>
+<span class="line"><span>        return "Enamorus"</span></span>
+<span class="line"><span>    </span></span>
+<span class="line"><span>    if pokemon_name == "deoxys-attack":</span></span>
+<span class="line"><span>        return None</span></span>
+<span class="line"><span>    if pokemon_name == "deoxys-defense":</span></span>
+<span class="line"><span>        return None</span></span>
+<span class="line"><span>    if pokemon_name == "deoxys-speed":</span></span>
+<span class="line"><span>        return None</span></span>
+<span class="line"><span>    if pokemon_name == "wormadam-sandy":</span></span>
+<span class="line"><span>        return None</span></span>
+<span class="line"><span>    if pokemon_name == "wormadam-trash":</span></span>
+<span class="line"><span>        return None</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "shaymin-sky":</span></span>
+<span class="line"><span>        return "shaymin"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "giratina-origin":</span></span>
+<span class="line"><span>        return None</span></span>
+<span class="line"><span>    if pokemon_name == "rotom-heat":</span></span>
+<span class="line"><span>        return "rotom"</span></span>
+<span class="line"><span>    if pokemon_name == "rotom-wash":</span></span>
+<span class="line"><span>        return None</span></span>
+<span class="line"><span>    if pokemon_name == "rotom-frost":</span></span>
+<span class="line"><span>        return None</span></span>
+<span class="line"><span>    if pokemon_name == "rotom-fan":</span></span>
+<span class="line"><span>        return None</span></span>
+<span class="line"><span>    if pokemon_name == "rotom-mow":</span></span>
+<span class="line"><span>        return None</span></span>
+<span class="line"><span>    if pokemon_name == "castform-sunny":</span></span>
+<span class="line"><span>        return "castform"</span></span>
+<span class="line"><span>    if pokemon_name == "castform-rainy":</span></span>
+<span class="line"><span>        return None</span></span>
+<span class="line"><span>    if pokemon_name == "castform-snowy":</span></span>
+<span class="line"><span>        return None</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "basculin-blue-striped":</span></span>
+<span class="line"><span>        return "basculin"</span></span>
+<span class="line"><span>    if pokemon_name == "darmanitan-zen":</span></span>
+<span class="line"><span>        return "darmanitan"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "meloetta-pirouette":</span></span>
+<span class="line"><span>        return "meloetta"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if pokemon_name == "tornadus-therian":</span></span>
+<span class="line"><span>        return "Tornadus"</span></span>
+<span class="line"><span>    if pokemon_name == "thundurus-therian":</span></span>
+<span class="line"><span>        return "Thundurus"</span></span>
+<span class="line"><span>    if pokemon_name == "landorus-therian":</span></span>
+<span class="line"><span>        return "Landorus"</span></span>
+<span class="line"><span>    if pokemon_name == "kyurem-black":</span></span>
+<span class="line"><span>        return "Kyurem"</span></span>
+<span class="line"><span>    if pokemon_name == "kyurem-white":</span></span>
+<span class="line"><span>        return None</span></span>
+<span class="line"><span>    </span></span>
+<span class="line"><span>    if "-" in pokemon_name:</span></span>
+<span class="line"><span>        # capitalize first letter split by -</span></span>
+<span class="line"><span>        adjusted_name = pokemon_name.split("-")</span></span>
+<span class="line"><span>        adjusted_name = [name.capitalize() for name in adjusted_name]</span></span>
+<span class="line"><span>        # adjusted_name = "-".join(adjusted_name)</span></span>
+<span class="line"><span>        return None</span></span>
+<span class="line"><span>    # capitalize first letter</span></span>
+<span class="line"><span>    pokemon_name = pokemon_name.capitalize()</span></span>
+<span class="line"><span>    return pokemon_name</span></span></code></pre>
+<p>This function takes a Pokémon name as input and returns an adjusted version of the name, with certain special characters or modifications added or removed. The adjusted name is intended to be used as the page name for the Pokémon on the Bulbapedia website.</p>
+<p>The function first checks for certain Pokémon names that have special characters or require specific formatting and returns the adjusted name accordingly. For example, if the input is “nidoran-f”, the function returns “nidoran♀”. If the input is “farfetchd”, the function returns “farfetch%27d”, with the single quote character encoded as “%27”.</p>
+<p>If the input Pokémon name does not require any special adjustment, the function returns the input name as is. If the input name is one of the Pokémon names that are not supported by the Bulbapedia API, the function returns None.</p>
+<p>Overall, we adjust the names from the pokeapi for the bulbapedia api. We also remove the names that are not duplicated by the bulbapedia api.</p>
+<p>In the next article will we use the data generated here to display in a pokedex flutter app.</p>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/cpp/boost_your_c_programming_with_boost_library"> Boost Your C++ Programming with Boost Library </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2023/understanding_the_net_standard_library"> Understanding the .NET Standard Library </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>
