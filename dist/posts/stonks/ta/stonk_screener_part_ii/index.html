@@ -1,0 +1,318 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>How I implemented a stock screener in python Part II - Dhanushka&#39;s Blog</title><meta name="description" content="A stock screener is a tool that helps you find stocks that meet your criteria. In this post I will show you how I implemented a stock screener in python."><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="How I implemented a stock screener in python Part II"><meta property="og:description" content="A stock screener is a tool that helps you find stocks that meet your criteria. In this post I will show you how I implemented a stock screener in python."><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/2994756722.png"><link rel="canonical" href="undefined/posts/stonks/ta/stonk_screener_part_ii"><meta property="og:url" content="undefined/posts/stonks/ta/stonk_screener_part_ii"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/2994756722.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">8 min read</div><h1 class="text-center text-3xl font-bold">How I implemented a stock screener in python Part II</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Apr 18, 2024</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-green-400 text-green-900"><a href="/tags/python" style="padding-right:3px"><category>python</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/jsx" style="padding-right:3px"><category>jsx</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-red-400 text-red-900"><a href="/tags/react" style="padding-right:3px"><category>react</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/2994756722.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <p>The previous post focused on how to extract ticker symbols using Python, with a code example provided to illustrate the process. The code example demonstrated how to use the Pandas library to read data from a CSV file and apply filters to the data to extract relevant ticker symbols.
+This post covers the logic used in my screeners. The logic is written in Python and is used to filter out stocks that do not meet the criteria of the screener. The logic is stored in a JSON file and is used by the Python code to filter out stocks that do not meet the criteria of the screener.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> {</span></span>
+<span class="line"><span>  "name": "High low Technology Stocks",</span></span>
+<span class="line"><span>  "type": "high_low",</span></span>
+<span class="line"><span>  "tsx": {</span></span>
+<span class="line"><span>    "tickers_config": {</span></span>
+<span class="line"><span>      "sectors": "technology"</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  },</span></span>
+<span class="line"><span>  "cse": {</span></span>
+<span class="line"><span>    "tickers_config": {</span></span>
+<span class="line"><span>      "industries": ["CleanTech", "Technology"]</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  },</span></span>
+<span class="line"><span>  "settings": {</span></span>
+<span class="line"><span>    "percent_cutoff": 0.35,</span></span>
+<span class="line"><span>    "day_cutoff": 3</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>} </span></span></code></pre>
+<p>This is a configuration file for a program or algorithm that focuses on identifying high and low performing technology stocks on the Toronto Stock Exchange (TSX) and the Canadian Securities Exchange (CSE).</p>
+<p>The program uses the tickers_config settings to filter out stocks in specific sectors and industries. For the TSX, it only considers stocks in the technology sector, while for the CSE, it considers stocks in both CleanTech and Technology industries.</p>
+<p>The settings section defines the parameters used by the algorithm to determine which stocks are considered high or low performing. The percent_cutoff parameter is set to 0.35, which means that stocks with a daily percent change greater than or equal to 0.35% will be considered high performing, while stocks with a daily percent change less than or equal to -0.35% will be considered low performing. The day_cutoff parameter is set to 3, which means that only stocks that have met the high or low performing criteria for at least 3 days will be included in the program’s final output.</p>
+<p>Overall, this configuration file sets the criteria and filters for a program to identify high and low performing technology stocks on the TSX and CSE based on their percent change over a specified number of days.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> """</span></span>
+<span class="line"><span>Scans for stocks with a change from the low to high with a high number</span></span>
+<span class="line"><span>"""</span></span>
+<span class="line"><span>import yfinance as yf</span></span>
+<span class="line"><span>import numpy as np</span></span>
+<span class="line"><span>import sys</span></span>
+<span class="line"><span>import os</span></span>
+<span class="line"><span>import dateutil.relativedelta</span></span>
+<span class="line"><span>import pandas as pd</span></span>
+<span class="line"><span>import glob</span></span>
+<span class="line"><span>import json</span></span>
+<span class="line"><span>import multiprocessing</span></span>
+<span class="line"><span>from datetime import datetime, date</span></span>
+<span class="line"><span>from stock_screener.util import post_webhook</span></span>
+<span class="line"><span>from stock_screener.interfaces import ScannerInterface</span></span>
+<span class="line"><span>import time</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>class Scanner(ScannerInterface):</span></span>
+<span class="line"><span>    def __init__(self, tickers, cfg):</span></span>
+<span class="line"><span>        self.tickers = tickers</span></span>
+<span class="line"><span>        self.cfg = cfg</span></span>
+<span class="line"><span>        self.search_settings = cfg.get("settings", {})</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    def get_data(self, ticker: str, day_cutoff=5) -> pd.DataFrame:</span></span>
+<span class="line"><span>        """</span></span>
+<span class="line"><span>        Grab daily days for high and low</span></span>
+<span class="line"><span>        """</span></span>
+<span class="line"><span>        current_date = datetime.strptime(date.today().strftime("%Y-%m-%d"), "%Y-%m-%d")</span></span>
+<span class="line"><span>        past_date = current_date - dateutil.relativedelta.relativedelta(days=day_cutoff)</span></span>
+<span class="line"><span>        sys.stdout = open(os.devnull, "w")</span></span>
+<span class="line"><span>        data = yf.download(ticker, past_date, current_date)</span></span>
+<span class="line"><span>        sys.stdout = sys.__stdout__</span></span>
+<span class="line"><span>        return data</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    def find_anomaly(self, data: pd.DataFrame, PERCENT_CUTOFF=0.40) -> dict:</span></span>
+<span class="line"><span>        max_value = data["High"].max()</span></span>
+<span class="line"><span>        min_value = data["Low"].min()</span></span>
+<span class="line"><span>        value_diff = abs(max_value - min_value)</span></span>
+<span class="line"><span>        max_per_diff = value_diff / max_value</span></span>
+<span class="line"><span>        min_per_diff = value_diff / min_value</span></span>
+<span class="line"><span>        if max_per_diff >= PERCENT_CUTOFF or min_per_diff >= PERCENT_CUTOFF:</span></span>
+<span class="line"><span>            Direction = "N/A"</span></span>
+<span class="line"><span>            try:</span></span>
+<span class="line"><span>                if data.empty == False:</span></span>
+<span class="line"><span>                    # first open</span></span>
+<span class="line"><span>                    d_open = data["Open"].iloc[1]</span></span>
+<span class="line"><span>                    # last close</span></span>
+<span class="line"><span>                    d_close = data["Close"].iloc[-1]</span></span>
+<span class="line"><span>                    Direction = "up" if d_close > d_open else "down"</span></span>
+<span class="line"><span>            except Exception as e:</span></span>
+<span class="line"><span>                print(e)</span></span>
+<span class="line"><span>            d = dict(</span></span>
+<span class="line"><span>                Max=max_value,</span></span>
+<span class="line"><span>                Min=min_value,</span></span>
+<span class="line"><span>                Diff=value_diff,</span></span>
+<span class="line"><span>                MaxPercentDiff=max_per_diff,</span></span>
+<span class="line"><span>                MinPercentDiff=min_per_diff,</span></span>
+<span class="line"><span>                Direction=Direction,</span></span>
+<span class="line"><span>            )</span></span>
+<span class="line"><span>        else:</span></span>
+<span class="line"><span>            d = dict(Max=max_value, Min=min_value, Diff=value_diff)</span></span>
+<span class="line"><span>        return d</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    def get_match(self, ticker):</span></span>
+<span class="line"><span>        """</span></span>
+<span class="line"><span>        get match for ticker</span></span>
+<span class="line"><span>        for the past five days</span></span>
+<span class="line"><span>        """</span></span>
+<span class="line"><span>        PERCENT_CUTOFF = self.search_settings.get("percent_cutoff", 0.35)</span></span>
+<span class="line"><span>        DAY_CUTOFF = self.search_settings.get("day_cutoff", 5)</span></span>
+<span class="line"><span>        ticker_data = self.get_data(ticker, DAY_CUTOFF)</span></span>
+<span class="line"><span>        d = self.find_anomaly(ticker_data, PERCENT_CUTOFF)</span></span>
+<span class="line"><span>        if d.get("MaxPercentDiff") or d.get("MinPercentDiff"):</span></span>
+<span class="line"><span>            d["Ticker"] = ticker</span></span>
+<span class="line"><span>            d["Max % Diff"] = round(d["MaxPercentDiff"], 2)</span></span>
+<span class="line"><span>            d["Min % Diff"] = round(d["MinPercentDiff"], 2)</span></span>
+<span class="line"><span>            d["Diff"] = round(d["Diff"], 2)</span></span>
+<span class="line"><span>            return d</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    def main_func(self):</span></span>
+<span class="line"><span>        """</span></span>
+<span class="line"><span>        Main function for the unusual volume scanner</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        .. todo</span></span>
+<span class="line"><span>          Determine if this is the best place to send discord messages</span></span>
+<span class="line"><span>          probably with seperation of concerns, no.</span></span>
+<span class="line"><span>        """</span></span>
+<span class="line"><span>        cpus = multiprocessing.cpu_count()</span></span>
+<span class="line"><span>        title = self.cfg.get("name", "")</span></span>
+<span class="line"><span>        with multiprocessing.Pool(cpus) as p:</span></span>
+<span class="line"><span>            positive_scans = p.map(self.get_match, self.tickers)</span></span>
+<span class="line"><span>        post_webhook(f"**{title}**")</span></span>
+<span class="line"><span>        not_none_values = filter(None.__ne__, positive_scans)</span></span>
+<span class="line"><span>        list_of_values = list(not_none_values)</span></span>
+<span class="line"><span>        post_webhook(f"Length: **{len(list_of_values)}**")</span></span>
+<span class="line"><span>        content_df = pd.DataFrame(list_of_values).reindex(</span></span>
+<span class="line"><span>            columns=[</span></span>
+<span class="line"><span>                "Ticker",</span></span>
+<span class="line"><span>                "Max",</span></span>
+<span class="line"><span>                "Min",</span></span>
+<span class="line"><span>                "Diff",</span></span>
+<span class="line"><span>                "MaxPercentDiff",</span></span>
+<span class="line"><span>                "MinPercentDiff",</span></span>
+<span class="line"><span>                "Direction",</span></span>
+<span class="line"><span>            ]</span></span>
+<span class="line"><span>        )</span></span>
+<span class="line"><span>        if content_df.empty == True:</span></span>
+<span class="line"><span>            post_webhook(f"**{title}**")</span></span>
+<span class="line"><span>            return</span></span>
+<span class="line"><span>        content_str = content_df.to_string(index=False)</span></span>
+<span class="line"><span>        # move later, just return df</span></span>
+<span class="line"><span>        for chunk in [</span></span>
+<span class="line"><span>            content_str[i : i + 1950] for i in range(0, len(content_str), 1950)</span></span>
+<span class="line"><span>        ]:</span></span>
+<span class="line"><span>            time.sleep(2)</span></span>
+<span class="line"><span>            post_webhook(f"```{chunk}```")</span></span>
+<span class="line"><span>        return content_df</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>if __name__ == "__main__":</span></span>
+<span class="line"><span>    test_tickers = ["IP.CN", "NTAR.CN", "API.CN", "IGN.CN"]</span></span>
+<span class="line"><span>    cfg = {}</span></span>
+<span class="line"><span>    scanner = Scanner(test_tickers, cfg)</span></span>
+<span class="line"><span>    ip = scanner.main_func()</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>This code Implements the Scanner interface for finding high and low technology stocks based on a given percentage cutoff and day cutoff. It imports several packages, including yfinance for downloading stock data, numpy, sys, os, dateutil.relativedelta, pandas, glob, json, multiprocessing, and time.</p>
+<p>The Scanner class has three methods: <strong>init</strong>, get_data, and find_anomaly.</p>
+<p><strong>init</strong> initializes the class with a list of tickers to scan and a configuration dictionary (cfg).</p>
+<p>get_data takes a ticker symbol and a day cutoff and returns a DataFrame of daily data for the past day_cutoff days, using yf.download from the yfinance package to get the data.</p>
+<p>find_anomaly takes a DataFrame of stock data and a percentage cutoff, and returns a dictionary of maximum and minimum values for high and low stock prices, the difference between them, the maximum and minimum percentage differences between the values, and the direction (up or down) of the stock price. If the percentage difference is greater than or equal to the percentage cutoff, the direction is calculated as the difference between the first open price and the last close price.</p>
+<p>The main_func method is the main function of the scanner. It creates a multiprocessing Pool with a number of processes equal to the number of CPUs and maps the get_match method to each ticker in the list of tickers. It then creates a Pandas DataFrame of the results, filters out any None values, and prints the results to a Discord webhook. Finally, it returns the DataFrame of results.</p>
+<p>The script also includes a test case that creates a Scanner object with a list of tickers and an empty configuration dictionary, and calls the main_func method on the Scanner object.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> import yfinance as yf</span></span>
+<span class="line"><span>import numpy as np</span></span>
+<span class="line"><span>import sys</span></span>
+<span class="line"><span>import os</span></span>
+<span class="line"><span>import dateutil.relativedelta</span></span>
+<span class="line"><span>import pandas as pd</span></span>
+<span class="line"><span>import multiprocessing</span></span>
+<span class="line"><span>from datetime import datetime, date</span></span>
+<span class="line"><span>from stock_screener.util import post_webhook</span></span>
+<span class="line"><span>from stock_screener.interfaces import ScannerInterface</span></span>
+<span class="line"><span>import time</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>class Scanner(ScannerInterface):</span></span>
+<span class="line"><span>    def __init__(self, tickers, cfg):</span></span>
+<span class="line"><span>        self.tickers = tickers</span></span>
+<span class="line"><span>        self.cfg = cfg</span></span>
+<span class="line"><span>        self.search_settings = cfg.get("settings", {})</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    def get_data(self, ticker: str, months_cutoff=1) -> pd.DataFrame:</span></span>
+<span class="line"><span>        current_date = datetime.strptime(date.today().strftime("%Y-%m-%d"), "%Y-%m-%d")</span></span>
+<span class="line"><span>        past_date = current_date - dateutil.relativedelta.relativedelta(</span></span>
+<span class="line"><span>            months=months_cutoff</span></span>
+<span class="line"><span>        )</span></span>
+<span class="line"><span>        sys.stdout = open(os.devnull, "w")</span></span>
+<span class="line"><span>        data = yf.download(ticker, past_date, current_date)</span></span>
+<span class="line"><span>        sys.stdout = sys.__stdout__</span></span>
+<span class="line"><span>        return data</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    def custom_print(self, d: pd.DataFrame, tick: str):</span></span>
+<span class="line"><span>        print("\n\n\n*******  " + tick.upper() + "  *******")</span></span>
+<span class="line"><span>        print("Ticker is: " + tick.upper())</span></span>
+<span class="line"><span>        print("*********************\n\n\n")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    </span></span>
+<span class="line"><span>    @staticmethod</span></span>
+<span class="line"><span>    def calc_price_vol(ticker_data: pd.DataFrame):</span></span>
+<span class="line"><span>        try:</span></span>
+<span class="line"><span>            price = ticker_data["Close"].iloc[-1]</span></span>
+<span class="line"><span>            volume = ticker_data["Volume"].iloc[-1]</span></span>
+<span class="line"><span>            return price * volume</span></span>
+<span class="line"><span>        except Exception as e:</span></span>
+<span class="line"><span>            print(e)</span></span>
+<span class="line"><span>            return None</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    def get_match(self, ticker):</span></span>
+<span class="line"><span>        """</span></span>
+<span class="line"><span>        get match for ticker</span></span>
+<span class="line"><span>        """</span></span>
+<span class="line"><span>        DAY_CUTOFF = self.search_settings.get("day_cutoff", 1)</span></span>
+<span class="line"><span>        ticker_data = self.get_data(ticker, DAY_CUTOFF)</span></span>
+<span class="line"><span>        try:</span></span>
+<span class="line"><span>            last_close = ticker_data["Close"].iloc[-1]</span></span>
+<span class="line"><span>            price_volume = self.calc_price_vol(ticker_data)</span></span>
+<span class="line"><span>            # penny stock with enough liquidity</span></span>
+<span class="line"><span>            if last_close &#x3C; 5 and price_volume > 1E6:</span></span>
+<span class="line"><span>                stonk = dict()</span></span>
+<span class="line"><span>                stonk["Ticker"] = ticker</span></span>
+<span class="line"><span>                stonk["Volume"] = ticker_data["Volume"].iloc[-1]</span></span>
+<span class="line"><span>                stonk["PriceVolume"] = price_volume</span></span>
+<span class="line"><span>                stonk["Close"] = last_close</span></span>
+<span class="line"><span>                return stonk</span></span>
+<span class="line"><span>        except Exception as e:</span></span>
+<span class="line"><span>            print("Index failure for stock")</span></span>
+<span class="line"><span>            print(ticker)</span></span>
+<span class="line"><span>            print(e)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    def main_func(self):</span></span>
+<span class="line"><span>        """</span></span>
+<span class="line"><span>        Main function for the unusual volume scanner</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        .. todo</span></span>
+<span class="line"><span>          Determine if this is the best place to send discord messages</span></span>
+<span class="line"><span>          probably with seperation of concerns, no.</span></span>
+<span class="line"><span>        """</span></span>
+<span class="line"><span>        cpus = multiprocessing.cpu_count()</span></span>
+<span class="line"><span>        title = self.cfg.get("name", "")</span></span>
+<span class="line"><span>        with multiprocessing.Pool(cpus) as p:</span></span>
+<span class="line"><span>            positive_scans = p.map(self.get_match, self.tickers)</span></span>
+<span class="line"><span>        curr_date = date.today().strftime("%Y-%m-%d")</span></span>
+<span class="line"><span>        post_webhook(f"**{title} - {curr_date}**")</span></span>
+<span class="line"><span>        not_none_values = filter(None.__ne__, positive_scans)</span></span>
+<span class="line"><span>        list_of_values = list(not_none_values)</span></span>
+<span class="line"><span>        post_webhook(f"Number of stocks: {len(list_of_values)}")</span></span>
+<span class="line"><span>        content_df = pd.DataFrame(list_of_values).reindex(</span></span>
+<span class="line"><span>            columns=["Ticker", "Volume", "PriceVolume", "Close"]</span></span>
+<span class="line"><span>        )</span></span>
+<span class="line"><span>        content_str = content_df.to_string(index=False)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        # if else statement in case dataframe is missing</span></span>
+<span class="line"><span>        for chunk in [</span></span>
+<span class="line"><span>            content_str[i : i + 1950] for i in range(0, len(content_str), 1950)</span></span>
+<span class="line"><span>        ]:</span></span>
+<span class="line"><span>            print("SENDING CHUNK")</span></span>
+<span class="line"><span>            time.sleep(2)</span></span>
+<span class="line"><span>            post_webhook(f"```{chunk}```")</span></span>
+<span class="line"><span>        return content_df</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>This is another scanner that implements an unusual volume scanner using the Yahoo Finance API. The script defines a class called <code>Scanner</code> that has a constructor, a <code>get_data</code> method, a <code>custom_print</code> method, a <code>calc_price_vol</code> method, a <code>get_match</code> method, and a <code>main_func</code> method.</p>
+<p>The <code>Scanner</code> constructor takes two parameters, <code>tickers</code> and <code>cfg</code>. <code>tickers</code> is a list of stock tickers that will be scanned, and <code>cfg</code> is a dictionary of configuration settings.</p>
+<p>The <code>get_data</code> method takes a <code>ticker</code> parameter and an optional <code>months_cutoff</code> parameter (default 1). It downloads historical data for the given <code>ticker</code> from <code>months_cutoff</code> months ago to the current date using the Yahoo Finance API and returns it as a pandas DataFrame.</p>
+<p>The <code>custom_print</code> method takes a pandas DataFrame <code>d</code> and a stock ticker <code>tick</code> and prints some information about the DataFrame and the stock ticker.</p>
+<p>The <code>calc_price_vol</code> method takes a pandas DataFrame <code>ticker_data</code> and calculates the product of the latest closing price and the latest volume for the given stock ticker. If an error occurs during this calculation, it returns <code>None</code>.</p>
+<p>The <code>get_match</code> method takes a stock ticker <code>ticker</code>, gets the historical data for that ticker using the <code>get_data</code> method, and checks if the latest closing price is less than 5 and the product of the latest closing price and the latest volume is greater than 1E6. If these conditions are met, it returns a dictionary with information about the stock ticker, including the ticker symbol, volume, price volume, and closing price.</p>
+<p>The <code>main_func</code> method is the main function of the script that runs the unusual volume scanner. It uses multiprocessing to run the <code>get_match</code> method in parallel for each stock ticker in the <code>tickers</code> list. It then filters out any <code>None</code> values and creates a pandas DataFrame from the remaining results. It also sends a Discord webhook with information about the number of stocks that meet the search criteria and the information about each stock.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/FriendlyUser/stock_screener/tree/master">https://github.com/FriendlyUser/stock_screener/tree/master</a></li>
+<li><a href="https://friendlyuser.github.io/posts/stonks/ta/stonk_screener_part_I">https://friendlyuser.github.io/posts/stonks/ta/stonk_screener_part_I</a></li>
+</ul>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/js/making_an_custom_image_component"> Custom image component in react </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2023/exploring_rusts_iterator_system_an_in-depth_guide"> Exploring Rust&#39;s Iterator System An In-Depth Guide </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

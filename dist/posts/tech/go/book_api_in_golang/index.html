@@ -1,0 +1,563 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>How I made a book api in golang - Dhanushka&#39;s Blog</title><meta name="description" content="Implementing a book api in golang using the google books api"><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="How I made a book api in golang"><meta property="og:description" content="Implementing a book api in golang using the google books api"><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/1246994641.png"><link rel="canonical" href="undefined/posts/tech/go/book_api_in_golang"><meta property="og:url" content="undefined/posts/tech/go/book_api_in_golang"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/1246994641.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">15 min read</div><h1 class="text-center text-3xl font-bold">How I made a book api in golang</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Jan 10, 2024</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/go" style="padding-right:3px"><category>go</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/googlebooks" style="padding-right:3px"><category>googlebooks</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/deta" style="padding-right:3px"><category>deta</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/1246994641.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <p>The Google Books API is a web-based API that allows developers to access information about books and perform operations on books such as searching, retrieving, and updating book details. With the Google Books API, developers can build applications that allow users to search the Google Books catalog and retrieve information about books, including author, title, publication date, description, and cover art. They can also use the API to access reviews, ratings, and other metadata about books. The API supports various formats, including plain text, HTML, and PDF, and returns results in both JSON and XML formats.</p>
+<p>Using OpenAPI to generate server-side code can be helpful in several ways:</p>
+<ol>
+<li>Speed and efficiency: Generating code from an OpenAPI specification can save a significant amount of time compared to manually writing the code from scratch. This can speed up the development process and make it more efficient.</li>
+<li>Consistency and accuracy: When generating code, the tools can ensure that the code is consistent and conforms to the OpenAPI specification. This reduces the likelihood of introducing errors or inconsistencies into the codebase, resulting in more accurate and reliable code.</li>
+<li>Reusability: OpenAPI allows developers to define their APIs in a standard, language-agnostic format, which can be reused across multiple projects and teams. By using OpenAPI to generate server-side code, developers can take advantage of this reusability and reduce the amount of time and effort required to build and maintain APIs.</li>
+<li>Increased productivity: By automating certain aspects of the code generation process, developers can focus on more important tasks, such as designing and implementing new features. This can lead to increased productivity and a more streamlined development process.</li>
+</ol>
+<p>Overall, using OpenAPI to generate server-side code can help to reduce the amount of manual effort required to build APIs, increase accuracy and consistency, and make the development process more efficient and productive.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> /*</span></span>
+<span class="line"><span> * BookApi API (beta ver.)</span></span>
+<span class="line"><span> *</span></span>
+<span class="line"><span> *  # Authentication simple no api access, no access token, just a toy project</span></span>
+<span class="line"><span> *</span></span>
+<span class="line"><span> * API version: 1</span></span>
+<span class="line"><span> * Generated by: OpenAPI Generator (https://openapi-generator.tech)</span></span>
+<span class="line"><span> */</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>package openapi</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>import (</span></span>
+<span class="line"><span>	"context"</span></span>
+<span class="line"><span>	"net/http"</span></span>
+<span class="line"><span>)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// BookApiRouter defines the required methods for binding the api requests to a responses for the BookApi</span></span>
+<span class="line"><span>// The BookApiRouter implementation should parse necessary information from the http request,</span></span>
+<span class="line"><span>// pass the data to a BookApiServicer to perform the required actions, then write the service results to the http response.</span></span>
+<span class="line"><span>type BookApiRouter interface { </span></span>
+<span class="line"><span>	BookGetBook(http.ResponseWriter, *http.Request)</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// BookApiServicer defines the api actions for the BookApi service</span></span>
+<span class="line"><span>// This interface intended to stay up to date with the openapi yaml used to generate it,</span></span>
+<span class="line"><span>// while the service implementation can be ignored with the .openapi-generator-ignore file</span></span>
+<span class="line"><span>// and updated with the logic required for the API.</span></span>
+<span class="line"><span>type BookApiServicer interface { </span></span>
+<span class="line"><span>	BookGetBook(context.Context, string, string, string, int32, int32, string, string) (ImplResponse, error)</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>This code defines two interfaces, <code>BookApiRouter</code> and <code>BookApiServicer</code>, for a beta version of a simple book API.</p>
+<p>The <code>BookApiRouter</code> interface defines the method <code>BookGetBook</code>, which is used to bind the API requests to responses for the Book API. This method is expected to parse information from the incoming HTTP request, pass the data to a <code>BookApiServicer</code> to perform the required actions, and then write the service results to the HTTP response.</p>
+<p>The <code>BookApiServicer</code> interface defines the API actions for the Book API service. The interface is intended to stay up-to-date with the OpenAPI specification used to generate it, while the service implementation can be updated with the necessary logic for the API. The <code>BookGetBook</code> method takes in several parameters, such as book title, author, and publication date, and returns an <code>ImplResponse</code> object along with an error.</p>
+<p>It looks like this code was generated using the OpenAPI Generator tool, which is designed to automate the process of generating code from OpenAPI specifications. The generated code provides a starting point for developers to implement the logic for their API.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> /*</span></span>
+<span class="line"><span> * BookApi API (beta ver.)</span></span>
+<span class="line"><span> *</span></span>
+<span class="line"><span> *  # Authentication simple no api access, no access token, just a toy project</span></span>
+<span class="line"><span> *</span></span>
+<span class="line"><span> * API version: 1</span></span>
+<span class="line"><span> * Generated by: OpenAPI Generator (https://openapi-generator.tech)</span></span>
+<span class="line"><span> */</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>package openapi</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>import (</span></span>
+<span class="line"><span>	// "encoding/json"</span></span>
+<span class="line"><span>	"net/http"</span></span>
+<span class="line"><span>	"strings"</span></span>
+<span class="line"><span>	// "github.com/gorilla/mux"</span></span>
+<span class="line"><span>)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// BookApiController binds http requests to an api service and writes the service results to the http response</span></span>
+<span class="line"><span>type BookApiController struct {</span></span>
+<span class="line"><span>	service      BookApiServicer</span></span>
+<span class="line"><span>	errorHandler ErrorHandler</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// BookApiOption for how the controller is set up.</span></span>
+<span class="line"><span>type BookApiOption func(*BookApiController)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// WithBookApiErrorHandler inject ErrorHandler into controller</span></span>
+<span class="line"><span>func WithBookApiErrorHandler(h ErrorHandler) BookApiOption {</span></span>
+<span class="line"><span>	return func(c *BookApiController) {</span></span>
+<span class="line"><span>		c.errorHandler = h</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// NewBookApiController creates a default api controller</span></span>
+<span class="line"><span>func NewBookApiController(s BookApiServicer, opts ...BookApiOption) Router {</span></span>
+<span class="line"><span>	controller := &#x26;BookApiController{</span></span>
+<span class="line"><span>		service:      s,</span></span>
+<span class="line"><span>		errorHandler: DefaultErrorHandler,</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	for _, opt := range opts {</span></span>
+<span class="line"><span>		opt(controller)</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return controller</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// Routes returns all the api routes for the BookApiController</span></span>
+<span class="line"><span>func (c *BookApiController) Routes() Routes {</span></span>
+<span class="line"><span>	return Routes{</span></span>
+<span class="line"><span>		{</span></span>
+<span class="line"><span>			"BookGetBook",</span></span>
+<span class="line"><span>			strings.ToUpper("Get"),</span></span>
+<span class="line"><span>			"/book",</span></span>
+<span class="line"><span>			c.BookGetBook,</span></span>
+<span class="line"><span>		},</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// BookGetBook - Get book details</span></span>
+<span class="line"><span>func (c *BookApiController) BookGetBook(w http.ResponseWriter, r *http.Request) {</span></span>
+<span class="line"><span>	query := r.URL.Query()</span></span>
+<span class="line"><span>	qParam := query.Get("q")</span></span>
+<span class="line"><span>	filterParam := query.Get("filter")</span></span>
+<span class="line"><span>	downloadParam := query.Get("download")</span></span>
+<span class="line"><span>	startIndexParam, err := parseInt32Parameter(query.Get("startIndex"), false)</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		c.errorHandler(w, r, &#x26;ParsingError{Err: err}, nil)</span></span>
+<span class="line"><span>		return</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	maxResultsParam, err := parseInt32Parameter(query.Get("maxResults"), false)</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		c.errorHandler(w, r, &#x26;ParsingError{Err: err}, nil)</span></span>
+<span class="line"><span>		return</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	printTypeParam := query.Get("printType")</span></span>
+<span class="line"><span>	orderByParam := query.Get("orderBy")</span></span>
+<span class="line"><span>	result, err := c.service.BookGetBook(r.Context(), qParam, filterParam, downloadParam, startIndexParam, maxResultsParam, printTypeParam, orderByParam)</span></span>
+<span class="line"><span>	// If an error occurred, encode the error with the status code</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		c.errorHandler(w, r, err, &#x26;result)</span></span>
+<span class="line"><span>		return</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	// If no error, encode the body and the result code</span></span>
+<span class="line"><span>	EncodeJSONResponse(result.Body, &#x26;result.Code, w)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>This is the implementation of a server-side API for the <code>BookApi</code> service. It is written in Go and uses the net/http package for handling HTTP requests and responses.</p>
+<p>The code defines a <code>BookApiController</code> struct which is responsible for binding HTTP requests to the API service and writing the service results to the HTTP response. The controller takes an instance of the <code>BookApiServicer</code> interface as its service property, which defines the API actions that the controller will call when handling requests.</p>
+<p>The <code>Routes</code> method of the <code>BookApiController</code> returns an array of route definitions, where each route maps an HTTP endpoint to a specific handler function in the controller. In this case, there is only one endpoint <code>"/book"</code> which is handled by the <code>BookGetBook</code> function.</p>
+<p>The <code>BookGetBook</code> function extracts the query parameters from the URL of the incoming HTTP request, parses them and passes them as arguments to the <code>BookGetBook</code> method of the <code>BookApiServicer</code> interface. The results of the service call are written to the HTTP response using the <code>EncodeJSONResponse</code> function, or an error is returned in case of an error.</p>
+<p>The <code>NewBookApiController</code> function creates a new instance of the <code>BookApiController</code> and sets it up with the given options. The <code>WithBookApiErrorHandler</code> option is used to inject an instance of an error handler into the controller. This error handler is used to handle any errors that occur during the handling of requests.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> /*</span></span>
+<span class="line"><span> * BookApi API (beta ver.)</span></span>
+<span class="line"><span> *</span></span>
+<span class="line"><span> *  # Authentication simple no api access, no access token, just a toy project</span></span>
+<span class="line"><span> *</span></span>
+<span class="line"><span> * API version: 1</span></span>
+<span class="line"><span> * Generated by: OpenAPI Generator (https://openapi-generator.tech)</span></span>
+<span class="line"><span> */</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>package openapi</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>import (</span></span>
+<span class="line"><span>	"context"</span></span>
+<span class="line"><span>	"errors"</span></span>
+<span class="line"><span>	"fmt"</span></span>
+<span class="line"><span>	"io"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	// "errors"</span></span>
+<span class="line"><span>	"encoding/json"</span></span>
+<span class="line"><span>	"net/http"</span></span>
+<span class="line"><span>)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// BookApiService is a service that implements the logic for the BookApiServicer</span></span>
+<span class="line"><span>// This service should implement the business logic for every endpoint for the BookApi API.</span></span>
+<span class="line"><span>// Include any external packages or services that will be required by this service.</span></span>
+<span class="line"><span>type BookApiService struct {</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// NewBookApiService creates a default api service</span></span>
+<span class="line"><span>func NewBookApiService() BookApiServicer {</span></span>
+<span class="line"><span>	return &#x26;BookApiService{}</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// BookGetBook - Get book details</span></span>
+<span class="line"><span>func (s *BookApiService) BookGetBook(ctx context.Context, q string, filter string, download string, startIndex int32, maxResults int32, printType string, orderBy string) (ImplResponse, error) {</span></span>
+<span class="line"><span>	// TODO - update BookGetBook with the required logic for this service method.</span></span>
+<span class="line"><span>	// Add api_book_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.</span></span>
+<span class="line"><span>	// GET API KEY FOR GOOGLE BOOKS API</span></span>
+<span class="line"><span>	baseUrl := "https://www.googleapis.com/books/v1/volumes"</span></span>
+<span class="line"><span>	req, err := http.NewRequest("GET", baseUrl, nil)</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		return Response(http.StatusNotImplemented, nil), errors.New("Need to provide a valid URL")</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	// if you appending to existing query this works fine</span></span>
+<span class="line"><span>	query := req.URL.Query()</span></span>
+<span class="line"><span>	key := GetEnvVar("GOOGLE_BOOK_API_KEY", "")</span></span>
+<span class="line"><span>	if key == "" {</span></span>
+<span class="line"><span>		return Response(http.StatusNotImplemented, nil), errors.New("Need to provide a valid API key")</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	query.Add("key", key)</span></span>
+<span class="line"><span>	if q != "" {</span></span>
+<span class="line"><span>		query.Add("q", q)</span></span>
+<span class="line"><span>	} else {</span></span>
+<span class="line"><span>		return Response(http.StatusNotImplemented, nil), errors.New("Need to provide a valid query")</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	// or you can create new url.Values struct and encode that like so</span></span>
+<span class="line"><span>	if filter != "" {</span></span>
+<span class="line"><span>		// add filter validation here</span></span>
+<span class="line"><span>		query.Add("filter", filter)</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	if download != "" {</span></span>
+<span class="line"><span>		// add download validation here</span></span>
+<span class="line"><span>		query.Add("download", download)</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	// http.get</span></span>
+<span class="line"><span>	resp, err := http.Get(req.URL.String() + "?" + query.Encode())</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		// handle error</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span>	fmt.Println(req.URL.String() + "?" + query.Encode())</span></span>
+<span class="line"><span>	defer resp.Body.Close()</span></span>
+<span class="line"><span>	body, err := io.ReadAll(resp.Body)</span></span>
+<span class="line"><span>	var bookResponse GoogleBookResponse</span></span>
+<span class="line"><span>	err = json.Unmarshal(body, &#x26;bookResponse)</span></span>
+<span class="line"><span>	// destructure body into GoogleBookResponse</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	//TODO: Uncomment the next line to return response Response(200, {}) or use other options such as http.Ok ...</span></span>
+<span class="line"><span>	return Response(200, bookResponse), nil</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	// return Response(http.StatusNotImplemented, nil), errors.New("BookGetBook method not implemented")</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>This is a Go implementation for a simple book API. The API implements the <code>BookGetBook</code> function that retrieves information about a book from Google Books API.</p>
+<p>The implementation uses the Go standard library to make an HTTP GET request to the Google Books API, retrieves the response, and unmarshals it into a Go struct <code>GoogleBookResponse</code>. The API key for the Google Books API is obtained from an environment variable.</p>
+<p>The API returns an instance of the <code>ImplResponse</code> struct with the status code set to <code>200</code> and the body set to the <code>GoogleBookResponse</code> struct on success. In case of errors, the API returns an instance of the <code>ImplResponse</code> struct with the appropriate status code and an error message.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> /*</span></span>
+<span class="line"><span> * BookApi API (beta ver.)</span></span>
+<span class="line"><span> *</span></span>
+<span class="line"><span> *  # Authentication simple no api access, no access token, just a toy project</span></span>
+<span class="line"><span> *</span></span>
+<span class="line"><span> * API version: 1</span></span>
+<span class="line"><span> * Generated by: OpenAPI Generator (https://openapi-generator.tech)</span></span>
+<span class="line"><span> */</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>package openapi</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>import (</span></span>
+<span class="line"><span>	"encoding/json"</span></span>
+<span class="line"><span>	"errors"</span></span>
+<span class="line"><span>	"github.com/gorilla/mux"</span></span>
+<span class="line"><span>	"io/ioutil"</span></span>
+<span class="line"><span>	"mime/multipart"</span></span>
+<span class="line"><span>	"net/http"</span></span>
+<span class="line"><span>	"os"</span></span>
+<span class="line"><span>	"strconv"</span></span>
+<span class="line"><span>	"strings"</span></span>
+<span class="line"><span>)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// A Route defines the parameters for an api endpoint</span></span>
+<span class="line"><span>type Route struct {</span></span>
+<span class="line"><span>	Name		string</span></span>
+<span class="line"><span>	Method	  string</span></span>
+<span class="line"><span>	Pattern	 string</span></span>
+<span class="line"><span>	HandlerFunc http.HandlerFunc</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// Routes are a collection of defined api endpoints</span></span>
+<span class="line"><span>type Routes []Route</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// Router defines the required methods for retrieving api routes</span></span>
+<span class="line"><span>type Router interface {</span></span>
+<span class="line"><span>	Routes() Routes</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>const errMsgRequiredMissing = "required parameter is missing"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// NewRouter creates a new router for any number of api routers</span></span>
+<span class="line"><span>func NewRouter(routers ...Router) *mux.Router {</span></span>
+<span class="line"><span>	router := mux.NewRouter().StrictSlash(true)</span></span>
+<span class="line"><span>	for _, api := range routers {</span></span>
+<span class="line"><span>		for _, route := range api.Routes() {</span></span>
+<span class="line"><span>			var handler http.Handler</span></span>
+<span class="line"><span>			handler = route.HandlerFunc</span></span>
+<span class="line"><span>			handler = Logger(handler, route.Name)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>			router.</span></span>
+<span class="line"><span>				Methods(route.Method).</span></span>
+<span class="line"><span>				Path(route.Pattern).</span></span>
+<span class="line"><span>				Name(route.Name).</span></span>
+<span class="line"><span>				Handler(handler)</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return router</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// EncodeJSONResponse uses the json encoder to write an interface to the http response with an optional status code</span></span>
+<span class="line"><span>func EncodeJSONResponse(i interface{}, status *int, w http.ResponseWriter) error {</span></span>
+<span class="line"><span>	w.Header().Set("Content-Type", "application/json; charset=UTF-8")</span></span>
+<span class="line"><span>	if status != nil {</span></span>
+<span class="line"><span>		w.WriteHeader(*status)</span></span>
+<span class="line"><span>	} else {</span></span>
+<span class="line"><span>		w.WriteHeader(http.StatusOK)</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return json.NewEncoder(w).Encode(i)</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// ReadFormFileToTempFile reads file data from a request form and writes it to a temporary file</span></span>
+<span class="line"><span>func ReadFormFileToTempFile(r *http.Request, key string) (*os.File, error) {</span></span>
+<span class="line"><span>	_, fileHeader, err := r.FormFile(key)</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		return nil, err</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return readFileHeaderToTempFile(fileHeader)</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// ReadFormFilesToTempFiles reads files array data from a request form and writes it to a temporary files</span></span>
+<span class="line"><span>func ReadFormFilesToTempFiles(r *http.Request, key string) ([]*os.File, error) {</span></span>
+<span class="line"><span>	if err := r.ParseMultipartForm(32 &#x3C;&#x3C; 20); err != nil {</span></span>
+<span class="line"><span>		return nil, err</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	files := make([]*os.File, 0, len(r.MultipartForm.File[key]))</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	for _, fileHeader := range r.MultipartForm.File[key] {</span></span>
+<span class="line"><span>		file, err := readFileHeaderToTempFile(fileHeader)</span></span>
+<span class="line"><span>		if err != nil {</span></span>
+<span class="line"><span>			return nil, err</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>		files = append(files, file)</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return files, nil</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// readFileHeaderToTempFile reads multipart.FileHeader and writes it to a temporary file</span></span>
+<span class="line"><span>func readFileHeaderToTempFile(fileHeader *multipart.FileHeader) (*os.File, error) {</span></span>
+<span class="line"><span>	formFile, err := fileHeader.Open()</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		return nil, err</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	defer formFile.Close()</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	fileBytes, err := ioutil.ReadAll(formFile)</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		return nil, err</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	file, err := ioutil.TempFile("", fileHeader.Filename)</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		return nil, err</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	defer file.Close()</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	file.Write(fileBytes)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return file, nil</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// parseInt64Parameter parses a string parameter to an int64.</span></span>
+<span class="line"><span>func parseInt64Parameter(param string, required bool) (int64, error) {</span></span>
+<span class="line"><span>	if param == "" {</span></span>
+<span class="line"><span>		if required {</span></span>
+<span class="line"><span>			return 0, errors.New(errMsgRequiredMissing)</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>		return 0, nil</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return strconv.ParseInt(param, 10, 64)</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// parseInt32Parameter parses a string parameter to an int32.</span></span>
+<span class="line"><span>func parseInt32Parameter(param string, required bool) (int32, error) {</span></span>
+<span class="line"><span>	if param == "" {</span></span>
+<span class="line"><span>		if required {</span></span>
+<span class="line"><span>			return 0, errors.New(errMsgRequiredMissing)</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>		return 0, nil</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	val, err := strconv.ParseInt(param, 10, 32)</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		return -1, err</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return int32(val), nil</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// parseBoolParameter parses a string parameter to a bool</span></span>
+<span class="line"><span>func parseBoolParameter(param string) (bool, error) {</span></span>
+<span class="line"><span>	val, err := strconv.ParseBool(param)</span></span>
+<span class="line"><span>	if err != nil {</span></span>
+<span class="line"><span>		return false, err</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return bool(val), nil</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// parseInt64ArrayParameter parses a string parameter containing array of values to []int64.</span></span>
+<span class="line"><span>func parseInt64ArrayParameter(param, delim string, required bool) ([]int64, error) {</span></span>
+<span class="line"><span>	if param == "" {</span></span>
+<span class="line"><span>		if required {</span></span>
+<span class="line"><span>			return nil, errors.New(errMsgRequiredMissing)</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>		return nil, nil</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	str := strings.Split(param, delim)</span></span>
+<span class="line"><span>	ints := make([]int64, len(str))</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	for i, s := range str {</span></span>
+<span class="line"><span>		if v, err := strconv.ParseInt(s, 10, 64); err != nil {</span></span>
+<span class="line"><span>			return nil, err</span></span>
+<span class="line"><span>		} else {</span></span>
+<span class="line"><span>			ints[i] = v</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return ints, nil</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// parseInt32ArrayParameter parses a string parameter containing array of values to []int32.</span></span>
+<span class="line"><span>func parseInt32ArrayParameter(param, delim string, required bool) ([]int32, error) {</span></span>
+<span class="line"><span>	if param == "" {</span></span>
+<span class="line"><span>		if required {</span></span>
+<span class="line"><span>			return nil, errors.New(errMsgRequiredMissing)</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>		return nil, nil</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	str := strings.Split(param, delim)</span></span>
+<span class="line"><span>	ints := make([]int32, len(str))</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	for i, s := range str {</span></span>
+<span class="line"><span>		if v, err := strconv.ParseInt(s, 10, 32); err != nil {</span></span>
+<span class="line"><span>			return nil, err</span></span>
+<span class="line"><span>		} else {</span></span>
+<span class="line"><span>			ints[i] = int32(v)</span></span>
+<span class="line"><span>		}</span></span>
+<span class="line"><span>	}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	return ints, nil</span></span>
+<span class="line"><span>} </span></span></code></pre>
+<p>This code is an implementation of a simple RESTful API in Go. The code uses the Gorilla Mux library for routing and handling HTTP requests. The <code>Routes</code> type defines a collection of endpoints for the API, and the <code>Router</code> interface defines the method for retrieving these routes. The <code>NewRouter</code> function creates a new router using the Gorilla Mux library and allows for any number of routers to be passed in. The <code>EncodeJSONResponse</code> function is used to write a response in JSON format to the HTTP response, and the <code>ReadFormFileToTempFile</code> and <code>ReadFormFilesToTempFiles</code> functions are used to read file data from an HTTP request form and write it to a temporary file. The <code>parseInt64Parameter</code> and <code>parseInt32Parameter</code> functions are used to parse string parameters to their respective integer types.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> /*</span></span>
+<span class="line"><span> * BookApi API (beta ver.)</span></span>
+<span class="line"><span> *</span></span>
+<span class="line"><span> *  # Authentication simple no api access, no access token, just a toy project</span></span>
+<span class="line"><span> *</span></span>
+<span class="line"><span> * API version: 1</span></span>
+<span class="line"><span> * Generated by: OpenAPI Generator (https://openapi-generator.tech)</span></span>
+<span class="line"><span> */</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>package main</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>import (</span></span>
+<span class="line"><span>	"log"</span></span>
+<span class="line"><span>	"net/http"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	openapi "github.com/FriendlyUser/bookapi/go"</span></span>
+<span class="line"><span>)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>func main() {</span></span>
+<span class="line"><span>	log.Printf("Server started")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	BookApiService := openapi.NewBookApiService()</span></span>
+<span class="line"><span>	BookApiController := openapi.NewBookApiController(BookApiService)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	router := openapi.NewRouter(BookApiController)</span></span>
+<span class="line"><span>	// get PORT from PORT variable</span></span>
+<span class="line"><span>	port := openapi.GetEnvVar("PORT", "8080")</span></span>
+<span class="line"><span>	log.Fatal(http.ListenAndServe(":" + port, router))</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>This is a main function for a Go program that implements a simple API for a book collection. The API has no authentication and is just a toy project.</p>
+<p>The program starts by logging a message that the server has started. It then creates instances of the <code>BookApiService</code> and <code>BookApiController</code> from the <code>openapi</code> package.</p>
+<p>Next, the program creates an instance of the <code>Router</code> from the <code>openapi</code> package and sets it as the handler for HTTP requests. The port for the server to listen on is determined by either the <code>PORT</code> environment variable or a default value of “8080”.</p>
+<p>Finally, the program starts an HTTP server and listens on the specified port. The <code>ListenAndServe</code> function will block until the server is shut down or an error occurs.</p>
+<p>Using a cloud provider like AWS, Google Cloud, or Microsoft Azure to host your API can be helpful for a number of reasons:</p>
+<ol>
+<li>Scalability: Cloud providers have infrastructure that allows you to easily scale your API up or down depending on your usage. This can be particularly helpful for handling spikes in traffic.</li>
+<li>Reliability: Cloud providers have multiple data centers and use load balancing techniques to ensure that your API is highly available.</li>
+<li>Security: Cloud providers invest heavily in security, so you can benefit from the security measures they put in place, such as firewalls, encryption, and access controls.</li>
+<li>Cost: Hosting your API in the cloud can be more cost-effective than maintaining your own infrastructure, especially if you are just starting out or have a limited budget.</li>
+<li>Management: Cloud providers offer various management and monitoring tools that can help you manage your API more efficiently.</li>
+</ol>
+<p>By hosting your API on a cloud platform, you can focus on building and improving your API while the cloud provider takes care of the infrastructure, security, and scaling.</p>
+<p>The Spacefile in the root of your project is used to define the configuration for your project to deployment to deta space. My Spacefile is a YAML file that contains the following sections:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> v: 0</span></span>
+<span class="line"><span>micros:</span></span>
+<span class="line"><span>  - name: go-app</span></span>
+<span class="line"><span>    src: .</span></span>
+<span class="line"><span>    engine: custom</span></span>
+<span class="line"><span>    commands:</span></span>
+<span class="line"><span>      - go get</span></span>
+<span class="line"><span>      - go build main.go</span></span>
+<span class="line"><span>    run: ./main</span></span>
+<span class="line"><span>    include:</span></span>
+<span class="line"><span>      - main</span></span>
+<span class="line"><span>    presets:</span></span>
+<span class="line"><span>      env:</span></span>
+<span class="line"><span>        - name: GOOGLE_BOOK_API_KEY</span></span>
+<span class="line"><span>          description: Google Books API Key </span></span></code></pre>
+<p>This is a definition for a microservice in the format of a Micros configuration file. This microservice, named “go-app,” will run a Go application. The source code for the application is in the current directory (<code>.</code>), and the build process involves executing the <code>go get</code> and <code>go build main.go</code> commands. The application is then executed with the <code>./main</code> command. The environment variable “GOOGLE_BOOK_API_KEY” is also specified and its purpose is described as being the Google Books API Key.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/FriendlyUser/bookapi">https://github.com/FriendlyUser/bookapi</a></li>
+</ul>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/rust/crash_proof_systems_in_rust"> Building Reliable and Crash-Proof Systems with Rust Programming </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/go/basic_wails_app"> Basic wails app to call the donald trump api </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

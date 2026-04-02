@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>How to download reports from the CSE exchange with python - Dhanushka&#39;s Blog</title><meta name="description" content="By using the cad tickers library we can easily get links to docs from stocks."><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="How to download reports from the CSE exchange with python"><meta property="og:description" content="By using the cad tickers library we can easily get links to docs from stocks."><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/3702590653.png"><link rel="canonical" href="undefined/posts/tech/python/download_files_from_cse_exchange"><meta property="og:url" content="undefined/posts/tech/python/download_files_from_cse_exchange"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/3702590653.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">7 min read</div><h1 class="text-center text-3xl font-bold">How to download reports from the CSE exchange with python</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Jan 3, 2024</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-green-400 text-green-900"><a href="/tags/python" style="padding-right:3px"><category>python</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/requests" style="padding-right:3px"><category>requests</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/bs4" style="padding-right:3px"><category>bs4</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/3702590653.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <p>CSE exchange refers to the Canadian Securities Exchange, which is a stock exchange located in Canada. The CSE is a fully electronic exchange that provides a marketplace for the trading of securities listed on its platform. It offers a range of listing options, including equity, debt, and structured products, and operates with a focus on serving emerging and growth companies. The exchange aims to provide an efficient, transparent, and accessible marketplace for issuers and investors, and is regulated by the Ontario Securities Commission.</p>
+<p>Downloading reports from the CSE exchange can provide valuable information for investors, traders, and other market participants. The reports contain data on market activity, financial performance, and other key metrics for the companies listed on the exchange. By accessing these reports, you can gain insight into the financial health and performance of the companies, which can help inform your investment decisions.</p>
+<p>For example, the CSE provides annual and quarterly financial statements, press releases, and other disclosures for companies listed on the exchange. By downloading and reviewing these reports, you can get a better understanding of a company’s financial performance, including revenue, expenses, profits, and growth trends. This information can help you make more informed decisions about whether to buy, sell, or hold a company’s stock.</p>
+<p>Additionally, downloading CSE reports can provide you with insights into the overall health of the Canadian securities market, as well as emerging trends and opportunities. This information can be especially useful for traders and investors looking to make strategic decisions about their portfolios.</p>
+<p>In summary, downloading reports from the CSE exchange can provide valuable information for market participants and</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> import pandas as pd</span></span>
+<span class="line"><span>import time</span></span>
+<span class="line"><span>import os</span></span>
+<span class="line"><span>import requests</span></span>
+<span class="line"><span>import json</span></span>
+<span class="line"><span>from cad_tickers.exchanges.cse import get_recent_docs_from_url</span></span>
+<span class="line"><span>from extract_doc import mk_dir, handle_logic</span></span>
+<span class="line"><span>from io import BytesIO, StringIO</span></span>
+<span class="line"><span>"""</span></span>
+<span class="line"><span>1. Get the list of documents from the CSE website</span></span>
+<span class="line"><span>2. For each document, get the document url</span></span>
+<span class="line"><span>3. If the document url is not in the csv file, add it to the csv file</span></span>
+<span class="line"><span>4. For each document url, download the document and add it to the docs folder</span></span>
+<span class="line"><span>5. For each document url, make a discord request with the document url</span></span>
+<span class="line"><span>6. For each document url, make a discord request with the document summary</span></span>
+<span class="line"><span>"""</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>def fig_to_buffer(fig):</span></span>
+<span class="line"><span>  """ returns a matplotlib figure as a buffer</span></span>
+<span class="line"><span>  """</span></span>
+<span class="line"><span>  buf = BytesIO()</span></span>
+<span class="line"><span>  fig.savefig(buf, format='png')</span></span>
+<span class="line"><span>  buf.seek(0)</span></span>
+<span class="line"><span>  imgdata = buf.read()</span></span>
+<span class="line"><span>  return imgdata</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>def make_discord_request(content, embeds = [], filename = None, file = None):</span></span>
+<span class="line"><span>    url = os.getenv("DISCORD_WEBHOOK")</span></span>
+<span class="line"><span>    if url == None:</span></span>
+<span class="line"><span>        print('DISCORD_WEBHOOK Missing')</span></span>
+<span class="line"><span>        pass</span></span>
+<span class="line"><span>    data = {}</span></span>
+<span class="line"><span>    data["content"] = content</span></span>
+<span class="line"><span>    files = {'file': (filename, file, 'application/pdf')}</span></span>
+<span class="line"><span>    if filename != None and file != None:</span></span>
+<span class="line"><span>        resp = requests.post(</span></span>
+<span class="line"><span>            url, data=data, files=files</span></span>
+<span class="line"><span>        )</span></span>
+<span class="line"><span>    elif len(embeds) != 0:</span></span>
+<span class="line"><span>        data["embeds"] = embeds</span></span>
+<span class="line"><span>        resp = requests.post(</span></span>
+<span class="line"><span>            url, data=json.dumps(data), headers={"Content-Type": "application/json"}</span></span>
+<span class="line"><span>        )</span></span>
+<span class="line"><span>    print(resp) </span></span></code></pre>
+<p>This code is a Python script that downloads documents from the Canadian Securities Exchange (CSE) website and makes a Discord request with the document URL and summary. Here’s a brief overview of what it does:</p>
+<ol>
+<li>It retrieves a list of documents from the CSE website using the <code>get_recent_docs_from_url</code> function.</li>
+<li>For each document, it retrieves the document URL.</li>
+<li>If the document URL is not already in a CSV file, it adds it to the CSV file.</li>
+<li>It downloads the document and saves it to a directory called <code>docs</code>.</li>
+<li>For each document URL, it makes a Discord request with the document URL.</li>
+<li>For each document URL, it makes another Discord request with the document summary.</li>
+</ol>
+<p>The Discord request is sent using the <code>requests</code> library. The <code>make_discord_request</code> function takes in several arguments, including the content, embeds, filename, and file data. If the filename and file data are provided, the function makes a request with the file attached. If the embeds argument is provided, the function makes a request with the embeds data. The URL for the Discord webhook is read from an environment variable <code>DISCORD_WEBHOOK</code>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> </span></span>
+<span class="line"><span>stockList = ["PKK", "IDK", "ADDC", "VPH", "VST", "ACT"]</span></span>
+<span class="line"><span>def get_cse_tickers_data():</span></span>
+<span class="line"><span>    url = "https://github.com/FriendlyUser/cad_tickers_list/blob/main/static/latest/cse.csv?raw=true"</span></span>
+<span class="line"><span>    r = requests.get(url, allow_redirects=True)</span></span>
+<span class="line"><span>    s = r.content</span></span>
+<span class="line"><span>    return pd.read_csv(StringIO(s.decode('utf-8')))</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>stock_df = get_cse_tickers_data()</span></span>
+<span class="line"><span>stock_rows = stock_df.loc[stock_df['Symbol'].isin(stockList)]</span></span>
+<span class="line"><span>stock_rows.loc[:, 'stock'] = stock_rows['Symbol']</span></span>
+<span class="line"><span>stock_rows.loc[:, 'url'] = stock_rows['urls']</span></span>
+<span class="line"><span>stockUrls = stock_rows.to_dict('records')</span></span>
+<span class="line"><span>csv_file = "docs.csv"</span></span>
+<span class="line"><span>if os.path.isfile(csv_file):</span></span>
+<span class="line"><span>    # read from csv</span></span>
+<span class="line"><span>    df = pd.read_csv(csv_file)</span></span>
+<span class="line"><span>else:</span></span>
+<span class="line"><span>    # make new df</span></span>
+<span class="line"><span>    df = pd.DataFrame(columns=["stock", "url", "docUrl"])</span></span>
+<span class="line"><span> </span></span></code></pre>
+<p>This code is retrieving data for a list of stocks (<code>stockList</code>) from the Canadian Securities Exchange (CSE). It uses the <code>get_cse_tickers_data</code> function to retrieve the data from a CSV file hosted on GitHub, which contains information about CSE stocks, such as their symbol, name, and URLs. The function uses the <code>requests</code> library to make a GET request to the URL of the CSV file, and the returned content is then converted into a Pandas DataFrame using <code>pd.read_csv</code>.</p>
+<p>Next, the code filters the data for only the stocks in the <code>stockList</code> by using the <code>loc</code> method on the DataFrame and checking if the value in the <code>Symbol</code> column is in the <code>stockList</code> using the <code>isin</code> method. The filtered data is then saved in the <code>stock_rows</code> DataFrame.</p>
+<p>The code then creates two new columns in the <code>stock_rows</code> DataFrame, one named <code>stock</code> and the other named <code>url</code>, which contain the values from the <code>Symbol</code> and <code>urls</code> columns, respectively. The filtered data is then converted into a list of dictionaries (<code>stockUrls</code>) using the <code>to_dict</code> method.</p>
+<p>Finally, the code checks if there is an existing CSV file named <code>docs.csv</code> in the current directory. If there is, it reads the data into a DataFrame using `pd.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> for stock in stockUrls:</span></span>
+<span class="line"><span>    stockName = stock.get("stock")</span></span>
+<span class="line"><span>    stockUrl = stock.get("url")</span></span>
+<span class="line"><span>    urls = []</span></span>
+<span class="line"><span>    try:</span></span>
+<span class="line"><span>        urls = get_recent_docs_from_url(stockUrl)</span></span>
+<span class="line"><span>    except Exception as e:</span></span>
+<span class="line"><span>        pass</span></span>
+<span class="line"><span>    </span></span>
+<span class="line"><span>    for docUrl in urls:</span></span>
+<span class="line"><span>        # skip malformed relative urls</span></span>
+<span class="line"><span>        if docUrl[0] == '/':</span></span>
+<span class="line"><span>            continue</span></span>
+<span class="line"><span>        # add each element to list</span></span>
+<span class="line"><span>        exists = docUrl in df["docUrl"].tolist()</span></span>
+<span class="line"><span>        if exists == False:</span></span>
+<span class="line"><span>            print(f"Adding {stockName}: {docUrl}")</span></span>
+<span class="line"><span>            df.loc[len(df)] = [stockName, stockUrl, docUrl]</span></span>
+<span class="line"><span>            # wrap in todo</span></span>
+<span class="line"><span>            stock_doc_dir = f"docs/{stockName}"</span></span>
+<span class="line"><span>            mk_dir(stock_doc_dir)</span></span>
+<span class="line"><span>            stock_doc_file_path = docUrl.split("/")[-1]</span></span>
+<span class="line"><span>            pdf_file_name = f"{stock_doc_dir}/{stock_doc_file_path}.pdf"</span></span>
+<span class="line"><span>            companyName = stock.get("Company").\</span></span>
+<span class="line"><span>                replace('Inc.', '').\</span></span>
+<span class="line"><span>                replace('Pharma', '').\</span></span>
+<span class="line"><span>                strip()</span></span>
+<span class="line"><span>            dataDict = {</span></span>
+<span class="line"><span>                "url": docUrl,</span></span>
+<span class="line"><span>                "path": pdf_file_name,</span></span>
+<span class="line"><span>                "company_name": companyName</span></span>
+<span class="line"><span>            }</span></span>
+<span class="line"><span>            result_obj = handle_logic(dataDict)</span></span>
+<span class="line"><span>            file_contents = result_obj.get("contents")</span></span>
+<span class="line"><span>            summary = "N/A"</span></span>
+<span class="line"><span>            try:</span></span>
+<span class="line"><span>                summary = result_obj.get("summary")[:1980]</span></span>
+<span class="line"><span>            except TypeError as e:</span></span>
+<span class="line"><span>                pass</span></span>
+<span class="line"><span>            embeds = [</span></span>
+<span class="line"><span>                {</span></span>
+<span class="line"><span>                    "title": stockName,</span></span>
+<span class="line"><span>                    "url": docUrl,</span></span>
+<span class="line"><span>                    "description": summary</span></span>
+<span class="line"><span>                }</span></span>
+<span class="line"><span>            ]</span></span>
+<span class="line"><span>            if file_contents != None:</span></span>
+<span class="line"><span>                make_discord_request(f"*{stockName}*: \n {docUrl}", embeds, pdf_file_name, file_contents)</span></span>
+<span class="line"><span>                time.sleep(2)</span></span>
+<span class="line"><span>            else:</span></span>
+<span class="line"><span>                make_discord_request(f"*{stockName}*: \n {docUrl}", embeds)</span></span>
+<span class="line"><span>                time.sleep(1)</span></span>
+<span class="line"><span>            pass</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>df = df.drop_duplicates()</span></span>
+<span class="line"><span>df = df.sort_values(by=['stock'])</span></span>
+<span class="line"><span>df.to_csv(csv_file, index=False) </span></span></code></pre>
+<p>This code is a script that downloads and summarizes recent documents from a list of stock symbols. The stock symbols are stored in the list <code>stockList</code>, and the data for these symbols is obtained by calling the <code>get_cse_tickers_data</code> function, which retrieves data from a CSV file stored on GitHub.</p>
+<p>The code then loops through each of the stocks in <code>stockList</code>, and for each stock, it retrieves a list of recent documents by calling the <code>get_recent_docs_from_url</code> function and passing it the URL for the stock.</p>
+<p>For each document, the code checks if the document URL already exists in the DataFrame <code>df</code>. If the URL does not exist, the code adds the document information (i.e., stock name, URL, and a summary) to <code>df</code> and makes a Discord request to post the information to a Discord channel. The information posted to the Discord channel includes the stock name, document URL, and a summary of the document’s contents. If the contents of the document are available, they are also included in the Discord request as an attachment.</p>
+<p>After all the documents have been processed, the code removes any duplicates in <code>df</code> and sorts the entries by the stock name. Finally, the updated <code>df</code> is saved to a CSV file.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/dli-invest/cse_file_downloader/blob/main/scrap_cse_releases.py">https://github.com/dli-invest/cse_file_downloader/blob/main/scrap_cse_releases.py</a></li>
+</ul>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/rust/how_to_use_regular_expressions_in_rust"> How to use regular expressions in Rust </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/2023/introduction_to_signalr_real-time_web_applications_made_easy"> Introduction to SignalR Real-Time Web Applications Made Easy </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>

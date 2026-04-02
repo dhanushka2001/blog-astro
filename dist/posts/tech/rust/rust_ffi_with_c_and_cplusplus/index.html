@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Google site verification --><meta name="google-site-verification" content="kFAnoH4VeeYCQ0ESY7s_gSbzfFz60ouU5gypgY4INSQ"><!-- Theme preload script --><script>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>C and C++ Interoperability in Rust: Exploring FFI - Dhanushka&#39;s Blog</title><meta name="description" content="In this article, we will explore Rust's FFI and demonstrate how to call functions from C and C++ libraries in Rust, allowing you to leverage the power of these languages while enjoying the benefits of Rust."><meta name="author" content="Dhanushka Jayagoda"><!-- Open Graph / Social Sharing --><meta property="og:title" content="C and C++ Interoperability in Rust: Exploring FFI"><meta property="og:description" content="In this article, we will explore Rust's FFI and demonstrate how to call functions from C and C++ libraries in Rust, allowing you to leverage the power of these languages while enjoying the benefits of Rust."><meta property="og:image" content="https://dhanushka2001.github.io//imgs/2023/117117315.png"><link rel="canonical" href="undefined/posts/tech/rust/rust_ffi_with_c_and_cplusplus"><meta property="og:url" content="undefined/posts/tech/rust/rust_ffi_with_c_and_cplusplus"><meta property="og:type" content="article"><!-- Twitter Cards --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dhanushka2001.github.io//imgs/2023/117117315.png"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="icon" type="image/x-icon" href="/favicon.ico"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2479144310234386" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119155027-6"></script><script type="module">(function(e,n,r,t,m){e[t]=e[t]||[],e[t].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var g=n.getElementsByTagName(r)[0],a=n.createElement(r),s="";a.async=!0,a.src="https://www.googletagmanager.com/gtm.js?id="+m+s,g.parentNode.insertBefore(a,g)})(window,document,"script","dataLayer","GTM-K8P5P8FQ");</script><script type="text/javascript">
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        try {
+          let i;
+          let slides = document.getElementsByClassName('mySlides');
+          let dots = document.getElementsByClassName('demo');
+          let captionText = document.getElementById('caption');
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+          }
+          slides[slideIndex - 1].style.display = 'block';
+          dots[slideIndex - 1].className += ' active';
+          captionText.innerHTML = dots[slideIndex - 1].alt;
+        } catch (err) {
+          // do nothing here
+        }
+      }
+    </script><!-- Google Tag Manager --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","UA-119155027-6");</script><!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.BHKhwr_v.css">
+<link rel="stylesheet" href="/_astro/about.CjJL-pjU.css"></head> <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100"> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8P5P8FQ" height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript> <!-- End Google Tag Manager (noscript) --> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z24o7pN" prefix="r8" component-url="/_astro/Navbar.B-1woz3I.js" component-export="Navbar" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Navbar&quot;,&quot;value&quot;:true}" await-children><div class="sticky top-0 z-50 bg-white py-0 dark:bg-slate-900"><div class="mx-auto max-w-screen-lg px-3 py-6"><div class="flex w-full items-center justify-between"><a href="/" class="flex items-center space-x-2"><div class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"><svg class="mr-1 size-10 stroke-cyan-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"></path><rect x="3" y="12" width="6" height="8" rx="1"></rect><rect x="9" y="8" width="6" height="12" rx="1"></rect><rect x="15" y="4" width="6" height="16" rx="1"></rect><path d="M4 20h14"></path></svg>Dhanushka&#x27;s Blog</div></a><div class="flex items-center space-x-2 sm:space-x-4 sm:rounded-[40px] sm:border sm:border-gray-200 sm:px-4 sm:py-2 dark:sm:border-gray-700"><div class="hidden items-center space-x-6 sm:flex"><a href="/posts" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Blog</a><a href="/tags" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">Tags</a><a href="/about" class="font-medium text-gray-700 hover:text-cyan-600 dark:text-gray-200 dark:hover:text-cyan-400">About</a></div><div class="flex items-center space-x-3"><button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg></button><button aria-label="Toggle Dark Mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6 text-gray-900 dark:text-gray-100"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg></button><div class="sm:hidden"><button aria-label="Toggle Menu" class="sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="size-8 text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button><div class="fixed right-0 top-0 z-20 size-full bg-white duration-300 ease-in-out dark:bg-gray-950 translate-x-full"><div class="flex justify-end"><button class="mr-6 mt-6 size-8" aria-label="Close Menu"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" class="text-gray-900 dark:text-gray-100"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button></div><nav class="mt-8"><div class="px-8 py-4"><a href="/" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Home</a></div><div class="px-8 py-4"><a href="/posts" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Blog</a></div><div class="px-8 py-4"><a href="/tags" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Tags</a></div><div class="px-8 py-4"><a href="/about" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">About</a></div><div class="px-8 py-4"><a href="/photos" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Photos</a></div></nav></div></div></div></div></div></div></div><!--astro:end--></astro-island> <div data-pagefind-body>  <astro-island uid="ZrsJbi" prefix="r5" component-url="/_astro/ScrollIndicator.FCqjRYWl.js" component-export="ScrollIndicator" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollIndicator&quot;,&quot;value&quot;:true}" await-children><div id="scroll-indicator" style="position:fixed;top:0;left:0;right:0;height:5px;z-index:100;background-color:#2DB7B9;transform:scaleX(0);transform-origin:0% 50% 0"></div><!--astro:end--></astro-island> <div class="mx-auto max-w-screen-lg px-3 py-6"><div><div class="text-center text-sm italic text-gray-600 dark:text-gray-400">7 min read</div><h1 class="text-center text-3xl font-bold">C and C++ Interoperability in Rust: Exploring FFI</h1><div class="text-center text-sm text-gray-600 dark:text-gray-400"><div class="mt-1">Published:<!-- --> <!-- -->Dec 27, 2024</div><div class="mt-2 flex flex-wrap items-center justify-center gap-4"><div class="flex items-center space-x-2"><img src="/assets/images/avatars/david.png" alt="David Li" class="size-6 rounded-full object-cover" loading="lazy"/><a href="https://github.com/FriendlyUser" target="_blank" rel="noopener noreferrer" class="hover:underline">David Li</a></div></div></div><div class="flex place-content-center space-x-2 pt-2"><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/rust" style="padding-right:3px"><category>rust</category></a></div></span><span><div class="rounded-md px-2 py-1 text-xs font-semibold bg-cyan-400 text-cyan-900"><a href="/tags/ffi" style="padding-right:3px"><category>ffi</category></a></div></span></div><div class="mx-auto mt-5 max-w-prose"><div class="aspect-h-2 aspect-w-3"><img class="size-full rounded-lg object-cover object-center" src="/imgs/2023/117117315.png" loading="lazy"/></div><div class="prose mt-6 text-gray-800 dark:prose-invert prose-img:rounded-lg dark:text-gray-100"><content>  <h1 id="c-and-c-interoperability-in-rust-exploring-ffi">C and C++ Interoperability in Rust: Exploring FFI</h1>
+<p>Rust has gained popularity for its safety, performance, and concurrency features. However, in the real world, there are many existing C and C++ libraries that developers need to interface with. Thankfully, Rust provides an easy way to achieve interoperability between Rust and C or C++ code using its Foreign Function Interface (FFI).</p>
+<p>In this article, we will explore Rust’s FFI and demonstrate how to call functions from C and C++ libraries in Rust, allowing you to leverage the power of these languages while enjoying the benefits of Rust.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#introduction-to-rusts-ffi">Introduction to Rust’s FFI</a></li>
+<li><a href="#calling-c-functions-in-rust">Calling C Functions in Rust</a></li>
+<li><a href="#calling-c-functions-in-rust">Calling C++ Functions in Rust</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+<h2 id="introduction-to-rusts-ffi">Introduction to Rust’s FFI</h2>
+<p>Foreign Function Interface (FFI) is a mechanism that allows code written in one language to call functions written in another language. Rust provides a simple and safe FFI, which enables developers to integrate C and C++ libraries with Rust code seamlessly.</p>
+<p>Rust’s FFI is based on the C Application Binary Interface (ABI), which means that it is compatible with C and other languages that follow the C ABI. This compatibility allows Rust to interface with a wide range of libraries and languages, including C and C++.</p>
+<p>Here is a draft technical article on C and C++ interoperability with Rust:</p>
+<p>C and C++ Interoperability with Rust
+Rust has excellent support for interfacing with C and C++ code through its Foreign Function Interface (FFI). The FFI allows Rust code to call into C/C++ libraries and C/C++ code to call into Rust libraries. This interoperability is important for several reasons:</p>
+<ol>
+<li>
+<p>Existing C/C++ libraries. There are countless high-quality C/C++ libraries already in existence. The Rust FFI allows you to leverage these libraries in your Rust programs. Some examples are SQLite, OpenGL, OpenCV, etc.</p>
+</li>
+<li>
+<p>Transitioning C/C++ codebases. If you have an existing C/C++ codebase, you can gradually introduce Rust by rewriting parts of it while still using existing C/C++ components. The Rust FFI enables this incremental transition.</p>
+</li>
+<li>
+<p>Performance sensitive code. For the highest performance requirements, you may choose to write some components in C/C++ and interface with Rust. The ultra-low overhead of calls across the FFI boundary makes this feasible.</p>
+</li>
+<li>
+<p>Wrapping C libraries. You can wrap a low-level C library in a safer Rust interface, providing useful abstractions and safety while still leveraging the C code under the hood. Many crates on crates.io do exactly this.</p>
+</li>
+</ol>
+<p>Using the FFI
+Here are the main steps to use the FFI in Rust:</p>
+<ol>
+<li>
+<p>Add extern blocks to specify C/C++ functions and types. You indicate which language the block targets with either extern “C” { } or extern “C++” { }.</p>
+</li>
+<li>
+<p>Use the correct calling conventions for the target language:</p>
+</li>
+</ol>
+<ul>
+<li>C uses the default cdecl calling convention.</li>
+<li>C++ uses the C++ calling convention, which you indicate using extern “C++”</li>
+</ul>
+<ol start="3">
+<li>
+<p>Properly handle ownership and lifetimes. Rust’s ownership rules do not apply across the FFI boundary. You must be explicit about how memory is handled.</p>
+</li>
+<li>
+<p>Translate basic types between Rust and C/C++. The types int, char, float, etc. have defined sizes and alignments in C/C++ but not Rust. Use type aliases to map between them.</p>
+</li>
+<li>
+<p>Manage error handling. C and C++ typically use error codes returned from functions, whereas Rust uses the type system. You need to properly handle and translate errors.</p>
+</li>
+<li>
+<p>Name mangling. C++ performs name mangling which changes the names of functions. Use extern “C++” to tell the Rust compiler to apply C++ name mangling rules.</p>
+</li>
+</ol>
+<p>Examples
+Here are a few examples of using the FFI:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>•Calling C code from Rust: </span></span>
+<span class="line"><span>extern "C" { </span></span>
+<span class="line"><span>    fn c_add(a: i32, b: i32) -> i32; </span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>fn call_c() { </span></span>
+<span class="line"><span>    let sum = unsafe { c_add(5, 10) }; </span></span>
+<span class="line"><span>    println!("Sum in C: {}", sum); </span></span>
+<span class="line"><span>} </span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>•Calling Rust code from C++: </span></span>
+<span class="line"><span>extern "Rust" { </span></span>
+<span class="line"><span>    fn rust_add(a: i32, b: i32) -> i32; </span></span>
+<span class="line"><span>} </span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int main() { </span></span>
+<span class="line"><span>    auto sum = rust_add(5, 10); </span></span>
+<span class="line"><span>    std::cout &#x3C;&#x3C; "Sum from Rust: " &#x3C;&#x3C; sum &#x3C;&#x3C; '\n'; </span></span>
+<span class="line"><span>} </span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>•Wrapping a C library in Rust: </span></span>
+<span class="line"><span>extern "C" { </span></span>
+<span class="line"><span>    fn open(filename: *const c_char) -> i32; </span></span>
+<span class="line"><span>    fn read(fd: i32, buf: *mut c_char, count: isize) -> isize; </span></span>
+<span class="line"><span>} </span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>pub struct File { </span></span>
+<span class="line"><span>    fd: i32, </span></span>
+<span class="line"><span>} </span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>impl File { </span></span>
+<span class="line"><span>    pub fn open(filename: &#x26;str) -> io::Result&#x3C;File> { </span></span>
+<span class="line"><span>        // Wrap C's open() in a safe interface </span></span>
+<span class="line"><span>        let fd = unsafe { open(filename.as_ptr()) }; </span></span>
+<span class="line"><span>        if fd &#x3C; 0 { </span></span>
+<span class="line"><span>            return Err(io::Error::last_os_error()); </span></span>
+<span class="line"><span>        } </span></span>
+<span class="line"><span>        Ok(File { fd }) </span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    // Other methods... </span></span>
+<span class="line"><span>}</span></span></code></pre>
+<h2 id="calling-c-functions-in-rust">Calling C Functions in Rust</h2>
+<p>To call a C function in Rust, you need to do the following:</p>
+<ol>
+<li>Declare the C function in Rust using the <code>extern</code> keyword.</li>
+<li>Link the C library to your Rust project.</li>
+<li>Call the C function from Rust code.</li>
+</ol>
+<h3 id="example-calling-a-c-function-in-rust">Example: Calling a C Function in Rust</h3>
+<p>Let’s consider a simple example where we have a C function that calculates the sum of two integers:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>// sum.h</span></span>
+<span class="line"><span>int sum(int a, int b);</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>// sum.c</span></span>
+<span class="line"><span>#include "sum.h"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int sum(int a, int b) {</span></span>
+<span class="line"><span>    return a + b;</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>To call this function from Rust, we will perform the following steps:</p>
+<ol>
+<li>Create a Rust project:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>$ cargo new rust_ffi_example</span></span>
+<span class="line"><span>$ cd rust_ffi_example</span></span></code></pre>
+<ol start="2">
+<li>Declare the C function in Rust:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>// src/lib.rs</span></span>
+<span class="line"><span>#[no_mangle]</span></span>
+<span class="line"><span>pub extern "C" fn sum(a: i32, b: i32) -> i32 {</span></span>
+<span class="line"><span>    a + b</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<ol start="3">
+<li>Build the C library and link it to the Rust project:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>$ gcc -c sum.c -o sum.o</span></span>
+<span class="line"><span>$ ar rcs libsum.a sum.o</span></span>
+<span class="line"><span>$ mkdir .cargo</span></span>
+<span class="line"><span>$ echo 'rustflags = ["-L", "path/to/libsum.a"]' > .cargo/config.toml</span></span></code></pre>
+<ol start="4">
+<li>Call the C function from Rust code:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>// src/main.rs</span></span>
+<span class="line"><span>extern "C" {</span></span>
+<span class="line"><span>    fn sum(a: i32, b: i32) -> i32;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>fn main() {</span></span>
+<span class="line"><span>    let a = 10;</span></span>
+<span class="line"><span>    let b = 20;</span></span>
+<span class="line"><span>    let result = unsafe { sum(a, b) };</span></span>
+<span class="line"><span>    println!("The sum of {} and {} is {}", a, b, result);</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>Now, you can build and run the Rust project:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>$ cargo build</span></span>
+<span class="line"><span>$ cargo run</span></span></code></pre>
+<h2 id="calling-c-functions-in-rust-1">Calling C++ Functions in Rust</h2>
+<p>Calling C++ functions from Rust is slightly more involved than calling C functions, mainly because of C++‘s name mangling and classes. However, you can still achieve this interoperability by following these steps:</p>
+<ol>
+<li>Create a C-compatible wrapper for the C++ functions.</li>
+<li>Declare the C-compatible functions in Rust using the <code>extern</code> keyword.</li>
+<li>Link the C++ library to your Rust project.</li>
+<li>Call the C++ functions from Rust code using the C-compatible wrapper.</li>
+</ol>
+<h3 id="example-calling-a-c-function-in-rust-1">Example: Calling a C++ Function in Rust</h3>
+<p>Let’s consider a simple example where we have a C++ function that calculates the product of two integers:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>// product.h</span></span>
+<span class="line"><span>class Product {</span></span>
+<span class="line"><span>public:</span></span>
+<span class="line"><span>    int multiply(int a, int b);</span></span>
+<span class="line"><span>};</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>// product.cpp</span></span>
+<span class="line"><span>#include "product.h"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int Product::multiply(int a, int b) {</span></span>
+<span class="line"><span>    return a * b;</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>To call this function from Rust, we will perform the following steps:</p>
+<ol>
+<li>Create a C-compatible wrapper for the C++ function:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>// product_wrapper.h</span></span>
+<span class="line"><span>#ifdef __cplusplus</span></span>
+<span class="line"><span>extern "C" {</span></span>
+<span class="line"><span>#endif</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int multiply(int a, int b);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>#ifdef __cplusplus</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>#endif</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>// product_wrapper.cpp</span></span>
+<span class="line"><span>#include "product_wrapper.h"</span></span>
+<span class="line"><span>#include "product.h"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int multiply(int a, int b) {</span></span>
+<span class="line"><span>    Product product;</span></span>
+<span class="line"><span>    return product.multiply(a, b);</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<ol start="2">
+<li>Build the C++ library and link it to our Rust project.</li>
+</ol>
+<p>Assuming we have built the C++ library libproduct.a using the following command:</p>
+<p>g++ -c product.cpp -o product.o
+ar rcs libproduct.a product.o
+We can link it to our Rust project by adding the following lines to our Cargo.toml file:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[dependencies]</span></span>
+<span class="line"><span>libc = "0.2"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[build-dependencies]</span></span>
+<span class="line"><span>gcc = "0.3"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[package]</span></span>
+<span class="line"><span>build = "build.rs"</span></span></code></pre>
+<p>The libc crate provides Rust bindings for C standard library functions, while the gcc crate is used to compile and link our C++ code.</p>
+<p>We also need to create a build.rs file in the root of our project with the following contents:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>extern crate gcc;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>fn main() {</span></span>
+<span class="line"><span>    gcc::Build::new()</span></span>
+<span class="line"><span>        .cpp(true)</span></span>
+<span class="line"><span>        .file("src/product_wrapper.cpp")</span></span>
+<span class="line"><span>        .compile("libproduct.a");</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>This will instruct Rust to compile our product_wrapper.cpp file and link it to our Rust project.</p>
+<p>Finally, we can call the C++ function from Rust by using the libc crate to load the C++ library and call the multiply function:
+extern crate libc;</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#[link(name = "product")]</span></span>
+<span class="line"><span>extern "C" {</span></span>
+<span class="line"><span>    fn multiply(a: libc::c_int, b: libc::c_int) -> libc::c_int;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>fn main() {</span></span>
+<span class="line"><span>    let result = unsafe { multiply(3, 4) };</span></span>
+<span class="line"><span>    println!("Result: {}", result);</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>This code declares the multiply function with the same signature as in the C++ code and links it to our Rust project using the #[link(name = “product”)] attribute. We can then call the multiply function from Rust by using the unsafe keyword, as we are making a foreign function call.</p>
+<p>When we run this code, we should see the following output:</p>
+<p>Result: 12</p>
+<p>This confirms that we have successfully called a C++ function from Rust.</p>  </content></div></div></div></div> <div class="mx-auto mt-5 max-w-prose"> <!-- Comments section --> <div id="comments" class="mt-10 px-4 sm:px-0"> <astro-island uid="Z1DP4WO" prefix="r6" component-url="/_astro/Giscus.DIEk97FM.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;GiscusComments&quot;,&quot;value&quot;:true}"></astro-island> </div> </div> <div class="mx-auto mt-5 max-w-prose flex justify-between gap-4 border-t border-gray-700 pt-4 text-sm text-gray-500 dark:text-gray-400 px-4 sm:px-0"> <div class="w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Previous</div> <a class="text-blue-400 hover:underline" href="/posts/tech/rust/rust_synchronize_primitives"> How to use sycnronization primitives in Rust </a> </div> <div class="text-right w-full sm:w-[48%] xl:w-auto"> <div class="text-xs uppercase">Next</div> <a class="text-blue-400 hover:underline" href="/posts/tech/rust/rust_cross_language"> Cross-Language Interoperability: Exploring Rust&#39;s FFI, WebAssembly, and gRPC </a> </div> </div><div class="mt-6 text-center"> <a href="/posts" class="text-blue-400 hover:underline text-sm">
+&larr; Back to blog
+</a> </div> <astro-island uid="ZedRRR" prefix="r7" component-url="/_astro/ScrollButtons.DMpCWj_0.js" component-export="default" renderer-url="/_astro/client.Dc9Vh3na.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ScrollButtons&quot;,&quot;value&quot;:true}" await-children><div class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 transition-opacity duration-300"><button aria-label="Scroll to top" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button><button aria-label="Scroll to comments" class="rounded-full bg-gray-200 p-2 text-gray-600 shadow-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"><svg class="size-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"></path></svg></button></div><!--astro:end--></astro-island>  </div> <div class="mx-auto max-w-screen-lg px-3 py-6"><div class="border-t border-gray-600 pt-5"><div class="text-sm text-gray-600 dark:text-gray-200">© Copyright <!-- -->2026<!-- --> by <!-- -->Dhanushka&#x27;s Blog<!-- -->. Built with ♥ by<!-- --> <a class="text-cyan-400 hover:underline" href="https://github.com/dhanushka2001" target="_blank" rel="noopener noreferrer">Dhanushka</a>. Last updated on <!-- -->2026-04-02<!-- -->.</div></div></div> </body></html>
