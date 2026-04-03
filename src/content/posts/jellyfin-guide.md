@@ -5,7 +5,7 @@ alt: Guide to turn an old Windows PC into a Jellyfin Media Server and Torrent Bo
 tags: ["networking", "jellyfin"]
 layout: '@/templates/BasePost.astro'
 pubDate: Wednesday, 18 March 2026 15:30:00 GMT
-updateDate: 2026-04-01
+updateDate: 2026-04-02
 imgSrc: '/imgs/2026/mar/jellyfin.jpg'
 imgAlt: 'Jellyfin Media Server homepage'
 authors: [Dhanushka Jayagoda]
@@ -165,6 +165,9 @@ DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assign
    }
    
    <YOUR_SERVER>.duckdns.org:8443 {
+       # Force IPv4 binding (Windows may otherwise bind only to IPv6 and break port forwarding)
+       bind 192.168.0.XX
+
        # Use the DNS challenge with your DuckDNS token
        tls {
            dns duckdns <DUCKDNS_TOKEN>
@@ -180,6 +183,51 @@ DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assign
       * ``<DUCKDNS_TOKEN>`` with your DuckDNS token
       * ``192.168.0.XX`` with your Jellyfin PC's local IP Address
 
+   #### Commands for debugging:
+     
+      * <details><summary> Verify IPv4 binding </summary>
+
+        ```cmd
+        netstat -ano | findstr ":8443"
+        ```
+
+        You should see:
+
+        ```cmd
+        TCP    192.168.0.XX:8443   0.0.0.0:0   LISTENING    XXXXX
+        ```
+
+        I recently had my Jellyfin Server go down and I was completely lost as to why. When I ran ``netstat -ano | findstr ":8443"``, it printed:
+
+        ```cmd
+        TCP    [XXXX::XXXX:XXXX:XXXX:XXXX%XX]:8443  [::]:0  LISTENING   XXXXX
+        ```
+
+        What it means is Caddy was listening only on an IPv6 local link address (```XXXX::...```), not on IPv4 (``0.0.0.0``). That explained why WAN access failed — the router’s port forwarding is irrelevant if the service isn’t bound to an IPv4 address.
+
+        The fix is the line ``bind 192.168.0.XX`` in the **Caddyfile**. We force Caddy to bind exactly to our IPv4 LAN address, ignoring all other interfaces. Make sure you run Caddy as administrator, binding to ports and addresses can fail silently on Windows if not elevated. 
+
+
+
+        </details>
+
+      * <details><summary> Verify Dynamic DNS </summary>
+
+        Go to ``https://whatismyipaddress.com/`` to see your Public IP
+
+        Go to ``https://duckdns.org`` and check if the Public IP is correct.
+
+        </details>
+
+      * <details><summary> Verify DHCP reservation </summary>
+
+        Check your IPv4 address hasn't changed.
+
+        ```
+        ipconfig /all   
+        ```
+
+        </details>
 
 7. Open **Command Prompt**, ``cd`` into the ``caddy`` folder, and run this:
 
