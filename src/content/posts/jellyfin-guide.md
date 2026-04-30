@@ -3,11 +3,11 @@ title: How to setup your own Jellyfin Media Server
 description: A definitive beginner-friendly guide to turn an old Windows PC/laptop into a Jellyfin Media Server and Torrent Box, so you can watch your favorite movies/shows on your phone/PC/TV at home or abroad.
 alt: Guide to turn an old Windows PC into a Jellyfin Media Server and Torrent Box
 tags: ["networking", "jellyfin"]
-layout: '@/templates/BasePost.astro'
+layout: "@/templates/BasePost.astro"
 pubDate: Wednesday, 18 March 2026 15:30:00 GMT
 updateDate: 2026-04-02
-imgSrc: '/imgs/2026/mar/jellyfin.jpg'
-imgAlt: 'Jellyfin Media Server homepage'
+imgSrc: "/imgs/2026/mar/jellyfin.jpg"
+imgAlt: "Jellyfin Media Server homepage"
 authors: [Dhanushka Jayagoda]
 ---
 
@@ -30,6 +30,7 @@ Caddy (HTTPS reverse proxy)
         ↓
 Jellyfin (localhost:8096)
 ```
+
 <!--
 * **DuckDNS** gives you a free domain name. Note:
     * Your **domain**
@@ -49,23 +50,22 @@ Install Jellyfin on your old Windows PC/laptop: https://jellyfin.org/docs/genera
 
 Find the **MAC address** and **IP address** of your Jellyfin Windows PC/laptop by opening **Command Prompt** and running:
 
-   ```cmd
-   ipconfig /all
-   ```
+```cmd
+ipconfig /all
+```
 
-   If you're using WiFi make sure to look under **Wireless LAN adapter Wi-Fi**. If you're using Ethernet look under **Ethernet adapter**.
+If you're using WiFi make sure to look under **Wireless LAN adapter Wi-Fi**. If you're using Ethernet look under **Ethernet adapter**.
 
-   ```cmd
-   Wireless LAN adapter Wi-Fi:
+```cmd
+Wireless LAN adapter Wi-Fi:
 
-     Physical Address. . . . . . . . : XX-XX-XX-XX-XX-XX  <-- MAC ADDRESS
-     IPv4 Address. . . . . . . . . . : 192.168.0.XX       <-- IP ADDRESS
-   ```
+  Physical Address. . . . . . . . : XX-XX-XX-XX-XX-XX  <-- MAC ADDRESS
+  IPv4 Address. . . . . . . . . . : 192.168.0.XX       <-- IP ADDRESS
+```
 
-   You can access your Jellyfin server by going to ``http://localhost:8096`` or ``http://192.168.0.XX:8096`` (replacing ``192.168.0.XX`` with the PC's local IP address).
+You can access your Jellyfin server by going to `http://localhost:8096` or `http://192.168.0.XX:8096` (replacing `192.168.0.XX` with the PC's local IP address).
 
-   This only works on the Jellyfin PC itself though. To make the Jellyfin server accessible on other devices inside and outside the network, we have to do a bit of networking.
-
+This only works on the Jellyfin PC itself though. To make the Jellyfin server accessible on other devices inside and outside the network, we have to do a bit of networking.
 
 ## 3. Setup DHCP Reservation and Port Forwarding
 
@@ -73,22 +73,22 @@ Find the **MAC address** and **IP address** of your Jellyfin Windows PC/laptop b
 
 **DHCP** stands for **Dynamic Host Configuration Protocol**. It is a network management protocol that automatically assigns IP addresses and other communication parameters to devices on a network. **DHCP** is used for both:
 
-* **Public IP Assignment:** When your router first connects to your ISP, it acts as a **DHCP client**. It requests an address from the ISP's **DHCP server**, which then "leases" your home its single public IP address (your ISP will occassionally change your public IP).
-* **Local IP Assignment:** Once your router has its public address, it switches roles and acts as a **DHCP server** for your house. It assigns unique **local IP addresses** (like ``192.168.1.5``) to your laptop, phone, smart TV, etc., so they can communicate with each other internally.
+- **Public IP Assignment:** When your router first connects to your ISP, it acts as a **DHCP client**. It requests an address from the ISP's **DHCP server**, which then "leases" your home its single public IP address (your ISP will occassionally change your public IP).
+- **Local IP Assignment:** Once your router has its public address, it switches roles and acts as a **DHCP server** for your house. It assigns unique **local IP addresses** (like `192.168.1.5`) to your laptop, phone, smart TV, etc., so they can communicate with each other internally.
 
 </details>
 
 **DHCP Reservation ("Fixed Room Assignment"):** In a normal building, rooms can change designation. We're telling the router: "Keep Room 10 designated for the Jellyfin Server."
 
-1. Access your **Router Settings Page** (accessed by typing a specific IP address into your web browser. You can sometimes find the URL to access the settings page on the sticker on the back/bottom of your WiFi router. The exact address depends on your ISP, for Virgin Media it's ``192.168.0.1``).
+1. Access your **Router Settings Page** (accessed by typing a specific IP address into your web browser. You can sometimes find the URL to access the settings page on the sticker on the back/bottom of your WiFi router. The exact address depends on your ISP, for Virgin Media it's `192.168.0.1`).
 2. Login using the password you were given by your ISP (the default password is usually printed on the sticker on the back/bottom of your WiFi router, you will then need to change the password to your own custom password. If you don't remember your password, you can reset the router and use the default password that's printed on the sticker on your WiFi router).
-3. Go to the **DHCP** settings page (for Virgin Media it's under **Advanced settings** → **DHCP**).   
-4. Add a new DHCP **reserved rule** using the **MAC address** and **IP address** of your Jellyfin PC. This ensures that your Jellyfin PC's local IP address _inside_ your house (e.g. ``192.168.0.10``) **never changes**. If this changed (e.g. PC reboot, router reset), your port forward would break.
+3. Go to the **DHCP** settings page (for Virgin Media it's under **Advanced settings** → **DHCP**).
+4. Add a new DHCP **reserved rule** using the **MAC address** and **IP address** of your Jellyfin PC. This ensures that your Jellyfin PC's local IP address _inside_ your house (e.g. `192.168.0.10`) **never changes**. If this changed (e.g. PC reboot, router reset), your port forward would break.
 
 **Port Forwarding ("The Side Door"):** We tell the Router ("Guard"): "Block all requests, but if anyone at the gate asks for **"Side Door 8443"** (External Port), send their request internally to **Room 10** (Jellyfin Server Local IP), **Desk 8443** (Caddy Internal Port)." We're not leaving the front door open (port 443), but the side door isn't exactly hidden or secure. But that's fine, we have other security measures in place (Jellyfin password, Fail2Ban).
 
 1. Now go to the **Port forwarding** settings page (for Virgin Media it's under **Advanced settings** → **Security** → **Port forwarding**).
-2. Add 2 new **port forwarding rules** (replacing ``192.168.0.XX`` with the IP address of your Jellyfin PC):
+2. Add 2 new **port forwarding rules** (replacing `192.168.0.XX` with the IP address of your Jellyfin PC):
 
    <table style="width: 100%;">
      <tr>
@@ -115,41 +115,40 @@ Find the **MAC address** and **IP address** of your Jellyfin Windows PC/laptop b
      </tr>
    </table>
 
-   * **Rule 1 (80→80):** Good for automatic redirects and standard HTTP.
-   * **Rule 2 (8443→8443):** This is your main HTTPS "highway". Since many ISPs block the standard **Port 443** to restrict home web hosting, **8443** acts as a stealthy "universal backup" that bypasses these blocks.
-      * **The Downside:** Because it's not the "standard" port, you must add ``:8443`` to the end of your URL when connecting. It's a small trade-off for a direct connection without needing third-party tools like Tailscale (which requires you to install their VPN on your devices) or Cloudflare (requires a paid domain).
+   - **Rule 1 (80→80):** Good for automatic redirects and standard HTTP.
+   - **Rule 2 (8443→8443):** This is your main HTTPS "highway". Since many ISPs block the standard **Port 443** to restrict home web hosting, **8443** acts as a stealthy "universal backup" that bypasses these blocks.
+     - **The Downside:** Because it's not the "standard" port, you must add `:8443` to the end of your URL when connecting. It's a small trade-off for a direct connection without needing third-party tools like Tailscale (which requires you to install their VPN on your devices) or Cloudflare (requires a paid domain).
 
 ## 4. Create a free DuckDNS domain
 
-DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assigns a custom subdomain (e.g. ``<YOUR_SERVER>.duckdns.org``) to your home router's public IP address.
+DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assigns a custom subdomain (e.g. `<YOUR_SERVER>.duckdns.org`) to your home router's public IP address.
 
-**DuckDNS ("The Map")**: DuckDNS acts as a **Global Phonebook**. When the user types ``<YOUR_SERVER>.duckdns.org`` into their browser, the computer "calls" the DuckDNS server and asks, "Where is this building located right now?". DuckDNS checks its latest records and replies, "It's currently at [your public IP]".
+**DuckDNS ("The Map")**: DuckDNS acts as a **Global Phonebook**. When the user types `<YOUR_SERVER>.duckdns.org` into their browser, the computer "calls" the DuckDNS server and asks, "Where is this building located right now?". DuckDNS checks its latest records and replies, "It's currently at [your public IP]".
 
 1. Go to https://www.duckdns.org
 2. Sign in (GitHub / Google)
 3. Choose a subdomain (make it short and memorable, this will be the URL you use to access your media server through the internet)
 4. Note:
-    * Your **domain**
-    * Your **token**
+   - Your **domain**
+   - Your **token**
 
 ## 5. Download Caddy with DuckDNS and DynamicDNS module
 
 **Caddy Reverse Proxy ("The Concierge"):** We tell Caddy: "Wait internally in **Room 10, Desk 8443** for a secure briefcase (a HTTPS request). You have the key (SSL Certificate) to open the briefcase and see what's inside." Caddy looks inside and says: "Ah, they want the film _Up (2009)_ from the Movie Library" and walks across the room to **Cabinet 8096** (the internal Jellyfin port). Caddy takes the message out of the secure briefcase and hands it to Jellyfin. When Jellyfin replies, Caddy puts the movie data into the secure briefcase and sends it back to the Guard (Router) at the Side Door.
 
-
 1. Go to https://caddyserver.com/download
 2. Change **Platform** to **Windows amd64** (standard for Intel/AMD PCs)
 3. Search the list of plugins to find and select **caddy-dns/duckdns** and **mholt/caddy-dynamicdns** (click the box, NOT the hyperlink, you should see "**Extra features: 2**")
 4. Click **Download**
-5. Rename the file to ``caddy.exe`` and move it to a dedicated folder (e.g. ``C:\caddy\``)
-6. Create a new file called ``Caddyfile`` inside the ``caddy`` folder, open it with **Notepad** and paste this:
+5. Rename the file to `caddy.exe` and move it to a dedicated folder (e.g. `C:\caddy\`)
+6. Create a new file called `Caddyfile` inside the `caddy` folder, open it with **Notepad** and paste this:
 
    ```
    {
        # Global options
        auto_https disable_redirects
        https_port 8443
-   
+
        # Automatically update your DuckDNS record when your Public IP changes
        dynamic_dns {
            provider duckdns <DUCKDNS_TOKEN>
@@ -158,12 +157,12 @@ DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assign
            }
            # This stops the IPv6 warning
            versions ipv4
-   	
+
            # Uncomment to check every 1min for testing purposes
            # check_interval 1m
        }
    }
-   
+
    <YOUR_SERVER>.duckdns.org:8443 {
        # Force IPv4 binding (Windows may otherwise bind only to IPv6 and break port forwarding)
        bind 192.168.0.XX
@@ -178,58 +177,73 @@ DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assign
    }
    ```
 
-   replacing: 
-      * ``<YOUR_SERVER>`` with your DuckDNS subdomain
-      * ``<DUCKDNS_TOKEN>`` with your DuckDNS token
-      * ``192.168.0.XX`` with your Jellyfin PC's local IP Address
+   replacing:
+
+   - `<YOUR_SERVER>` with your DuckDNS subdomain
+   - `<DUCKDNS_TOKEN>` with your DuckDNS token
+   - `192.168.0.XX` with your Jellyfin PC's local IP Address
 
    #### Commands for debugging:
-     
-      * <details><summary> Verify IPv4 binding </summary>
 
-        ```cmd
-        netstat -ano | findstr ":8443"
-        ```
+   - <details><summary> Verify IPv4 binding </summary>
 
-        You should see:
+     ```cmd
+     netstat -ano | findstr ":8443"
+     ```
 
-        ```cmd
-        TCP    192.168.0.XX:8443   0.0.0.0:0   LISTENING    XXXXX
-        ```
+     You should see:
 
-        I recently had my Jellyfin Server go down and I was completely lost as to why. When I ran ``netstat -ano | findstr ":8443"``, it printed:
+     ```cmd
+     TCP    192.168.0.XX:8443   0.0.0.0:0   LISTENING    XXXXX
+     ```
 
-        ```cmd
-        TCP    [XXXX::XXXX:XXXX:XXXX:XXXX%XX]:8443  [::]:0  LISTENING   XXXXX
-        ```
+     I recently had my Jellyfin Server go down and I was completely lost as to why. When I ran `netstat -ano | findstr ":8443"`, it printed:
 
-        What it means is Caddy was listening only on an IPv6 local link address (```XXXX::...```), not on IPv4 (``0.0.0.0``). That explained why WAN access failed — the router’s port forwarding is irrelevant if the service isn’t bound to an IPv4 address.
+     ```cmd
+     TCP    [XXXX::XXXX:XXXX:XXXX:XXXX%XX]:8443  [::]:0  LISTENING   XXXXX
+     ```
 
-        The fix is the line ``bind 192.168.0.XX`` in the **Caddyfile**. We force Caddy to bind exactly to our IPv4 LAN address, ignoring all other interfaces. Make sure you run Caddy as administrator, binding to ports and addresses can fail silently on Windows if not elevated. 
+     What it means is Caddy was listening only on an IPv6 local link address (`XXXX::...`), not on IPv4 (`0.0.0.0`). That explained why WAN access failed — the router’s port forwarding is irrelevant if the service isn’t bound to an IPv4 address.
 
+     The fix is the line `bind 192.168.0.XX` in the **Caddyfile**. We force Caddy to bind exactly to our IPv4 LAN address, ignoring all other interfaces. Make sure you run Caddy as administrator, binding to ports and addresses can fail silently on Windows if not elevated.
 
+     </details>
 
-        </details>
+   - <details><summary> Verify Dynamic DNS </summary>
 
-      * <details><summary> Verify Dynamic DNS </summary>
+     Go to `https://whatismyipaddress.com/` to see your Public IP
 
-        Go to ``https://whatismyipaddress.com/`` to see your Public IP
+     Go to `https://duckdns.org` and check if the Public IP is correct.
 
-        Go to ``https://duckdns.org`` and check if the Public IP is correct.
+     </details>
 
-        </details>
+   - <details><summary> Verify DHCP reservation </summary>
 
-      * <details><summary> Verify DHCP reservation </summary>
+     Check your IPv4 address hasn't changed.
 
-        Check your IPv4 address hasn't changed.
+     ```
+     ipconfig /all
+     ```
 
-        ```
-        ipconfig /all   
-        ```
+     </details>
 
-        </details>
+   - <details><summary> Fix stalled network bind w/ zombie process </summary>
 
-7. Open **Command Prompt**, ``cd`` into the ``caddy`` folder, and run this:
+     Sometimes Jellyfin does not work for no apparent reason and gives a **"Connection Failure"** error message.
+
+     A fix I found was to go to the Jellyfin log folder in `C:\ProgramData\Jellyfin\Server\data` and delete two files ending in `.db-shm` and `.db-wal`.
+
+     Apparently the issue was:
+
+     - **Database Lock**: Jellyfin likely crashed or didn't shut down cleanly. This left behind the `-shm` and `-wal` files I found. These files told the next session of Jellyfin: _"Someone is already writing to this database, you are Read-Only."_ This is why my login attempts failed—the server couldn't write the "session token" to the database.
+     - **Port Conflict**: When I restarted, a "zombie" version of Jellyfin was likely still hanging onto port 8096 in the background (which is why I saw it in the tray/processes but couldn't load the page). It was "listening" but not actually "answering."
+     - **Bind Issue**: Your netstat showed the server was specifically tied to your LAN IP (192.168.0.12) but ignoring localhost. Killing the processes and restarting as Admin forced Windows to reset that connection.
+
+     If this ever happens again and deleting those files doesn't work immediately, check **Task Manager** one more time to make sure no "ghost" `jellyfin.exe` is still running—otherwise, it'll just recreate those lock files the second you try to delete them.
+
+     </details>
+
+7. Open **Command Prompt**, `cd` into the `caddy` folder, and run this:
 
    ```cmd
    caddy run --config Caddyfile
@@ -237,24 +251,24 @@ DuckDNS is a 100% free and widely trusted Dynamic DNS (DDNS) service that assign
 
    this command would need to be run again if the PC reboots, so you could make it a script that runs on startup.
 
-You should now be able to access your Jellyfin Server from another device inside or outside your home network using ``https://<YOUR_SERVER>.duckdns.org:8443`` (replacing ``<YOUR_SERVER>`` with your DuckDNS subdomain).
+You should now be able to access your Jellyfin Server from another device inside or outside your home network using `https://<YOUR_SERVER>.duckdns.org:8443` (replacing `<YOUR_SERVER>` with your DuckDNS subdomain).
 
 ### Why we need Caddy
 
-* **Jellyfin stays hidden:** Jellyfin (Cabinet 8096) is in the back of the room. It never talks to the internet directly. Only Caddy talks to the outside world.
-* **The "Secret Language" (HTTPS):** Jellyfin isn't great at managing SSL certificates. Caddy is an expert. Caddy handles the "Secret Language" so Jellyfin can just focus on "Playing Movies."
-* **One Room, Many Cabinets:** If you later add a music server (Navidrome) at **Cabinet 4533** or a photo server (Immich) at **Cabinet 2283**, Caddy can manage that too. You don't need a new "Side Door"; Caddy just looks at the name on the briefcase (e.g. ``music.duckdns.org:8443`` vs ``movies.duckdns.org:8443`` vs ``photos.duckdns.org:8443``) and knows which cabinet to go to:
-  * **Cabinet 8096** is movies (Jellyfin)
-  * **Cabinet 4533** is music (Navidrome)
-  * **Cabinet 2283** is photos (Immich)
+- **Jellyfin stays hidden:** Jellyfin (Cabinet 8096) is in the back of the room. It never talks to the internet directly. Only Caddy talks to the outside world.
+- **The "Secret Language" (HTTPS):** Jellyfin isn't great at managing SSL certificates. Caddy is an expert. Caddy handles the "Secret Language" so Jellyfin can just focus on "Playing Movies."
+- **One Room, Many Cabinets:** If you later add a music server (Navidrome) at **Cabinet 4533** or a photo server (Immich) at **Cabinet 2283**, Caddy can manage that too. You don't need a new "Side Door"; Caddy just looks at the name on the briefcase (e.g. `music.duckdns.org:8443` vs `movies.duckdns.org:8443` vs `photos.duckdns.org:8443`) and knows which cabinet to go to:
+  - **Cabinet 8096** is movies (Jellyfin)
+  - **Cabinet 4533** is music (Navidrome)
+  - **Cabinet 2283** is photos (Immich)
 
 We need HTTPS to encrypt passwords entered, especially when accessing the Jellyfin server on public WiFi. In the past, getting that green padlock (SSL/HTTPS) was a manual nightmare. You had to generate a request, pay a provider, download files, and remember to renew them every 90 days. Caddy was the first web server to do **Automatic HTTPS** by default. It talks to **Let's Encrypt** automatically. It handles the request, the installaton, and the renewal without you lifting a finger.
 
 ### The Two IPs: Internal (Local) vs. External (Public)
 
-* **Static DHCP (Internal/Local):** This is what you did in your Router Settings Page. It ensures your Jellyfin PC's address _inside_ your house (e.g. ``192.168.0.10``) **never changes**. If this changes, your port forward would break.
-* **Dynamic DNS (DDNS) (External/Public):** This is your "Public IP"--the one the whole world sees. Your ISP changes this occasionally. If it changes, **DuckDNS** needs to be told your new "building address", or the URL won't work.
-* **Automatic DDNS** in Caddy simply tells DuckDNS: "Hey, my home IP just changed to [New public IP], update the map!" without you having to log into the DuckDNS website manually.
+- **Static DHCP (Internal/Local):** This is what you did in your Router Settings Page. It ensures your Jellyfin PC's address _inside_ your house (e.g. `192.168.0.10`) **never changes**. If this changes, your port forward would break.
+- **Dynamic DNS (DDNS) (External/Public):** This is your "Public IP"--the one the whole world sees. Your ISP changes this occasionally. If it changes, **DuckDNS** needs to be told your new "building address", or the URL won't work.
+- **Automatic DDNS** in Caddy simply tells DuckDNS: "Hey, my home IP just changed to [New public IP], update the map!" without you having to log into the DuckDNS website manually.
 
 The next steps will setup the Jellyfin PC as a Torrent Box.
 
@@ -262,9 +276,9 @@ The next steps will setup the Jellyfin PC as a Torrent Box.
 
 Hotspot Shield VPN is the best and frankly only free VPN I've found that:
 
-  * allows P2P (Peer-to-Peer) traffic for torrenting
-  * has unlimited data (2Mbps speed cap, good enough)
-  * has good enough privacy
+- allows P2P (Peer-to-Peer) traffic for torrenting
+- has unlimited data (2Mbps speed cap, good enough)
+- has good enough privacy
 
 The free tier also includes a kill-switch, auto-connect, and split-tunneling; all of which we'll use.
 
@@ -296,12 +310,12 @@ Most ISPs will block the Hotspot Shield VPN website. To bypass this you will nee
 2. In **General** and **Advanced**, make sure **all** the options are enabled.
 3. In **Split Tunneling**, enable **Bypass VPN**, and add these apps and sites to the Bypass VPN list:
 
-   * Your Jellyfin DuckDNS domain (select **Add website** and enter ``https://<YOUR_SERVER>.duckdns.org:8443`` (replacing ``<YOUR_SERVER>``))
-   * **Jellyfin (View Console)**
-   * **Jellyfin Tray App**
-   * **caddy.exe** (select **Add an application that is not in the list**, then click **Browse** to navigate to the **caddy.exe** in your ``C:\caddy\`` folder)
+   - Your Jellyfin DuckDNS domain (select **Add website** and enter `https://<YOUR_SERVER>.duckdns.org:8443` (replacing `<YOUR_SERVER>`))
+   - **Jellyfin (View Console)**
+   - **Jellyfin Tray App**
+   - **caddy.exe** (select **Add an application that is not in the list**, then click **Browse** to navigate to the **caddy.exe** in your `C:\caddy\` folder)
 
-Now split tunneling is enabled. This means we can setup the torrent client to only connect through the VPN (next step) but keep Caddy and Jellyfin on the home network WiFi. 
+Now split tunneling is enabled. This means we can setup the torrent client to only connect through the VPN (next step) but keep Caddy and Jellyfin on the home network WiFi.
 
 ## 8. Download qBittorrent and enable connection only through VPN
 
@@ -314,16 +328,16 @@ With your torrent client connected to Hotspot Shield VPN, your P2P traffic is no
 
 **One important tip:** When torrenting, you may notice that the file is stuck at 0%. This is normal. Firstly verify that the **Network interface** is set to **HotspotShield WinTun**. Then wait 5-10 mins, if the file is still stuck at 0% then:
 
-  * Go to **Tools > Options > Connection** in qBittorrent
-  * In **Listening Port > Port used for incoming connections**, click **Random**, then click **Apply** and **OK** (this usually fixes the issue).
-  * Wait 5-10 mins again, if the file is still stuck at 0% it's likely that there isn't any seeders (the file is essentially dead), and you will need to find another source that has active seeders.
+- Go to **Tools > Options > Connection** in qBittorrent
+- In **Listening Port > Port used for incoming connections**, click **Random**, then click **Apply** and **OK** (this usually fixes the issue).
+- Wait 5-10 mins again, if the file is still stuck at 0% it's likely that there isn't any seeders (the file is essentially dead), and you will need to find another source that has active seeders.
 
 ## 9. Run wifi-monitor.bat
 
 Due to the nature of torrenting, WiFi can sometimes be disabled. To prevent this, I have created 2 bat scripts which automatically detect if the WiFi is down, disables then re-enables the WiFi adapter, and re-connects.
 
-1. Create a new folder, ``C:\wifi\``
-2. Inside the folder, create a new file, ``reset-wifi.bat`` and paste in this script using Notepad:
+1. Create a new folder, `C:\wifi\`
+2. Inside the folder, create a new file, `reset-wifi.bat` and paste in this script using Notepad:
 
    ```bat
    @echo off
@@ -347,60 +361,109 @@ Due to the nature of torrenting, WiFi can sometimes be disabled. To prevent this
    echo WiFi reset complete
    ```
 
-   replacing ``<YOUR-WIFI-NETWORK-SSID>`` with your WiFi Network SSID.
+   replacing `<YOUR-WIFI-NETWORK-SSID>` with your WiFi Network SSID.
 
-3. Create another file, ``wifi-monitor.bat`` and paste in this script:
+3. Create another file, `wifi-monitor.bat` and paste in this script:
 
    ```bat
    @echo off
-   
    set /a count=0
    set limit=3
-   
+   set "logfile=C:\wifi\wifi_events.txt"
+
    :loop
    echo Performing periodic WiFi check...
-   
-   :: The | find "TTL=" ensures we only count a REAL connection as success
-   echo Pinging Google...
    ping -n 1 8.8.8.8 | find "TTL=" >nul
-   
-   if errorlevel 1 (
-       echo "Ping failed! :( %time% %date%"
-       set /a count=%count%+1
-       echo Internet lost. Failure count: %count%
-   
-       if %count% EQU %limit% goto :threshold_reached
-   
-       echo Closing Chrome...
-       taskkill /F /IM chrome.exe /T
-       echo Calling reset-wifi.bat...
-       call C:\wifi\reset-wifi.bat
-       timeout /t 60 >nul
-   ) else (
-       echo "Ping successful :) %time% %date%"
-       set /a count=0
-   )
+
+   if errorlevel 1 goto :handle_failure
+
+   :: Success path
+   echo "Ping successful :) %time% %date%"
+   set /a count=0
    timeout /t 60 >nul
    goto loop
-   
+
+   :handle_failure
+   set /a count=%count%+1
+   echo "Ping failed! :( %time% %date%"
+   echo Internet lost. Failure count: %count%
+
+   :: Log the failure
+   echo %date% %time% - PING FAILED. Failure count: %count% >> "%logfile%"
+
+   :: Check if we hit the "Hard" limit (e.g. 3)
+   if %count% GEQ %limit% goto :threshold_reached
+
+   :: NEW LOGIC: Only do soft reset if this isn't the first failure (count > 1)
+   if %count% GTR 1 (
+       echo [!] Consecutive failure detected. Triggering soft reset...
+       echo %date% %time% - Consecutive failure. Calling reset-wifi.bat >> "%logfile%"
+
+       taskkill /F /IM "chrome.exe" /T >nul 2>&1
+       call "C:\wifi\reset-wifi.bat"
+       timeout /t 60 >nul
+   ) else (
+       echo [?] First failure. Waiting for next check before resetting...
+   )
+
+   timeout /t 60 >nul
+   goto loop
+
    :threshold_reached
-   echo Limit of %limit% reached! Closing Hotspot Shield VPN and resetting counter...
-   taskkill /F /IM hsscp.exe /T
+   echo Limit reached! Killing VPN and resetting counter...
+   echo %date% %time% - THRESHOLD REACHED. Killing VPN. >> "%logfile%"
+   taskkill /F /IM "hsscp.exe" /T >nul 2>&1
    set /a count=0
    timeout /t 60 >nul
    goto loop
    ```
 
-   this works only if you use Chrome as your browser for torrent sites. If you use other browsers, you will need to adjust the ``taskkill /F /IM chrome.exe /T`` line.
+   this works only if you use Chrome as your browser for torrent sites. If you use other browsers, you will need to adjust the `taskkill /F /IM chrome.exe /T` line.
 
-4. Right-click ``wifi-monitor.bat`` and click **Run as administrator**
+4. Right-click `wifi-monitor.bat` and click **Run as administrator**
 
-Just like with the Caddy, ``wifi-monitor.bat`` will need to be manually run again if your PC reboots. You could make a script to automatically run these scripts on startup, but instead we will just prevent the PC from ever rebooting. (If your PC regularly reboots due to factors outside your control, e.g. power cuts, then you would need to enable "Restore on AC/Power Loss" in the BIOS, and setup a script to automatically run Caddy and wifi-monitor.bat).
+Just like with the Caddy, `wifi-monitor.bat` will need to be manually run again if your PC reboots. You could make a script to automatically run these scripts on startup, but instead we will just prevent the PC from ever rebooting. (If your PC regularly reboots due to factors outside your control, e.g. power cuts, then you would need to enable "Restore on AC/Power Loss" in the BIOS, and setup a script to automatically run Caddy and wifi-monitor.bat).
+
+5. Create one more file, `dns-hard-fix.bat`, and paste in this script:
+
+   ```bat
+   @echo off
+   :loop
+   echo Checking DNS health for Chrome Remote Desktop...
+
+   :: Try to ping by NAME. If this fails, DNS is likely broken.
+   nslookup ://google.com >nul 2>&1
+
+   if errorlevel 1 (
+       echo [!] DNS PROBE FAILURE DETECTED at %time%
+       echo [!] Preparing for Hard Reset and Reboot...
+
+       :: The fixes you found successful
+       netsh winsock reset
+       netsh int ip reset
+       ipconfig /flushdns
+
+       :: Optional: Log the failure so you know why it rebooted later
+       echo DNS failure reboot at %date% %time% >> C:\wifi\reboot_log.txt
+
+       echo System will restart in 30 seconds. Save your work!
+       shutdown /r /t 30 /f
+       exit
+   ) else (
+       echo [OK] DNS is resolving correctly.
+   )
+
+   :: Check every 5 minutes (300 seconds) to avoid overhead
+   timeout /t 300 >nul
+   goto loop
+   ```
+
+And that's it. Logs will be stored in `C:\wifi\wifi_events.txt` and `C:\wifi\reboot_log.txt`.
 
 If Hotspot Shield VPN fails to connect after this:
 
-* Uninstall Hotspot Shield VPN
-* In the uninstallation screen, click **Repair**. Then it should work.
+- Uninstall Hotspot Shield VPN
+- In the uninstallation screen, click **Repair**. Then it should work.
 
 ## 10. Download Chrome Remote Desktop.
 
@@ -424,7 +487,3 @@ Final step! Ensure WiFi is set to auto-connect
 3. Ensure **Connect automatically when in range** is Enabled.
 
 And at last we're done! Happy self-hosting and streaming!
-
-
-
-
