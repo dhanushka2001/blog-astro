@@ -2,7 +2,7 @@
 title: How to setup your own Jellyfin Media Server
 description: A definitive beginner-friendly guide to turn an old Windows PC/laptop into a Jellyfin Media Server and Torrent Box, so you can watch your favorite movies/shows on your phone/PC/TV at home or abroad.
 alt: Guide to turn an old Windows PC into a Jellyfin Media Server and Torrent Box
-tags: ["networking", "jellyfin"]
+tags: ["networking", "jellyfin", "home server"]
 layout: "@/templates/BasePost.astro"
 pubDate: Wednesday, 18 March 2026 15:30:00 GMT
 updateDate: 2026-04-02
